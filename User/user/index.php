@@ -11,7 +11,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
+    <script src='test.js'></script>
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -40,20 +40,30 @@
                         hello.shopping@gmail.com
                     </div>
                     <div class="phone-service">
-                        <i class=" fa fa-phone"></i>
-                        +65 11.188.888
+                        <i class=" fa fa-phone" hidden id=''></i>
+                        
                     </div>
                 </div>
+                <?php
+				   include('../../BackEnd/php/connection.php');
+                   $query = mysqli_query($con, "SELECT * FROM `shop_info` ");
+                  ?>
+                  <form action='' method='POST'>
                 <div class="ht-right">
-                    <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                    <a href="#"  class="login-panel"><i class="fa fa-user"></i>Login</a>
                   <div class="lan-selector">
-                        <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                            <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
-                                data-title="English">English</option>
-                            <option value='yu' data-image="img/flag-2.jpg" data-imagecss="flag yu"
-                                data-title="Bangladesh">German </option>
-                        </select>
+                   <select class="language_drop"  name="countries" id="countries" style="width:300px;">
+                        <?php
+                    //     while($row = mysqli_fetch_array($query))
+                    //  { 
+                    //  echo "<option name='countries'>".$row['Location']."</option>" ;
+                    //  }
+                    $loc= 'Palakkad';
+                    echo "<option name='countries'>".$loc."</option>";
+                ?>
+                     </select>
                     </div>
+                </form>
                      <div class="top-social">
                         <a href="#"><i class="ti-facebook"></i></a>
                         <a href="#"><i class="ti-twitter-alt"></i></a>
@@ -73,27 +83,31 @@
                             </a>
                         </div>
                     </div>
+                    
                     <div class="col-lg-7 col-md-7">
                            
                         <div class="advanced-search">
                                
                                
-                            <!-- <select id="loc" class="category-btn" aria-placeholder="select loc">
-                        
-                               <option></option>
-                               <option>hai</option>
-                               <option>hlo</option>
-                               <option>hello</option>
-                               <option>hello</option>
-                            </select>  -->
-                            <div class="category-btn">
-                                    <input type="text" placeholder="select location">
-                                    
-                                </div>
+                            <select id="loc" class="category-btn" aria-placeholder="select loc">
+                            <?php
+                            
+                   
+                             include('../../BackEnd/php/connection.php');
+                            
+                             $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc' ");
+                            
+
+                        while($row = mysqli_fetch_array($query))
+                       { 
+                          echo "<option>".$row['ShopName']."</option>" ;
+                        }?>
+                             
+                            </select>  
+                            
                             
                             <div class="input-group">
-                                <input type="text" placeholder="Select shop">
-                                <button type="button"><i class="ti-search"></i></button>
+                            <button type="button"><i class="ti-search"></i></button>
                             </div>
                         
                         </div>
