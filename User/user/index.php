@@ -5,7 +5,7 @@ SESSION_START();
  }
  else{
    $PhoneNumber=$_SESSION['PhoneNumber'];
-   echo $PhoneNumber ;
+ // echo $PhoneNumber ;
  }
 
  // Session started
