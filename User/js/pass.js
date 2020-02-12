@@ -1,4 +1,5 @@
 // Paswword validation
+
 function test_pn() { 
   
             var b=document.getElementById("phoneNumber").value;
