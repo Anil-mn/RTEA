@@ -72,7 +72,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  <form action='demo.php' method ='POST'>
         <div class="container">
             <div class="inner-header">
                 <div class="row">
@@ -83,13 +83,12 @@
                             </a>
                         </div>
                     </div>
-                    
+                  
                     <div class="col-lg-7 col-md-7">
                            
                         <div class="advanced-search">
-                               
-                               
-                            <select id="loc" class="category-btn" aria-placeholder="select loc">
+                            
+                            <select id="loc" name='location' class="category-btn" aria-placeholder="select loc">
                             <?php
                             
                    
@@ -101,15 +100,19 @@
                         while($row = mysqli_fetch_array($query))
                        { 
                           echo "<option>".$row['ShopName']."</option>" ;
-                        }?>
+                        }
+                       
+                        ?>
                              
                             </select>  
                             
                             
                             <div class="input-group">
-                            <button type="button"><i class="ti-search"></i></button>
+                            
+                            <button type="submit"><i class="ti-search"></i></button>
                             </div>
-                        
+                            </form>
+                            
                         </div>
                     </div>
                     <div class="col-lg-3 text-right col-md-3">
