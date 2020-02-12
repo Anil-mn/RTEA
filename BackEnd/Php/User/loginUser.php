@@ -1,13 +1,13 @@
 <?php
 include('../connection.php');
- $phoneNumber = $_POST ['phoneNumber'];
- $password = $_POST['password'];
+ $PhoneNumber = $_POST ['PhoneNumber'];
+ $Password = $_POST['Password'];
 
- $query = "select * from user where PhoneNumber = '$phoneNumber' and password = '$password'";
+ $query = "select * from user_info where PhoneNumber = '$PhoneNumber' and Password = '$Password'";
  $result = mysqli_query($con, $query);
  $check = mysqli_fetch_array($result);
  if ($check == true){
-     echo "sucess instert into table";
+     echo "success insert into table";
  }
 
 

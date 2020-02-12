@@ -211,14 +211,14 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="login-form">
                         <h2>Login</h2>
-                        <form action="#">
+                        <form action="../../BackEnd/Php/User/loginUser.php" method='POST'>
                             <div class="group-input">
-                                <label for="username">Username or email address *</label>
-                                <input type="text" id="username">
+                                <label for="username">PhoneNumber *</label>
+                                <input type="number" id='phoneNumber' onchange="test_pn()" name="PhoneNumber">
                             </div>
                             <div class="group-input">
                                 <label for="pass">Password *</label>
-                                <input type="text" id="pass">
+                                <input type="password" id='password' onchange="test_ps()"  name="Password">
                             </div>
                             <div class="group-input gi-check">
                                 <div class="gi-more">
@@ -352,6 +352,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
+    <script src="../js/pass.js"></script>
+    <script src="../js/main.js"></script>
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
