@@ -28,5 +28,5 @@ while($row = mysqli_fetch_array($productInfo))
 session_start();
 $_SESSION['product'] = $product;
 echo $_SESSION['product'];
-header('location:basic_elements.php');
+header('location:display.php');
 ?>
