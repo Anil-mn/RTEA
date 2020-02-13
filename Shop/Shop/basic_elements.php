@@ -325,16 +325,12 @@
                      while($row = mysqli_fetch_array($productInfo))
                      {
                       echo "<option >".$row['Name']."</option>" ;
-                    }
-
-                    ?></select>
+                    }?>
+                    </select>
                     </div>
-                    
-                  
-                    
                     <div class="form-group" >
                       <label for="exampleInputCity1">Number OF products</label>
-                      <input type="number" name='no of product' class="form-control" id="exampleInputCity1" placeholder="Number OF products" >
+                      <input type="number" name='noofproduct' class="form-control" id="exampleInputCity1" placeholder="Number OF products" >
                     </div>
                     <div class="form-group">
                       <label for="exampleTextarea1">Location</label>
