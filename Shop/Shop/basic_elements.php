@@ -212,10 +212,10 @@
                       <p class="card-description">
                         Basic form layout
                       </p>
-                      <form class="forms-sample" action='' method = 'POST'>
+                      <form class="forms-sample" action='seletProduct.php' method = 'POST'>
                         <div class="form-group">
                           <label for="exampleFormControlSelect1">Catagories</label>
-                    <select name='cata' onchange='window.location.reload(true);' class="form-control form-control-lg" id="exampleFormControlSelect1">
+                    <select name='categorie' class="form-control form-control-lg"  id="exampleFormControlSelect1">
                     <?php 
                     include('../../BackEnd/php/connection.php');
                     $query = mysqli_query($con, "SELECT * FROM `shop_categories`");
@@ -230,7 +230,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleFormControlSelect1">Catagories</label>
-                          <select class="form-control form-control-lg" id="exampleFormControlSelect1">
+                          <select class="form-control form-control-lg" name='subcata' id="exampleFormControlSelect1">
                           <?php 
                           include('../../BackEnd/php/connection.php');
                           $query = mysqli_query($con, "SELECT * FROM `shop_subcategories`");
@@ -245,7 +245,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleFormControlSelect1">Catagories</label>
-                    <select class="form-control form-control-lg" id="exampleFormControlSelect1">
+                    <select class="form-control form-control-lg" name='superSub' id="exampleFormControlSelect1">
                     <?php 
                     include('../../BackEnd/php/connection.php');
                     $query = mysqli_query($con, "SELECT * FROM `shop_supersub`");
@@ -254,11 +254,18 @@
                           echo "<option >".$row['Name']."</option>" ;
                           
                         }
-                        
+                       
+
+                        $query = mysqli_query($con, "SELECT * FROM `shop_supersub`");
+                        while($row = mysqli_fetch_array($query))
+                        { 
+                           echo "<option >".$row['Name']."</option>" ;
+                           
+                         }
                         ?>
                     </select>
                         </div>
-                        <button type="submit" class="btn btn-success mr-2">Submit</button>
+                        <button type="submit" name ='categorieSelection' class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                       </form>
                     </div>
