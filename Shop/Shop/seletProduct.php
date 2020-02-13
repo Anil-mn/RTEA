@@ -26,7 +26,7 @@ while($row = mysqli_fetch_array($productInfo))
 {$product=$row['Name'];}
 
 session_start();
-$_SESSION['product'] = $product;
+$_SESSION['product'] = $super;
 echo $_SESSION['product'];
-header('location:display.php');
+header('location:basic_elements.php');
 ?>
