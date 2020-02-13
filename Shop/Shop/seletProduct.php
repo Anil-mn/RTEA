@@ -25,8 +25,8 @@ $productInfo = mysqli_query($con, "SELECT * FROM `shop_products` where `superSub
 while($row = mysqli_fetch_array($productInfo))
 {$product=$row['Name'];}
 
-// session_start();
-// $_SESSION['product'] = $product;
-// echo $_SESSION['product'];
-//header('location:display.php');
+session_start();
+$_SESSION['product'] = $product;
+echo $_SESSION['product'];
+header('location:basic_elements.php');
 ?>
