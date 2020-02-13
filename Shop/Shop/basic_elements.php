@@ -315,7 +315,7 @@
                   <p class="card-description">
                     Basic form elements
                   </p>
-                  <form class="forms-sample">
+                  <form class="forms-sample" action='addProductInShop.php' Method='POST'>
                     <div class="form-group">
                       <label for="exampleFormControlSelect1">Catagories</label>
                     <select class="form-control form-control-lg" name='productItem'>
@@ -333,12 +333,12 @@
                   
                     
                     <div class="form-group" >
-                      <label for="exampleInputCity1">price</label>
-                      <input type="text"  class="form-control" id="exampleInputCity1" placeholder="Location">
+                      <label for="exampleInputCity1">Number OF products</label>
+                      <input type="number" name='no of product' class="form-control" id="exampleInputCity1" placeholder="Number OF products" >
                     </div>
                     <div class="form-group">
-                      <label for="exampleTextarea1">Discription</label>
-                      <textarea class="form-control" id="exampleTextarea1" rows="2"></textarea>
+                      <label for="exampleTextarea1">Location</label>
+                      <textarea class="form-control" name='location' placeholder="Location" id="exampleTextarea1" rows="2"></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-success mr-2">Submit</button>
