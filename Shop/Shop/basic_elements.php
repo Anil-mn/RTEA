@@ -327,16 +327,20 @@
                       echo "<option >".$row['Name']."</option>" ;
                     }
 
-                    ?>
+                    ?></select>
                     </div>
                     
+                  
                     
-                    
-                    <div class="form-group" hidden>
-                      <label for="exampleInputCity1">City</label>
-                      <input type="text" hidden class="form-control" id="exampleInputCity1" placeholder="Location">
+                    <div class="form-group" >
+                      <label for="exampleInputCity1">price</label>
+                      <input type="text"  class="form-control" id="exampleInputCity1" placeholder="Location">
                     </div>
-                    
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Discription</label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="2"></textarea>
+                    </div>
+
                     <button type="submit" class="btn btn-success mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
