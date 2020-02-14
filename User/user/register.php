@@ -32,7 +32,7 @@
 
     <!-- Header Section Begin -->
     <header class="header-section">
-        <div class="header-top">
+        <div class="header-top" hidden>
             <div class="container">
                 <div class="ht-left">
                     <div class="mail-service">
@@ -211,20 +211,42 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="register-form">
                         <h2>Register</h2>
-                        <form action="#">
+                        <form action="registerdemo.php" method='POST'>
                             <div class="group-input">
-                                <label for="username">Username or email address *</label>
-                                <input type="text" id="username">
+                                <label for="username">Username </label>
+                                <input type="text" id="username" name="userName"  required>
                             </div>
                             <div class="group-input">
-                                <label for="pass">Password *</label>
-                                <input type="text" id="pass">
+                                <label for="PhoneNumber">PhoneNumber </label>
+                                <input type="text" id="phoneNumber" name="phoneNumber" required>
                             </div>
                             <div class="group-input">
-                                <label for="con-pass">Confirm Password *</label>
-                                <input type="text" id="con-pass">
+                                <label for="email">E-mail </label>
+                                <input type="text" id="con-pass" name="emailId" required>
                             </div>
-                            <button type="submit" class="site-btn register-btn">REGISTER</button>
+                            <div class="group-input">
+                                <label for="Dob">DOB </label>
+                                <input type="date" id="con-pass" name="dob" required>
+                            </div>
+                            
+                            <div class="group-input">
+                                <label for="pass">Password </label>
+                                <input type="password" id="pass" name="password" required>
+                            </div>
+                            <div class="group-input">
+                                <label for="Gender">Gender </label>
+                                <select class="group-input" id="Gender" name="Gender" required>
+                                    <option>Female</option>
+                                    <option>Male</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                            <div class="group-input">
+                                <label for="location">Location </label>
+                                <input type="text" id="pass" name="Location">
+                            </div>
+
+                            <button type="submit" name="submit" class="site-btn register-btn">REGISTER</button>
                         </form>
                         <div class="switch-login">
                             <a href="./login.html" class="or-login">Or Login</a>
@@ -356,6 +378,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/pass.js"></script>
+
+
+    
 </body>
 
 </html>
