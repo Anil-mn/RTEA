@@ -212,11 +212,10 @@
                       <p class="card-description">
                         Basic form layout
                       </p>
-                      <?php 
-                      $demo = true;
-                      ?>
+                      
                       <form class="forms-sample" action='seletProduct.php' method = 'POST'>
-                       <div class="form-group">
+                      
+                        <div class="form-group"> 
                           <label for="exampleFormControlSelect1">Catagories</label>
                     <select name='categorie' class="form-control form-control-lg"  id="exampleFormControlSelect1">
                     <?php 
@@ -257,20 +256,15 @@
                           echo "<option >".$row['Name']."</option>" ;
                           
                         }
-                       
-
-                        $query = mysqli_query($con, "SELECT * FROM `shop_supersub`");
-                        while($row = mysqli_fetch_array($query))
-                        { 
-                           echo "<option >".$row['Name']."</option>" ;
-                           
-                         }
-                         
-                         session_start();
+                       session_start();
                          $product=$_SESSION['product'];
+                         echo $product;
+                         
                         ?>
                     </select>
-                        </div>
+                    
+                    <!-- <div class="form-group"> -->
+                   </div>
                         <button type="submit" name ='categorieSelection' class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                       </form>
@@ -278,8 +272,7 @@
                   </div>
                 </div>
               
-                <div class="col-12 stretch-card" hidden>
-                
+                <div class="col-12 stretch-card" >
                   <div class="card" hidden>
                     <div class="card-body">
                       <h4 class="card-title">Horizontal Form</h4>
@@ -309,43 +302,41 @@
             </div>
             <div class="col-md-6 grid-margin stretch-card">
             
-              <div class="card" hidden>
+           
+                 <?php //echo '<p>'.$product.'</p>';
+                 if(!isset($product)){echo '<div class="card" hidden>';}
+                 else{
+                  echo '<div class="card">';                    
+                  }
+                ?>
+              <!-- <div class="card" hidden> -->
                 <div class="card-body">
                   <h4 class="card-title">Basic form</h4>
                   <p class="card-description">
                     Basic form elements
                   </p>
-                  <form class="forms-sample">
+                  <form class="forms-sample" action='addProductInShop.php' Method='POST'>
                     <div class="form-group">
-                      <label for="exampleInputName1">Name</label>
-                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                      <label for="exampleFormControlSelect1">Catagories</label>
+                    <select class="form-control form-control-lg" name='productItem'>
+                    <?php
+                     include('../../BackEnd/php/connection.php');
+                     $productInfo = mysqli_query($con, "SELECT * FROM `shop_products` where `superSubID` = '$product'");
+                     while($row = mysqli_fetch_array($productInfo))
+                     {
+                      echo "<option >".$row['Name']."</option>" ;
+                    }?>
+                    </select>
+                    </div>
+                    <div class="form-group" >
+                      <label for="exampleInputCity1">Number OF products</label>
+                      <input type="number" name='noofproduct' class="form-control" id="exampleInputCity1" placeholder="Number OF products" >
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail3">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                      <label for="exampleTextarea1">Location</label>
+                      <textarea class="form-control" name='location' placeholder="Location" id="exampleTextarea1" rows="2"></textarea>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword4">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label>File upload</label>
-                      <input type="file" name="img[]" class="file-upload-default">
-                      <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                        <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-info" type="button">Upload</button>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputCity1">City</label>
-                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleTextarea1">Textarea</label>
-                      <textarea class="form-control" id="exampleTextarea1" rows="2"></textarea>
-                    </div>
+
                     <button type="submit" class="btn btn-success mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
