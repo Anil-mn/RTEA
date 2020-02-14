@@ -22,6 +22,8 @@ $query="INSERT INTO `user_info`( `Name`, `PhoneNumber`, `Email_ID`, `Password`, 
 $result=mysqli_query($con,$query); 
 
 }
+
+header('location:login.html')
 else 
 echo "not";
 ?>

@@ -10,7 +10,7 @@ SESSION_START();
  $check = mysqli_fetch_array($result);
  if(isset($check)){
     $_SESSION['PhoneNumber'] = $_POST['PhoneNumber'];
-    header('location: ../../../User/user/index.php');
+    header('location: ../../../User/user/SelectShop.php');
 }
 
 

@@ -242,7 +242,9 @@
                                 </select>
                             </div>
                             <div class="group-input">
+                            
                                 <label for="location">Location </label>
+                                
                                 <!--<input type="text" id="pass" name="Location"> -->
                                 <select id="loc" name='location' class="category-btn" aria-placeholder="select loc">
                                 <?php
