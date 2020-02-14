@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2020 at 05:00 AM
+-- Generation Time: Feb 14, 2020 at 05:07 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -30,8 +30,16 @@ CREATE TABLE `distribution_info` (
   `Distribution_ID` int(11) NOT NULL,
   `Place` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `phoneNumber` varchar(12) NOT NULL
+  `phoneNumber` varchar(12) NOT NULL,
+  `Password` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `distribution_info`
+--
+
+INSERT INTO `distribution_info` (`Distribution_ID`, `Place`, `name`, `phoneNumber`, `Password`) VALUES
+(1, 'Palakkad', 'Amithalla', '7894561230', 'Amithalla@123');
 
 -- --------------------------------------------------------
 
@@ -77,6 +85,25 @@ CREATE TABLE `inventory` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `location`
+--
+
+CREATE TABLE `location` (
+  `LocationID` int(11) NOT NULL,
+  `Name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`LocationID`, `Name`) VALUES
+(1, 'Palakkad'),
+(2, 'Thrissur');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `market_add`
 --
 
@@ -111,7 +138,8 @@ CREATE TABLE `market_companyinfo` (
   `CompanyID` int(11) NOT NULL,
   `CompanyName` varchar(50) NOT NULL,
   `CompanyCata` varchar(50) NOT NULL,
-  `CompanyMember` varchar(20) NOT NULL
+  `CompanyMember` varchar(20) NOT NULL,
+  `Password` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -124,6 +152,13 @@ CREATE TABLE `shop_categories` (
   `Categorie_ID` int(11) NOT NULL,
   `Categories` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `shop_categories`
+--
+
+INSERT INTO `shop_categories` (`Categorie_ID`, `Categories`) VALUES
+(1, 'Food');
 
 -- --------------------------------------------------------
 
@@ -145,7 +180,8 @@ CREATE TABLE `shop_info` (
 
 INSERT INTO `shop_info` (`ShopID`, `PhoneNumber`, `ShopName`, `Password`, `Location`) VALUES
 (1, '9874563210', 'big Bazzar', 'Big@1234', 'Palakkad'),
-(2, '9874563201', 'Royal Market', 'Royal@1234', 'Thrissur');
+(2, '9874563201', 'Royal Market', 'Royal@1234', 'Thrissur'),
+(3, '1234567890', 'Dell ', 'Dell@1234', 'Palakkad');
 
 -- --------------------------------------------------------
 
@@ -161,6 +197,13 @@ CREATE TABLE `shop_link` (
   `Location` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `shop_link`
+--
+
+INSERT INTO `shop_link` (`Link_ID`, `Product_ID`, `Shop_ID`, `NumberOf`, `Location`) VALUES
+(1, 1, 1, 2, 'ads');
+
 -- --------------------------------------------------------
 
 --
@@ -171,8 +214,16 @@ CREATE TABLE `shop_products` (
   `Product_ID` int(11) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Price` float NOT NULL,
-  `Description` varchar(200) NOT NULL
+  `Description` varchar(200) NOT NULL,
+  `superSubID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `shop_products`
+--
+
+INSERT INTO `shop_products` (`Product_ID`, `Name`, `Price`, `Description`, `superSubID`) VALUES
+(1, 'Tomato', 30, 'Ntg', 1);
 
 -- --------------------------------------------------------
 
@@ -186,6 +237,14 @@ CREATE TABLE `shop_subcategories` (
   `Name` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `shop_subcategories`
+--
+
+INSERT INTO `shop_subcategories` (`SubCategorie_ID`, `Categorie_ID`, `Name`) VALUES
+(1, 1, 'FastFood'),
+(2, 1, 'Grocery ');
+
 -- --------------------------------------------------------
 
 --
@@ -197,6 +256,13 @@ CREATE TABLE `shop_supersub` (
   `SubCategorie_ID` int(11) NOT NULL,
   `Name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `shop_supersub`
+--
+
+INSERT INTO `shop_supersub` (`SuperSubCat_ID`, `SubCategorie_ID`, `Name`) VALUES
+(1, 2, 'Vegetables');
 
 -- --------------------------------------------------------
 
@@ -220,7 +286,7 @@ CREATE TABLE `user_info` (
 --
 
 INSERT INTO `user_info` (`UserId`, `Name`, `PhoneNumber`, `Email_ID`, `Password`, `Gender`, `Dob`, `Location`) VALUES
-(19, 'anil', '9746903914', 'anil@anil.com', '1234', '', '0000-00-00', '');
+(19, 'anil', '9746903914', 'anil@anil.com', '1234', '', '0000-00-00', '1');
 
 -- --------------------------------------------------------
 
@@ -275,6 +341,12 @@ ALTER TABLE `distributor_req`
 --
 ALTER TABLE `inventory`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`LocationID`);
 
 --
 -- Indexes for table `market_add`
@@ -356,7 +428,7 @@ ALTER TABLE `user_transactions`
 -- AUTO_INCREMENT for table `distribution_info`
 --
 ALTER TABLE `distribution_info`
-  MODIFY `Distribution_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Distribution_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `distribution_inventoryreq`
 --
@@ -372,6 +444,11 @@ ALTER TABLE `distributor_req`
 --
 ALTER TABLE `inventory`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `LocationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `market_add`
 --
@@ -391,32 +468,32 @@ ALTER TABLE `market_companyinfo`
 -- AUTO_INCREMENT for table `shop_categories`
 --
 ALTER TABLE `shop_categories`
-  MODIFY `Categorie_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Categorie_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `shop_info`
 --
 ALTER TABLE `shop_info`
-  MODIFY `ShopID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ShopID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `shop_link`
 --
 ALTER TABLE `shop_link`
-  MODIFY `Link_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Link_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `shop_products`
 --
 ALTER TABLE `shop_products`
-  MODIFY `Product_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Product_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `shop_subcategories`
 --
 ALTER TABLE `shop_subcategories`
-  MODIFY `SubCategorie_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SubCategorie_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `shop_supersub`
 --
 ALTER TABLE `shop_supersub`
-  MODIFY `SuperSubCat_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SuperSubCat_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `user_info`
 --
