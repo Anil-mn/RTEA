@@ -141,7 +141,7 @@
             </div>
         </div>
         <div class="nav-item">
-            <div class="container">
+            <div class="container" hidden>
                 <div class="nav-depart">
                     <div class="depart-btn">
                         <i class="ti-menu"></i>
@@ -158,7 +158,7 @@
                         </ul>
                     </div>
                 </div>
-                <nav class="nav-menu mobile-menu">
+                <nav class="nav-menu mobile-menu" hidden>
                     <ul>
                         <li><a href="./index.html">Home</a></li>
                         <li><a href="./shop.html">Shop</a></li>
@@ -264,7 +264,7 @@
                             <button type="submit" name="submit" class="site-btn register-btn">REGISTER</button>
                         </form>
                         <div class="switch-login">
-                            <a href="./login.html" class="or-login">Or Login</a>
+                            <a href="index.html" class="or-login">Or Login</a>
                         </div>
                     </div>
                 </div>
