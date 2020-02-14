@@ -13,7 +13,7 @@
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
 </head>
@@ -30,19 +30,29 @@
               <form class="pt-4">
                 <form>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+                    <label for="exampleInputEmail1">Shopname</label>
+                    <input type="email" class="form-control" name="Shopname" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Shopname">
                     <i class="mdi mdi-account"></i>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" name="Password" id="exampleInputPassword1" placeholder="Password">
                     <i class="mdi mdi-eye"></i>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword2">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm password">
-                    <i class="mdi mdi-eye"></i>
+                    <label for="exampleInputEmail1">PhoneNumber</label>
+                    <input type="text" class="form-control" name="PhoneNumber" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="PhoneNumber">
+                    <i class="mdi mdi-account"></i>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Location</label>
+                     
+                    <select class="mdi mdi-account">
+                      <option>Palakkad</option>
+                      <option>Thrissur</option>
+                      <option>others</option>
+                    
+                    </select> 
                   </div>
                   <div class="mt-5">
                     <a class="btn btn-block btn-primary btn-lg font-weight-medium" href="../../index.html">Register</a>
