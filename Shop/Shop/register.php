@@ -48,6 +48,9 @@
                     <label for="exampleInputEmail1">Location</label>
                      
                     <select class="mdi mdi-account">
+                      <?php 
+                      
+                      ?>
                       <option>Palakkad</option>
                       <option>Thrissur</option>
                       <option>others</option>
