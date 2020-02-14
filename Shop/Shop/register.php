@@ -8,8 +8,20 @@ $Location = $_POST['Location'];
 $Location = ucfirst($Location);
 //$email_ID = $_POST['email_ID'];
 
+
+$check = mysqli_query($con,"SELECT * FROM `location` Where `Name` Like '%$Location'");
+while($row=mysqli_fetch_array($check)){
+    $demo = $row['Name'];
+}
+if(isset($demo)){ echo $demo;}
+else{
+    $insert = "INSERT INTO `location` (`Name`) VALUES ('$Location')";
+    $result=mysqli_query($con,$insert);
+}
 $query="INSERT INTO `shop_info`( `PhoneNumber`, `ShopName`, `Password`,`Location`) VALUES  ('$phoneNumber','$userName','$password','$Location')";
 $result=mysqli_query($con,$query); 
-//header('Location:../profile.php');
+
+
+header('Location:index.html');
 // completed
 ?>
