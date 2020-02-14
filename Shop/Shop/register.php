@@ -1,96 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include('../../BackEnd/php/connection.php');
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin Free Bootstrap-4 Admin Dashboard Template</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="../../node_modules/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../../node_modules/simple-line-icons/css/simple-line-icons.css">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="css/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
-</head>
+$userName = $_POST['Shopname'];
+$password = $_POST['Password'];
+$phoneNumber = $_POST['PhoneNumber'];
+$Location = $_POST['Location'];
+$Location = ucfirst($Location);
+//$email_ID = $_POST['email_ID'];
 
-<body>
-  <div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-center auth register-full-bg">
-        <div class="row w-100">
-          <div class="col-lg-4 mx-auto">
-            <div class="auth-form-light text-left p-5">
-              <h2>Register</h2>
-              <h4 class="font-weight-light">Hello! let's get started</h4>
-              <form class="pt-4">
-                <form>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Shopname</label>
-                    <input type="email" class="form-control" name="Shopname" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Shopname">
-                    <i class="mdi mdi-account"></i>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" name="Password" id="exampleInputPassword1" placeholder="Password">
-                    <i class="mdi mdi-eye"></i>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">PhoneNumber</label>
-                    <input type="text" class="form-control" name="PhoneNumber" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="PhoneNumber">
-                    <i class="mdi mdi-account"></i>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Location</label>
-                     
-                    <select class="mdi mdi-account">
-                      <?php 
-                      
-                      ?>
-                      <option>Palakkad</option>
-                      <option>Thrissur</option>
-                      <option>others</option>
-                    
-                    </select> 
-                  </div>
-                  <div class="mt-5">
-                    <a class="btn btn-block btn-primary btn-lg font-weight-medium" href="../../index.html">Register</a>
-                  </div>
-                  <div class="mt-2 w-75 mx-auto">
-                    <div class="form-check form-check-flat">
-                      <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input">
-                        I accept terms and conditions
-                      </label>
-                    </div>
-                  </div>
-                  <div class="mt-2 text-center">
-                    <a href="login.html" class="auth-link text-black">Already have an account? <span class="font-weight-medium">Sign in</span></a>
-                  </div>
-                </form>                  
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- content-wrapper ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
-  <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- endinject -->
-  <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/misc.js"></script>
-  <!-- endinject -->
-</body>
-
-</html>
+$query="INSERT INTO `shop_info`( `PhoneNumber`, `ShopName`, `Password`,`Location`) VALUES  ('$phoneNumber','$userName','$password','$Location')";
+$result=mysqli_query($con,$query); 
+//header('Location:../profile.php');
+// completed
+?>
