@@ -17,5 +17,5 @@ $shopId=1;
 //$query= mysqli_query($con,"INSERT INTO `shop_link`(`Product_ID`, `Shop_ID`, `NumberOf`, `Location`) VALUES  ('$productID',' $shopId','$numberOfProducts','$location')";
 $query="INSERT INTO `shop_link`(`Product_ID`, `Shop_ID`, `NumberOf`, `Location`) VALUES ('$productID','$shopId','$numberOfProducts','$location')";
 $result=mysqli_query($con,$query); 
-header('Location:basic_elements.php');
+header('Location:addProductInShop.php');
 ?>
