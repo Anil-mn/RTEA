@@ -235,15 +235,30 @@
                             </div>
                             <div class="group-input">
                                 <label for="Gender">Gender </label>
-                                <select class="group-input" id="Gender" name="Gender" required>
+                                <select class="category-btn" id="Gender" name="Gender" required>
                                     <option>Female</option>
                                     <option>Male</option>
                                     <option>Others</option>
                                 </select>
                             </div>
                             <div class="group-input">
+                            
                                 <label for="location">Location </label>
-                                <input type="text" id="pass" name="Location">
+                                
+                                <!--<input type="text" id="pass" name="Location"> -->
+                                <select id="loc" name='location' class="category-btn" aria-placeholder="select loc">
+                                <?php
+                                include('../../BackEnd/php/connection.php');
+
+                                $query = mysqli_query($con, "SELECT * FROM `location`");
+                                while($row = mysqli_fetch_array($query))
+                              { 
+                                echo "<option>".$row['Name']."</option>" ;
+                              }
+
+                                ?>
+                                </select>
+
                             </div>
 
                             <button type="submit" name="submit" class="site-btn register-btn">REGISTER</button>

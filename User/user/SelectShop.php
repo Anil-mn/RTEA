@@ -1,3 +1,18 @@
+<?php
+SESSION_START();
+ if(!isset($_SESSION['PhoneNumber'])){
+	header('location:index.html');
+ }
+ else{
+   $PhoneNumber=$_SESSION['PhoneNumber'];
+ // echo $PhoneNumber ;
+ }
+
+ // Session started
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -44,22 +59,27 @@
                         
                     </div>
                 </div>
-                <?php
-				   include('../../BackEnd/php/connection.php');
-                   $query = mysqli_query($con, "SELECT * FROM `shop_info` ");
-                  ?>
+             
                   <form action='' method='POST'>
                 <div class="ht-right">
                     <a href="#"  class="login-panel"><i class="fa fa-user"></i>Login</a>
                   <div class="lan-selector">
                    <select class="language_drop"  name="countries" id="countries" style="width:300px;">
                         <?php
-                    //     while($row = mysqli_fetch_array($query))
-                    //  { 
-                    //  echo "<option name='countries'>".$row['Location']."</option>" ;
-                    //  }
-                    $loc= 'Palakkad';
-                    echo "<option name='countries'>".$loc."</option>";
+                    include('../../BackEnd/php/connection.php');
+                    $userInfo = mysqli_query($con, "SELECT * FROM `user_info` where `PhoneNumber`= '$PhoneNumber'");
+                 while($row = mysqli_fetch_array($userInfo)){
+                    $userLocation  = $row['Location'];
+                    
+                 }
+                 $query = mysqli_query($con, "SELECT * FROM `location` where `LocationID`='$userLocation'");
+                      while($row = mysqli_fetch_array($query))
+                     { 
+                        echo "<option>".$row['Name']."</option>" ;
+                        $loc = $row['Name'];
+                     }
+                 
+                 
                 ?>
                      </select>
                     </div>
