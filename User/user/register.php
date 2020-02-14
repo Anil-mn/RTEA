@@ -32,7 +32,7 @@
 
     <!-- Header Section Begin -->
     <header class="header-section">
-        <div class="header-top">
+        <div class="header-top" hidden>
             <div class="container">
                 <div class="ht-left">
                     <div class="mail-service">
