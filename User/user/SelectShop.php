@@ -49,11 +49,25 @@ SESSION_START();
     <header class="header-section">
         <div class="header-top">
             <div class="container">
+            <?php
+                    include('../../BackEnd/php/connection.php');
+                    $userInfo = mysqli_query($con, "SELECT * FROM `user_info` where `PhoneNumber`= '$PhoneNumber'");
+                 while($row = mysqli_fetch_array($userInfo)){
+                    $userLocation  = $row['Location'];
+                    
+                 }
+                 ?>
                 <div class="ht-left">
                   <div class="mail-service">
-                        <i class=" fa fa-envelope"></i>
-                        hello.shopping@gmail.com
-                    </div>
+                  <?php  
+                   $query = mysqli_query($con, "SELECT * FROM `location` where `LocationID`='$userLocation'");
+                   while($row = mysqli_fetch_array($query))
+                  { 
+                      echo ' <i class=" fa fa-envelope"></i>'.$row['Name'];
+                    }
+                      ?>
+                    </div> 
+                   
                     <div class="phone-service">
                         <i class=" fa fa-phone" hidden id=''></i>
                         
@@ -62,17 +76,14 @@ SESSION_START();
              
                   <form action='' method='POST'>
                 <div class="ht-right">
-                    <a href="#"  class="login-panel"><i class="fa fa-user"></i>Login</a>
+                    <button href="#" name="changeloc" class="login-panel"><i class="fa fa-user"></i>Change location</button>
                   <div class="lan-selector">
                    <select class="language_drop"  name="countries" id="countries" style="width:300px;">
                         <?php
-                    include('../../BackEnd/php/connection.php');
-                    $userInfo = mysqli_query($con, "SELECT * FROM `user_info` where `PhoneNumber`= '$PhoneNumber'");
-                 while($row = mysqli_fetch_array($userInfo)){
-                    $userLocation  = $row['Location'];
+                   
                     
-                 }
-                 $query = mysqli_query($con, "SELECT * FROM `location` where `LocationID`='$userLocation'");
+                 
+                 $query = mysqli_query($con, "SELECT * FROM `location`");
                       while($row = mysqli_fetch_array($query))
                      { 
                         echo "<option>".$row['Name']."</option>" ;
@@ -110,7 +121,12 @@ SESSION_START();
                             
                             <select id="loc" name='location' class="category-btn" aria-placeholder="select loc">
                             <?php
-                            
+                             
+                            if(isset($_POST['changeloc'])){
+                                $loc=$_POST['countries'];
+                                
+
+                            } 
                    
                              include('../../BackEnd/php/connection.php');
                             

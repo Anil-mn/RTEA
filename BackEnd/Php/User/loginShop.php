@@ -7,11 +7,9 @@ include('../connection.php');
  $result = mysqli_query($con, $query);
  $check = mysqli_fetch_array($result);
  if ($check == true){
-     echo "success";
+     header('location:../../../Shop/Shop/productInstertion.php');
  }
 
 else{
     echo 'login faild';
 }
-
-?>
