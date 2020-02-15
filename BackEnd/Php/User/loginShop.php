@@ -2,7 +2,7 @@
 include('../connection.php');
  $ShopName = $_POST ['PhoneNumber'];
  $password = $_POST['Password'];
-
+ 
  $query = "select * from shop_info where PhoneNumber = '$ShopName' and Password = '$password'";
  $result = mysqli_query($con, $query);
  $check = mysqli_fetch_array($result);
@@ -11,5 +11,6 @@ include('../connection.php');
  }
 
 else{
-    echo 'login faild';
+   
+    echo 'login failed';
 }
