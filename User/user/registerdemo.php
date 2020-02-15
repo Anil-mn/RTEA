@@ -23,8 +23,7 @@ $result=mysqli_query($con,$query);
 
 }
 
-header('location:login.html')
-else 
-echo "not";
+header('location:index.html')
+
 ?>
 
