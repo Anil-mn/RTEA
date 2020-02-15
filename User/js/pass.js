@@ -1,4 +1,5 @@
 // Paswword validation
+
 function test_pn() { 
   
             var b=document.getElementById("phoneNumber").value;
@@ -25,6 +26,6 @@ function test_pn() {
                 
                     }
             else 
-                
+    
                 alert("Invalid Password")
 } 
