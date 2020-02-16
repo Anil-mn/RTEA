@@ -63,7 +63,10 @@ SESSION_START();
                    $query = mysqli_query($con, "SELECT * FROM `location` where `LocationID`='$userLocation'");
                    while($row = mysqli_fetch_array($query))
                   { 
+                    //   echo ' <i class=" fa fa-envelope"></i>'.$row['Name'];
                       echo ' <i class=" fa fa-envelope"></i>'.$row['Name'];
+                      $name =$row['Name'];
+
                     }
                       ?>
                     </div> 
@@ -84,13 +87,17 @@ SESSION_START();
                     
                  
                  $query = mysqli_query($con, "SELECT * FROM `location`");
+                 
                       while($row = mysqli_fetch_array($query))
                      { 
                         echo "<option>".$row['Name']."</option>" ;
-                        $loc = $row['Name'];
+                       
                      }
+                     $query = mysqli_query($con, "SELECT * FROM `location` where `Name`='$name'");
                  
-                 
+                     while($row = mysqli_fetch_array($query))
+                    { $loc=$row['Name'];
+                    }
                 ?>
                      </select>
                     </div>
@@ -126,7 +133,7 @@ SESSION_START();
                                 $loc=$_POST['countries'];
                                 
 
-                            } 
+                            
                    
                              include('../../BackEnd/php/connection.php');
                             
@@ -135,9 +142,20 @@ SESSION_START();
 
                         while($row = mysqli_fetch_array($query))
                        { 
-                          echo "<option>".$row['ShopName']."</option>" ;
+                        echo "<option>".$row['ShopName']."</option>" ;
+                        //echo "<option>".$loc."</option>" ;
                         }
-                       
+                    }
+                    else{
+                        $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc' ");
+                            
+
+                        while($row = mysqli_fetch_array($query))
+                       { 
+                        echo "<option>".$row['ShopName']."</option>" ;
+                        //echo "<option>".$loc."</option>" ;
+                        }
+                    }
                         ?>
                              
                             </select>  
