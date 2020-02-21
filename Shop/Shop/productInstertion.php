@@ -327,6 +327,8 @@ SESSION_START();
                 </div>
               </div>
             </div>
+             </form>
+
             <div class="col-md-6 grid-margin stretch-card">
             
            
@@ -342,7 +344,7 @@ SESSION_START();
                   <p class="card-description">
                     Basic form elements
                   </p>
-                  <form class="forms-sample" action='addProductInShop.php' Method='POST'>
+                   <form class="forms-sample" action='addProductInShop.php' Method='POST'> 
                     <div class="form-group">
                       <label for="exampleFormControlSelect1">Catagories</label>
                     <select class="form-control form-control-lg" name='productItem'>
@@ -356,7 +358,7 @@ SESSION_START();
                     </select>
                     </div>
                     <div class="form-group" >
-                      <label for="exampleInputCity1">Number OF products</label>
+                      <label for="exampleInputCity1">Number of products</label>
                       <input type="number" name='noofproduct' class="form-control" id="exampleInputCity1" placeholder="Number OF products" >
                     </div>
                     <div class="form-group">
@@ -364,12 +366,12 @@ SESSION_START();
                       <textarea class="form-control" name='location' placeholder="Location" id="exampleTextarea1" rows="2"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                    <button type="submit" name="submit" class="btn btn-success mr-2">Add Product</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
               </div>
-            </div>
+            </div> </form>
             <div class="col-md-5 d-flex align-items-stretch">
               <div class="row flex-grow" hidden>
                 <div class="col-12 grid-margin">

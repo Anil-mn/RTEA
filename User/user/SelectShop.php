@@ -115,9 +115,10 @@ SESSION_START();
             <div class="inner-header">
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
+                   
                         <div class="logo">
                             <a href="./index.html">
-                                <img src="img/logo.png" alt="">
+                                <!-- <img src="img/logo.png" alt=""> -->
                             </a>
                         </div>
                     </div>

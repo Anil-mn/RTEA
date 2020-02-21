@@ -225,6 +225,14 @@
                                 <input type="text" id="con-pass" name="emailId" required>
                             </div>
                             <div class="group-input">
+                                <label for="Gender">Gender </label>
+                                <select class="category-btn" id="Gender" name="Gender" required>
+                                    <option>Female</option>
+                                    <option>Male</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                            <div class="group-input">
                                 <label for="Dob">DOB </label>
                                 <input type="date" id="con-pass" name="dob" required>
                             </div>
@@ -233,14 +241,8 @@
                                 <label for="pass">Password </label>
                                 <input type="password" id="pass" name="password" required>
                             </div>
-                            <div class="group-input">
-                                <label for="Gender">Gender </label>
-                                <select class="category-btn" id="Gender" name="Gender" required>
-                                    <option>Female</option>
-                                    <option>Male</option>
-                                    <option>Others</option>
-                                </select>
-                            </div>
+                           
+
                             <div class="group-input">
                             
                                 <label for="location">Location </label>
@@ -260,6 +262,16 @@
                                 </select>
 
                             </div>
+                            
+                            
+
+
+                            
+                            <div>
+                                <button class="cart-buttons" >Upload Photo</button>
+
+                                
+
 
                             <button type="submit" name="submit" class="site-btn register-btn">REGISTER</button>
                         </form>
