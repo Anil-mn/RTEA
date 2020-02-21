@@ -28,5 +28,5 @@ while($row = mysqli_fetch_array($productInfo))
 session_start();
 $_SESSION['product'] = $super;
 echo $_SESSION['product'];
-header('location:addProductInShop.php');
+header('location:productInstertion.php');
 ?>
