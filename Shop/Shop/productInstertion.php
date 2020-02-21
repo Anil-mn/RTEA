@@ -182,7 +182,21 @@ SESSION_START();
             <div class="nav-link">
               <div class="profile-image"> <img src="images/faces/face4.jpg" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
-                <p class="name">Richard V.Welsh</p>
+              
+             
+                <?php
+                include('../../BackEnd/php/connection.php');
+                $check = mysqli_query($con, "SELECT * FROM `shop_info` where `PhoneNumber`= '$PhoneNumber'");
+                while($row = mysqli_fetch_array($check))
+                {
+                   echo ' <p class="name">'.$row[2].'</p>';
+                    
+                }
+               
+
+              
+                ?>
+                <!-- <p class="name">Richard V.Welsh</p> -->
                 <p class="designation">Manager</p>
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
