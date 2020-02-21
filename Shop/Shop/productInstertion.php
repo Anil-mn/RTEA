@@ -1,3 +1,16 @@
+<?php
+SESSION_START();
+ if(!isset($_SESSION['PhoneNumber'])){
+	header('location:index.html');
+ }
+ else{
+   $PhoneNumber=$_SESSION['PhoneNumber'];
+  echo $PhoneNumber ;
+ }
+
+ // Session started
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +18,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin Free Bootstrap-4 Admin Dashboard Template</title>
+  <title>RTEA</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../node_modules/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../node_modules/simple-line-icons/css/simple-line-icons.css">
@@ -216,7 +229,7 @@
                       <form class="forms-sample" action='seletProduct.php' method = 'POST'>
                       
                         <div class="form-group"> 
-                          <label for="exampleFormControlSelect1">Catagories</label>
+                          <label for="exampleFormControlSelect1">Category</label>
                     <select name='categorie' class="form-control form-control-lg"  id="exampleFormControlSelect1">
                     <?php 
                     include('../../BackEnd/php/connection.php');

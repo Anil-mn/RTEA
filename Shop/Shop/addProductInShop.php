@@ -6,7 +6,18 @@ $superSub=$_SESSION['product'];
 $numberOfProducts =$_POST['noofproduct'];
 $location = $_POST['location'];
 $productItem = $_POST['productItem'];
-$shopId=1;
+
+
+$shopphonenum = $_SESSION ['PhoneNumber'];
+//echo $shopphonenum;
+$check = mysqli_query($con, "SELECT * FROM `shop_info` where `PhoneNumber`= '$shopphonenum'");
+while($row = mysqli_fetch_array($check))
+{
+    $shopId=$row[0];
+    
+}
+
+
  $check = mysqli_query($con, "SELECT * FROM `shop_products` where `Name` = '$productItem'");
  while($row = mysqli_fetch_array($check))
                      {
