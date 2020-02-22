@@ -31,6 +31,6 @@ while($row = mysqli_fetch_array($check))
 $query="INSERT INTO `shop_link`(`Product_ID`, `Shop_ID`, `NumberOf`, `Location`) VALUES ('$productID','$shopId','$numberOfProducts','$location')";
 $result=mysqli_query($con,$query); 
 
-//header('Location:productInstertion.php');
+header('Location:productInstertion.php');
 }
 ?>
