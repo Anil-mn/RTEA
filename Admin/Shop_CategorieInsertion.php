@@ -207,20 +207,20 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Default form</h4>
+                      <h4 class="card-title">Main Category</h4>
                       <p class="card-description">
-                        Basic form layout
+                        
                       </p>
-                      <form class="forms-sample">
+                      <form class="forms-sample" action="php/CategoryInsertion.php" method='POST'>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Catagorie Name</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Catagorie Name">
+                          <label for="exampleInputEmail1">Catagory Name</label>
+                          <input type="text" class="form-control" name="CategoryName" id="exampleInputEmail1" placeholder="Catagorie Name">
                         </div>
                         <!-- <div class="form-group">
                           <label for="exampleInputPassword1">Password</label>
                           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div> -->
-                        <button type="submit" class="btn btn-success mr-2">Submit</button>
+                        <button type="submit" name="categorySubmit" class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                       </form>
                     </div>
@@ -229,13 +229,13 @@
                 <div class="col-12 stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Horizontal Form</h4>
+                      <h4 class="card-title">Sub Category</h4>
                       <p class="card-description">
-                        Horizontal form layout
+                       
                       </p>
                       <form class="forms-sample">
                       <div class="form-group">
-                          <label for="exampleFormControlSelect1">Catagories</label>
+                          <label for="exampleFormControlSelect1">Catagory Name</label>
                           <select class="form-control form-control-lg" name='subcata' id="exampleFormControlSelect1">
                           <?php 
                           include('../BackEnd/php/connection.php');
@@ -250,9 +250,9 @@
                     </select>
                         </div>
                         <div class="form-group row">
-                          <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
+                          <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Sub category</label>
                           <div class="col-sm-9">
-                            <input type="password" class="form-control" id="exampleInputPassword2" required placeholder="Password">
+                            <input type="text" class="form-control" id="exampleInputPassword2" required placeholder="">
                           </div>
                         </div>
                         <button type="submit" class="btn btn-success mr-2">Submit</button>
@@ -266,13 +266,13 @@
             <div class="col-md-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Basic form</h4>
+                  <h4 class="card-title">Product</h4>
                   <p class="card-description">
-                    Basic form elements
+                   
                   </p>
                   <form class="forms-sample">
                     <div class="form-group">
-                    <label for="exampleFormControlSelect1">Catagories</label>
+                    <label for="exampleFormControlSelect1">Product Name</label>
                     <select class="form-control form-control-lg" name='superSub' id="exampleFormControlSelect1">
                     <?php 
                     include('../BackEnd/php/connection.php');
@@ -291,8 +291,8 @@
                     </div>
                     
                     <div class="form-group">
-                       <label for="exampleInputEmail3">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email"> 
+                       <label for="exampleInputEmail3">No of Products</label>
+                      <input type="text" class="form-control" id="exampleInputEmail3" placeholder=""> 
                     </div>
                     <!-- <div class="form-group">
                       <label for="exampleInputPassword4">Password</label>
@@ -325,13 +325,13 @@
             <div class="col-12 stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Horizontal Form</h4>
+                      <h4 class="card-title">SuperSub Category</h4>
                       <p class="card-description">
-                        Horizontal form layout
+                        
                       </p>
                       <form class="forms-sample">
                       <div class="form-group">
-                          <label for="exampleFormControlSelect1">Catagories</label>
+                          <label for="exampleFormControlSelect1">Catagory Name</label>
                           <select class="form-control form-control-lg" name='subcata' id="exampleFormControlSelect1">
                           <?php 
                          include('../BackEnd/php/connection.php');
@@ -346,7 +346,7 @@
                     <button type="submit" class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                         </div>
-            <div class="col-md-5 d-flex align-items-stretch">
+            <!--<div class="col-md-5 d-flex align-items-stretch">
               <!-- <div class="row flex-grow">
                 <div class="col-12 grid-margin">
                   <div class="card">
