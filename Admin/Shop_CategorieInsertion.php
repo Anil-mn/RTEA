@@ -234,16 +234,25 @@
                         Horizontal form layout
                       </p>
                       <form class="forms-sample">
-                        <div class="form-group row">
-                          <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label>
-                          <div class="col-sm-9">
-                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
-                          </div>
+                      <div class="form-group">
+                          <label for="exampleFormControlSelect1">Catagories</label>
+                          <select class="form-control form-control-lg" name='subcata' id="exampleFormControlSelect1">
+                          <?php 
+                          include('../BackEnd/php/connection.php');
+                          $query = mysqli_query($con, "SELECT * FROM `shop_subcategories`");
+                    while($row = mysqli_fetch_array($query))
+                       { 
+                          echo "<option >".$row['Name']."</option>" ;
+                          
+                        }
+                        
+                        ?>
+                    </select>
                         </div>
                         <div class="form-group row">
                           <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
                           <div class="col-sm-9">
-                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                            <input type="password" class="form-control" id="exampleInputPassword2" required placeholder="Password">
                           </div>
                         </div>
                         <button type="submit" class="btn btn-success mr-2">Submit</button>
@@ -263,14 +272,29 @@
                   </p>
                   <form class="forms-sample">
                     <div class="form-group">
-                      <label for="exampleInputName1">Name</label>
-                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                    <label for="exampleFormControlSelect1">Catagories</label>
+                    <select class="form-control form-control-lg" name='superSub' id="exampleFormControlSelect1">
+                    <?php 
+                    include('../BackEnd/php/connection.php');
+                    $query = mysqli_query($con, "SELECT * FROM `shop_supersub`");
+                    while($row = mysqli_fetch_array($query))
+                       { 
+                          echo "<option >".$row['Name']."</option>" ;
+                          
+                        }
+                       session_start();
+                         $product=$_SESSION['product'];
+                         echo $product;
+                         
+                        ?>
+                    </select>
                     </div>
+                    
                     <div class="form-group">
-                      <label for="exampleInputEmail3">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                       <label for="exampleInputEmail3">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email"> 
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="exampleInputPassword4">Password</label>
                       <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
                     </div>
@@ -291,15 +315,39 @@
                     <div class="form-group">
                       <label for="exampleTextarea1">Textarea</label>
                       <textarea class="form-control" id="exampleTextarea1" rows="2"></textarea>
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-success mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
               </div>
             </div>
+            <div class="col-12 stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Horizontal Form</h4>
+                      <p class="card-description">
+                        Horizontal form layout
+                      </p>
+                      <form class="forms-sample">
+                      <div class="form-group">
+                          <label for="exampleFormControlSelect1">Catagories</label>
+                          <select class="form-control form-control-lg" name='subcata' id="exampleFormControlSelect1">
+                          <?php 
+                         include('../BackEnd/php/connection.php');
+                         $productInfo = mysqli_query($con, "SELECT * FROM `shop_products` where `superSubID` = '$product'");
+                         while($row = mysqli_fetch_array($productInfo))
+                         {
+                          echo "<option >".$row['Name']."</option>" ;
+                        }?>
+                        
+                        ?>
+                    </select>
+                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                        </div>
             <div class="col-md-5 d-flex align-items-stretch">
-              <div class="row flex-grow">
+              <!-- <div class="row flex-grow">
                 <div class="col-12 grid-margin">
                   <div class="card">
                     <div class="card-body">
@@ -338,10 +386,10 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="col-12 grid-margin stretch-card">
-                  <div class="card">
+                  <div class="card" hidden>
                     <div class="card-body">
                       <h4 class="card-title">Colored input groups</h4>
                       <p class="card-description">
