@@ -327,20 +327,34 @@
                       <p class="card-description">
                         
                       </p>
-                      <form class="forms-sample">
+                      <form class="forms-sample" action="php/CategoryInsertion.php" method='POST'>
                       <div class="form-group">
                           <label for="exampleFormControlSelect1">Catagory Name</label>
                           <select class="form-control form-control-lg" name='subcata' id="exampleFormControlSelect1">
                           <?php 
                          include('../BackEnd/php/connection.php');
-                         $productInfo = mysqli_query($con, "SELECT * FROM `shop_products` where `superSubID` = '$product'");
+                         $productInfo = mysqli_query($con, "SELECT * FROM `shop_supersub`");
                          while($row = mysqli_fetch_array($productInfo))
                          {
                           echo "<option >".$row['Name']."</option>" ;
                         }?>
                         
-                        ?>
+                      
                     </select>
+                    <div class="form-group">
+                       <label for="exampleInputEmail3">Product Name</label>
+                      <input type="text" name="Productname" class="form-control" id="exampleInputEmail3" placeholder=""> 
+                    </div>
+                    <div class="form-group">
+                       <label for="exampleInputEmail3">Description</label>
+                      <input type="text" name="Description" class="form-control" id="exampleInputEmail3" placeholder=""> 
+                    </div>
+                    <div class="form-group">
+                       <label for="exampleInputEmail3">Price</label>
+                      <input type="number" name="Price" class="form-control" id="exampleInputEmail3" placeholder=""> 
+                    </div>
+
+
                     <button type="submit" name="supercategory" class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                         </div>
