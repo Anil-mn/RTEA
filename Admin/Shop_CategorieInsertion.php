@@ -229,20 +229,20 @@
                 <div class="col-12 stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Sub Category</h4>
+                      <h4 class="card-title">Category</h4>
                       <p class="card-description">
                        
                       </p>
-                      <form class="forms-sample">
+                      <form class="forms-sample" action="php/CategoryInsertion.php" method='POST'>
                       <div class="form-group">
                           <label for="exampleFormControlSelect1">Catagory Name</label>
                           <select class="form-control form-control-lg" name='subcata' id="exampleFormControlSelect1">
                           <?php 
                           include('../BackEnd/php/connection.php');
-                          $query = mysqli_query($con, "SELECT * FROM `shop_subcategories`");
+                          $query = mysqli_query($con, "SELECT * FROM `shop_categories`");
                     while($row = mysqli_fetch_array($query))
                        { 
-                          echo "<option >".$row['Name']."</option>" ;
+                          echo "<option >".$row['Categories']."</option>" ;
                           
                         }
                         
@@ -252,10 +252,10 @@
                         <div class="form-group row">
                           <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Sub category</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="exampleInputPassword2" required placeholder="">
+                            <input type="text" name="subcat" class="form-control" id="exampleInputPassword2" required placeholder="">
                           </div>
                         </div>
-                        <button type="submit" class="btn btn-success mr-2">Submit</button>
+                        <button type="submit" class="btn btn-success mr-2" name="subcategory">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                       </form>
                     </div>
@@ -266,33 +266,31 @@
             <div class="col-md-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Product</h4>
+                  <h4 class="card-title">Sub Category</h4>
                   <p class="card-description">
                    
                   </p>
-                  <form class="forms-sample">
+                  <form class="forms-sample" action="php/CategoryInsertion.php" method='POST'>
                     <div class="form-group">
-                    <label for="exampleFormControlSelect1">Product Name</label>
+                    <label for="exampleFormControlSelect1">SubCategory Name</label>
                     <select class="form-control form-control-lg" name='superSub' id="exampleFormControlSelect1">
                     <?php 
                     include('../BackEnd/php/connection.php');
-                    $query = mysqli_query($con, "SELECT * FROM `shop_supersub`");
+                    $query = mysqli_query($con, "SELECT * FROM `shop_subcategories`");
                     while($row = mysqli_fetch_array($query))
                        { 
                           echo "<option >".$row['Name']."</option>" ;
                           
                         }
-                       session_start();
-                         $product=$_SESSION['product'];
-                         echo $product;
+                       
                          
                         ?>
                     </select>
                     </div>
                     
                     <div class="form-group">
-                       <label for="exampleInputEmail3">No of Products</label>
-                      <input type="text" class="form-control" id="exampleInputEmail3" placeholder=""> 
+                       <label for="exampleInputEmail3">Super Category</label>
+                      <input type="text" name="supercat" class="form-control" id="exampleInputEmail3" placeholder=""> 
                     </div>
                     <!-- <div class="form-group">
                       <label for="exampleInputPassword4">Password</label>
@@ -316,7 +314,7 @@
                       <label for="exampleTextarea1">Textarea</label>
                       <textarea class="form-control" id="exampleTextarea1" rows="2"></textarea>
                     </div> -->
-                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                    <button type="submit" name="superSubbutton" class="btn btn-success mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
@@ -343,7 +341,7 @@
                         
                         ?>
                     </select>
-                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                    <button type="submit" name="supercategory" class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                         </div>
             <!--<div class="col-md-5 d-flex align-items-stretch">
@@ -813,3 +811,4 @@
 </body>
 
 </html>
+ab-t-r
