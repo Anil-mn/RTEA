@@ -43,7 +43,29 @@ if(isset($_POST['subcategory']))
 
 
 
-   }             
+   }  
+   if(isset($_POST['supercategory']))    
+   {
+       $supersubcat=$_POST['subcata'];
+       $prodname=$_POST['Productname'];
+       $price=$_POST['Price'];
+       $description=$_POST['Description'];
+       $check = mysqli_query($con,"SELECT * FROM `shop_supersub` where `Name`='$supersubcat'");
+       while($row = mysqli_fetch_array($check))
+                       { 
+                          $supersubID=$row[0];
+                          
+                       }
+                        
+                    
+                        $query="INSERT INTO `shop_products`(`Name`, `Price`, `Description`, `superSubID`)VALUES (' $prodname','$price','$description','$supersubID')";
+                        $result=mysqli_query($con,$query);
+                        header('Location:../Shop_CategorieInsertion.php');
+
+
+
+   }  
+              
 
                     
  ?>
