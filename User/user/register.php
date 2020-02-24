@@ -268,7 +268,7 @@
 
                             
                             <div>
-                                <input type="file" name="upload" value="Upload Photo">
+                                <input type="file" name="fileToUpload" id="fileToUpload" >
                             </div>
             
 
