@@ -190,6 +190,7 @@ SESSION_START();
                 while($row = mysqli_fetch_array($check))
                 {
                    echo ' <p class="name">'.$row[2].'</p>';
+                  echo '<p class="designation">'.$row[4].'</p>';
                     
                 }
                
@@ -197,7 +198,7 @@ SESSION_START();
               
                 ?>
                 <!-- <p class="name">Richard V.Welsh</p> -->
-                <p class="designation">Manager</p>
+                <!-- <p class="designation">Manager</p> -->
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
             </div>

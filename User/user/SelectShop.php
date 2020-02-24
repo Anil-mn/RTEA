@@ -58,6 +58,7 @@ SESSION_START();
                  }
                  ?>
                 <div class="ht-left">
+                
                   <div class="mail-service">
                   <?php  
                    $query = mysqli_query($con, "SELECT * FROM `location` where `LocationID`='$userLocation'");
@@ -235,16 +236,16 @@ SESSION_START();
                 <div class="nav-depart">
                     <div class="depart-btn">
                         <i class="ti-menu"></i>
-                        <span>All departments</span>
+                        <span>All Categories</span>
                         <ul class="depart-hover">
-                            <li class="active"><a href="#">Women’s Clothing</a></li>
-                            <li><a href="#">Men’s Clothing</a></li>
-                            <li><a href="#">Underwear</a></li>
-                            <li><a href="#">Kid's Clothing</a></li>
-                            <li><a href="#">Brand Fashion</a></li>
-                            <li><a href="#">Accessories/Shoes</a></li>
-                            <li><a href="#">Luxury Brands</a></li>
-                            <li><a href="#">Brand Outdoor Apparel</a></li>
+                            <li class="active"><a href="#">Electronics</a></li>
+                            <li><a href="#">Fashion</a></li>
+                            <li><a href="#">Home and Furniture</a></li>
+                            <li><a href="#">Beauty and Personal Care</a></li>
+                            <li><a href="#">Toys and Baby</a></li>
+                            <li><a href="#">Accessories/Footwear</a></li>
+                            <li><a href="#">Sports,Books and More</a></li>
+                            <!-- <li><a href="#"></a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -263,10 +264,10 @@ SESSION_START();
                         <li><a href="./contact.html">Contact</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                                <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                <li><a href="./check-out.html">Checkout</a></li>
-                                <li><a href="./faq.html">Faq</a></li>
+                                <li><a href="./blog-details.html">My Profile</a></li>
+                                <li><a href="./shopping-cart.html">My Cart</a></li>
+                                <li><a href="./check-out.html">My Wishlist</a></li>
+                                <li><a href="./faq.html">My Orders</a></li>
                                 <li><a href="./register.html">Register</a></li>
                                 <li><a href="./login.html">Login</a></li>
                             </ul>

@@ -268,7 +268,9 @@
 
                             
                             <div>
-                                <button class="cart-buttons" >Upload Photo</button>
+                                <input type="file" name="upload" value="Upload Photo">
+                            </div>
+            
 
                                 
 
