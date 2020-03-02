@@ -24,6 +24,9 @@ SESSION_START();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RTEA</title>
 
+    <!-- Title icon -->
+    <link rel = "icon" href = "../../Logos/title.png" 
+        type = "image/x-icon"> 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <script src='test.js'></script>
