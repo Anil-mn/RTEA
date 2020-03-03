@@ -417,7 +417,10 @@ ol {
 }
 
 .inner-header .logo {
-	padding: 12px 0;
+	margin-left: 50px;
+	margin-bottom:80px ;
+	height: 10px;
+	width: 50%;
 }
 
 .inner-header .logo a {
