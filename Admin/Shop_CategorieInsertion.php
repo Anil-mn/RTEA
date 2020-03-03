@@ -207,7 +207,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Main Category</h4>
+                      <h4 class="card-title">Category</h4>
                       <p class="card-description">
                         
                       </p>
@@ -327,7 +327,7 @@
                       <p class="card-description">
                         
                       </p>
-                      <form class="forms-sample" action="php/CategoryInsertion.php" method='POST'>
+                      <form class="forms-sample" action="php/CategoryInsertion.php" method='POST' enctype="multipart/form-data">
                       <div class="form-group">
                           <label for="exampleFormControlSelect1">Catagory Name</label>
                           <select class="form-control form-control-lg" name='subcata' id="exampleFormControlSelect1">
@@ -353,7 +353,7 @@
                        <label for="exampleInputEmail3">Price</label>
                       <input type="number" name="Price" class="form-control" id="exampleInputEmail3" placeholder=""> 
                     </div>
-
+                    <input type="file" name="fileToUpload"><br>
 
                     <button type="submit" name="supercategory" class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
