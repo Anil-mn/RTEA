@@ -19,6 +19,11 @@ SESSION_START();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>RTEA</title>
+
+  <!-- Title icon -->
+  <link rel = "icon" href = "../../Logos/title.png" 
+        type = "image/x-icon"> 
+    <!-- Google Font -->
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../node_modules/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../node_modules/simple-line-icons/css/simple-line-icons.css">
@@ -28,7 +33,7 @@ SESSION_START();
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <!-- <link rel="shortcut icon" href="images/favicon.png" /> -->
 </head>
 
 <body>

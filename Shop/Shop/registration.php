@@ -5,7 +5,11 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin Free Bootstrap-4 Admin Dashboard Template</title>
+  <title>RTEA</title>
+  <!-- Title icon -->
+  <link rel = "icon" href = "../../Logos/title.png" 
+        type = "image/x-icon"> 
+    <!-- Google Font -->
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../node_modules/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../node_modules/simple-line-icons/css/simple-line-icons.css">
