@@ -400,6 +400,110 @@
                     </div>
                   </div> -->
                 </div>
+                <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title mb-4">Global Sales by Top Locations</h5>
+                  <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
+                      <table class="table table-striped">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <img src="../Shop/Shop/images/flags/US.png">
+                              </div>
+                            </td>
+                            <td>USA</td>
+                            <td class="text-right">
+                              2.920
+                            </td>
+                            <td class="text-right">
+                              53.23%
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <img src="../Shop/Shop/images/flags/DE.png">
+                              </div>
+                            </td>
+                            <td>Germany</td>
+                            <td class="text-right">
+                              1.300
+                            </td>
+                            <td class="text-right">
+                              20.43%
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <img src="../Shop/Shop/images/flags/AU.png">
+                              </div>
+                            </td>
+                            <td>Australia</td>
+                            <td class="text-right">
+                              760
+                            </td>
+                            <td class="text-right">
+                              10.35%
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <img src="../Shop/Shop/images/flags/GB.png">
+                              </div>
+                            </td>
+                            <td>United Kingdom</td>
+                            <td class="text-right">
+                              690
+                            </td>
+                            <td class="text-right">
+                              7.87%
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <img src="../Shop/Shop/images/flags/RO.png">
+                              </div>
+                            </td>
+                            <td>Romania</td>
+                            <td class="text-right">
+                              600
+                            </td>
+                            <td class="text-right">
+                              5.94%
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="flag">
+                                <img src="../Shop/Shop/images/flags/BR.png">
+                              </div>
+                            </td>
+                            <td>Brasil</td>
+                            <td class="text-right">
+                              550
+                            </td>
+                            <td class="text-right">
+                              4.34%
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-xs-12">
+                      <div class="rounded" id="map" style="min-height:300px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
                 <div class="col-12 grid-margin stretch-card">
                   <div class="card" hidden>
                     <div class="card-body">
