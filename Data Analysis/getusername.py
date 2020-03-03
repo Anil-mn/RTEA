@@ -1,6 +1,5 @@
 from connection import mydb
 
-print(mydb)
 
 mycursor = mydb.cursor()
 
