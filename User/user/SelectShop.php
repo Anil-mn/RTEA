@@ -5,7 +5,7 @@ SESSION_START();
  }
  else{
    $PhoneNumber=$_SESSION['PhoneNumber'];
- // echo $PhoneNumber ;
+   //echo $PhoneNumber ;
  }
 
  // Session started
@@ -122,7 +122,11 @@ SESSION_START();
                    
                         <div class="logo">
                             <a href="./index.html">
-                                <img src="../../Logos/title.png" alt="not found">
+                            <?php 
+                            
+                            //echo '<img src="../images/'.$PhoneNumber.'.jpg" alt="not found">';
+                            ?>
+                              <img src="../../Logos/title.png" alt="not found"> 
                             </a>
                         </div>
                     </div>
