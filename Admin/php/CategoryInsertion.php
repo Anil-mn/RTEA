@@ -13,8 +13,9 @@ if(isset($_POST['categorySubmit']))
 
 if(isset($_POST['subcategory']))
 {
-    $subCategory = $_POST ['subcata']; 
+    $subCategory = $_POST ['subcata'];
     $sub=$_POST['subcat'];
+    $sub = ucfirst($sub);
     $check = mysqli_query($con,"SELECT * FROM `shop_categories` where `Categories`='$subCategory'");
     while($row = mysqli_fetch_array($check))
                        { 
@@ -29,6 +30,7 @@ if(isset($_POST['subcategory']))
    {
        $supersub=$_POST['superSub'];
        $super=$_POST['supercat'];
+       $super = ucfirst($super);
        $check = mysqli_query($con,"SELECT * FROM `shop_subcategories` where `Name`='$supersub'");
        while($row = mysqli_fetch_array($check))
                        { 
@@ -47,7 +49,9 @@ if(isset($_POST['subcategory']))
    if(isset($_POST['supercategory']))    
    {
        $supersubcat=$_POST['subcata'];
-       $prodname=$_POST['Productname'];
+  
+       $prodname=$_POST['Productname'];  
+       $prodname = ucfirst($prodname);
        $price=$_POST['Price'];
        $description=$_POST['Description'];
        $check = mysqli_query($con,"SELECT * FROM `shop_supersub` where `Name`='$supersubcat'");

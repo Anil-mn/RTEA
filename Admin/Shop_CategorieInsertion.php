@@ -353,7 +353,7 @@
                        <label for="exampleInputEmail3">Price</label>
                       <input type="number" name="Price" class="form-control" id="exampleInputEmail3" placeholder=""> 
                     </div>
-                    <input type="file" name="fileToUpload"><br>
+                    <input type="file" name="fileToUpload"> <br>
 
                     <button type="submit" name="supercategory" class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
