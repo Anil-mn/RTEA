@@ -114,7 +114,7 @@ SESSION_START();
                     </div>
                 </div>
             </div>
-        </div>  <form action='demo.php' method ='POST'>
+        </div>  <form action='DisplayProducts.php' method ='POST'>
         <div class="container">
             <div class="inner-header">
                 <div class="row">
@@ -122,7 +122,7 @@ SESSION_START();
                    
                         <div class="logo">
                             <a href="./index.html">
-                                <!-- <img src="img/logo.png" alt=""> -->
+                                <img src="../../Logos/title.png" alt="not found">
                             </a>
                         </div>
                     </div>
