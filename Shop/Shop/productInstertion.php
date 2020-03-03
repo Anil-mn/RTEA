@@ -353,7 +353,7 @@ SESSION_START();
                    <form class="forms-sample" action='addProductInShop.php' Method='POST'> 
                     <div class="form-group">
                       <label for="exampleFormControlSelect1">Catagories</label>
-                    <select class="form-control form-control-lg" name='productItem'>
+                    <select class="form-control form-control-lg" name="productItem">
                     <?php
                      include('../../BackEnd/php/connection.php');
                      $productInfo = mysqli_query($con, "SELECT * FROM `shop_products` where `superSubID` = '$product'");
