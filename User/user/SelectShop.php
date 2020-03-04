@@ -145,9 +145,9 @@ SESSION_START();
                             
      
                             
-                   
+                   //shops displaying after clicking change location
                              include('../../BackEnd/php/connection.php');
-                            
+                           
                              $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc'  ");
                             
 
@@ -158,6 +158,7 @@ SESSION_START();
                         //echo "<option>".$loc."</option>" ;
                         }
                     }
+                    //displaying default location
                     else{
                         $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc' ");
                             

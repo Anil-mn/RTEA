@@ -4,12 +4,12 @@
     //header('location:index.html');
  }
  else{
-  $ShopId=$_SESSION['loc'];
+  $ShopId=$_SESSION['loc'];//location
  
  }
 include('../../BackEnd/php/connection.php');
 // $loc=$_POST['loc'];
- $location=$_POST['location'];
+ $location=$_POST['location'];//shop name 
  $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$ShopId' and `ShopName`='$location'  ");
                             
 
