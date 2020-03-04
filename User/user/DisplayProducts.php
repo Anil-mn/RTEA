@@ -1,17 +1,25 @@
 <?php
+ SESSION_START();
+ if(!isset($_SESSION['loc'])){
+    //header('location:index.html');
+ }
+ else{
+  $ShopId=$_SESSION['loc'];
+ 
+ }
 include('../../BackEnd/php/connection.php');
-$nameofshop = $_POST['location'];
+// $loc=$_POST['loc'];
+ $location=$_POST['location'];
+ $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$ShopId' and `ShopName`='$location'  ");
+                            
 
-
-
-$query = mysqli_query($con, "SELECT * FROM `shop_info` where ShopName='$nameofshop' and `Location`='$countries'");
 while($row = mysqli_fetch_array($query))
 { 
-    $ser=$row[2];
-     $countries  =$row['Location'];
-     echo $countries;
-    
- }
+
+$ShopId =$row[0];
+ echo $ShopId;
+
+}
 ?>
 
 <!DOCTYPE html>
