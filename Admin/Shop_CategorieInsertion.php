@@ -352,12 +352,31 @@
                     <div class="form-group">
                        <label for="exampleInputEmail3">Price</label>
                       <input type="number" name="Price" class="form-control" id="exampleInputEmail3" placeholder=""> 
-                    </div>
-                    <input type="file" name="fileToUpload"> <br>
+                    </div><br>
+                    <input type="file" name="fileToUpload"> 
 
-                    <button type="submit" name="supercategory" class="btn btn-success mr-2">Submit</button>
+                  <button type="submit" name="supercategory" class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                         </div>
+
+
+                   
+                          <label for="exampleFormControlSelect1">Product Display</label>
+                          <select class="form-control form-control-lg" name='subcata' id="exampleFormControlSelect1">
+                          <?php 
+                         include('../BackEnd/php/connection.php');
+                         $productInfo = mysqli_query($con, "SELECT * FROM `shop_supersub`");
+                         while($row = mysqli_fetch_array($productInfo))
+                         {
+                          echo "<option >".$row['Name']."</option>" ;
+                        }?>
+                        </select><br>
+                        <button type="submit" name="supercategory" class="btn btn-success mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                        
+
+                       
+
             <!--<div class="col-md-5 d-flex align-items-stretch">
               <!-- <div class="row flex-grow">
                 <div class="col-12 grid-margin">
