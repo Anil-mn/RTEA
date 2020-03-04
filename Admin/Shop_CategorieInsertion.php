@@ -352,12 +352,20 @@
                     <div class="form-group">
                        <label for="exampleInputEmail3">Price</label>
                       <input type="number" name="Price" class="form-control" id="exampleInputEmail3" placeholder=""> 
-                    </div>
-                    <input type="file" name="fileToUpload"> <br>
+                    </div><br>
+                    <input type="file" name="fileToUpload"> 
 
-                    <button type="submit" name="supercategory" class="btn btn-success mr-2">Submit</button>
+                  <button type="submit" name="supercategory" class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                         </div>
+</form></form>
+                         
+                   
+                         
+                        
+
+                       
+
             <!--<div class="col-md-5 d-flex align-items-stretch">
               <!-- <div class="row flex-grow">
                 <div class="col-12 grid-margin">
@@ -404,98 +412,49 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
               <div class="card">
                 <div class="card-body">
+                <form class="forms-sample" action="#" method='POST'>
+                <label for="exampleFormControlSelect1">Product Display</label>
+                          <select class="form-control form-control-lg" name='detailssub' id="exampleFormControlSelect1">
+                          <?php 
+                         include('../BackEnd/php/connection.php');
+                         $productInfo = mysqli_query($con, "SELECT * FROM `shop_supersub`");
+                         while($row = mysqli_fetch_array($productInfo))
+                         {
+                          echo "<option >".$row['Name']."</option>" ;
+                        }?>
+                        </select><br>
+                        <button type="submit" name="details" class="btn btn-success mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button></div>
+                        <div class="card-body">
                   <h5 class="card-title mb-4">Global Sales by Top Locations</h5>
                   <div class="row">
-                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
+                  <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
                       <table class="table table-striped">
                         <tbody>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/US.png">
-                              </div>
-                            </td>
-                            <td>USA</td>
-                            <td class="text-right">
-                              2.920
-                            </td>
-                            <td class="text-right">
-                              53.23%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/DE.png">
-                              </div>
-                            </td>
-                            <td>Germany</td>
-                            <td class="text-right">
-                              1.300
-                            </td>
-                            <td class="text-right">
-                              20.43%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/AU.png">
-                              </div>
-                            </td>
-                            <td>Australia</td>
-                            <td class="text-right">
-                              760
-                            </td>
-                            <td class="text-right">
-                              10.35%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/GB.png">
-                              </div>
-                            </td>
-                            <td>United Kingdom</td>
-                            <td class="text-right">
-                              690
-                            </td>
-                            <td class="text-right">
-                              7.87%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/RO.png">
-                              </div>
-                            </td>
-                            <td>Romania</td>
-                            <td class="text-right">
-                              600
-                            </td>
-                            <td class="text-right">
-                              5.94%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/BR.png">
-                              </div>
-                            </td>
-                            <td>Brasil</td>
-                            <td class="text-right">
-                              550
-                            </td>
-                            <td class="text-right">
-                              4.34%
-                            </td>
-                          </tr>
+                  <?php
+                   include('../BackEnd/php/connection.php');
+                      if(isset($_POST['details']))
+                      {
+                        $name=$_POST['detailssub'];
+                       $query=mysqli_query($con, "SELECT * FROM `shop_supersub` WHERE `Name`='$name'"); 
+                       while($row = mysqli_fetch_array($query))
+                       {
+                         $superid=$row[0];
+                       }
+                      
+
+                        $query=mysqli_query($con, "SELECT * FROM `shop_products` where  `superSubID`='$superid'");
+                        while($row = mysqli_fetch_array($query))
+                       {
+                         $image=$row[1];
+                        echo '<tr><td><div class="flag"> <img src="Images/'.$image.'.jpg" style="height: 35px;width: 35px; "></div> </td><td class="text-right">'.$row[1].'</td><td>'.$row[2].'</td></tr>';
+                       }}
+                    ?>
+
+                         
                         </tbody>
                       </table>
-                    </div>
+                    </div></form>
                     <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-xs-12">
                       <div class="rounded" id="map" style="min-height:300px;"></div>
                     </div>
