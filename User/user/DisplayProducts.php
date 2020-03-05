@@ -74,7 +74,10 @@ $ShopName=$row[2];
                     </div>
                 </div>
                 <div class="ht-right">
-                    <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
+
+               <!--shop changing using same procedure of change location-->     
+
+               <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
                             <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
@@ -104,7 +107,7 @@ $ShopName=$row[2];
                     </div>
                     <div class="col-lg-7 col-md-7">
                         <div class="advanced-search">
-                            <button type="button" class="category-btn">All Categories</button>
+                             <button type="button" class="category-btn">StartShopping</button> 
                             <form action="#" class="input-group">
                                 <input type="text" placeholder="What do you need?">
                                 <button type="button"><i class="ti-search"></i></button>
@@ -158,7 +161,7 @@ $ShopName=$row[2];
                                         <h5>$120.00</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                        <a href="#" class="primary-btn view-card">VIEW CART</a>
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
@@ -174,7 +177,7 @@ $ShopName=$row[2];
                 <div class="nav-depart">
                     <div class="depart-btn">
                         <i class="ti-menu"></i>
-                        <span>All departments</span>
+                        <span>All Category</span>
                         <ul class="depart-hover">
                             <?php
                             include('../../Backend/Php/Connection.php');
@@ -182,7 +185,7 @@ $ShopName=$row[2];
                             while($row=mysqli_fetch_array($query))
                             {
 
-                                echo '<li><a href="#">'.$row[1].'</a></li>';
+                                echo '<li><a href="productDis/'.$row[1].'.php">'.$row[1].'</a></li>';
                             }
                             ?>
                             <!-- <li class="active"><a href="#">Women’s Clothing</a></li>
@@ -390,7 +393,20 @@ $ShopName=$row[2];
                     </div>
                     <div class="product-list">
                         <div class="row">
-                            <div class="col-lg-4 col-sm-6">
+
+                        <?php
+                        include('../../Backend/Php/Connection.php');
+                        $query=mysqli_query($con,"SELECT * from Shop_Products limit 3");
+                        
+                        ?>
+                        <?php
+                                    while($row=mysqli_fetch_array($query))
+                                    {
+                                        $proname=$row[1];
+                                        $price=$row[2];
+                                    
+                                  
+                           echo '<div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
                                         <img src="img/products/product-1.jpg" alt="">
@@ -405,18 +421,20 @@ $ShopName=$row[2];
                                         </ul>
                                     </div>
                                     <div class="pi-text">
+                                    
                                         <div class="catagory-name">Towel</div>
                                         <a href="#">
-                                            <h5>Pure Pineapple</h5>
+                                            <h5>'.$proname.'</h5>
                                         </a>
                                         <div class="product-price">
-                                            $14.00
+                                            '.$price.'
                                             <span>$35.00</span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
+                            </div>';}?>
+                            
+                            <!-- <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
                                         <img src="img/products/product-2.jpg" alt="">
@@ -465,7 +483,7 @@ $ShopName=$row[2];
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
