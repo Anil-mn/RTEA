@@ -396,12 +396,18 @@ $ShopName=$row[2];
 
                         <?php
                         include('../../Backend/Php/Connection.php');
-                        $query=mysqli_query($con,"SELECT * from Shop_Products limit 3");
+                        $check=mysqli_query($con,"SELECT * from Shop_link where `Shop_ID`='$ShopId'");
+                        while($row=mysqli_fetch_array($check))
+                        {
+                             $ProdId=$row['Product_ID'];
+                             
                         
-                        ?>
-                        <?php
+                        $query=mysqli_query($con,"SELECT * from Shop_Products where `Product_ID`='$ProdId' limit 3");
+                        
+                        
                                     while($row=mysqli_fetch_array($query))
                                     {
+                                         $proid=$row[0];
                                         $proname=$row[1];
                                         $price=$row[2];
                                     
@@ -409,7 +415,7 @@ $ShopName=$row[2];
                            echo '<div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="img/products/product-1.jpg" alt="">
+                                        <img src="img/ProductImages/'.$proid.'.jpg" alt="">
                                         <div class="sale pp-sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
@@ -428,11 +434,11 @@ $ShopName=$row[2];
                                         </a>
                                         <div class="product-price">
                                             '.$price.'
-                                            <span>$35.00</span>
+                                            <span>'.$proid.'</span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>';}?>
+                            </div>';}}?>
                             
                             <!-- <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
