@@ -1,17 +1,25 @@
 <?php
+ SESSION_START();
+ if(!isset($_SESSION['loc'])){
+    //header('location:index.html');
+ }
+ else{
+$place=$_SESSION['loc'];//location
+ 
+ }
 include('../../BackEnd/php/connection.php');
-$nameofshop = $_POST['location'];
+// $loc=$_POST['loc'];
+ $location=$_POST['location'];//shop name 
+ $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$location'  ");
+                            
 
-
-
-$query = mysqli_query($con, "SELECT * FROM `shop_info` where ShopName='$nameofshop' and `Location`='$countries'");
 while($row = mysqli_fetch_array($query))
 { 
-    $ser=$row[2];
-     $countries  =$row['Location'];
-     echo $countries;
-    
- }
+
+$ShopId =$row[0];
+$ShopName=$row[2];
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -53,11 +61,16 @@ while($row = mysqli_fetch_array($query))
                 <div class="ht-left">
                     <div class="mail-service">
                         <i class=" fa fa-envelope"></i>
-                        hello.colorlib@gmail.com
+                        <?php
+                        echo $place;
+                        ?>
                     </div>
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
-                        +65 11.188.888
+                        <?php
+
+                        echo $ShopName;
+                        ?>
                     </div>
                 </div>
                 <div class="ht-right">
@@ -163,14 +176,24 @@ while($row = mysqli_fetch_array($query))
                         <i class="ti-menu"></i>
                         <span>All departments</span>
                         <ul class="depart-hover">
-                            <li class="active"><a href="#">Women’s Clothing</a></li>
+                            <?php
+                            include('../../Backend/Php/Connection.php');
+                            $query=mysqli_query($con,"SELECT * from Shop_Categories");
+                            while($row=mysqli_fetch_array($query))
+                            {
+
+                                echo '<li><a href="#">'.$row[1].'</a></li>';
+                            }
+                            ?>
+                            <!-- <li class="active"><a href="#">Women’s Clothing</a></li>
                             <li><a href="#">Men’s Clothing</a></li>
                             <li><a href="#">Underwear</a></li>
                             <li><a href="#">Kid's Clothing</a></li>
                             <li><a href="#">Brand Fashion</a></li>
                             <li><a href="#">Accessories/Shoes</a></li>
                             <li><a href="#">Luxury Brands</a></li>
-                            <li><a href="#">Brand Outdoor Apparel</a></li>
+                            <li><a href="#">Brand Outdoor Apparel</a></li> -->
+
                         </ul>
                     </div>
                 </div>

@@ -81,7 +81,7 @@ SESSION_START();
                     </div>
                 </div>
              
-                  <form action='' method='POST'>
+                <form action='' method ='POST' >
                 <div class="ht-right">
                     <button href="#" name="changeloc" class="login-panel"><i class="fa fa-user"></i>Change location</button>
                   <div class="lan-selector">
@@ -114,7 +114,7 @@ SESSION_START();
                     </div>
                 </div>
             </div>
-        </div>  <form action='DisplayProducts.php' method ='POST'>
+        </div>  <form action='DisplayProducts.php' method ='POST' >
         <div class="container">
             <div class="inner-header">
                 <div class="row">
@@ -131,6 +131,7 @@ SESSION_START();
                         </div>
                     </div>
                   
+        <!-- </form>   -->
                     <div class="col-lg-7 col-md-7">
                            
                         <div class="advanced-search">
@@ -140,21 +141,24 @@ SESSION_START();
                              
                             if(isset($_POST['changeloc'])){
                                 $loc=$_POST['countries'];
-                                
-
+                                // $location=$_POST['location'];
                             
-                   
+     
+                            
+                   //shops displaying after clicking change location
                              include('../../BackEnd/php/connection.php');
-                            
-                             $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc' ");
+                           
+                             $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc'  ");
                             
 
                         while($row = mysqli_fetch_array($query))
                        { 
                         echo "<option>".$row['ShopName']."</option>" ;
+                        $ShopId =$row[0];
                         //echo "<option>".$loc."</option>" ;
                         }
                     }
+                    //displaying default location
                     else{
                         $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc' ");
                             
@@ -162,9 +166,16 @@ SESSION_START();
                         while($row = mysqli_fetch_array($query))
                        { 
                         echo "<option>".$row['ShopName']."</option>" ;
-                        //echo "<option>".$loc."</option>" ;
-                        }
-                    }
+                        //$ShopId =$row[0];
+                        }  }
+                       
+                
+                  
+                     SESSION_START();
+                      $_SESSION['loc']=$loc;
+
+ 
+                    
                         ?>
                              
                             </select>  
