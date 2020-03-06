@@ -65,16 +65,21 @@ if(isset($_POST['subcategory']))
                         $query="INSERT INTO `shop_products`(`Name`, `Price`, `Description`, `superSubID`)VALUES (' $prodname','$price','$description','$supersubID')";
                         $result=mysqli_query($con,$query);
                         echo $query;
-                        header('Location:../Shop_CategorieInsertion.php');
+                      header('Location:../Shop_CategorieInsertion.php');
 
+$check=mysqli_query($con,"SELECT * from shop_products ORDER BY `Product_ID` desc limit 1" );
+while($row=mysqli_fetch_array($check)){
+$proid=$row[0];
 
+}
 
 $target_dir = "..\Images/";
  $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
+ $name = $proid+1;
 
- $name = $prodname;
  $newfilename=$name ;
+ echo $newfilename;
  $uploadOk = 1;
  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
  // Check if image file is a actual image or fake image
