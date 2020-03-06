@@ -252,14 +252,14 @@
                   </div>
                   <?php
                   include('../BackEnd/php/connection.php');
-                  $query=mysqli_query($con,"SELECT SUM(`TotalAmt`) from `user_log`");
+                  $query=mysqli_query($con,"SELECT SUM(`TotalProducts`) from `user_log`");
                   while($row=mysqli_fetch_array($query))
                   {
-                     $visitorcount=$row[0]; 
-                    echo '<h4 class="card-title font-weight-normal text-danger">₹'.$row[0].'</h4>';
+                     $Totalproducts=$row[0]; 
+                    echo '<h4 class="card-title font-weight-normal text-danger">'.$row[0].'</h4>';
                   }
                   ?>
-                  <h4 class="card-title font-weight-normal text-warning">1569</h4>
+                  <!-- <h4 class="card-title font-weight-normal text-warning">1569</h4> -->
                   <h6 class="card-subtitle mb-4">Orders</h6>
                   <div class="progress progress-slim">
                     <div class="progress-bar bg-warning-gadient" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -297,10 +297,25 @@
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title font-weight-normal text-success">7896</h4>
-                  <p class="card-text">Visitors</p>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                <?php
+                  include('../BackEnd/php/connection.php');
+                 
+                  $query=mysqli_query($con,"SELECT `Location`,COUNT(`Location`) as `value_occurrence` from `shop_info` Group by `Location` order by `value_occurrence` DESC limit 1");
+                  while($row=mysqli_fetch_array($query))
+                  {
+
+                     $Locationname=$row[0]; 
+                     $mostLocation=$row[1];
+                    echo '<h4 class="card-title font-weight-normal text-success">'.$row[1].'</h4>';
+                  }
+                
+                  ?>
+                  <!-- <h4 class="card-title font-weight-normal text-success">7896</h4> -->
+              <?php   echo ' <p class="card-text">'.$Locationname.'</p>
+                  <div class="progress">';
+                  $avgCount=($mostLocation/$visitorcount)*100;
+                  $avgCount=round($avgCount);
+                  echo '<div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: '.$avgCount.'%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">'.$avgCount.'%</div>';?>
                   </div>
                 </div>
               </div>
@@ -319,10 +334,25 @@
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title font-weight-normal text-warning">1236</h4>
-                  <p class="card-text">Orders</p>
+                    <?php
+                include('../BackEnd/php/connection.php');
+                  $date=date('Y-m-d');
+                  $query=mysqli_query($con,"SELECT SUM(`TotalProducts`) from `user_log` where `Date`='$date'");
+                  while($row=mysqli_fetch_array($query))
+                  {
+                     $perdayproduct=$row[0]; 
+                   
+                  }
+                  $PerdayProductPerc=($perdayproduct/$Totalproducts)*100;
+                  $PerdayProductPerc =round($PerdayProductPerc);
+                  echo '<h4 class="card-title font-weight-normal text-danger">'.$perdayproduct.'</h4>';
+                  ?>
+                  <!-- <h4 class="card-title font-weight-normal text-warning">1236</h4> -->
+                  <p class="card-text">Orders/Day</p>
                   <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                   
+                  <?php
+                  echo '<div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:'.$PerdayProductPerc.'%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">'.$PerdayProductPerc.'</div>'?>
                   </div>
                 </div>
               </div>
@@ -344,7 +374,7 @@
                   echo '<h4 class="card-title font-weight-normal text-danger">₹'.$perdayamt.'</h4>';
                   ?>
                   <!-- <h4 class="card-title font-weight-normal text-danger">$ 7832</h4> -->
-                  <p class="card-text">Revenue</p>
+                  <p class="card-text">Revenue/Day</p>
                   <div class="progress">
                    <?php echo '<div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width:'.$perdaypers.'%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">'.$perdaypers.'%</div>' ?>
                   </div>
