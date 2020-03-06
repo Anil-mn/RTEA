@@ -371,10 +371,12 @@ SESSION_START();
                       <label for="exampleTextarea1">Location</label>
                       <textarea class="form-control" name='location' placeholder="Location" id="exampleTextarea1" rows="2"></textarea>
                     </div>
-
+                      
+                    
                     <button type="submit" name="submit" class="btn btn-success mr-2">Add Product</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
+                  <h4 class="card-title text-success">Qrcode</h4>  
                 </div>
               </div>
             </div> </form>
