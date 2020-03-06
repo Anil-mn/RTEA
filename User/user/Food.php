@@ -1,25 +1,25 @@
 <?php
  SESSION_START();
- if(!isset($_SESSION['loc'])){
+ if(!isset($_SESSION['place'])){
     //header('location:index.html');
  }
  else{
-$place=$_SESSION['loc'];//location
- 
+$place=$_SESSION['place'];//location
+$ShopName=$_SESSION['ShopName'];
  }
-include('../../BackEnd/php/connection.php');
-// $loc=$_POST['loc'];
- $location=$_POST['location'];//shop name 
- $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$location'  ");
+// include('../../BackEnd/php/connection.php');
+// // $loc=$_POST['loc'];
+//  $location=$_POST['location'];//shop name 
+//  $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$location'  ");
                             
 
-while($row = mysqli_fetch_array($query))
-{ 
+// while($row = mysqli_fetch_array($query))
+// { 
 
-$ShopId =$row[0];
-$ShopName=$row[2];
+// $ShopId =$row[0];
+// $ShopName=$row[2];
 
-}
+// }
 ?>
 
 <!DOCTYPE html>
@@ -64,15 +64,13 @@ $ShopName=$row[2];
                         <i class=" fa fa-envelope"></i>
                         <?php
                         echo $place;
-                        
-                        $_SESSION['place']=$place;
                         ?>
                     </div>
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
                         <?php
+
                         echo $ShopName;
-                        $_SESSION['ShopName']=$ShopName;
                         ?>
                     </div>
                 </div>

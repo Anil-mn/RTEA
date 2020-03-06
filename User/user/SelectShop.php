@@ -339,12 +339,13 @@ SESSION_START();
     <div class="banner-section spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-4"><form action="demo.php">
                     <div class="single-banner">
                         <img src="img/banner-1.jpg" alt="">
                         <div class="inner-text">
-                            <h4>Men’s</h4>
-                        </div>
+                            <button>
+                            <h4>Men’s</h4></button>
+                        </div></form>
                     </div>
                 </div>
                 <div class="col-lg-4">
