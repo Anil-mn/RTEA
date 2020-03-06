@@ -6,6 +6,7 @@ $password = $_POST['Password'];
 $phoneNumber = $_POST['PhoneNumber'];
 $Location = $_POST['Location'];
 $Location = ucfirst($Location);
+$date = date('Y-m-d');
 //$email_ID = $_POST['email_ID'];
 
 
@@ -18,7 +19,7 @@ else{
     $insert = "INSERT INTO `location` (`Name`) VALUES ('$Location')";
     $result=mysqli_query($con,$insert);
 }
-$query="INSERT INTO `shop_info`( `PhoneNumber`, `ShopName`, `Password`,`Location`) VALUES  ('$phoneNumber','$userName','$password','$Location')";
+$query="INSERT INTO `shop_info`( `PhoneNumber`, `ShopName`, `Password`,`Location`,`Date`) VALUES  ('$phoneNumber','$userName','$password','$Location','$date')";
 $result=mysqli_query($con,$query); 
 
 
