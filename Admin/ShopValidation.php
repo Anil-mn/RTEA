@@ -236,10 +236,18 @@
                   <div class="clearfix">
                     <i class="fa fa-shopping-cart float-right icon-md text-gray"></i>
                   </div>
-                  <h4 class="card-title font-weight-normal text-info">7895</h4>
-                  <h6 class="card-subtitle mb-4">Sales</h6>
+                  <?php
+                  include('../BackEnd/php/connection.php');
+                  $query=mysqli_query($con,"SELECT count(`LocationID`) from `location`");
+                  while($row=mysqli_fetch_array($query))
+                  {
+                     $totallocation=$row[0]; 
+                  }
+                  echo  '<h4 class="card-title font-weight-normal text-info">'.$totallocation.'</h4>';
+                  ?>
+                  <h6 class="card-subtitle mb-4">Locations</h6>
                   <div class="progress progress-slim">
-                    <div class="progress-bar bg-info-gadient" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                   <?php echo '<div class="progress-bar bg-info-gadient" role="progressbar" style="width:'.$totallocation.'%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>' ?>
                   </div>
                 </div>
               </div>
@@ -256,7 +264,7 @@
                   while($row=mysqli_fetch_array($query))
                   {
                      $Totalproducts=$row[0]; 
-                    echo '<h4 class="card-title font-weight-normal text-danger">'.$row[0].'</h4>';
+                    echo '<h4 class="card-title font-weight-normal text-warning">'.$row[0].'</h4>';
                   }
                   ?>
                   <!-- <h4 class="card-title font-weight-normal text-warning">1569</h4> -->
@@ -299,21 +307,21 @@
                 <div class="card-body">
                 <?php
                   include('../BackEnd/php/connection.php');
-                 
-                  $query=mysqli_query($con,"SELECT `Location`,COUNT(`Location`) as `value_occurrence` from `shop_info` Group by `Location` order by `value_occurrence` DESC limit 1");
+                  $date=date('Y-m-d');
+                  $query=mysqli_query($con,"SELECT COUNT(`ShopID`) from `shop_info` where `Date`='$date'");
                   while($row=mysqli_fetch_array($query))
                   {
-
-                     $Locationname=$row[0]; 
-                     $mostLocation=$row[1];
-                    echo '<h4 class="card-title font-weight-normal text-success">'.$row[1].'</h4>';
+                     $shopperday=$row[0]; 
+                
+                    echo '<h4 class="card-title font-weight-normal text-success">'.$row[0].'</h4>';
                   }
                 
                   ?>
                   <!-- <h4 class="card-title font-weight-normal text-success">7896</h4> -->
-              <?php   echo ' <p class="card-text">'.$Locationname.'</p>
-                  <div class="progress">';
-                  $avgCount=($mostLocation/$visitorcount)*100;
+                <p class="card-text">Shop Reg per day</p>
+                  <div class="progress">
+                  <?php
+                  $avgCount=($shopperday/$visitorcount)*100;
                   $avgCount=round($avgCount);
                   echo '<div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: '.$avgCount.'%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">'.$avgCount.'%</div>';?>
                   </div>
@@ -323,11 +331,30 @@
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title font-weight-normal text-info">5623</h4>
-                  <p class="card-text">Sales</p>
+                <?php
+                  include('../BackEnd/php/connection.php');
+                 
+                  $query=mysqli_query($con,"SELECT `Location`,COUNT(`Location`) as `value_occurrence` from `shop_info` Group by `Location` order by `value_occurrence` DESC limit 1");
+                  while($row=mysqli_fetch_array($query))
+                  {
+
+                     $Locationname=$row[0]; 
+                     $mostLocation=$row[1];
+                    echo '<h4 class="card-title font-weight-normal text-info">'.$row[1].'</h4>';
+                  }
+                
+                  ?>
+                  <!-- <h4 class="card-title font-weight-normal text-info">5623</h4> -->
+                  <?php   echo ' <p class="card-text">'.$Locationname.'</p>
+                  <div class="progress">';
+                  $avgCount=($mostLocation/$visitorcount)*100;
+                  $avgCount=round($avgCount);
+                  echo '<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: '.$avgCount.'%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">'.$avgCount.'%</div>';?>
+                  </div>
+                  <!-- <p class="card-text">Sales</p>
                   <div class="progress">
                     <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -345,7 +372,7 @@
                   }
                   $PerdayProductPerc=($perdayproduct/$Totalproducts)*100;
                   $PerdayProductPerc =round($PerdayProductPerc);
-                  echo '<h4 class="card-title font-weight-normal text-danger">'.$perdayproduct.'</h4>';
+                  echo '<h4 class="card-title font-weight-normal text-warning">'.$perdayproduct.'</h4>';
                   ?>
                   <!-- <h4 class="card-title font-weight-normal text-warning">1236</h4> -->
                   <p class="card-text">Orders/Day</p>
@@ -454,98 +481,51 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
               <div class="card">
                 <div class="card-body">
+                <form class="forms-sample" action="#" method='POST'>
+                <label for="exampleFormControlSelect1">Product Display</label>
+                          <select class="form-control form-control-lg" name='detailssub' id="exampleFormControlSelect1">
+                          <?php 
+                         include('../BackEnd/php/connection.php');
+                         $productInfo = mysqli_query($con, "SELECT * FROM `location`");
+                         while($row = mysqli_fetch_array($productInfo))
+                         {
+                          echo "<option >".$row[1]."</option>" ;
+                        }?>
+                        </select><br>
+                        <button type="submit" name="details" class="btn btn-success mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button></div>
+                        <div class="card-body">
                   <h5 class="card-title mb-4">Global Sales by Top Locations</h5>
                   <div class="row">
-                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
+                  <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
                       <table class="table table-striped">
                         <tbody>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../images/flags/US.png">
-                              </div>
-                            </td>
-                            <td>USA</td>
-                            <td class="text-right">
-                              2.920
-                            </td>
-                            <td class="text-right">
-                              53.23%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../images/flags/DE.png">
-                              </div>
-                            </td>
-                            <td>Germany</td>
-                            <td class="text-right">
-                              1.300
-                            </td>
-                            <td class="text-right">
-                              20.43%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../images/flags/AU.png">
-                              </div>
-                            </td>
-                            <td>Australia</td>
-                            <td class="text-right">
-                              760
-                            </td>
-                            <td class="text-right">
-                              10.35%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../images/flags/GB.png">
-                              </div>
-                            </td>
-                            <td>United Kingdom</td>
-                            <td class="text-right">
-                              690
-                            </td>
-                            <td class="text-right">
-                              7.87%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../images/flags/RO.png">
-                              </div>
-                            </td>
-                            <td>Romania</td>
-                            <td class="text-right">
-                              600
-                            </td>
-                            <td class="text-right">
-                              5.94%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../images/flags/BR.png">
-                              </div>
-                            </td>
-                            <td>Brasil</td>
-                            <td class="text-right">
-                              550
-                            </td>
-                            <td class="text-right">
-                              4.34%
-                            </td>
-                          </tr>
+                  <?php
+                   include('../BackEnd/php/connection.php');
+                      if(isset($_POST['details']))
+                      {
+                        $name=$_POST['detailssub'];
+                       $query=mysqli_query($con, "SELECT * FROM `shop_info` WHERE `Location`='$name'"); 
+                       while($row = mysqli_fetch_array($query))
+                       {
+                         $superid=$row[0];
+                         echo '<tr><td class="text-right">'.$row[1].'</td><td>'.$row[2].'</td><td>'.$row[4].'</td><td>'.$row[5].'</td></tr>';
+                       }
+                      
+
+                    //     $query=mysqli_query($con, "SELECT * FROM `shop_products` where  `superSubID`='$superid'");
+                    //     while($row = mysqli_fetch_array($query))
+                    //    {
+                    //      $image=$row[1];
+                    //     echo '<tr><td><div class="flag"> <img src="Images/'.$image.'.jpg" style="height: 35px;width: 35px; "></div> </td><td class="text-right">'.$row[1].'</td><td>'.$row[2].'</td></tr>';
+                    //    }
+                }
+                    ?>
+
+                         
                         </tbody>
                       </table>
-                    </div>
+                    </div></form>
                     <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-xs-12">
                       <div class="rounded" id="map" style="min-height:300px;"></div>
                     </div>
