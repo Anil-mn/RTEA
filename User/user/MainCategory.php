@@ -1,17 +1,26 @@
 <?php
-SESSION_START();
- if(!isset($_SESSION['PhoneNumber'])){
-	header('location:index.html');
+ SESSION_START();
+ if(!isset($_SESSION['loc'])){
+    //header('location:index.html');
  }
  else{
-   $PhoneNumber=$_SESSION['PhoneNumber'];
-   //echo $PhoneNumber ;
+$place=$_SESSION['loc'];//location
+ 
  }
+include('../../BackEnd/php/connection.php');
+// $loc=$_POST['loc'];
+ $location=$_POST['location'];//shop name 
+ $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$location'  ");
+                            
 
- // Session started
+while($row = mysqli_fetch_array($query))
+{ 
+
+$ShopId =$row[0];
+$ShopName=$row[2];
+
+}
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -24,12 +33,10 @@ SESSION_START();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RTEA</title>
 
-    <!-- Title icon -->
-    <link rel = "icon" href = "../../Logos/title.png" 
-        type = "image/x-icon"> 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <script src='test.js'></script>
+    <link rel = "icon" href = "../../Logos/title.png" 
+        type = "image/x-icon">  
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -52,61 +59,37 @@ SESSION_START();
     <header class="header-section">
         <div class="header-top">
             <div class="container">
-            <?php
-                    include('../../BackEnd/php/connection.php');
-                    $userInfo = mysqli_query($con, "SELECT * FROM `user_info` where `PhoneNumber`= '$PhoneNumber'");
-                 while($row = mysqli_fetch_array($userInfo)){
-                    $userLocation  = $row['Location'];
-                    
-                 }
-                 ?>
                 <div class="ht-left">
-                
-                  <div class="mail-service">
-                  <?php  
-                   $query = mysqli_query($con, "SELECT * FROM `location` where `LocationID`='$userLocation'");
-                   while($row = mysqli_fetch_array($query))
-                  { 
-                    //   echo ' <i class=" fa fa-envelope"></i>'.$row['Name'];
-                      echo ' <i class=" fa fa-envelope"></i>'.$row['Name'];
-                      $name =$row['Name'];
-
-                    }
-                      ?>
-                    </div> 
-                   
-                    <div class="phone-service">
-                        <i class=" fa fa-phone" hidden id=''></i>
+                    <div class="mail-service">
+                        <i class=" fa fa-envelope"></i>
+                        <?php
+                        echo $place;
                         
+                        $_SESSION['place']=$place;
+                        ?>
+                    </div>
+                    <div class="phone-service">
+                        <i class=" fa fa-phone"></i>
+                        <?php
+                        echo $ShopName;
+                        $_SESSION['ShopName']=$ShopName;
+                        ?>
                     </div>
                 </div>
-             
-                <form action='' method ='POST' >
                 <div class="ht-right">
-                    <button href="#" name="changeloc" class="login-panel"><i class="fa fa-user"></i>Change location</button>
-                  <div class="lan-selector">
-                   <select class="language_drop"  name="countries" id="countries" style="width:300px;">
-                        <?php
-                   
-                    
-                 
-                 $query = mysqli_query($con, "SELECT * FROM `location`");
-                 
-                      while($row = mysqli_fetch_array($query))
-                     { 
-                        echo "<option>".$row['Name']."</option>" ;
-                       
-                     }
-                     $query = mysqli_query($con, "SELECT * FROM `location` where `Name`='$name'");
-                 
-                     while($row = mysqli_fetch_array($query))
-                    { $loc=$row['Name'];
-                    }
-                ?>
-                     </select>
+
+               <!--shop changing using same procedure of change location-->     
+
+               <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                    <div class="lan-selector">
+                        <select class="language_drop" name="countries" id="countries" style="width:300px;">
+                            <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
+                                data-title="English">English</option>
+                            <option value='yu' data-image="img/flag-2.jpg" data-imagecss="flag yu"
+                                data-title="Bangladesh">German </option>
+                        </select>
                     </div>
-                </form>
-                     <div class="top-social">
+                    <div class="top-social">
                         <a href="#"><i class="ti-facebook"></i></a>
                         <a href="#"><i class="ti-twitter-alt"></i></a>
                         <a href="#"><i class="ti-linkedin"></i></a>
@@ -114,91 +97,34 @@ SESSION_START();
                     </div>
                 </div>
             </div>
-        </div>  <form action='MainCategory.php' method ='POST' >
+        </div>
         <div class="container">
             <div class="inner-header">
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
-                   
                         <div class="logo">
                             <a href="./index.html">
-                            <?php 
-                            
-                            //echo '<img src="../images/'.$PhoneNumber.'.jpg" alt="not found">';
-                            ?>
-                              <img src="../../Logos/title.png" alt="not found"> 
+                                <img src="../../Logos/title.png" alt="">
                             </a>
                         </div>
                     </div>
-                  
-        <!-- </form>   -->
                     <div class="col-lg-7 col-md-7">
-                           
                         <div class="advanced-search">
-                            
-                            <select id="loc" name='location' class="category-btn" aria-placeholder="select loc">
-                            <?php
-                             
-                            if(isset($_POST['changeloc'])){
-                                $loc=$_POST['countries'];
-                                // $location=$_POST['location'];
-                            
-     
-                            
-                   //shops displaying after clicking change location
-                             include('../../BackEnd/php/connection.php');
-                           
-                             $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc'  ");
-                            
-
-                        while($row = mysqli_fetch_array($query))
-                       { 
-                        echo "<option>".$row['ShopName']."</option>" ;
-                        $ShopId =$row[0];
-                        //echo "<option>".$loc."</option>" ;
-                        }
-                    }
-                    //displaying default location
-                    else{
-                        $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc' ");
-                            
-
-                        while($row = mysqli_fetch_array($query))
-                       { 
-                        echo "<option>".$row['ShopName']."</option>" ;
-                        //$ShopId =$row[0];
-                        }  }
-                       
-                
-                  
-                     SESSION_START();
-                      $_SESSION['loc']=$loc;
-
- 
-                    
-                        ?>
-                             
-                            </select>  
-                            
-                            
-                            <div class="input-group">
-                            
-                            <button type="submit"><i class="ti-search"></i></button>
-                            </div>
+                             <button type="button" class="category-btn">StartShopping</button> 
+                            <form action="#" class="input-group">
+                                <input type="text" placeholder="What do you need?">
+                                <button type="button"><i class="ti-search"></i></button>
                             </form>
-                            
                         </div>
                     </div>
                     <div class="col-lg-3 text-right col-md-3">
                         <ul class="nav-right">
-                            <li class="heart-icon">
-                                <a href="#">
+                            <li class="heart-icon"><a href="#">
                                     <i class="icon_heart_alt"></i>
                                     <span>1</span>
                                 </a>
                             </li>
-                            <li class="cart-icon">
-                                <a href="#">
+                            <li class="cart-icon"><a href="#">
                                     <i class="icon_bag_alt"></i>
                                     <span>3</span>
                                 </a>
@@ -238,7 +164,7 @@ SESSION_START();
                                         <h5>$120.00</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                        <a href="#" class="primary-btn view-card">VIEW CART</a>
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
@@ -254,22 +180,42 @@ SESSION_START();
                 <div class="nav-depart">
                     <div class="depart-btn">
                         <i class="ti-menu"></i>
-                        <span>All Categories</span>
-                        <ul class="depart-hover">
-                            <li class="active"><a href="#">Electronics</a></li>
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Home and Furniture</a></li>
-                            <li><a href="#">Beauty and Personal Care</a></li>
-                            <li><a href="#">Toys and Baby</a></li>
-                            <li><a href="#">Accessories/Footwear</a></li>
-                            <li><a href="#">Sports,Books and More</a></li>
-                            <!-- <li><a href="#"></a></li> -->
+                        <span>All Category</span>
+                        <form id='category' action="demo.php" method='POST'>
+                        <ul name="category" class="depart-hover">
+                            <?php
+                            include('../../Backend/Php/Connection.php');
+                            $query=mysqli_query($con,"SELECT * from Shop_Categories");
+                            while($row=mysqli_fetch_array($query))
+                            {
+                               
+                               // echo '<button><li name="category"><a href="demo.php">'.$row[1].'</a></li></button>';
+                                
+
+                                
+                            echo '<li name="category"><a href="'.$row[1].'.php">'.$row[1].'</a></li>';
+                              
+                            }
+
+                          
+                            ?>
+                            <!-- <li class="active"><a href="#">Women’s Clothing</a></li>
+                            <li><a href="#">Men’s Clothing</a></li>
+                            <li><a href="#">Underwear</a></li>
+                            <li><a href="#">Kid's Clothing</a></li>
+                            <li><a href="#">Brand Fashion</a></li>
+                            <li><a href="#">Accessories/Shoes</a></li>
+                            <li><a href="#">Luxury Brands</a></li>
+                            <li><a href="#">Brand Outdoor Apparel</a></li> -->
+
                         </ul>
+                        </form>
+                       
                     </div>
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
+                        <li><a href="./index.html">Home</a></li>
                         <li><a href="./shop.html">Shop</a></li>
                         <li><a href="#">Collection</a>
                             <ul class="dropdown">
@@ -282,10 +228,10 @@ SESSION_START();
                         <li><a href="./contact.html">Contact</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="./blog-details.html">My Profile</a></li>
-                                <li><a href="./shopping-cart.html">My Cart</a></li>
-                                <li><a href="./check-out.html">My Wishlist</a></li>
-                                <li><a href="./faq.html">My Orders</a></li>
+                                <li><a href="./blog-details.html">Blog Details</a></li>
+                                <li><a href="./shopping-cart.html">Shopping Cart</a></li>
+                                <li><a href="./check-out.html">Checkout</a></li>
+                                <li><a href="./faq.html">Faq</a></li>
                                 <li><a href="./register.html">Register</a></li>
                                 <li><a href="./login.html">Login</a></li>
                             </ul>
@@ -294,52 +240,59 @@ SESSION_START();
                 </nav>
                 <div id="mobile-menu-wrap"></div>
             </div>
-        </div> 
+        </div>
     </header>
     <!-- Header End -->
 
-    <!-- Hero Section Begin -->
-  <!--<section class="hero-section">
-        <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="img/hero-1.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <span>women,men</span>
-                            <h1>Cool Winks</h1>
-                            <p>Love shopping. There is a little bit of magic found in buying something new. It is instant gratification, a quick fix.   </p>
-                            <a href="#" class="primary-btn">Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="single-hero-items set-bg" data-setbg="img/hero-2.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <span>kids,bags</span>
-                            <h1>Black Friday</h1>
-                            <p></p>
-                            <a href="#" class="primary-btn">Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home"></i> Home</a>
+                        <span>Shop</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section> -->
-    <!-- Hero Section End -->
+    </div>
 
-    <!-- Banner Section Begin -->
+
+
+
+
+
     <div class="banner-section spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-4"><form action="demo.php">
+                 <?php
+                            include('../../Backend/Php/Connection.php');
+                            $query=mysqli_query($con,"SELECT * from Shop_Categories");
+                            while($row=mysqli_fetch_array($query))
+                            {
+                               
+                               // echo '<button><li name="category"><a href="demo.php">'.$row[1].'</a></li></button>';
+                                
+
+                                
+                            echo '<div class="col-lg-4"><form action="demo.php">
+                            <div class="single-banner">
+                                <img src="img/banner-1.jpg" alt="">
+                                <div class="inner-text">
+                                    <button>
+                                    <h4>'.$row[1].'</h4></button>
+                                </div></form>
+                            </div>
+                        </div>';
+                              
+                            }
+                            ?>
+
+                          
+                            
+
+                <!-- <div class="col-lg-4"><form action="demo.php">
                     <div class="single-banner">
                         <img src="img/banner-1.jpg" alt="">
                         <div class="inner-text">
@@ -355,7 +308,7 @@ SESSION_START();
                             <h4>Women’s</h4>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <div class="col-lg-4">
                     <div class="single-banner">
                         <img src="img/banner-3.jpg" alt="">
@@ -363,14 +316,14 @@ SESSION_START();
                             <h4>Kid’s</h4>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
     <!-- Banner Section End -->
 
     <!-- Women Banner Section Begin -->
-    <!-- <section class="women-banner spad">
+    <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
@@ -378,8 +331,8 @@ SESSION_START();
                         <h2>Women’s</h2>
                         <a href="#">Discover More</a>
                     </div>
-                </div> -->
-                <!-- <div class="col-lg-8 offset-lg-1">
+                </div> 
+                 <div class="col-lg-8 offset-lg-1">
                     <div class="filter-control">
                         <ul>
                             <li class="active">Clothings</li>
@@ -487,7 +440,7 @@ SESSION_START();
     <!-- Women Banner Section End -->
 
     <!-- Deal Of The Week Section Begin-->
-    <!-- <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
+     <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
         <div class="container">
             <div class="col-lg-6 text-center">
                 <div class="section-title">
@@ -520,7 +473,7 @@ SESSION_START();
                 <a href="#" class="primary-btn">Shop Now</a>
             </div>
         </div>
-    </section> -->
+    </section> 
     <!-- Deal Of The Week Section End -->
 
     <!-- Man Banner Section Begin -->
@@ -528,14 +481,14 @@ SESSION_START();
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8">
-                 <!-- <div class="filter-control">
+                  <div class="filter-control">
                         <ul>
                             <li class="active">Clothings</li>
                             <li>HandBag</li>
                             <li>Shoes</li>
                             <li>Accessories</li>
                         </ul>
-                    </div>-->
+                    </div>
                     <div class="product-slider owl-carousel">
                         <div class="product-item">
                             <div class="pi-pic">
@@ -629,11 +582,11 @@ SESSION_START();
                         </div>
                     </div>
                 </div>
-              <!--  <div class="col-lg-3 offset-lg-1">
+               <div class="col-lg-3 offset-lg-1">
                     <div class="product-large set-bg m-large" data-setbg="img/products/man-large.jpg">
                         <h2>Men’s</h2>
                         <a href="#">Discover More</a>
-                    </div>-->
+                    </div>
                 </div>
             </div>
         </div>
@@ -641,7 +594,7 @@ SESSION_START();
     <!-- Man Banner Section End -->
 
     <!-- Instagram Section Begin -->
-    <!--<div class="instagram-photo">
+    <div class="instagram-photo">
         <div class="insta-item set-bg" data-setbg="img/insta-1.jpg">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
@@ -758,7 +711,7 @@ SESSION_START();
                     </div>
                 </div>
             </div>
-        <!--    <div class="benefit-items">
+            <div class="benefit-items">
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="single-benefit">
@@ -796,11 +749,11 @@ SESSION_START();
                 </div>
             </div>
         </div>
-    </section>-->
+    </section>
     <!-- Latest Blog Section End -->
 
     <!-- Partner Logo Section Begin -->
-   <!-- <div class="partner-logo">
+    <div class="partner-logo">
         <div class="container">
             <div class="logo-carousel owl-carousel">
                 <div class="logo-item">
@@ -830,7 +783,7 @@ SESSION_START();
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
     <!-- Partner Logo Section End -->
 
     <!-- Footer Section Begin -->
@@ -922,3 +875,4 @@ SESSION_START();
 </body>
 
 </html>
+    

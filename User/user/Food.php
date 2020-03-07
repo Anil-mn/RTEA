@@ -6,6 +6,10 @@
  else{
 $place=$_SESSION['place'];//location
 $ShopName=$_SESSION['ShopName'];
+$filename = basename($_SERVER['REQUEST_URI']);
+
+$filename =substr($filename,0,-4);
+
  }
 // include('../../BackEnd/php/connection.php');
 // // $loc=$_POST['loc'];
