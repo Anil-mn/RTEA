@@ -278,7 +278,7 @@ $ShopName=$row[2];
                                 
                             echo '<div class="col-lg-4"><form action="demo.php">
                             <div class="single-banner">
-                                <img src="img/banner-1.jpg" alt="">
+                                <img src="img/categoryimages/'.$row[0].'.jpg" alt="image not found 404">
                                 <div class="inner-text">
                                     <button>
                                     <h4>'.$row[1].'</h4></button>
