@@ -447,11 +447,11 @@
                         while($row = mysqli_fetch_array($query))
                        {
                          $image=$row[1];
-                        echo '<tr><td><div class="flag"> <img src="Images/'.$image.'.jpg" style="height: 35px;width: 35px; "></div> </td><td class="text-right">'.$row[1].'</td><td>'.$row[2].'</td></tr>';
+                         $image =$image.'.jpg';
+                         echo $image;
+                        echo '<tr><td><div class="flag"> <img src="Images/'.$image.'" style="height: 35px;width: 35px; "></div> </td><td class="text-right">'.$row[1].'</td><td>'.$row[2].'</td></tr>';
                        }}
-                    ?>
-
-                         
+                    ?> 
                         </tbody>
                       </table>
                     </div></form>

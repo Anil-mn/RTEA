@@ -62,7 +62,7 @@ if(isset($_POST['subcategory']))
                        }
                         
                     
-                        $query="INSERT INTO `shop_products`(`Name`, `Price`, `Description`, `superSubID`)VALUES (' $prodname','$price','$description','$supersubID')";
+                        $query="INSERT INTO `shop_products`(`Name`, `Price`, `Description`, `superSubID`)VALUES ('$prodname','$price','$description','$supersubID')";
                         $result=mysqli_query($con,$query);
                         echo $query;
                       header('Location:../Shop_CategorieInsertion.php');
