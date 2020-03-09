@@ -110,7 +110,8 @@ $ShopName=$row[2];
                     </div>
                     <div class="col-lg-7 col-md-7">
                         <div class="advanced-search">
-                             <button type="button" class="category-btn">StartShopping</button> 
+                        <form action="StartShopping.php">
+                             <button type="submit"  class="category-btn">StartShopping</button> </form>
                             <form action="#" class="input-group">
                                 <input type="text" placeholder="What do you need?">
                                 <button type="button"><i class="ti-search"></i></button>
@@ -193,7 +194,7 @@ $ShopName=$row[2];
                                 
 
                                 
-                            echo '<li name="category"><a href="'.$row[1].'.php">'.$row[1].'</a></li>';
+                            echo '<li name="category"><a href="ProductDis.'.$row[1].'.php">'.$row[1].'</a></li>';
                               
                             }
 
@@ -276,7 +277,7 @@ $ShopName=$row[2];
                                 
 
                                 
-                            echo '<div class="col-lg-4"><form action="demo.php">
+                            echo '<div class="col-lg-4"><form action="ProductDis/'.$row[1].'.php">
                             <div class="single-banner">
                                 <img src="img/categoryimages/'.$row[0].'.jpg" alt="image not found 404">
                                 <div class="inner-text">
