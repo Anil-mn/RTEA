@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>RTEA MARKETING</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="../../vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../Distribution/Distribution/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../Distribution/Distribution/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../Distribution/Distribution/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->

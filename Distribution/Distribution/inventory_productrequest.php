@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>INVENTORY REQUEST</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="../../vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../Distribution/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../Distribution/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../Distribution/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -16,7 +16,7 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="css/style.css"> <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link rel="shortcut icon" href="../Distribution/images/favicon.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -24,7 +24,7 @@
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
           <a class="navbar-brand brand-logo" href="../../index.html">
-            <img src="../../images/logo.svg" alt="logo" class="logo-dark" />
+            <img src="../Distribution/images/logo.svg" alt="logo" class="logo-dark" />
           </a>
           <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo" /></a>
         </div>
@@ -50,7 +50,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                    <img src="../../images/faces/face10.jpg" alt="image" class="img-sm profile-pic"> </div>
+                    <img src="../Distribution/images/faces/face10.jpg" alt="image" class="img-sm profile-pic"> </div>
                   <div class="preview-item-content flex-grow py-2">
                     <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
                     <p class="font-weight-light small-text"> The meeting is cancelled </p>
@@ -58,7 +58,7 @@
                 </a>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                    <img src="../../images/faces/face12.jpg" alt="image" class="img-sm profile-pic"> </div>
+                    <img src="../Distribution/images/faces/face12.jpg" alt="image" class="img-sm profile-pic"> </div>
                   <div class="preview-item-content flex-grow py-2">
                     <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
                     <p class="font-weight-light small-text"> The meeting is cancelled </p>
@@ -66,7 +66,7 @@
                 </a>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                    <img src="../../images/faces/face1.jpg" alt="image" class="img-sm profile-pic"> </div>
+                    <img src="../Distribution/images/faces/face1.jpg" alt="image" class="img-sm profile-pic"> </div>
                   <div class="preview-item-content flex-grow py-2">
                     <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
                     <p class="font-weight-light small-text"> The meeting is cancelled </p>
@@ -94,10 +94,10 @@
             </li>
             <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle ml-2" src="../../images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
+                <img class="img-xs rounded-circle ml-2" src="../Distribution/images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
-                  <img class="img-md rounded-circle" src="../../images/faces/face8.jpg" alt="Profile image">
+                  <img class="img-md rounded-circle" src="../Distribution/images/faces/face8.jpg" alt="Profile image">
                   <p class="mb-1 mt-3">Allen Moreno</p>
                   <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                 </div>
@@ -122,7 +122,7 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="../../images/faces/face8.jpg" alt="profile image">
+                  <img class="img-xs rounded-circle" src="../Distribution/images/faces/face8.jpg" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
@@ -152,31 +152,31 @@
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/ui-features/buttons.html">Buttons</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/ui-features/typography.html">Typography</a></li>
                 </ul>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/icons/simple-line-icons.html">
+              <a class="nav-link" href="../Distribution/pages/icons/simple-line-icons.html">
                 <span class="menu-title">Icons</span>
                 <i class="icon-globe menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/forms/basic_elements.html">
+              <a class="nav-link" href="../Distribution/pages/forms/basic_elements.html">
                 <span class="menu-title">Form Elements</span>
                 <i class="icon-book-open menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/charts/chartist.html">
+              <a class="nav-link" href="../Distribution/pages/charts/chartist.html">
                 <span class="menu-title">Charts</span>
                 <i class="icon-chart menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/tables/basic-table.html">
+              <a class="nav-link" href="../Distribution/pages/tables/basic-table.html">
                 <span class="menu-title">Tables</span>
                 <i class="icon-grid menu-icon"></i>
               </a>
@@ -189,11 +189,11 @@
               </a>
               <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/blank-page.html"> Blank Page </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/login.html"> Login </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/register.html"> Register </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/error-404.html"> 404 </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/error-500.html"> 500 </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/blank-page.html"> Blank Page </a></li>
                 </ul>
               </div>
             </li>
@@ -208,52 +208,61 @@
               <div class="main-panel">
                   <div class="content-wrapper">
                     <div class="row" >
+                    <!-- <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-body">
+                    <h4 class="card-title">Search</h4>
+                    <form class="form-inline" action="" method="">
+                      <label class="sr-only" for="inlineFormInputName2">Name</label>
+                        <div class="form-group ">
+                           <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label>
+                             <div class="col-sm-9">
+                                 <select name="location" id="location" class="form-control">
+                                 
+                                  </select>
+                                </div>
+                              </div>
+                      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+                      <div class="form-group ">
+                            <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label> 
+                             <div class="col-sm-9">
+                                 <select name="location" id="location" class="form-control">
+                                  
+                                  </select>
+                                </div>
+                              </div>
+                      <button type="submit" class="btn btn-primary mb-2">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </div> -->
                       <div class="col-md-8 grid-margin stretch-card">
                         <div class="card">
                           <div class="card-body">
                             <h4 class="card-title">INVENTORY LIST</h4>
                             <p class="card-description"></p>
-                            <table class="table">
+                            <table class="table table-striped">
                               <thead>
                                 <tr>
-                                  <th>LOCATION</th>
-                                  <th>NAME</th>
-                                  <th>TYPE</th>
-                                  <th>PRODUCT</th>
+                                  <th><b>LOCATION</b></th>
+                                  <th><b>NAME</b></th>
+                                  <th><b>PHONE NUMBER</b></th>
+                                  <th><b>PRODUCT</b></th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td>Jacob</td>
-                                  <td>53275531</td>
-                                  <td>12 May 2017</td>
-                                  <td><label class="badge badge-danger">Pending</label></td>
-                                </tr>
-                                <tr>
-                                  <td>Messsy</td>
-                                  <td>53275532</td>
-                                  <td>15 May 2017</td>
-                                  <td><label class="badge badge-warning">In progress</label></td>
-                                </tr>
-                                <tr>
-                                  <td>John</td>
-                                  <td>53275533</td>
-                                  <td>14 May 2017</td>
-                                  <td><label class="badge badge-info">Fixed</label></td>
-                                </tr>
-                                <tr>
-                                  <td>Peter</td>
-                                  <td>53275534</td>
-                                  <td>16 May 2017</td>
-                                  <td><label class="badge badge-success">Completed</label></td>
-                                </tr>
-                                <tr>
-                                  <td>Dave</td>
-                                  <td>53275535</td>
-                                  <td>20 May 2017</td>
-                                  <td><label class="badge badge-warning">In progress</label></td>
-                                </tr>
-                              </tbody>
+                          <?php
+                              include('../../BackEnd/Php/connection.php');
+                              $query = "SELECT * FROM `inventory`";
+                              $result=mysqli_query($con,$query);
+                              
+                              while($row = mysqli_fetch_array($result))
+                              { 
+                             echo "<tr><td>".$row[5]."</td><td>".$row[2]."</td><td>".$row[1]."</td></tr>" ;
+  
+                               }
+                              ?>
+                          </tbody>
                             </table>
                           </div>
                         </div>
@@ -317,8 +326,8 @@
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"><a href="https://www.bootstrapdash.com/" target="_blank"></a>. All rights reserved.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><i class="icon-heart text-danger"></i></span>
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a href="https://www.bootstrapdash.com/" target="_blank">RTEA</a>. All rights reserved.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Sreelekha<i class="icon-heart text-danger"></i></span>
             </div>
           </footer>
           <!-- partial -->
@@ -329,7 +338,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../../vendors/js/vendor.bundle.base.js"></script>
+    <script src="../Distribution/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->

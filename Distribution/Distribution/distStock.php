@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>RTEA DISTRIBUTION</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../Distribution/vendors/css/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../Distribution/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../Distribution/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="./vendors/daterangepicker/daterangepicker.css">
@@ -19,7 +19,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="./images/favicon.png" />
+    <link rel="shortcut icon" href="../Distribution/images/favicon.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -27,9 +27,9 @@
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
           <a class="navbar-brand brand-logo" href="index.html">
-            <img src="images/logo.svg" alt="logo" class="logo-dark" />
+            <img src="../Distribution/images/bgs.jpg" alt="logo" class="logo-dark" />
           </a>
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../Distribution/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
           <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome to RTEA Distribution</h5>
@@ -97,10 +97,10 @@
             </li> -->
             <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle ml-2" src="images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
+                <img class="img-xs rounded-circle ml-2" src="../Distribution/images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
-                  <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
+                  <img class="img-md rounded-circle" src="../Distribution/images/faces/face8.jpg" alt="Profile image">
                   <p class="mb-1 mt-3">Allen Moreno</p>
                   <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                 </div>
@@ -123,7 +123,7 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="profile image">
+                  <img class="img-xs rounded-circle" src="../Distribution/images/faces/face8.jpg" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
@@ -217,14 +217,24 @@
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th><b> SL NO</b> </th>
-                            <th><b> PRODUCT NAME</b></th>
-                            <th><b>QUANTITY</b> </th>
-                            <th><b> SOLD</b></th>
-                            <th><b> AMOUNT </b></th>
-                          </tr>
+                          <th><b> PRODUCT NAME</b></th>
+                          <th><b>QUANTITY</b></th>
+                          <th><b> SOLD</b></th>
+                          <th><b> AMOUNT </b></th>
+                        </tr>
                         </thead>
                         <tbody>
+                          <?php
+                              include('../../BackEnd/Php/connection.php');
+                              $query = "SELECT * FROM `distribution_stock` WHERE Dis_ID = 2 ";
+                              $result=mysqli_query($con,$query);
+                              
+                              while($row = mysqli_fetch_array($result))
+                              { 
+                             echo "<tr><td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td></tr>" ;
+  
+                               }
+                              ?>
                           </tbody>
                         </table>
                       </div>
@@ -235,8 +245,8 @@
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a href="https://www.bootstrapdash.com/" target="_blank">RTEA</a>. All rights reserved.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Sreelekha<i class="icon-heart text-danger"></i></span>
             </div>
           </footer>
           <!-- partial -->

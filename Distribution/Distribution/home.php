@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>RTEA DISTRIBUTION</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../Distribution/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../Distribution/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../Distribution/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="./vendors/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="./vendors/chartist/chartist.min.css">
+    <link rel="stylesheet" href="../Distribution/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../Distribution/vendors/chartist/chartist.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -97,10 +97,10 @@
             </li> -->
             <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle ml-2" src="images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
+                <img class="img-xs rounded-circle ml-2" src="../Distribution/images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
-                  <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
+                  <img class="img-md rounded-circle" src="../Distribution/images/faces/face8.jpg" alt="Profile image">
                   <p class="mb-1 mt-3">Allen Moreno</p>
                   <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                 </div>
@@ -123,7 +123,7 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="profile image">
+                  <img class="img-xs rounded-circle" src="../Distribution/images/faces/face8.jpg" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
@@ -191,11 +191,11 @@
               </a>
               <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/login.html"> Login </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/register.html"> Register </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/error-404.html"> 404 </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/error-500.html"> 500 </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/blank-page.html"> Blank Page </a></li>
                 </ul>
               </div>
             </li>
@@ -363,55 +363,17 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>
-                              <img class="img-sm rounded-circle" src="images/faces/face1.jpg" alt="profile image"> Katie Holmes </td>
-                            <td>$3621</td>
-                            <td><img src="images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
-                            <td>04 Jun 2019</td>
-                            <td>04 Jun 2019</td>
-                            <td>18 Jul 2019</td>
-                            <td>
-                              <div class="badge badge-success p-2">Paid</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img class="img-sm rounded-circle" src="images/faces/face2.jpg" alt="profile image"> Minnie Copeland </td>
-                            <td>$6245</td>
-                            <td><img src="images/dashboard/paypal.png" alt="alipay" class="gateway-icon mr-2"> Paypal</td>
-                            <td>25 Sep 2019</td>
-                            <td>04 Jun 2019</td>
-                            <td>07 Oct 2019</td>
-                            <td>
-                              <div class="badge badge-danger p-2">Pending</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img class="img-sm rounded-circle" src="images/faces/face3.jpg" alt="profile image"> Rodney Sims </td>
-                            <td>$9265</td>
-                            <td><img src="images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
-                            <td>12 dec 2019</td>
-                            <td>04 Jun 2019</td>
-                            <td>26 Aug 2019</td>
-                            <td>
-                              <div class="badge badge-warning p-2">Failed</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img class="img-sm rounded-circle" src="images/faces/face4.jpg" alt="profile image"> Carolyn Barker </td>
-                            <td>$2263</td>
-                            <td><img src="images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
-                            <td>30 Sep 2019</td>
-                            <td>04 Jun 2019</td>
-                            <td>20 Oct 2019</td>
-                            <td>
-                              <div class="badge badge-success p-2">Paid</div>
-                            </td>
-                          </tr>
-                        </tbody>
+                          <?php
+                              include('../../BackEnd/Php/connection.php');
+                              $query = "SELECT * FROM `distribution_stock` WHERE Dis_ID = 2 ";
+                              $result=mysqli_query($con,$query);
+                              while($row = mysqli_fetch_array($result))
+                              { 
+                             echo "<tr><td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td></tr>" ;
+  
+                               }
+                              ?>
+                          </tbody>
                       </table>
                     </div>
                     <!-- <div class="d-flex mt-4 flex-wrap">
@@ -436,8 +398,8 @@
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a href="https://www.bootstrapdash.com/" target="_blank">RTEA</a>. All rights reserved.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Sreelekha<i class="icon-heart text-danger"></i></span>
             </div>
           </footer>
           <!-- partial -->
