@@ -1,3 +1,22 @@
+<?php
+SESSION_START();
+ if(!isset($_SESSION['PhoneNumber'])){
+	header('location:index.html');
+ }
+ else{
+   $PhoneNumber=$_SESSION['PhoneNumber'];
+  echo $PhoneNumber ;
+ }
+ include('../../BackEnd/php/connection.php');
+ $check = mysqli_query($con, "SELECT * FROM `shop_info` where `PhoneNumber`= '$PhoneNumber'");
+ while($row = mysqli_fetch_array($check))
+ {
+   $ShopId = $row[0];
+  }
+ // Session started
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -209,11 +228,30 @@
                   <div class="clearfix">
                     <i class="fa fa-users float-right icon-md text-gray"></i>
                   </div>
-                  <h4 class="card-title font-weight-normal text-success">45465</h4>
+                  <?php
+                  $ShopId =3;
+                       include('../../BackEnd/php/connection.php');
+                       $check = mysqli_query($con, "SELECT COUNT('LogID') FROM `user_log` where `ShopID`= '$ShopId'");
+                       while($row = mysqli_fetch_array($check))
+                       {
+                         $numberOfUsers = $row[0];
+                        }
+
+                $query = mysqli_query($con, "SELECT COUNT('Userid') FROM `user_info`");
+                while($row = mysqli_fetch_array($query))
+                {
+                  $totalOfUsers = $row[0];
+               }
+               $avg = ($numberOfUsers/$totalOfUsers)*100;
+                 
+                 
+
+                 echo ' <h4 class="card-title font-weight-normal text-success">'.$numberOfUsers.'</h4>
                   <h6 class="card-subtitle mb-4">USERS</h6>
                   <div class="progress progress-slim">
-                    <div class="progress-bar bg-success-gadient" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
+                    <div class="progress-bar bg-success-gadient" role="progressbar" style="width: '.$avg.'%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>';
+                   ?>
                 </div>
               </div>
             </div>

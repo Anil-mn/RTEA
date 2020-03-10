@@ -401,6 +401,7 @@ while($row = mysqli_fetch_array($check))
 }
 
 
+
 // $query ="SELECT * FROM `dis_shopreq` where `Product` LIKE '%$prodname%' " ;
 // $res1=mysqli_query($con,$query);
 // while($row = mysqli_fetch_array($res1))
