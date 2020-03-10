@@ -336,6 +336,7 @@ while($row = mysqli_fetch_array($query))
                   <p class="card-description">
                     Add class <code>.table-striped</code>
                   </p>
+                  <form action="#" method='POST'>
                   <table class="table table-striped">
                     <thead>
                       <tr>
@@ -358,7 +359,8 @@ while($row = mysqli_fetch_array($query))
                     </thead>
                     <tbody>
                     <?php
-                    
+$date = date('Y-m-d');
+$time = time();       
 $check=mysqli_query($con,"SELECT * FROM `shop_link` where `Shop_ID`='$shopid' and `NumberOf`<7");
 while($row = mysqli_fetch_array($check))
 {
@@ -372,12 +374,33 @@ while($row = mysqli_fetch_array($check))
      $res1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `Product`='$prodname'");
      while($row1 = mysqli_fetch_array($res1))
      {
-        
-         echo "<tr><td>".$prodname."</td><td>".$row1[3]."</td></tr>";
-     }
+         $ReqID=$row1[0];
+         $quantity=$row1[3];
+         
+         echo "<tr><td>".$prodname."</td><td>".$row1[3]."</td><td><input type='number' name=".$prodname."></input></td><td><button type='submit' name=".$ReqID."  class='btn btn-inverse-success btn-fw''>Confirm</button></td></tr>";
+
+         if(isset($_POST[$ReqID]))
+{
+ if($_POST[$prodname]=='')
+ {
+  $quantity=$row1[3];
+  
+ }
+ else{
+  $quantity = $_POST[$prodname];
+ }
+  
+  echo $quantity;
+  $query="UPDATE  `dis_shopreq`  set  `Quntity`='$quantity', `Date`='$date', `Time`='$time' Where `ReqID`='$ReqID'";
+  $result=mysqli_query($con,$query);
+
+}
+       }
    
 }
 }
+
+
 // $query ="SELECT * FROM `dis_shopreq` where `Product` LIKE '%$prodname%' " ;
 // $res1=mysqli_query($con,$query);
 // while($row = mysqli_fetch_array($res1))
@@ -523,7 +546,8 @@ while($row = mysqli_fetch_array($check))
                         </td>
                       </tr> -->
                     </tbody>
-                  </table>
+                  </table></form>
+                 
                 </div>
               </div>
             </div>
