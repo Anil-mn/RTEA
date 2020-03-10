@@ -359,8 +359,7 @@ while($row = mysqli_fetch_array($query))
                     </thead>
                     <tbody>
                     <?php
-$date = date('Y-m-d');
-$time = time();       
+$date = date('Y-m-d');      
 $check=mysqli_query($con,"SELECT * FROM `shop_link` where `Shop_ID`='$shopid' and `NumberOf`<7");
 while($row = mysqli_fetch_array($check))
 {
@@ -377,7 +376,7 @@ while($row = mysqli_fetch_array($check))
          $ReqID=$row1[0];
          $quantity=$row1[3];
          
-         echo "<tr><td>".$prodname."</td><td>".$row1[3]."</td><td><input type='number' name=".$prodname."></input></td><td><button type='submit' name=".$ReqID."  class='btn btn-inverse-success btn-fw''>Confirm</button></td></tr>";
+         echo "<tr><td>".$prodname."</td><td>".$row1[3]."</td><td>".$row1[4]."</td><td><input type='number' name=".$prodname."></input></td><td><button type='submit' name=".$ReqID."  class='btn btn-inverse-success btn-fw''>Confirm</button></td></tr>";
 
          if(isset($_POST[$ReqID]))
 {
@@ -390,8 +389,9 @@ while($row = mysqli_fetch_array($check))
   $quantity = $_POST[$prodname];
  }
   
-  echo $quantity;
-  $query="UPDATE  `dis_shopreq`  set  `Quntity`='$quantity', `Date`='$date', `Time`='$time' Where `ReqID`='$ReqID'";
+  
+ 
+  $query="UPDATE  `dis_shopreq`  set  `Quntity`='$quantity', `Date`='$date' Where `ReqID`='$ReqID'";
   $result=mysqli_query($con,$query);
 
 }
@@ -551,10 +551,51 @@ while($row = mysqli_fetch_array($check))
                 </div>
               </div>
             </div>
-            <div class="col-lg-12 grid-margin stretch-card" hidden>
+            <div class="col-lg-12 grid-margin stretch-card" >
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Bordered table</h4>
+                     <form action="#" method='POST'> 
+                      
+                  
+                    <h4 class="card-title">Add new product</h4>
+                      <p class="card-description">
+                      
+                      </p>
+                      <form class="forms-sample">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Product Name</label>
+                          <input type="text" name="productname" class="form-control" id="exampleInputEmail1" placeholder="Product Name">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Quantity</label>
+                          <input type="number" name="quantity" class="form-control" id="exampleInputPassword1" placeholder="Quantity">
+                        </div>
+                        <button type="submit" name='submit' class="btn btn-success mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                      
+                      <?php
+                      include('../../../BackEnd/php/connection.php');
+                      if(isset($_POST['submit']))
+                      {
+
+      $prodname=$_POST['productname'];
+      $prodname=ucfirst($prodname);
+     $quantity=$_POST['quantity'];
+     $quantity=ucfirst($quantity);           
+
+                        $query="INSERT INTO `dis_shopreq`(`ShopID`, `Product`, `Quntity`, `Date`) VALUES ('$shopid','$prodname','$quantity','$date')";
+                        $res=mysqli_query($con,$query);
+                        
+                      }
+                      
+                      ?>
+
+                       
+                      </form>
+                    </div>
+                      
+
+                  <!-- <h4 class="card-title">Bordered table</h4>
                   <p class="card-description">
                     Add class <code>.table-bordered</code>
                   </p>
@@ -713,7 +754,7 @@ while($row = mysqli_fetch_array($check))
                         </td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> -->
                 </div>
               </div>
             </div>
