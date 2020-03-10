@@ -369,7 +369,7 @@
                               $result=mysqli_query($con,$query);
                               while($row = mysqli_fetch_array($result))
                               { 
-                             echo "<tr><td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td></tr>" ;
+                             echo "<tr><td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td><td><button>Confirm</button></td></tr>" ;
   
                                }
                               ?>
