@@ -345,45 +345,52 @@ $ShopName=$row[2];
                     <div class="product-slider owl-carousel">
                     <?php
                                 include('../../BackEnd/php/connection.php');
-                                 
-                                $query=mysqli_query($con,"SELECT * from `shop_link` where `Shop_ID`='$ShopId'");
- 
-                                while($row=mysqli_fetch_array($query));
+                                 $query = "SELECT * from `shop_link` where `Shop_ID`='$ShopId'";
+                                $que=mysqli_query($con,$query);
+                                  
+                                  while($row=mysqli_fetch_array($que))
                                 {
                                   $prodid=$row[1];
-                                  echo $prodid;
-                               
+                                  
+                              $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid'");
+                              while($row1=mysqli_fetch_array($check))
+                              {
+                                  $superID=$row1[4];
+                                  $price=$row1[2];
+                                  
+                                  $che=mysqli_query($con,"SELECT * from `shop_supersub` where `SuperSubCat_ID`='$superID'");
+                                  while($row2=mysqli_fetch_array($che))
+                              {
+                                  $name=$row2[2];
+                                  
+
                     echo    '<div class="product-item">
                             <div class="pi-pic">
-                                <img src="img/products/women-1.jpg" alt="">
+                                <img src="img/ProductImages/'.$prodid.'.jpg" alt="">
                                 <div class="sale">Sale</div>
                                 <div class="icon">
                                 <i class="icon_heart_alt"></i>
                                 </div>
-                                
                                   <ul>
                                   <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
                                   <li class="quick-view"><a href="#">+ Quick View</a></li>
                                   <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                               </ul>
-                          </div>';
-                                }?>
+                          </div>
 
-
-
-
-                          <!-- <div class="pi-text">
-                              <div class="catagory-name">Coat</div>
+                           <div class="pi-text">
+                              <div class="catagory-name">'.$name.'</div>
                               <a href="#">
-                                  <h5>Pure Pineapple</h5>
+                                  <h5>'.$row1[1].'</h5>
                               </a>
                               <div class="product-price">
-                                  $14.00
+                                  '.$price.'
                                   <span>$35.00</span>
                               </div>
                           </div>
-                      </div>
-                      <div class="product-item">
+                      </div>';
+                  } } }?>
+                     <!-- <div class="product-item">
                           <div class="pi-pic">
                               <img src="img/products/women-2.jpg" alt="">
                               <div class="icon">
@@ -392,12 +399,6 @@ $ShopName=$row[2];
                                 
                                 
  -->
-
-
-
-
-
-                                
                                    
                                 <!-- <ul>
                                     <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
