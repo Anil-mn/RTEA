@@ -345,18 +345,19 @@ $ShopName=$row[2];
                     <div class="product-slider owl-carousel">
                     <?php
                                 include('../../BackEnd/php/connection.php');
-                                 $query = "SELECT * from `shop_link` where `Shop_ID`='$ShopId'";
+                                 $query = "SELECT * from `shop_link` where `Shop_ID`='$ShopId' group by `Product_ID`";
                                 $que=mysqli_query($con,$query);
                                   
                                   while($row=mysqli_fetch_array($que))
                                 {
                                   $prodid=$row[1];
                                   
-                              $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid'");
+                            //   $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid'");
+                            $check=mysqli_query($con,"SELECT `Product_ID`,`Name`,`Price`,`superSubID`  from `shop_products` where `Product_ID`='$prodid' group by `superSubID`  order by `superSubID` desc limit 1");
                               while($row1=mysqli_fetch_array($check))
                               {
-                                  $superID=$row1[4];
-                                  $price=$row1[2];
+                                  $superID=$row1['superSubID'];
+                                  $price=$row1['Price'];
                                   
                                   $che=mysqli_query($con,"SELECT * from `shop_supersub` where `SuperSubCat_ID`='$superID'");
                                   while($row2=mysqli_fetch_array($che))
@@ -381,7 +382,7 @@ $ShopName=$row[2];
                            <div class="pi-text">
                               <div class="catagory-name">'.$name.'</div>
                               <a href="#">
-                                  <h5>'.$row1[1].'</h5>
+                                  <h5>'.$row1['Name'].'</h5>
                               </a>
                               <div class="product-price">
                                   '.$price.'
@@ -487,7 +488,7 @@ $ShopName=$row[2];
                 </div>
             </div>
         </div>
-    </section> -->
+    </section> 
     <!-- Women Banner Section End -->
 
     <!-- Deal Of The Week Section Begin-->

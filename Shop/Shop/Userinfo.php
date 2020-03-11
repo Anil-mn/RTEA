@@ -1,21 +1,25 @@
 <?php
+
 SESSION_START();
  if(!isset($_SESSION['PhoneNumber'])){
 	header('location:index.html');
  }
  else{
+
    $PhoneNumber=$_SESSION['PhoneNumber'];
   echo $PhoneNumber ;
  }
  include('../../BackEnd/php/connection.php');
- $check = mysqli_query($con, "SELECT * FROM `shop_info` where `PhoneNumber`= '$PhoneNumber'");
- while($row = mysqli_fetch_array($check))
- {
-   $ShopId = $row[0];
-  }
- // Session started
-?>
+$query=mysqli_query($con,"SELECT * from `shop_info` where `PhoneNumber`='$PhoneNumber'");
+while($row=mysqli_fetch_array($query))
+{
+  $shopid=$row[0];
 
+}
+$date=date('Y-m-d');
+ // Session started
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,27 +28,31 @@ SESSION_START();
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin Free Bootstrap-4 Admin Dashboard Template</title>
+  <title>RTEA</title>
+
+  <!-- Title icon -->
+  <link rel = "icon" href = "../../Logos/title.png" 
+        type = "image/x-icon"> 
+    <!-- Google Font -->
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../node_modules/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../node_modules/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="../../node_modules/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../node_modules/simple-line-icons/css/simple-line-icons.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
-  <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <!-- <link rel="shortcut icon" href="images/favicon.png" /> -->
 </head>
 
 <body>
   <div class="container-scroller">
-    <!-- partial:../partials/_navbar.html -->
+    <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="../index.html"><img src="images/logo.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="../index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
@@ -156,7 +164,7 @@ SESSION_START();
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
+                  <img src="/images/faces/face3.jpg" alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium"> Johnson
@@ -182,15 +190,30 @@ SESSION_START();
     </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:../partials/_sidebar.html -->
+      <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="profile-image"> <img src="images/faces/face4.jpg" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
-                <p class="name">Richard V.Welsh</p>
-                <p class="designation">Manager</p>
+              
+             
+                <?php
+                include('../../BackEnd/php/connection.php');
+                $check = mysqli_query($con, "SELECT * FROM `shop_info` where `PhoneNumber`= '$PhoneNumber'");
+                while($row = mysqli_fetch_array($check))
+                {
+                   echo ' <p class="name">'.$row[2].'</p>';
+                  echo '<p class="designation">'.$row[4].'</p>';
+                    
+                }
+               
+
+              
+                ?>
+                <!-- <p class="name">Richard V.Welsh</p> -->
+                <!-- <p class="designation">Manager</p> -->
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
             </div>
@@ -229,9 +252,9 @@ SESSION_START();
                     <i class="fa fa-users float-right icon-md text-gray"></i>
                   </div>
                   <?php
-                  $ShopId =3;
+                 
                        include('../../BackEnd/php/connection.php');
-                       $check = mysqli_query($con, "SELECT COUNT('LogID') FROM `user_log` where `ShopID`= '$ShopId'");
+                       $check = mysqli_query($con, "SELECT COUNT('LogID') FROM `user_log` where `ShopID`= '$shopid'");
                        while($row = mysqli_fetch_array($check))
                        {
                          $numberOfUsers = $row[0];
@@ -275,13 +298,37 @@ SESSION_START();
                   <div class="clearfix">
                     <i class="fa fa-bookmark float-right icon-md text-gray"></i>
                   </div>
-                  <h4 class="card-title font-weight-normal text-warning">1569</h4>
+                  <?php
+include('../../BackEnd/php/connection.php');
+                  
+$query=mysqli_query($con,"SELECT sum(`TotalProducts`) from `user_log` where `ShopID`='$shopid'");
+while($row=mysqli_fetch_array($query))
+{
+  $totalsales=$row[0];
+
+
+                
+
+                echo ' <h4 class="card-title font-weight-normal text-warning">'.$totalsales.'</h4>
+                  <h6 class="card-subtitle mb-4">Sales</h6>
+                  <div class="progress progress-slim">
+                    <div class="progress-bar bg-warning-gadient" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>';
+}
+?>
+
+
+                
+                <!-- <h4 class="card-title font-weight-normal text-warning">1569</h4>
                   <h6 class="card-subtitle mb-4"></h6>
                   <div class="progress progress-slim">
                     <div class="progress-bar bg-warning-gadient" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                </div>
-              </div>
+                </div>-->
+
+
+              </div> 
             </div>
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card">
@@ -289,30 +336,54 @@ SESSION_START();
                   <div class="clearfix">
                     <i class="fa fa-pie-chart float-right icon-md text-gray"></i>
                   </div>
-                  <h4 class="card-title font-weight-normal text-danger">$ 63259</h4>
+                  <?php
+                   include('../../BackEnd/php/connection.php');
+                   $query=mysqli_query($con,"SELECT SUM(`TotalAmt`) from `user_log` where `ShopID`='$shopid'");
+                   while($row=mysqli_fetch_array($query))
+                   {
+                     $total=$row[0];
+                   //}
+
+
+               echo   '<h4 class="card-title font-weight-normal text-danger">₹'.$total.'</h4>
+               <h6 class="card-subtitle mb-4">Revenue</h6>
+               <div class="progress progress-slim">
+                 <div class="progress-bar bg-danger-gadient" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+               </div>
+             </div>
+           </div>'; 
+                   }
+           ?>
+           <!-- <h4 class="card-title font-weight-normal text-danger">$ 63259</h4>
                   <h6 class="card-subtitle mb-4">Revenue</h6>
                   <div class="progress progress-slim">
                     <div class="progress-bar bg-danger-gadient" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title font-weight-normal text-success">7896</h4>
-                  <p class="card-text">Visitors</p>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                  </div>
-                </div>
+                
+              
+
+
+               <h4 class="card-title font-weight-normal text-success"></h4>
+               <p class="card-text">Visitors</p>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+               </div>
+                 </div>
               </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
+               
+                
                   <h4 class="card-title font-weight-normal text-info">5623</h4>
                   <p class="card-text">Sales</p>
                   <div class="progress">
@@ -324,24 +395,54 @@ SESSION_START();
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title font-weight-normal text-warning">1236</h4>
+                <?php
+include('../../BackEnd/php/connection.php');
+                  
+$query=mysqli_query($con,"SELECT sum(`TotalProducts`) from `user_log` where `ShopID`='$shopid' and `Date`='$date'");
+while($row=mysqli_fetch_array($query))
+{
+  $totalDay=$row[0];
+}
+$avg=($totalDay/$totalsales)*100;
+$avg =round($avg);
+ 
+  echo ' <h4 class="card-title font-weight-normal text-warning">'.$totalDay.'</h4>
+  <p class="card-text">Sales</p>
+  <div class="progress">
+  <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:'.$avg.'%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">'.$avg.'%</div>
+  </div>';
+
+
+?>
+                  <!-- <h4 class="card-title font-weight-normal text-warning">1236</h4>
                   <p class="card-text">Orders</p>
                   <div class="progress">
                     <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title font-weight-normal text-danger">$ 7832</h4>
-                  <p class="card-text">Revenue</p>
+                <?php
+                
+                   include('../../BackEnd/php/connection.php');
+                  
+                   $query=mysqli_query($con,"SELECT SUM(`TotalAmt`) from `user_log` where `ShopID`='$shopid' and `Date`='$date'");
+                   while($row=mysqli_fetch_array($query))
+                   {
+                     $totaltoday=$row[0];
+                   
+                  echo '<h4 class="card-title font-weight-normal text-danger">'.$totaltoday.'</h4>
+                  <p class="card-text">Revenue/day</p>
                   <div class="progress">
                     <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
                   </div>
                 </div>
-              </div>
+              </div>';
+                   }
+                   ?>
             </div>
           </div>
           <div class="row">
