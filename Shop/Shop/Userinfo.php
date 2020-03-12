@@ -270,7 +270,7 @@ $date=date('Y-m-d');
                  
 
                  echo ' <h4 class="card-title font-weight-normal text-success">'.$numberOfUsers.'</h4>
-                  <h6 class="card-subtitle mb-4">USERS</h6>
+                  <h6 class="card-subtitle mb-4">Users</h6>
                   <div class="progress progress-slim">
                     <div class="progress-bar bg-success-gadient" role="progressbar" style="width: '.$avg.'%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>';
@@ -367,16 +367,31 @@ while($row=mysqli_fetch_array($query))
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                
+                <?php
+                   include('../../BackEnd/php/connection.php');
+                   $query=mysqli_query($con,"SELECT count(`onlineID`) from `user_online` where `shopID`='$shopid'");
+                   while($row=mysqli_fetch_array($query))
+                   {
+                     $onlineusers=$row[0];
+                     
+                   }
+                   $avg = ($onlineusers/$numberOfUsers)*100;
+                   $avg=round($avg);
+                  echo ' <h4 class="card-title font-weight-normal text-success">'.$onlineusers.'</h4>
+                   <p class="card-text">Visitors</p>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: '.$avg.'%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">'.$avg.'%</div>
+                   </div>
+                     </div>';
               
 
-
-               <h4 class="card-title font-weight-normal text-success"></h4>
+?>
+               <!-- <h4 class="card-title font-weight-normal text-success"></h4>
                <p class="card-text">Visitors</p>
               <div class="progress">
                 <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
                </div>
-                 </div>
+                 </div> -->
               </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
@@ -397,7 +412,7 @@ while($row=mysqli_fetch_array($query))
                 <div class="card-body">
                 <?php
 include('../../BackEnd/php/connection.php');
-                  
+            
 $query=mysqli_query($con,"SELECT sum(`TotalProducts`) from `user_log` where `ShopID`='$shopid' and `Date`='$date'");
 while($row=mysqli_fetch_array($query))
 {
@@ -433,15 +448,21 @@ $avg =round($avg);
                    while($row=mysqli_fetch_array($query))
                    {
                      $totaltoday=$row[0];
+                    }
+                    $avg=($totaltoday/$total)*100;
+$avg =round($avg);
+ 
+                  
+                  
                    
                   echo '<h4 class="card-title font-weight-normal text-danger">'.$totaltoday.'</h4>
                   <p class="card-text">Revenue/day</p>
                   <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                    <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: '.$avg.'%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">'.$avg.'%</div>
                   </div>
                 </div>
               </div>';
-                   }
+                
                    ?>
             </div>
           </div>
@@ -449,6 +470,7 @@ $avg =round($avg);
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
+
                   <h6 class="card-title font-weight-normal text-info">7896</h6>
                   <h6 class="card-subtitle mb-4 text-muted">Visitors</h6>
                   <div class="progress progress-slim">
