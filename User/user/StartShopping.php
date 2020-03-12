@@ -17,7 +17,7 @@ $check=mysqli_query($con, "SELECT * FROM `user_info` where `PhoneNumber`='$Phone
 while($row = mysqli_fetch_array($check))
 { 
 $userId =$row[0];
-
+echo $userId;
 }
 // $loc=$_POST['loc'];
  //$location=$_POST['location'];//shop name 
@@ -275,8 +275,8 @@ $ShopId =$row[0];
             <div class="row">
                 <div class="col-lg-12">
                     <div class="cart-table">
-                    <!-- <form action="Process/ProductDeletion.php" method="POST"> -->
-                    <form action="" method="POST">
+                    <form action="Process/ProductDeletion.php" method="GET">
+                    <!-- <form action="" method="POST"> -->
                         <table>
                             <thead>
                                 <tr>
@@ -302,7 +302,7 @@ $ShopId =$row[0];
                                    while($row1=mysqli_fetch_array($check))
                                    {
                                      $prodname=$row1[1];
-                                   
+                                   }
                                    echo '<tr>
                                   
                                    <td class="cart-pic first-row"><img style="height:80px ; width:50px;" src="img/ProductImages/'.$productid.'.jpg" alt=""></td>
@@ -314,25 +314,23 @@ $ShopId =$row[0];
                                        <div class="quantity">
                                            <div class="pro-qty">
                                                <input type="text"  value="'.$quantity.'">
-                                               <input type="text" hidden name="demo" value="'.$prodname.'">
+                                               <input type="text" hidden name="'.$prodname.'" value="'.$prodname.'">
                                            </div>
                                        </div>
                                    </td>
                                    <td class="total-price first-row">$60.00</td>
-                                   <td class="close-td first-row"><button type="submit" class="ti-close name="'.$prodname.'"></button></td>
+                                   <td class="close-td first-row"><button type="submit" class="ti-close name="submit"></button></td>
 
                                </tr>';
                              
                             //    $_SESSION['Proid']=$productid;
                             //    echo $_SESSION['Proid'];
-                               }}
-                               echo '</form>';
-                               if(isset($_POST[$prodname])){
-                                   echo 'demo';
                                }
+                               
+                               
 
 ?>
-                                <!-- <tr>
+                                <tr>
                                     <td class="cart-pic first-row"><img src="img/cart-page/product-1.jpg" alt=""></td>
                                     <td class="cart-title first-row">
                                         <h5>Pure Pineapple</h5>
@@ -346,9 +344,9 @@ $ShopId =$row[0];
                                         </div>
                                     </td>
                                     <td class="total-price first-row">$60.00</td>
-                                    <td class="close-td first-row"><button class="ti-close"></button></td>
+                                   <?php echo '<td class="close-td first-row"><button class="ti-close" name='.$prodname.'></button></td>'; ?>
                                 </tr>
-                                <tr>
+                                 <!--<tr>
                                     <td class="cart-pic"><img src="img/cart-page/product-2.jpg" alt=""></td>
                                     <td class="cart-title">
                                         <h5>American lobster</h5>
