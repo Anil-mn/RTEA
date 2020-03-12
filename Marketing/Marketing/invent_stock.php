@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>RTEA INVENTORY</title>
+    <title>RTEA MARKETING</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../Distribution/Distribution/vendors/css/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="../../Distribution/Distribution/vendors/flag-icon-css/css/flag-icon.min.css">

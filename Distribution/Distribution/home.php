@@ -359,7 +359,6 @@
                             <th class="font-weight-bold">Quantity</th>
                             <th class="font-weight-bold">Date of Delivery</th>
                             <th class="font-weight-bold">Price</th>
-                            <th class="font-weight-bold">Status</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -369,7 +368,7 @@
                               $result=mysqli_query($con,$query);
                               while($row = mysqli_fetch_array($result))
                               { 
-                             echo "<tr><td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td><td><button>Confirm</button></td></tr>" ;
+                             echo '<tr><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td>'.$row[4].'</td><td>'.$row[5].'</td><td><button class="btn btn-primary mr-2">Confirm</button></td></tr>' ;
   
                                }
                               ?>
