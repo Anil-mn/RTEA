@@ -1,9 +1,10 @@
 <?php
  include('../../../BackEnd/php/connection.php');
-
- //echo $proname;
-$proid = $_POST[$prodname];
-echo $proid;
+$prname=
+ if(isset($_POST['submit1']))
+ {
+     $query="INSERT into"
+ }
 
 
 

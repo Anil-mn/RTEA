@@ -264,8 +264,9 @@ $ShopId =$row[0];
                                 <form action="Process/ProductDeletion.php" method='POST' class="coupon-form">
                                     <input type="text" name="one" placeholder="Enter your codes">
                                     <input type="text" placeholder="Enter your codes">
-                                    <button href="#" class="primary-btn up-cart">Update cart</button>
+                                    <button href="#" name="submit1" class="primary-btn up-cart">Update cart</button>
                                     <!-- <button type="submit" class="site-btn coupon-btn">Apply</button> -->
+                                    
                                 </form>
                             </div></div></div>
     <!-- Shopping Cart Section Begin -->

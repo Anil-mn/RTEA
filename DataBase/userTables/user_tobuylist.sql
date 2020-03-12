@@ -23,49 +23,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_log`
+-- Table structure for table `user_tobuylist`
 --
 
-CREATE TABLE `user_log` (
-  `LogID` int(11) NOT NULL,
-  `ShopID` int(11) NOT NULL,
-  `User_ID` int(11) NOT NULL,
-  `Date` date NOT NULL,
-  `Time` time NOT NULL,
-  `TotalAmt` float NOT NULL,
-  `TotalProducts` int(100) NOT NULL
+CREATE TABLE `user_tobuylist` (
+  `listid` int(11) NOT NULL,
+  `ProductID` int(11) NOT NULL,
+  `Price` float NOT NULL,
+  `Quantity` int(11) NOT NULL,
+  `userID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_log`
+-- Dumping data for table `user_tobuylist`
 --
 
-INSERT INTO `user_log` (`LogID`, `ShopID`, `User_ID`, `Date`, `Time`, `TotalAmt`, `TotalProducts`) VALUES
-(1, 3, 3, '2020-03-06', '08:30:51', 1837, 15),
-(2, 3, 3, '2020-03-06', '08:30:51', 1837, 12),
-(3, 3, 4, '2020-03-05', '12:50:15', 300, 7),
-(4, 4, 4, '2020-03-05', '09:00:00', 1232, 15),
-(5, 4, 4, '2020-03-12', '06:11:00', 1652, 14);
+INSERT INTO `user_tobuylist` (`listid`, `ProductID`, `Price`, `Quantity`, `userID`) VALUES
+(1, 10000, 25, 1, 23);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `user_log`
+-- Indexes for table `user_tobuylist`
 --
-ALTER TABLE `user_log`
-  ADD PRIMARY KEY (`LogID`);
+ALTER TABLE `user_tobuylist`
+  ADD PRIMARY KEY (`listid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `user_log`
+-- AUTO_INCREMENT for table `user_tobuylist`
 --
-ALTER TABLE `user_log`
-  MODIFY `LogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `user_tobuylist`
+  MODIFY `listid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
