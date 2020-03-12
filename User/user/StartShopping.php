@@ -1,3 +1,38 @@
+
+
+<?php
+ SESSION_START();
+ if(!isset($_SESSION['loc'])){
+    //header('location:index.html');
+ }
+ else{
+    $PhoneNumber=$_SESSION['PhoneNumber'];
+   
+$place=$_SESSION['loc'];//location
+
+$ShopName=$_SESSION['ShopName'];
+ }
+include('../../BackEnd/php/connection.php');
+$check=mysqli_query($con, "SELECT * FROM `user_info` where `PhoneNumber`='$PhoneNumber'");
+while($row = mysqli_fetch_array($check))
+{ 
+$userId =$row[0];
+
+}
+// $loc=$_POST['loc'];
+ //$location=$_POST['location'];//shop name 
+
+ $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$ShopName'  ");
+
+while($row = mysqli_fetch_array($query))
+{ 
+
+$ShopId =$row[0];
+//$ShopName=$row[2];
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -7,11 +42,12 @@
     <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    <title>RTEA</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
+    <link rel = "icon" href = "../../Logos/title.png" 
+        type = "image/x-icon">  
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -37,15 +73,25 @@
                 <div class="ht-left">
                     <div class="mail-service">
                         <i class=" fa fa-envelope"></i>
-                        hello.colorlib@gmail.com
+                        <?php
+                        echo $place;
+                        
+                        $_SESSION['place']=$place;
+                        ?>
                     </div>
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
-                        +65 11.188.888
+                        <?php
+                        echo $ShopName;
+                        $_SESSION['ShopName']=$ShopName;
+                        ?>
                     </div>
                 </div>
                 <div class="ht-right">
-                    <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
+
+               <!--shop changing using same procedure of change location-->     
+
+               <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
                             <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
@@ -69,13 +115,14 @@
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
                             <a href="./index.html">
-                                <img src="img/logo.png" alt="">
+                                <img src="../../Logos/title.png" alt="">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7">
                         <div class="advanced-search">
-                            <button type="button" class="category-btn">All Categories</button>
+                        <form action="StartShopping.php">
+                             <button type="submit"  class="category-btn">StartShopping</button> </form>
                             <form action="#" class="input-group">
                                 <input type="text" placeholder="What do you need?">
                                 <button type="button"><i class="ti-search"></i></button>
@@ -129,7 +176,7 @@
                                         <h5>$120.00</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                        <a href="#" class="primary-btn view-card">VIEW CART</a>
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
@@ -214,8 +261,8 @@
             <div class="row">
     <div class="cart-buttons">
                                 
-                                <form action="#" class="coupon-form">
-                                    <input type="text" placeholder="Enter your codes">
+                                <form action="Process/ProductDeletion.php" method='POST' class="coupon-form">
+                                    <input type="text" name="one" placeholder="Enter your codes">
                                     <input type="text" placeholder="Enter your codes">
                                     <button href="#" class="primary-btn up-cart">Update cart</button>
                                     <!-- <button type="submit" class="site-btn coupon-btn">Apply</button> -->
@@ -227,6 +274,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="cart-table">
+                    <!-- <form action="Process/ProductDeletion.php" method="POST"> -->
+                    <form action="" method="POST">
                         <table>
                             <thead>
                                 <tr>
@@ -239,7 +288,50 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                            
+                                <?php
+                               include('../../BackEnd/php/connection.php');
+                               $query=mysqli_query($con,"SELECT * from `user_cart` where `onlineID`='$userId' ");
+                               while($row=mysqli_fetch_array($query))
+                               {
+                                   $productid=$row[2];
+                                   $price=$row[4];
+                                   $quantity=$row[3];
+                                   $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$productid'");
+                                   while($row1=mysqli_fetch_array($check))
+                                   {
+                                     $prodname=$row1[1];
+                                   
+                                   echo '<tr>
+                                  
+                                   <td class="cart-pic first-row"><img style="height:80px ; width:50px;" src="img/ProductImages/'.$productid.'.jpg" alt=""></td>
+                                   <td class="cart-title first-row">
+                                       <h5 name="name">'.$prodname.'</h5>
+                                   </td>
+                                   <td class="p-price first-row">'.$price.'</td>
+                                   <td class="qua-col first-row">
+                                       <div class="quantity">
+                                           <div class="pro-qty">
+                                               <input type="text"  value="'.$quantity.'">
+                                               <input type="text" hidden name="demo" value="'.$prodname.'">
+                                           </div>
+                                       </div>
+                                   </td>
+                                   <td class="total-price first-row">$60.00</td>
+                                   <td class="close-td first-row"><button type="submit" class="ti-close name="'.$prodname.'"></button></td>
+
+                               </tr>';
+                             
+                            //    $_SESSION['Proid']=$productid;
+                            //    echo $_SESSION['Proid'];
+                               }}
+                               echo '</form>';
+                               if(isset($_POST[$prodname])){
+                                   echo 'demo';
+                               }
+
+?>
+                                <!-- <tr>
                                     <td class="cart-pic first-row"><img src="img/cart-page/product-1.jpg" alt=""></td>
                                     <td class="cart-title first-row">
                                         <h5>Pure Pineapple</h5>
@@ -286,10 +378,12 @@
                                     </td>
                                     <td class="total-price">$60.00</td>
                                     <td class="close-td"><i class="ti-close"></i></td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
+                        </form>
                     </div>
+                  
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="cart-buttons">

@@ -5,7 +5,7 @@
  }
  else{
 $place=$_SESSION['loc'];//location
- 
+$PhoneNumber=$_SESSION['PhoneNumber'];
  }
 include('../../BackEnd/php/connection.php');
 // $loc=$_POST['loc'];
@@ -343,6 +343,7 @@ $ShopName=$row[2];
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel">
+                       
                     <?php
                                 include('../../BackEnd/php/connection.php');
                                  $query = "SELECT * from `shop_link` where `Shop_ID`='$ShopId' group by `Product_ID`";
@@ -367,6 +368,7 @@ $ShopName=$row[2];
 
                     echo    '<div class="product-item">
                             <div class="pi-pic">
+                            <Form action="Todo.php" method="POST">
                                 <img src="img/ProductImages/'.$prodid.'.jpg" alt="">
                                 <div class="sale">Sale</div>
                                 <div class="icon">
@@ -374,7 +376,7 @@ $ShopName=$row[2];
                                 </div>
                                   <ul>
                                   <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                  <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                  <li class="quick-view"><button name='.$prodid.' type="submit">+ To do</Button></li>
                                   <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                               </ul>
                           </div>
@@ -388,6 +390,7 @@ $ShopName=$row[2];
                                   '.$price.'
                                   <span>$35.00</span>
                               </div>
+                              </from>
                           </div>
                       </div>';
                   } } }?>
@@ -484,6 +487,7 @@ $ShopName=$row[2];
                                 </div>
                             </div>
                         </div> -->
+               
                     </div>
                 </div>
             </div>
