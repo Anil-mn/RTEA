@@ -212,25 +212,28 @@
               <div class="col-lg-12 grid-margin stretch-card"> 
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">STOCK DETAILS</h4>
+                      <h4 class="card-title">MY ORDERS</h4>
                       <p class="card-description"></p>
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                          <th><b> PRODUCT NAME</b></th>
+                          <th><b>DISTRIBUTION ID</b></th>
+                          <th><b>PRODUCT</b></th>
                           <th><b>QUANTITY</b></th>
-                          <th><b> SOLD</b></th>
+                          <th><b>DEADLINE</b></th>
+                          <th><b>STATUS</b></th>
+                          <th><b>PAYMENT</b></th>
                         </tr>
                         </thead>
                         <tbody>
                           <?php
                               include('../../BackEnd/Php/connection.php');
-                              $query = "SELECT * FROM `invent_stock` WHERE`inventory_id` = 2 ";
+                              $query = "SELECT * FROM `invent_orders`";
                               $result=mysqli_query($con,$query);
                               
                               while($row = mysqli_fetch_array($result))
                               { 
-                             echo '<tr><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td><button class="btn btn-primary mr-2">update</button></td></tr>' ;
+                             echo '<tr><td>'.$row[1].'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td>'.$row[5].'</td><td>'.$row[6].'</td></tr>' ;
                                }
                               ?>
                           </tbody>

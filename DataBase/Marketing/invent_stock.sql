@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2020 at 06:51 AM
+-- Generation Time: Mar 13, 2020 at 07:07 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `invent_stock` (
   `stk_id` int(11) NOT NULL,
-  `dist_id` int(11) NOT NULL,
+  `inventory_id` int(11) NOT NULL,
   `product_name` varchar(30) NOT NULL,
   `qty_available` int(11) NOT NULL,
   `sold` int(11) NOT NULL
