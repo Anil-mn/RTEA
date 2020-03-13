@@ -175,11 +175,11 @@
               </div>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="index.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/01.png" alt="menu icon"><span class="menu-title">Dashboard</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/widgets.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Widgets</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Buttons</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Form</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/charts/chartjs.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Charts</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/01.png" alt="menu icon"><span class="menu-title">HOME</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/widgets.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Users</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="ShopValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Shop</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Distribution</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/charts/chartjs.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Markting</span></a></li>
           <li class="nav-item"><a class="nav-link" href="pages/tables/basic-table.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Table</span></a></li>
           <li class="nav-item"><a class="nav-link" href="pages/icons/font-awesome.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
           <li class="nav-item">
@@ -248,10 +248,18 @@
                       <i class="mdi mdi-cube text-danger icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="card-text text-right">Total Revenue</p>
+                      <p class="card-text text-right">SHOPS</p>
                       <div class="fluid-container">
-                        <h3 class="card-title font-weight-bold text-right mb-0">$65,650</h3>
-                      </div>
+                      <?php
+                      include('../BackEnd/php/connection.php');
+                      $query = mysqli_query($con,"SELECT COUNT(`ShopID`) from `shop_info`");
+                      while($row=mysqli_fetch_array($query)){
+                        $shop=$row[0];
+                      }
+                      
+                      
+                       echo '<h3 class="card-title font-weight-bold text-right mb-0">'.$shop.'</h3>';
+                        ?></div>
                     </div>
                   </div>
                   <p class="text-muted mt-3">
@@ -268,10 +276,16 @@
                       <i class="mdi mdi-receipt text-warning icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="card-text text-right">Orders</p>
+                      <p class="card-text text-right">Dsitributors</p>
                       <div class="fluid-container">
-                        <h3 class="card-title font-weight-bold text-right mb-0">3455</h3>
-                      </div>
+                        <?php
+                      include('../BackEnd/php/connection.php');
+                      $query = mysqli_query($con,"SELECT COUNT(`Distribution_ID`) from `distribution_info`");
+                      while($row=mysqli_fetch_array($query)){
+                        $distribution=$row[0];
+                      }
+                       echo '<h3 class="card-title font-weight-bold text-right mb-0">'.$distribution.'</h3>';
+                     ?> </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3">
@@ -288,10 +302,16 @@
                       <i class="mdi mdi-poll-box text-teal icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="card-text text-right">Sales</p>
+                      <p class="card-text text-right">Advertisements</p>
                       <div class="fluid-container">
-                        <h3 class="card-title font-weight-bold text-right mb-0">5693</h3>
-                      </div>
+                      <?php
+                      include('../BackEnd/php/connection.php');
+                      $query = mysqli_query($con,"SELECT COUNT(`Add_ID`) from `market_add`");
+                      while($row=mysqli_fetch_array($query)){
+                        $ads=$row[0];
+                      }
+                       echo '<h3 class="card-title font-weight-bold text-right mb-0">'.$ads.'</h3>';
+                      ?></div>
                     </div>
                   </div>
                   <p class="text-muted mt-3">
@@ -322,7 +342,7 @@
             </div> -->
           </div>
           <div class="row">
-            <div class="col-12 grid-margin">
+            <div class="col-12 grid-margin" hidden>
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title mb-4">Targets</h5>
