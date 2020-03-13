@@ -17,7 +17,7 @@ $check=mysqli_query($con, "SELECT * FROM `user_info` where `PhoneNumber`='$Phone
 while($row = mysqli_fetch_array($check))
 { 
 $userId =$row[0];
-echo $userId;
+//echo $userId;
 }
 // $loc=$_POST['loc'];
  //$location=$_POST['location'];//shop name 
@@ -302,7 +302,7 @@ $ShopId =$row[0];
                                    while($row1=mysqli_fetch_array($check))
                                    {
                                      $prodname=$row1[1];
-                                   }
+                                  
                                    echo '<tr>
                                   
                                    <td class="cart-pic first-row"><img style="height:80px ; width:50px;" src="img/ProductImages/'.$productid.'.jpg" alt=""></td>
@@ -314,23 +314,22 @@ $ShopId =$row[0];
                                        <div class="quantity">
                                            <div class="pro-qty">
                                                <input type="text"  value="'.$quantity.'">
-                                               <input type="text" hidden name="'.$prodname.'" value="'.$prodname.'">
-                                           </div>
+                                               <input type="text" hidden name="'.$prodname.'" value="'.$prodname.'">';
+                                          echo '</div>
                                        </div>
                                    </td>
                                    <td class="total-price first-row">$60.00</td>
-                                   <td class="close-td first-row"><button type="submit" class="ti-close name="submit"></button></td>
-
-                               </tr>';
+                                   <td class="close-td first-row"><a  class="ti-close name="'.$prodname.'" href="Process/ProductDeletion.php?'.$productid.'"></a></td>
+                                 </tr>';
                              
-                            //    $_SESSION['Proid']=$productid;
-                            //    echo $_SESSION['Proid'];
-                               }
+                                
+                               } }
+                               
                                
                                
 
 ?>
-                                <tr>
+                                <!-- <tr>
                                     <td class="cart-pic first-row"><img src="img/cart-page/product-1.jpg" alt=""></td>
                                     <td class="cart-title first-row">
                                         <h5>Pure Pineapple</h5>
@@ -344,8 +343,8 @@ $ShopId =$row[0];
                                         </div>
                                     </td>
                                     <td class="total-price first-row">$60.00</td>
-                                   <?php echo '<td class="close-td first-row"><button class="ti-close" name='.$prodname.'></button></td>'; ?>
-                                </tr>
+                                  <td class="close-td first-row"><button class="ti-close" name='.$prodname.'></button></td>
+                                </tr> -->
                                  <!--<tr>
                                     <td class="cart-pic"><img src="img/cart-page/product-2.jpg" alt=""></td>
                                     <td class="cart-title">

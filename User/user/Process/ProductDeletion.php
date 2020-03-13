@@ -1,15 +1,9 @@
 <?php
  include('../../../BackEnd/php/connection.php');
+ $filename = basename($_SERVER['REQUEST_URI']);
 
-
-$proid = $_GET[$prodname];
-echo $proid;
- if(isset($_POST['submit1']))
- {
-   
- }
-
-
+ $filename =substr($filename,20);
+ echo $filename;
 
 
 
