@@ -277,7 +277,7 @@ $ShopId =$row[0];
                     <div class="cart-table">
                     <form action="Process/ProductDeletion.php" method="GET">
                     <!-- <form action="" method="POST"> -->
-                        <table>
+                        <table >
                             <thead>
                                 <tr>
                                     <th>Image</th>
@@ -303,7 +303,7 @@ $ShopId =$row[0];
                                    {
                                      $prodname=$row1[1];
                                      $priceperone= $row1[2];}
-
+                           
                                    
                                    echo '<tr>
                                   
@@ -311,7 +311,7 @@ $ShopId =$row[0];
                                    <td class="cart-title first-row">
                                        <h5 name="name">'.$prodname.'</h5>
                                    </td>
-                                   <td class="p-price first-row">'.$priceperone.'</td>
+                                   <td class="p-price first-row">₹'.$priceperone.'</td>
                                    <td class="qua-col first-row">
                                        <div class="quantity">
                                          <div class="pro-qty">
@@ -321,7 +321,7 @@ $ShopId =$row[0];
                                            </div>
                                        </div>
                                    </td>
-                                   <td class="total-price first-row">'.$price.'</td>
+                                   <td class="total-price first-row">₹'.$price.'</td>
                                    <td class="close-td first-row"><a  class="ti-close name="'.$prodname.'" href="Process/ProductDeletion.php?'.$productid.'"></a></td>
                                  </tr>';
                              
@@ -401,10 +401,22 @@ $ShopId =$row[0];
                         </div>
                         <div class="col-lg-4 offset-lg-4">
                             <div class="proceed-checkout">
-                                <ul>
+                                <?php
+          include('../../BackEnd/php/connection.php');
+        $query=mysqli_query($con,"SELECT SUM(`price`) from `user_cart` where `onlineID`='$userId' ");
+       while($row=mysqli_fetch_array($query))
+       { $total=$row[0];}
+
+       echo '<ul>
+       <li class="subtotal">Subtotal <span>₹'.$total.'</span></li>
+       <li class="cart-total">Total <span>₹'.$total.'</span></li>
+   </ul>'
+
+                                 ?>
+                                <!-- <ul>
                                     <li class="subtotal">Subtotal <span>$240.00</span></li>
                                     <li class="cart-total">Total <span>$240.00</span></li>
-                                </ul>
+                                </ul> -->
                                 <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
                             </div>
                         </div>
