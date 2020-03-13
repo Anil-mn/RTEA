@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2020 at 03:22 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Mar 12, 2020 at 07:47 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -45,7 +43,8 @@ INSERT INTO `distribution_inventoryreq` (`inventoryReq_ID`, `Inventory_ID`, `Pro
 (2, 0, 0, 6, '2020-01-01'),
 (3, 0, 0, 6, '2020-01-01'),
 (4, 0, 0, 6, '2020-01-01'),
-(5, 2, 0, 6, '2020-01-01');
+(5, 2, 0, 6, '2020-01-01'),
+(6, 0, 0, 0, '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -65,9 +64,7 @@ ALTER TABLE `distribution_inventoryreq`
 -- AUTO_INCREMENT for table `distribution_inventoryreq`
 --
 ALTER TABLE `distribution_inventoryreq`
-  MODIFY `inventoryReq_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-COMMIT;
-
+  MODIFY `inventoryReq_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
