@@ -1,14 +1,13 @@
 <?php
  include('../../../BackEnd/php/connection.php');
-$prname=
- if(isset($_POST['submit1']))
- {
-     $query="INSERT into"
- }
+ $filename = basename($_SERVER['REQUEST_URI']);
 
+ $filename =substr($filename,20);
+ echo $filename;
 
-
-
+$query ="DELETE FROM `user_cart` WHERE `ProductID`='$filename'";
+$result = mysqli_query($con,$query);
+header('location:../StartShopping.php');
 
 
 
