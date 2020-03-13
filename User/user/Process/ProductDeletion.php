@@ -5,7 +5,9 @@
  $filename =substr($filename,20);
  echo $filename;
 
-
+$query ="DELETE FROM `user_cart` WHERE `ProductID`='$filename'";
+$result = mysqli_query($con,$query);
+header('location:../StartShopping.php');
 
 
 
