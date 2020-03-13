@@ -228,9 +228,13 @@
     /*-------------------
 		Quantity change
 	--------------------- */
-    var proQty = $('.pro-qty');
-	proQty.prepend('<span class="dec qtybtn">-</span>');
-	proQty.append('<span class="inc qtybtn">+</span>');
+    var proQty = $(".pro-qty");
+    var add = document.getElementsByClassName('dec qtybtn');
+    var sub = document.getElementsByClassName('inc qtybtn');
+	// proQty.prepend('<a class="dec qtybtn">-</a>');
+    // proQty.append('<a  class="inc qtybtn">+</a>');
+    proQty.prepend(add);
+	proQty.append(sub);
 	proQty.on('click', '.qtybtn', function () {
 		var $button = $(this);
 		var oldValue = $button.parent().find('input').val();

@@ -302,23 +302,24 @@ $ShopId =$row[0];
                                    while($row1=mysqli_fetch_array($check))
                                    {
                                      $prodname=$row1[1];
-                                  
+                                     $priceperone= $row1[2];
                                    echo '<tr>
                                   
                                    <td class="cart-pic first-row"><img style="height:80px ; width:50px;" src="img/ProductImages/'.$productid.'.jpg" alt=""></td>
                                    <td class="cart-title first-row">
                                        <h5 name="name">'.$prodname.'</h5>
                                    </td>
-                                   <td class="p-price first-row">'.$price.'</td>
+                                   <td class="p-price first-row">'.$priceperone.'</td>
                                    <td class="qua-col first-row">
                                        <div class="quantity">
                                            <div class="pro-qty">
+                                           <a href="Process/subItem.php?'.$productid.'" class="dec qtybtn">-</a>
                                                <input type="text"  value="'.$quantity.'">
-                                               <input type="text" hidden name="'.$prodname.'" value="'.$prodname.'">';
-                                          echo '</div>
+                                               <a href="Process/AddItem.php?'.$productid.'" class="inc qtybtn">+</a>
+                                           </div>
                                        </div>
                                    </td>
-                                   <td class="total-price first-row">$60.00</td>
+                                   <td class="total-price first-row">'.$price.'</td>
                                    <td class="close-td first-row"><a  class="ti-close name="'.$prodname.'" href="Process/ProductDeletion.php?'.$productid.'"></a></td>
                                  </tr>';
                              
