@@ -145,7 +145,7 @@
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item nav-category"><span class="nav-link">Products</span></li>
+            <li class="nav-item nav-category"><span class="nav-link"></span></li>
             <li class="nav-item">
               <!-- <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic"> -->
                 <a class="nav-link" href="">
@@ -250,22 +250,6 @@
               </div>
             </div> -->
             <!-- Quick Action Toolbar Ends-->
-            <div class="row">
-              <div class="col-md-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="d-sm-flex align-items-baseline report-summary-header">
-                          <h5 class="font-weight-semibold">Report Summary</h5> <span class="ml-auto">Updated Report</span> <button class="btn btn-icons border-0 p-2"><i class="icon-refresh"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
             <!-- <div class="row">
               <div class="col-md-12 grid-margin">
                 <div class="card">
@@ -306,7 +290,7 @@
                   <div class="card-body">
                     <div class="d-sm-flex align-items-center mb-4">
                       <h4 class="card-title mb-sm-0">Quotations</h4>
-                      <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
+                      <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"></a>
                     </div>
                     <div class="table-responsive border rounded p-1">
                       <table class="table">
@@ -317,20 +301,21 @@
                             <th class="font-weight-bold">Product</th>
                             <th class="font-weight-bold">Quantity</th>
                             <th class="font-weight-bold">Date of Delivery</th>
-                            <th> </th>
+                            <th class="font-weight-bold">Price</th>
+                            <th class="font-weight-bold">Payment</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <?php
+                          <!-- <?php
                               include('../../BackEnd/Php/connection.php');
                               $query = "SELECT * FROM `distribution_stock` WHERE Dis_ID = 2 ";
                               $result=mysqli_query($con,$query);
                               while($row = mysqli_fetch_array($result))
                               { 
-                             echo '<tr><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td>'.$row[4].'</td><td>'.$row[5].'</td><td><button class="btn btn-primary mr-2">Confirm</button></td></tr>' ;
+                             echo '<tr><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td>'.$row[4].'</td><td>'.$row[5].'</td><td>'.$row[6].'</td></tr>' ;
   
                                }
-                              ?>
+                              ?> -->
                           </tbody>
                       </table>
                     </div>
