@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin Free Bootstrap-4 Admin Dashboard Template</title>
+  <title>RTEA ADMIN</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../Shop/Shop/node_modules/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../Shop/Shop/node_modules/simple-line-icons/css/simple-line-icons.css">
@@ -203,15 +203,43 @@
         <div class="content-wrapper">
           <div class="row purchace-popup">
             <div class="col-12">
-              <span class="d-flex alifn-items-center">
+              <!-- <span class="d-flex alifn-items-center">
                 <p>Like what you see? Check out our premium version for more.</p>
                 <a href="https://github.com/BootstrapDash/StarAdmin-Free-Bootstrap-Admin-Template" target="_blank" class="btn ml-auto download-button">Download Free Version</a>
                 <a href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank" class="btn purchase-button">Upgrade To Pro</a>
                 <i class="mdi mdi-close popup-dismiss"></i>
-              </span>
+              </span> -->
             </div>
           </div>
           <div class="row">
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-account-location text-info icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+      
+                      <p class="card-text text-right">Users</p>
+                      <div class="fluid-container">
+                      <?php
+                      include('../BackEnd/php/connection.php');
+                      $query = mysqli_query($con,"SELECT COUNT(`UserId`) from `user_info`");
+                      while($row=mysqli_fetch_array($query)){
+                        $Users=$row[0];
+                      }
+                      
+                       echo '<h3 class="card-title font-weight-bold text-right mb-0">'.$Users.'</h3>'
+                        ?> </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3">
+                    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Product-wise sales
+                  </p>
+                </div>
+              </div>
+            </div>
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
@@ -272,7 +300,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -291,7 +319,7 @@
                   </p>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="row">
             <div class="col-12 grid-margin">
