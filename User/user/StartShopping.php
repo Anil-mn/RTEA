@@ -302,7 +302,9 @@ $ShopId =$row[0];
                                    while($row1=mysqli_fetch_array($check))
                                    {
                                      $prodname=$row1[1];
-                                     $priceperone= $row1[2];
+                                     $priceperone= $row1[2];}
+
+                                   
                                    echo '<tr>
                                   
                                    <td class="cart-pic first-row"><img style="height:80px ; width:50px;" src="img/ProductImages/'.$productid.'.jpg" alt=""></td>
@@ -312,10 +314,10 @@ $ShopId =$row[0];
                                    <td class="p-price first-row">'.$priceperone.'</td>
                                    <td class="qua-col first-row">
                                        <div class="quantity">
-                                           <div class="pro-qty">
+                                         <div class="pro-qty">
                                            <a href="Process/subItem.php?'.$productid.'" class="dec qtybtn">-</a>
                                                <input type="text"  value="'.$quantity.'">
-                                               <a href="Process/AddItem.php?'.$productid.'" class="inc qtybtn">+</a>
+                                           <a href="Process/AddItem.php?'.$productid.'" class="inc qtybtn">+</a>
                                            </div>
                                        </div>
                                    </td>
@@ -324,7 +326,7 @@ $ShopId =$row[0];
                                  </tr>';
                              
                                 
-                               } }
+                                }
                                
                                
                                
