@@ -253,7 +253,7 @@ $date=date('Y-m-d');
                   </div>
                   <?php
                  
-                       include('../../BackEnd/php/connection.php');
+                    
                        $check = mysqli_query($con, "SELECT COUNT('LogID') FROM `user_log` where `ShopID`= '$shopid'");
                        while($row = mysqli_fetch_array($check))
                        {
@@ -284,8 +284,17 @@ $date=date('Y-m-d');
                   <div class="clearfix">
                     <i class="fa fa-shopping-cart float-right icon-md text-gray"></i>
                   </div>
-                  <h4 class="card-title font-weight-normal text-info">7895</h4>
-                  <h6 class="card-subtitle mb-4">ONLINE</h6>
+                  <?php
+               include('../../BackEnd/php/connection.php');
+               $Products = mysqli_query($con,"SELECT count(`Product_ID`) from `shop_link`  where `Shop_ID` ='$shopid'");
+               while($row = mysqli_fetch_array($Products))
+               {
+                 $prod=$row[0];
+               }
+               echo   '<h4 class="card-title font-weight-normal text-info">'.$prod.'</h4>';
+?>
+               <!-- echo   <h4 class="card-title font-weight-normal text-info">'.$prod.'</h4> -->
+                  <h6 class="card-subtitle mb-4">Stock</h6>
                   <div class="progress progress-slim">
                     <div class="progress-bar bg-info-gadient" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -397,10 +406,17 @@ while($row=mysqli_fetch_array($query))
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-               
-                
-                  <h4 class="card-title font-weight-normal text-info">5623</h4>
-                  <p class="card-text">Sales</p>
+                <?php
+                 include('../../BackEnd/php/connection.php');
+                  $query=mysqli_query($con,"SELECT count(`ReqID`) from `dis_shopreq` where `ShopID`='$shopid'");
+                  while($row=mysqli_fetch_array($query))
+                  {
+                    $dist=$row[0];              
+                  }
+             echo   '<h4 class="card-title font-weight-normal text-info">'.$dist.'</h4>';
+                  ?>
+                  <!-- <h4 class="card-title font-weight-normal text-info">5623</h4> -->
+                  <p class="card-text"> Pending req</p>
                   <div class="progress">
                     <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
                   </div>
@@ -538,7 +554,7 @@ $avg =round($avg);
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body" hidden>
                   <h5 class="card-title mb-4">Global Sales by Top Locations</h5>
                   <div class="row">
                     <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
@@ -642,7 +658,7 @@ $avg =round($avg);
           <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
+                <!-- <div class="card-body">
                   <h5 class="card-title mb-4">Testimonial</h5>
                   <div class="row d-flex align-items-center justify-items-center flex-column">
                     <div class="text-center">
@@ -656,13 +672,70 @@ $avg =round($avg);
                     </p>
                     <h5 class="text-center bolder">Tom Swayer</h5>
                     <h6 class="text-center text-muted">Co-founder</h6>
-                  </div>
+                  </div> -->
+                  <div class="card-body">
+                  <h5 class="card-title mb-4">Employees</h5>
+                  <table class="table table-hover table-striped">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Salary</th>
+                        <th>Country</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Bob Williams</td>
+                        <td>$23,566</td>
+                        <td>USA</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Mike Tyson</td>
+                        <td>$10,200</td>
+                        <td>Canada</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Tim Sebastian</td>
+                        <td>$32,190</td>
+                        <td>Netherlands</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>Philip Morris</td>
+                        <td>$31,123</td>
+                        <td>Korea, South</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>Minerva Hooper</td>
+                        <td>$23,789</td>
+                        <td>South Africa</td>
+                      </tr>
+                      <tr>
+                        <td>6</td>
+                        <td>Cooper</td>
+                        <td>$27,789</td>
+                        <td>Canada</td>
+                      </tr>
+                      <tr>
+                        <td>7</td>
+                        <td>Philip</td>
+                        <td>$13,789</td>
+                        <td>South Africa</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
                 </div>
               </div>
-            </div>
+            
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body" hidden>
                   <h5 class="card-title mb-4">Employees</h5>
                   <table class="table table-hover table-striped">
                     <thead>
