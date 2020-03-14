@@ -5,14 +5,18 @@ if(!isset($_SESSION['id'])){
 	header('location:index.html');
  }
  else{
-   $id=$_SESSION['id'];
+   //$id=$_SESSION['id'];
  
 }
 
+Function GenAdd(){
+    
+$id=$_SESSION['id'];
 
 include('../../BackEnd/Php/connection.php');
 $marketADs = mysqli_query($con,"SELECT * FROM `market_add` Order by `ADD_ID` DESC limit 1");
 while($row=mysqli_fetch_array($marketADs)){
+    $add_id = $row[0];
     $productName = $row[4];
     //echo $productName;
 }
@@ -29,8 +33,8 @@ $shops = mysqli_query($con,"SELECT count(`Product_ID`),max(`NumberOf`),count(`Sh
 while($row=mysqli_fetch_array($shops)){
     $numberofshops = $row[2];
     $numberofproducts = $row[1];
-    // echo $numberofshops;
-   // echo $numberofproducts ;
+    echo $numberofshops;
+    echo $numberofproducts ;
 }
 
 $TotalUserCount = 0;
@@ -51,7 +55,11 @@ while($row=mysqli_fetch_array($usersTrans)){
     }
 }  
 }
-echo $counts;
-echo $TotalUserCount;
+//echo $counts;
+//echo $TotalUserCount;
 
+$query="INSERT INTO `market_ads`(`invID`, `ProductID`, `AddID`, `NoOfShops`, `NoOfUsers`) VALUES ('$id','$productID','$add_id','$numberofshops','$TotalUserCount')";
+$result = mysqli_query($con,$query);
+
+}
 ?>
