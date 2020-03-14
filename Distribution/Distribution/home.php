@@ -1,3 +1,11 @@
+<?php
+SESSION_START();
+$disID=$_SESSION['phn_No'];
+echo $disID;
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -101,7 +109,7 @@
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
                   <img class="img-md rounded-circle" src="../Distribution/images/faces/face8.jpg" alt="Profile image">
-                  <p class="mb-1 mt-3">Allen Moreno</p>
+                 <p class="mb-1 mt-3">Name</p> 
                   <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                 </div>
                 <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
@@ -127,8 +135,15 @@
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Allen Moreno</p>
-                  <p class="designation">Administrator</p>
+                <?php 
+                 include('../../BackEnd/Php/connection.php');
+                 $query = mysqli_query($con,"SELECT * FROM `distribution_info` WHERE `Distribution_ID`='$disID'");
+                 while($row = mysqli_fetch_array($query)){
+                   $name = $row[2];
+                 }
+                 echo '<p class="profile-name">'.$name.'</p>';
+                  ?>
+                  <p class="designation">Distributor</p>
                 </div>
                 <div class="icon-container">
                   <i class="icon-bubbles"></i>
@@ -364,11 +379,15 @@
                         <tbody>
                           <?php
                               include('../../BackEnd/Php/connection.php');
-                              $query = "SELECT * FROM `distribution_stock` WHERE Dis_ID = 2 ";
+                              $query = "SELECT * FROM `distribution_stock` WHERE `Dis_ID` ='$disID'";
                               $result=mysqli_query($con,$query);
                               while($row = mysqli_fetch_array($result))
                               { 
-                             echo '<tr><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td>'.$row[4].'</td><td>'.$row[5].'</td><td><button class="btn btn-primary mr-2">Confirm</button></td></tr>' ;
+                                // $shopId = $row[];
+                                // $ProductId = $row[];
+                                // $location = $row[];
+
+                              echo '<tr><td>'.$row[1].'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[1].'</td><td>'.$row[2].'</td><td><button class="btn btn-primary mr-2">Confirm</button></td></tr>' ;
   
                                }
                               ?>

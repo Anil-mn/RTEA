@@ -225,7 +225,7 @@
                         <tbody>
                           <?php
                               include('../../BackEnd/Php/connection.php');
-                              $query = "SELECT * FROM `invent_stock` WHERE`inventory_id` = 2 ";
+                              $query = "SELECT * FROM `invent_stock` WHERE`inventory_id` = 3 ";
                               $result=mysqli_query($con,$query);
                               
                               while($row = mysqli_fetch_array($result))

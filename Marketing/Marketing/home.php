@@ -154,14 +154,14 @@ if(!isset($_SESSION['id'])){
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../index.html">
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">HOME</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item nav-category"><span class="nav-link">UI Elements</span></li>
+            <li class="nav-item nav-category"><span class="nav-link" >MORE DETAILS</span></li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Basic UI Elements</span>
+              <a class="nav-link" data-toggle="collapse" href="advertisment_details.php" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">MY ADS</span>
                 <i class="icon-layers menu-icon"></i>
               </a>
               <div class="collapse" id="ui-basic">
@@ -173,19 +173,19 @@ if(!isset($_SESSION['id'])){
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../Distribution/Distribution/pages/icons/simple-line-icons.html">
-                <span class="menu-title">Icons</span>
+                <span class="menu-title">STATUS</span>
                 <i class="icon-globe menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../Distribution/Distribution/pages/forms/basic_elements.html">
-                <span class="menu-title">Form Elements</span>
+                <span class="menu-title">UPDATE</span>
                 <i class="icon-book-open menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../Distribution/Distribution/pages/charts/chartist.html">
-                <span class="menu-title">Charts</span>
+                <span class="menu-title">SALES</span>
                 <i class="icon-chart menu-icon"></i>
               </a>
             </li>
@@ -276,15 +276,9 @@ if(!isset($_SESSION['id'])){
               <div class="col-md-4 grid-margin stretch-card">
               <?php
               
-              $AddID =$_SESSION['ADD'];
-              if(!isset($AddID)){
-                echo "<div class='card' hidden>";
-              }
-              else {
-                echo "<div class='card'>";
-              }
+             
               ?>
-                <!-- <div class="card" hidden> -->
+                <div class="card" >
                   <div class="card-body">
                     <h4 class="card-title">AD DETAILS </h4>
                     <p class="card-description"></p>
@@ -327,15 +321,15 @@ if(!isset($_SESSION['id'])){
              
               <?php
               
-              $AddID =$_SESSION['ADD'];
-              if(!isset($AddID)){
-                echo "<div class='card' hidden>";
-              }
-              else {
-                echo "<div class='card'>";
-              }
+              // $addid =$_session['add'];
+              // if(!isset($addid)){
+              //   echo "<div class='card'>";
+              // }
+              // else {
+              //   echo "<div class='card'>";
+              // }
               ?>
-                <!-- <div class="card" hidden> -->
+               <div class="card" > 
                   <div class="card-body">
                     <h4 class="card-title">MEMBERSHIP DETAILS</h4>
                     <p class="card-description"></p>
