@@ -260,9 +260,9 @@ $ShopId =$row[0];
             <div class="row">
     <div class="cart-buttons">
                                 
-                                <form action="Process/ProductDeletion.php" method='POST' class="coupon-form">
-                                    <input type="text" name="one" placeholder="Enter your codes">
-                                    <input type="text" placeholder="Enter your codes">
+                                <form action="Process/insertItem.php" method='POST' class="coupon-form">
+                                    <input type="text" name="prodname" placeholder="Enter product name">
+                                    <input type="text" name="quantity" placeholder="Enter quantity">
                                     <button href="#" name="submit1" class="primary-btn up-cart">Update cart</button>
                                     <!-- <button type="submit" class="site-btn coupon-btn">Apply</button> -->
                                     
