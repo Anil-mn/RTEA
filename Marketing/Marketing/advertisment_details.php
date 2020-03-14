@@ -235,9 +235,9 @@ if(!isset($_SESSION['id'])){
               <thead>
                 <tr>
                   <th> PRODUCT NAME </th>
-                  <th> SHOP NAME </th>
-                  <th> SLOT NUMBER </th>
-                  <th> DUE DATE </th>
+                  <th> Add </th>
+                  <th> NUmber of ADD placed in shop </th>
+                  <th> NUmber of ADD placed in USer </th>
                   <!-- <th> AMOUNT </th> -->
                 </tr>
               </thead>
