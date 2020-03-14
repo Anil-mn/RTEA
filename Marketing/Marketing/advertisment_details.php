@@ -1,3 +1,14 @@
+<?php
+SESSION_START();
+if(!isset($_SESSION['id'])){
+  echo $_SESSION['id'];
+	header('location:index.html');
+ }
+ else{
+   $id=$_SESSION['id'];
+ 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -227,17 +238,28 @@
                   <th> SHOP NAME </th>
                   <th> SLOT NUMBER </th>
                   <th> DUE DATE </th>
-                  <th> AMOUNT </th>
+                  <!-- <th> AMOUNT </th> -->
                 </tr>
               </thead>
               <tbody>
                 
-              </tbody>
-            </table>
+           
             <?php
+include('../../BackEnd/Php/connection.php');
+  $query = mysqli_query($con,"SELECT * FROM `market_ads` where `invID` = '$id'");
+  while ($row = mysqli_fetch_array($query)){
+    $proID = $row[2];
+    $prductId =mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID` = '$proID'");
+    while ($row1 = mysqli_fetch_array($prductId)){
+     echo '<tr><td>'.$row1[1].'</td><td><img style="height : 90px; width:80px"  src="../images/'.$row[3].'.jpg"></td><td>'.$row[4].'</td><td>'.$row[5].'</td></tr>';
+  }
+}
 
 
-           ?>
+
+?>
+   </tbody>
+            </table>
             <!-- <div class="row">
               <div class="col-lg-3 grid-margin stretch-card">
                 <div class="card">
