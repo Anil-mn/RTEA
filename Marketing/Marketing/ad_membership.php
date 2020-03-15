@@ -10,9 +10,9 @@ $slot = $_POST['slot'];
 $pricead = $_POST['pricead'];
 GenAdd();
 
-// $query = "INSERT INTO `market_membership`(`add_id`,`mem_type`,`ad_Shop`,`ad_Slot`,`Price`) VALUES('$ID','$membership','$shopname','$slot','$pricead')";
-// $result = mysqli_query($con,$query);
-//header('location:home.php');
+$query = "INSERT INTO `market_membership`(`add_id`,`mem_type`,`ad_Shop`,`ad_Slot`,`Price`) VALUES('$ID','$membership','$shopname','$slot','$pricead')";
+$result = mysqli_query($con,$query);
+header('location:home.php');
 echo $query;
 
 

@@ -12,21 +12,22 @@ if(!isset($_SESSION['id'])){
 
 
 
-
+// Function calling from market memebership
 Function GenAdd(){
     
 $id=$_SESSION['id'];
-// Collectiong Add id and product name
+
+// Collectiong Add id and product name 
 include('../../BackEnd/Php/connection.php');
 $marketADs = mysqli_query($con,"SELECT * FROM `market_add` Order by `ADD_ID` DESC limit 1");
 while($row=mysqli_fetch_array($marketADs)){
     $add_id = $row[0];
     $productName = $row[4];
-    //echo $productName;
+    echo $productName;
 }
 
 
-//selecting product ID
+//selecting product ID for further process
 $SelectProductId = mysqli_query($con,"SELECT * FROM `shop_products` WHERE `Name` like '%$productName%'");
 while($row=mysqli_fetch_array($SelectProductId)){
     $productID = $row[0];
@@ -36,7 +37,7 @@ while($row=mysqli_fetch_array($SelectProductId)){
 }
 
 
-
+//collectin add details like dude date
 $addDetails = mysqli_query($con,"SELECT * FROM `market_addcollection` Where `id` = '$add_id'");
 while($row=mysqli_fetch_array($addDetails)){
     $DueDate= $row[2];
@@ -45,14 +46,14 @@ while($row=mysqli_fetch_array($addDetails)){
 
 
 
-
+// Select shop IDs after perfoming some constrains 
 $ShopDetais =  mysqli_query($con,"SELECT * FROM `shop_link` WHERE `Product_ID` = '$productID' and `NumberOf` > 30");
 while($row=mysqli_fetch_array($ShopDetais))
 {
     $ShopIdForName = $row[2];
     //echo $ShopIdForName ;
     
-    
+    // Collecting Shop Avilavle slots from Shop info
     $SlotInShop = mysqli_query($con,"SELECT * FROM `shop_info` Where ShopID = '$ShopIdForName'");
     while($row1=mysqli_fetch_array($SlotInShop))
     {
@@ -60,16 +61,19 @@ while($row=mysqli_fetch_array($ShopDetais))
        // echo $ShopIdForName.'of'.$ShopSlotAvail;
        //echo $ShopSlotAvail;
        //check add already exist or not
+
+       //If slot is not available in the shop reject
        if($ShopSlotAvail==0);
            {
               echo ' no slot available in this shop';
            }
       
+           //if slot is available then place add
        if($ShopSlotAvail > 0)  {
                    $getAdd = mysqli_query($con,"SELECT 	* FROM `market_shopads` where `AddID`='$add_id' and `ShopID`='$ShopIdForName'");
                    $check = mysqli_fetch_array($getAdd);
-
-                    if($check == true)
+        
+                    if($check == true) //check the add already placed or not
                      {
                         echo "Add Already placed";
                      }
@@ -93,7 +97,7 @@ while($row=mysqli_fetch_array($ShopDetais))
 
 
 
-
+// Selecting number of shops that add placed
 $shops = mysqli_query($con,"SELECT count(`ID`) FROM `market_shopads` WHERE `AddID` = '$add_id'");
 while($row=mysqli_fetch_array($shops)){
     $numberofshops = $row[0];
@@ -105,7 +109,7 @@ while($row=mysqli_fetch_array($shops)){
 
 
 
-//User Count
+//User Count 
 $TotalUserCount = 0;
 $usersTrans = mysqli_query($con,"SELECT * FROM `user_transactions` WHERE `ProductID` = '$productID'");
 while($row=mysqli_fetch_array($usersTrans)){
@@ -131,6 +135,7 @@ while($row=mysqli_fetch_array($usersTrans)){
 
 //echo $counts;
 //echo $TotalUserCount;
+//Generating and posting add in the ads table for show to invtery
 $checkmarker_ads = mysqli_query($con,"SELECT * FROM `market_ads` Where AddID = '$add_id'");
 $result2 = mysqli_fetch_array($checkmarker_ads);
 if($result2 == true){
