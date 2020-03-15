@@ -184,7 +184,7 @@ if(!isset($_SESSION['id'])){
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../Distribution/Distribution/pages/charts/chartist.html">
+              <a class="nav-link" href="sales.php">
                 <span class="menu-title">SALES</span>
                 <i class="icon-chart menu-icon"></i>
               </a>

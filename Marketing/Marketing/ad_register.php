@@ -14,8 +14,9 @@ $adName = $_POST['adName'];
 $cat_Ad = $_POST['cat_Ad'];
 $prodName = $_POST['prodName'];
 $description = $_POST['description'];
+$date = date('Y-m-d');
 
-$query = "INSERT INTO `market_add`(`id`,`adName`,`catProd`,`productName`,`description`) VALUES('$id','$adName','$cat_Ad','$prodName','$description')";
+$query = "INSERT INTO `market_add`(`id`,`adName`,`catProd`,`productName`,`description`,`PostDate`) VALUES('$id','$adName','$cat_Ad','$prodName','$description','$date')";
 $result = mysqli_query($con,$query);
 header('location:home.php');
 $check = mysqli_query($con,"SELECT 	Add_ID FROM `market_add`");

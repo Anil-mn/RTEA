@@ -1,3 +1,21 @@
+<?php
+SESSION_START();
+if(!isset($_SESSION['id'])){
+  echo $_SESSION['id'];
+	header('location:index.html');
+ }
+ else{
+   $id=$_SESSION['id'];
+ 
+}
+include('../../BackEnd/Php/connection.php');
+$productInfo =  mysqli_query($con,"SELECT * FROM `market_ads` Where `InvID`='$id'");
+while($row=mysqli_fetch_array($productInfo)){
+  $productid=$row[2];
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -212,29 +230,131 @@
               <div class="col-lg-12 grid-margin stretch-card"> 
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">MY ORDERS</h4>
+                      <h4 class="card-title">Sales Before ADD</h4>
                       <p class="card-description"></p>
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                          <th><b>DISTRIBUTION ID</b></th>
-                          <th><b>PRODUCT</b></th>
-                          <th><b>QUANTITY</b></th>
-                          <th><b>DEADLINE</b></th>
+                          <th><b>Product Name</b></th>
+                          <th><b>Revanew ₹</b></th>
+                          <th><b>No Of PRODUCT sold</b></th>
+                          <!-- <th><b>DEADLINE</b></th>
                           <th><b>STATUS</b></th>
-                          <th><b>PAYMENT</b></th>
+                          <th><b>PAYMENT</b></th> -->
                         </tr>
                         </thead>
                         <tbody>
                           <?php
+                          //echo $productid;
+                          //echo $id;
                               include('../../BackEnd/Php/connection.php');
-                              $query = "SELECT * FROM `invent_orders`";
+                              $ProductDetails = mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID`='$productid'");
+                              while($row = mysqli_fetch_array($ProductDetails))
+                              {
+                                $ProductName=$row[1];
+                                //echo $ProductName;
+                              }
+                              $DateOFadd = mysqli_query($con,"SELECT * FROM `market_add` where `id` = '$id' and `productName` like '%$ProductName%'");
+                              while($row = mysqli_fetch_array($DateOFadd))
+                              {
+                                $addId = $row[0];
+                                $addDate=$row[6];
+                                //echo $addId;
+                               // echo $addDate;
+                              }
+                              $DueDateOfADd = mysqli_query($con,"SELECT * FROM `market_shopads` Where `AddID`='$addId'");
+                              while($row = mysqli_fetch_array($DueDateOfADd))
+                              {
+                                $DueDate=$row[4];
+                                //echo $DueDate;
+                              }
+                              
+                              $query = "SELECT * FROM `user_transactions` Where `ProductID` = '$productid'";
                               $result=mysqli_query($con,$query);
                               
                               while($row = mysqli_fetch_array($result))
                               { 
-                             echo '<tr><td>'.$row[1].'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td>'.$row[5].'</td><td>'.$row[6].'</td></tr>' ;
+                                 $logID = $row[1];
+                                 $UserLog = mysqli_query($con,"SELECT * FROM `user_log` where `LogID`='$logID' and `Date` < '$addDate' ");
+                                 while($row1 = mysqli_fetch_array($UserLog))
+                                   { 
+                                      $BeforlogID = $row1[0];
+                                      $logDetails =mysqli_query($con,"SELECT SUM(`amount`),SUM(`No of products`) FROM `user_transactions` Where `LogID` = '$BeforlogID'");
+                                      while($row2 = mysqli_fetch_array($logDetails))
+                                      { 
+                                       $BeforlogID = $row2[0];
+                                      echo '<tr><td>'.$ProductName.'</td><td>'.$row2[0].'₹</td><td>'.$row2[1].'</td></tr>' ;
                                }
+                              }
+                            }
+                              ?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  
+    
+              <div class="col-lg-12 grid-margin stretch-card"> 
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Sales After ADD</h4>
+                      <p class="card-description"></p>
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                          <th><b>Product Name</b></th>
+                          <th><b>Revanew ₹</b></th>
+                          <th><b>No Of PRODUCT sold</b></th>
+                          <!-- <th><b>DEADLINE</b></th>
+                          <th><b>STATUS</b></th>
+                          <th><b>PAYMENT</b></th> -->
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          //echo $productid;
+                          //echo $id;
+                              include('../../BackEnd/Php/connection.php');
+                              $ProductDetails = mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID`='$productid'");
+                              while($row = mysqli_fetch_array($ProductDetails))
+                              {
+                                $ProductName=$row[1];
+                                //echo $ProductName;
+                              }
+                              $DateOFadd = mysqli_query($con,"SELECT * FROM `market_add` where `id` = '$id' and `productName` like '%$ProductName%'");
+                              while($row = mysqli_fetch_array($DateOFadd))
+                              {
+                                $addId = $row[0];
+                                $addDate=$row[6];
+                                //echo $addId;
+                               // echo $addDate;
+                              }
+                              $DueDateOfADd = mysqli_query($con,"SELECT * FROM `market_shopads` Where `AddID`='$addId'");
+                              while($row = mysqli_fetch_array($DueDateOfADd))
+                              {
+                                $DueDate=$row[4];
+                                //echo $DueDate;
+                              }
+                              
+                              $query = "SELECT * FROM `user_transactions` Where `ProductID` = '$productid'";
+                              $result=mysqli_query($con,$query);
+                              
+                              while($row = mysqli_fetch_array($result))
+                              { 
+                                 $logID = $row[1];
+                                 $UserLog = mysqli_query($con,"SELECT * FROM `user_log` where `LogID`='$logID' and `Date` > '$addDate' ");
+                                 while($row1 = mysqli_fetch_array($UserLog))
+                                   { 
+                                      $BeforlogID = $row1[0];
+                                      $logDetails =mysqli_query($con,"SELECT SUM(`amount`),SUM(`No of products`) FROM `user_transactions` Where `LogID` = '$BeforlogID'");
+                                      while($row2 = mysqli_fetch_array($logDetails))
+                                      { 
+                                       $BeforlogID = $row2[0];
+                                      echo '<tr><td>'.$ProductName.'</td><td>'.$row2[0].'₹</td><td>'.$row2[1].'</td></tr>' ;
+                               }
+                              }
+                            }
                               ?>
                           </tbody>
                         </table>
