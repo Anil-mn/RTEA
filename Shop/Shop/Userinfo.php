@@ -16,6 +16,7 @@ while($row=mysqli_fetch_array($query))
   $shopid=$row[0];
 
 }
+
 $date=date('Y-m-d');
  // Session started
 
@@ -487,7 +488,7 @@ $avg =round($avg);
               <div class="card">
                 <div class="card-body">
 
-                  <h6 class="card-title font-weight-normal text-info">7896</h6>
+                  <h6 class="card-title font-weight-normal text-info">7896</h6>                 
                   <h6 class="card-subtitle mb-4 text-muted">Visitors</h6>
                   <div class="progress progress-slim">
                     <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
@@ -673,25 +674,91 @@ $avg =round($avg);
                     <h5 class="text-center bolder">Tom Swayer</h5>
                     <h6 class="text-center text-muted">Co-founder</h6>
                   </div> -->
+
                   <div class="card-body">
-                  <h5 class="card-title mb-4">Employees</h5>
-                  <table class="table table-hover table-striped">
+                  <form action="" method='POST'>
+                  <div><label>User Search</label>
+                  <div class="form-group">
+                          <label for="exampleInputEmail1">Enter Phone Number</label>
+                          <input type="number" name="phonenum" class="form-control" id="exampleInputEmail1" placeholder="Enter PhoneNumber">
+                        </div>
+                        <div class="form-group">
+                        <button type="Submit" name="demo" class="btn btn-inverse-dark btn-rounded btn-fw">Search</button>
+                        </div>
+                      </form>
+                 
+                  <h5 class="card-title mb-4"></h5>
+                  <table class="table ">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                      <th>Phone Number</th>
                         <th>Name</th>
-                        <th>Salary</th>
-                        <th>Country</th>
+                        <th>Location</th>
+                        <th>Visit</th>
+                         <th>Total amount</th> 
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                     
+                     
+                    <?php
+                
+                include('../../BackEnd/Php/connection.php');  
+                if(isset($_POST['demo']))
+                {
+                  $phonenum=$_POST['phonenum'];
+                // User Id fetching From user Info by User PhoneNumber
+                  $query=mysqli_query($con,"SELECT * from `user_info` where `PhoneNumber`='$phonenum'");
+                  while($row=mysqli_fetch_array($query))
+                  {
+                       $userid=$row[0];
+                       
+                  }
+                  // To know User is purchased from this shop
+                  $query1=mysqli_query($con,"SELECT * from `user_log` where `ShopID`='$shopid' and `User_ID`='$userid'");
+                  while($row=mysqli_fetch_array($query1))
+                  {
+                       $Uid=$row[2];
+                       
+                       
+                  }
+                  // To take info of user 
+                  $query2=mysqli_query($con,"SELECT * from `user_info` where `UserId`='$Uid'");
+                  while($row=mysqli_fetch_array($query2))
+                  {    
+                       // to get location name of user , by comparing Id in user_info table
+                       $locationGet = mysqli_query($con,"SELECT * from `location` where `LocationID`='$row[7]'");
+                       while($row1=mysqli_fetch_array($locationGet))
+                  {
+                     // Taking how many time he purchased from this shop COUNT(user_id) and how much he spend in this shop MAX('TotalAmt')
+                     $countof=mysqli_query($con,"SELECT COUNT(`User_ID`),SUM(`TotalAmt`) from `user_log` where `User_ID`='$Uid'");
+                     while($row2=mysqli_fetch_array($countof))
+                     {
+                        echo '<tr><td>'.$row[2].'</td><td>'.$row[1].'</td><td>'.$row1[1].'</td><td>'.$row2[0].'</td><td>₹'.$row2[1].'</td><tr>';
+                   }
+
+                 }
+              }
+
+                
+                 
+                }
+               
+             echo '<tr><td>
+                     <select> 
+                     <option>03-03-2020 </option>
+                     <option>13-03-2020 </option>  
+                     </select>
+                     </td></tr>';
+                  ?>
+           
+                      <!-- <tr>
                         <td>1</td>
                         <td>Bob Williams</td>
                         <td>$23,566</td>
                         <td>USA</td>
-                      </tr>
-                      <tr>
+                      </tr> -->
+                      <!-- <tr>
                         <td>2</td>
                         <td>Mike Tyson</td>
                         <td>$10,200</td>
@@ -726,14 +793,14 @@ $avg =round($avg);
                         <td>Philip</td>
                         <td>$13,789</td>
                         <td>South Africa</td>
-                      </tr>
+                      </tr> -->
                     </tbody>
                   </table>
                 </div>
                 </div>
               </div>
             
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
+            <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body" hidden>
                   <h5 class="card-title mb-4">Employees</h5>
@@ -793,7 +860,7 @@ $avg =round($avg);
                   </table>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- content-wrapper ends -->
