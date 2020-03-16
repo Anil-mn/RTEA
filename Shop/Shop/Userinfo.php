@@ -685,7 +685,7 @@ $avg =round($avg);
                         <div class="form-group">
                         <button type="Submit" name="demo" class="btn btn-inverse-dark btn-rounded btn-fw">Search</button>
                         </div>
-                      </form>
+                      </form method='POST'>
                  
                   <h5 class="card-title mb-4"></h5>
                   <table class="table ">
@@ -742,16 +742,31 @@ $avg =round($avg);
 
                 
                  
-                }
-               
-             echo '<tr><td>
-                     <select> 
-                     <option>03-03-2020 </option>
-                     <option>13-03-2020 </option>  
-                     </select>
-                     </td></tr>';
+              echo '<tr><td>
+              <select name="date"> ';
+
+               $query=mysqli_query($con,"SELECT * from `user_log` where `User_ID`='$userid'");
+               while($row=mysqli_fetch_array($query))
+               {
+                   $date=$row[3];
+                   
+                   echo '<option name='.$row[0].'>'.$date.' </option>';
+                  
+               }
+              
+            
+
+                     
+                    
+                  echo '</select>
+                     </td><td><button name="submit">SUBMIT </button></td></tr>';
+                    }
+                 
+                    
+                    
                   ?>
-           
+                  
+                 
                       <!-- <tr>
                         <td>1</td>
                         <td>Bob Williams</td>
