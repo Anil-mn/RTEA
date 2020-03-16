@@ -251,6 +251,7 @@ if(!isset($_SESSION['id'])){
                   <th> Add </th>
                   <th> NUmber of ADD placed in shop </th>
                   <th> NUmber of ADD placed in USer </th>
+                  <th> price Paid </th>
                   <!-- <th> AMOUNT </th> -->
                 </tr>
               </thead>
@@ -262,11 +263,15 @@ include('../../BackEnd/Php/connection.php');
   $query = mysqli_query($con,"SELECT * FROM `market_ads` where `invID` = '$id'");
   while ($row = mysqli_fetch_array($query)){
     $proID = $row[2];
+    $addid = $row[3];
     $prductId =mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID` = '$proID'");
     while ($row1 = mysqli_fetch_array($prductId)){
-     echo '<tr><td>'.$row1[1].'</td><td><img style="height : 90px; width:80px"  src="../images/'.$row[3].'.jpg"></td><td>'.$row[4].'</td><td>'.$row[5].'</td></tr>';
+      $amount =mysqli_query($con,"SELECT * FROM `market_membership` where `add_id`='$addid'");
+      while ($row2 = mysqli_fetch_array($amount)){
+     echo '<tr><td>'.$row1[1].'</td><td><img style="height : 90px; width:80px"  src="../images/'.$row[3].'.jpg"></td><td>'.$row[4].'</td><td>'.$row[5].'</td><td>'.$row2[3].'</td></tr>';
   }
 }
+  }
 
 
 
