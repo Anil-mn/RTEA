@@ -685,10 +685,12 @@ $avg =round($avg);
                         <div class="form-group">
                         <button type="Submit" name="demo" class="btn btn-inverse-dark btn-rounded btn-fw">Search</button>
                         </div>
-                      </form method='POST'>
+                      </form >
                  
                   <h5 class="card-title mb-4"></h5>
+                  <form action='#' method='POST'>
                   <table class="table ">
+
                     <thead>
                       <tr>
                       <th>Phone Number</th>
@@ -759,11 +761,42 @@ $avg =round($avg);
                      
                     
                   echo '</select>
-                     </td><td><button name="submit">SUBMIT </button></td></tr>';
+                     </td><td><button name="sub">SUBMIT </button></td></tr>';
                     }
-                 
-                    
-                    
+                 if(isset($_POST['sub']))
+                 {
+                  
+                   $Datefromlog =$_POST['date'];
+                   echo $Datefromlog;
+                   $query=mysqli_query($con,"SELECT * from `user_log` where `date`='$Datefromlog'");
+                   while($row=mysqli_fetch_array($query))
+                   {
+                    $logid=$row[0];
+                    //echo $logid;
+
+                 }
+                   $query2= mysqli_query($con,"SELECT * FROM `user_transactions` where `LogID`='$logid'");
+                   while($row=mysqli_fetch_array($query2))
+                   {
+                    $prodid=$row[2];
+                    //echo $prodid;
+                    $noofprod=$row[4];
+                    $totalamt=$row[3];
+                    $productName = mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid'");
+                    while($row1=mysqli_fetch_array($productName))
+                    {
+                     // echo $row1[1];
+                     $query3= mysqli_query($con,"SELECT sum(`amount`) FROM `user_transactions` where `LogID`='$logid'");
+                     while($row4=mysqli_fetch_array($query3))
+                     {
+                      $total = $row4[0];
+                       echo '<tr><td>'.$row1[1].'</td><td>'.$noofprod.'</td><td>'.$totalamt.'</td</tr>';
+                    }
+                  }
+                   } 
+                  }
+                  echo '<tr><td>total</td><td></td><td>'.$total.'</td></tr>';
+
                   ?>
                   
                  
@@ -810,6 +843,7 @@ $avg =round($avg);
                         <td>South Africa</td>
                       </tr> -->
                     </tbody>
+                </form>
                   </table>
                 </div>
                 </div>
