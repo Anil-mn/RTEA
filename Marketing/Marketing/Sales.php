@@ -266,7 +266,7 @@ if(!isset($_SESSION['id'])){
                                      while($row1 = mysqli_fetch_array($ProductDetails))
                                         {
                                              $ProductName=$row1[1];
-                                             echo $ProductName;
+                                             //echo $ProductName;
                               
                                             $DateOFadd = mysqli_query($con,"SELECT * FROM `market_add` where `id` = '$id' and `productName` like '%$ProductName%'");
                                             while($row2 = mysqli_fetch_array($DateOFadd))
@@ -281,7 +281,7 @@ if(!isset($_SESSION['id'])){
                                                        while($row3 = mysqli_fetch_array($DueDateOfADd))
                                                         {
                                                            $DueDate=$row3[6];
-                                                           echo $DueDate;
+                                                           //echo $DueDate;
                                 //echo $DueDate;
                                                         } 
                                                     }
@@ -345,7 +345,7 @@ if(!isset($_SESSION['id'])){
                                      while($row1 = mysqli_fetch_array($ProductDetails))
                                         {
                                              $ProductName=$row1[1];
-                                             echo $ProductName;
+                                             //echo $ProductName;
                               
                                             $DateOFadd = mysqli_query($con,"SELECT * FROM `market_add` where `id` = '$id' and `productName` like '%$ProductName%'");
                                             while($row2 = mysqli_fetch_array($DateOFadd))
@@ -360,7 +360,7 @@ if(!isset($_SESSION['id'])){
                                                        while($row3 = mysqli_fetch_array($DueDateOfADd))
                                                         {
                                                            $DueDate=$row3[6];
-                                                           echo $DueDate;
+                                                           //echo $DueDate;
                                 //echo $DueDate;
                                                         } 
                                                     }
