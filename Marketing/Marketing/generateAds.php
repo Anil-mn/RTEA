@@ -13,7 +13,7 @@ if(!isset($_SESSION['id'])){
 
 
 // Function calling from market memebership
-Function GenAdd(){
+ Function GenAdd(){
     
 $id=$_SESSION['id'];
 
@@ -23,7 +23,7 @@ $marketADs = mysqli_query($con,"SELECT * FROM `market_add` Order by `ADD_ID` DES
 while($row=mysqli_fetch_array($marketADs)){
     $add_id = $row[0];
     $productName = $row[4];
-    echo $productName;
+    //echo $productName;
 }
 
 
@@ -65,7 +65,7 @@ while($row=mysqli_fetch_array($ShopDetais))
        //If slot is not available in the shop reject
        if($ShopSlotAvail==0);
            {
-              echo ' no slot available in this shop';
+              echo '       .no slot available in this shop      .';
            }
       
            //if slot is available then place add
@@ -75,7 +75,7 @@ while($row=mysqli_fetch_array($ShopDetais))
         
                     if($check == true) //check the add already placed or not
                      {
-                        echo "Add Already placed";
+                        echo "        .Add Already placed in shop    .";
                      }
                    else 
                      {
@@ -84,7 +84,7 @@ while($row=mysqli_fetch_array($ShopDetais))
                           $insertIntoShopSlot = mysqli_query($con,$query );
                           if($insertIntoShopSlot == true)
                             {
-                                echo "inserted";
+                                echo "     .inserted    .";
                                 $updateShop = mysqli_query($con,"UPDATE `shop_info` SET `AddSlots` = `AddSlots`-1 Where ShopID='$ShopIdForName'" );
                              }
                      }
@@ -102,32 +102,95 @@ $shops = mysqli_query($con,"SELECT count(`ID`) FROM `market_shopads` WHERE `AddI
 while($row=mysqli_fetch_array($shops)){
     $numberofshops = $row[0];
     //$numberofproducts = $row[1];
-    echo $numberofshops;
+   // echo $numberofshops;
   //  echo $numberofproducts ;
 }
 
 
 
 
+
+
 //User Count 
-$TotalUserCount = 0;
-$usersTrans = mysqli_query($con,"SELECT * FROM `user_transactions` WHERE `ProductID` = '$productID'");
-while($row=mysqli_fetch_array($usersTrans)){
+
+$usersTrans = mysqli_query($con,"SELECT * FROM `user_transactions` WHERE `ProductID` = '$productID' and `amount`>30");
+while($row=mysqli_fetch_array($usersTrans))
+{
     $logID = $row[1];
+    echo '   .Log id='.$logID;
+
     //echo $logID;
-   $userslog = mysqli_query($con,"SELECT `User_ID` FROM `user_log` WHERE `LogID` = '$logID'");
-   while($row1=mysqli_fetch_array($userslog)){
-    $UserID = $row1[0];
-    //echo $UserID;
-    $count = mysqli_query($con,"SELECT count(`User_ID`) FROM `user_log` WHERE `User_ID`='$UserID'");
-    while($row2=mysqli_fetch_array($count)){
-    $counts = $row2[0];
- }
-    if($UserID == true){
-        $TotalUserCount = $TotalUserCount + 1;
-    }
-}  
+    $userslog = mysqli_query($con,"SELECT `User_ID` FROM `user_log` WHERE `LogID` = '$logID'");
+    while($row1=mysqli_fetch_array($userslog))
+    {
+       $UserID = $row1[0];
+       echo '  .User id='.$UserID;
+       $checkSlotUser1 =mysqli_query($con,"SELECT * FROM `market_userads` where `User_id`='$UserID' and Add_ID = '$add_id'");
+          $num1=mysqli_fetch_array($checkSlotUser1);
+         if($num1 == true){
+         echo $num1[0];
+        }
+       else {
+             $insertToUserSlot = "INSERT INTO `market_userads`(`User_id`, `Add_ID`, `SlotNumbers`, `DueDate`) VALUES ('$UserID','$add_id','1','$DueDate')";
+            $result = mysqli_query($con,$insertToUserSlot);
+             echo "This is not";
+        }
+     
+        $checkSlotUser =mysqli_query($con,"SELECT * FROM `market_userads` where `User_id`='$UserID' order by `SlotNumbers` DESC limit 1");
+       while($num=mysqli_fetch_array($checkSlotUser))
+        {
+             $slot = $num[3];
+             if ($slot > 10)
+                {
+                    echo "    .no slot availble in this user.     ";
+                }
+             else 
+               {
+
+                 $checkAlreaydplacedOrNot = mysqli_query($con,"SELECT * FROM `market_userads` Where `User_id`= '$UserID' and `Add_ID` = '$add_id'");
+                  $ifnot = mysqli_fetch_array($checkAlreaydplacedOrNot);
+                 if($ifnot ==true)
+                   {
+                       echo '     .add already placed in this user.    ';
+                   }
+                 else 
+                   {    
+                        
+                        $slot=$slot+1;
+                        echo '     :slot === '.$slot;
+                        $insertToUserSlot = "INSERT INTO `market_userads`(`User_id`, `Add_ID`, `SlotNumbers`, `DueDate`) VALUES ('$UserID','$add_id','$slot','$DueDate')";
+                        $result = mysqli_query($con,$insertToUserSlot);
+                        echo $UserID;
+                   }
+           
+              }
+        }
+       
+       
+
+    }  
 }
+
+
+// To insert users first time
+
+
+
+
+
+
+
+
+$countOfusers = mysqli_query($con,"SELECT COUNT(`SlotNumbers`) FROM `market_userads` where `Add_ID` = '$add_id'");
+while ($row3 = mysqli_fetch_array($countOfusers))
+{
+    $TotalUserCount = $row3[0];
+}
+//echo $UserID;
+
+
+
+
 
 
 
@@ -139,7 +202,7 @@ while($row=mysqli_fetch_array($usersTrans)){
 $checkmarker_ads = mysqli_query($con,"SELECT * FROM `market_ads` Where AddID = '$add_id'");
 $result2 = mysqli_fetch_array($checkmarker_ads);
 if($result2 == true){
-    echo "Alreday exist";
+    echo "    .Alreday exist    .";
 }
 else {
 $query="INSERT INTO `market_ads`(`invID`, `ProductID`, `AddID`, `NoOfShops`, `NoOfUsers`,`DueDate`) VALUES ('$id','$productID','$add_id','$numberofshops','$TotalUserCount','$DueDate')";

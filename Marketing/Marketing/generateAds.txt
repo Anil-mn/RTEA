@@ -3,10 +3,10 @@ This is a file that contain discription of how it generating adds
 Product name is getting from home.php 2 form
 
 Requirmets 
-
+------------------
 
 a) In  `shop_link` Table There should be product_ID and `NumberOf` greater than 30
-In user_transation table should contain productID and amount greater than 30
+b) In user_transation table should contain productID and amount greater than 30
 
 
 
@@ -35,7 +35,7 @@ SHOP Selection to POST ADD
 --------------------------------------  ---------------------------------------------------------      -------------------  
 
 User Selection to POST ADD
-
+5)
 
 
 
@@ -45,3 +45,12 @@ User Selection to POST ADD
 6)INSERT INTO `market_ads` values like invID`, `ProductID`, `AddID`, `NoOfShops`, `NoOfUsers`,`DueDate`
 and show this table to ivent and generating price by 100 rs for each slot and addinf price to 
 membership details table
+
+
+
+
+
+
+--------------
+
+Last it show the details of sale before posting the add and after posting the add
