@@ -128,11 +128,11 @@ while($row=mysqli_fetch_array($usersTrans))
        $checkSlotUser1 =mysqli_query($con,"SELECT * FROM `market_userads` where `User_id`='$UserID' and Add_ID = '$add_id'");
           $num1=mysqli_fetch_array($checkSlotUser1);
          if($num1 == true){
-         echo $num1[0];
+         //echo $num1[0];
         }
        else {
              $insertToUserSlot = "INSERT INTO `market_userads`(`User_id`, `Add_ID`, `SlotNumbers`, `DueDate`) VALUES ('$UserID','$add_id','1','$DueDate')";
-            $result = mysqli_query($con,$insertToUserSlot);
+             $result = mysqli_query($con,$insertToUserSlot);
              echo "This is not";
         }
      

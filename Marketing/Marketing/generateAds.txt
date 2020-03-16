@@ -34,9 +34,17 @@ SHOP Selection to POST ADD
 
 --------------------------------------  ---------------------------------------------------------      -------------------  
 
-User Selection to POST ADD
-5)
+``User Selection to POST ADD```
 
+5) Select user Transation From transation table where he/she bought the product more than a specific amont 
+   5.1:) select that users : Select userId form user Log Who bought that product by using LOG ID
+   5.2 :) Select the slot of Users .
+       5.2.1) Check the Add is already placed or not in the user
+       5.2.2)If not insert the add
+       5.2.3) User side have 10 slot of add it is fixed
+       5.2.4) Check the slot available or not .. if yes post ...
+
+   5.3)Then Check the count of Users that placed this add    
 
 
 
@@ -51,6 +59,6 @@ membership details table
 
 
 
---------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Last it show the details of sale before posting the add and after posting the add

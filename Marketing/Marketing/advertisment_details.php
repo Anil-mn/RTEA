@@ -189,12 +189,12 @@ if(!isset($_SESSION['id'])){
                 <i class="icon-globe menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="../../Distribution/Distribution/pages/forms/basic_elements.html">
                 <span class="menu-title">UPDATE</span>
                 <i class="icon-book-open menu-icon"></i>
               </a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link" href="sales.php">
                 <span class="menu-title">SALES</span>
