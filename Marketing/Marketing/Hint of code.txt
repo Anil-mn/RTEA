@@ -62,3 +62,14 @@ membership details table
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Last it show the details of sale before posting the add and after posting the add
+
+
+
+
+payMent of add
+
+1) Select add id an Slot number 
+2) Each slot is charged 100 rs
+3)Multiplay the add and insert into membership table
+
+
