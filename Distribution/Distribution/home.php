@@ -401,7 +401,7 @@ while($row = mysqli_fetch_array($DisInfo))
                                                  $ProductName = $row[2];
                                    
                              
-                                   echo '<tr><td>'.$shopName.'</td><td>'. $location .'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td><button type="submit" name='.$row[0].' class="btn btn-primary mr-2">Confirm</button></td></tr>' ;
+                                   echo '<tr><td>'.$shopName.'</td><td>'. $location .'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td><a  href=demo.php?'.$row[0].' class="btn btn-primary mr-2">Confirm</a></td></tr>' ;
   
                                }
                               }
