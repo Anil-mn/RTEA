@@ -2,6 +2,13 @@
 SESSION_START();
 $disID=$_SESSION['phn_No'];
 echo $disID;
+include('../../BackEnd/Php/connection.php');
+$DisInfo =   mysqli_query($con,"SELECT * FROM `distribution_info` Where `Distribution_ID`='$disID'");
+while($row = mysqli_fetch_array($DisInfo))
+{
+ $DisLocation =$row[1];
+}
+
 ?>
 
 
@@ -361,10 +368,11 @@ echo $disID;
                 <div class="card">
                   <div class="card-body">
                     <div class="d-sm-flex align-items-center mb-4">
-                      <h4 class="card-title mb-sm-0">Quotations</h4>
+                      <h4 class="card-title mb-sm-0">Quotations From Shop</h4>
                       <a href="#" class="text-dark ml-auto mb-3 mb-sm-0">   </a>
                     </div>
                     <div class="table-responsive border rounded p-1">
+                    <form action='demo.php' Method ='POST'>
                       <table class="table">
                         <thead>
                           <tr>
@@ -379,20 +387,28 @@ echo $disID;
                         <tbody>
                           <?php
                               include('../../BackEnd/Php/connection.php');
-                              $query = "SELECT * FROM `distribution_stock` WHERE `Dis_ID` ='$disID'";
-                              $result=mysqli_query($con,$query);
-                              while($row = mysqli_fetch_array($result))
-                              { 
-                                // $shopId = $row[];
-                                // $ProductId = $row[];
-                                // $location = $row[];
-
-                              echo '<tr><td>'.$row[1].'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[1].'</td><td>'.$row[2].'</td><td><button class="btn btn-primary mr-2">Confirm</button></td></tr>' ;
+                              $GetLocation = mysqli_query($con,"SELECT * FROM `shop_info` Where `Location` like '%$DisLocation%'");
+                              while($row1 = mysqli_fetch_array($GetLocation))
+                               {   
+                                $ShopID =$row1[0];
+                                 $shopName = $row1[2];
+                                 $location = $row1[4];
+                                     $query = "SELECT * FROM `dis_shopreq` where `ShopID`='$ShopID'";
+                                     $result=mysqli_query($con,$query);
+                                         while($row = mysqli_fetch_array($result))
+                                             { 
+                                                 //$shopId = $row[1];
+                                                 $ProductName = $row[2];
+                                   
+                             
+                                   echo '<tr><td>'.$shopName.'</td><td>'. $location .'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td><button type="submit" name='.$row[0].' class="btn btn-primary mr-2">Confirm</button></td></tr>' ;
   
                                }
+                              }
                               ?>
                           </tbody>
                       </table>
+                      </form>
                     </div>
                     <!-- <div class="d-flex mt-4 flex-wrap">
                       <p class="text-muted">Showing 1 to 10 of 57 entries</p>
