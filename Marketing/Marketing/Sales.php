@@ -8,11 +8,7 @@ if(!isset($_SESSION['id'])){
    $id=$_SESSION['id'];
  
 }
-include('../../BackEnd/Php/connection.php');
-$productInfo =  mysqli_query($con,"SELECT * FROM `market_ads` Where `InvID`='$id'");
-while($row=mysqli_fetch_array($productInfo)){
-  $productid=$row[2];
-}
+
 ?>
 
 
@@ -261,45 +257,56 @@ while($row=mysqli_fetch_array($productInfo)){
                           //echo $productid;
                           //echo $id;
                               include('../../BackEnd/Php/connection.php');
-                              $ProductDetails = mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID`='$productid'");
-                              while($row = mysqli_fetch_array($ProductDetails))
-                              {
-                                $ProductName=$row[1];
-                                //echo $ProductName;
-                              }
-                              $DateOFadd = mysqli_query($con,"SELECT * FROM `market_add` where `id` = '$id' and `productName` like '%$ProductName%'");
-                              while($row = mysqli_fetch_array($DateOFadd))
-                              {
-                                $addId = $row[0];
-                                $addDate=$row[6];
+                          
+                            $productInfo =  mysqli_query($con,"SELECT * FROM `market_ads` Where `InvID`='$id'");
+                               while($row=mysqli_fetch_array($productInfo))
+                                 {
+                                     $productid=$row[2];
+                                     $ProductDetails = mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID`='$productid'");
+                                     while($row1 = mysqli_fetch_array($ProductDetails))
+                                        {
+                                             $ProductName=$row1[1];
+                                             echo $ProductName;
+                              
+                                            $DateOFadd = mysqli_query($con,"SELECT * FROM `market_add` where `id` = '$id' and `productName` like '%$ProductName%'");
+                                            while($row2 = mysqli_fetch_array($DateOFadd))
+                                                {
+                                                   $addId = $row2[0];
+                                                   $addDate=$row2[6];
+                                                   //echo $addId;
                                 //echo $addId;
                                // echo $addDate;
-                              }
-                              $DueDateOfADd = mysqli_query($con,"SELECT * FROM `market_shopads` Where `AddID`='$addId'");
-                              while($row = mysqli_fetch_array($DueDateOfADd))
-                              {
-                                $DueDate=$row[4];
+                             
+                                                       $DueDateOfADd = mysqli_query($con,"SELECT * FROM `market_ads` Where `AddID`='$addId'");
+                                                       while($row3 = mysqli_fetch_array($DueDateOfADd))
+                                                        {
+                                                           $DueDate=$row3[6];
+                                                           echo $DueDate;
                                 //echo $DueDate;
-                              }
+                                                        } 
+                                                    }
+                                          }
+                                   
+                                        
+                                           $query = "SELECT * FROM `user_transactions` Where `ProductID` = '$productid'";
+                                            $result=mysqli_query($con,$query);
                               
-                              $query = "SELECT * FROM `user_transactions` Where `ProductID` = '$productid'";
-                              $result=mysqli_query($con,$query);
-                              
-                              while($row = mysqli_fetch_array($result))
-                              { 
-                                 $logID = $row[1];
-                                 $UserLog = mysqli_query($con,"SELECT * FROM `user_log` where `LogID`='$logID' and `Date` < '$addDate' ");
-                                 while($row1 = mysqli_fetch_array($UserLog))
-                                   { 
-                                      $BeforlogID = $row1[0];
-                                      $logDetails =mysqli_query($con,"SELECT SUM(`amount`),SUM(`No of products`) FROM `user_transactions` Where `LogID` = '$BeforlogID'");
-                                      while($row2 = mysqli_fetch_array($logDetails))
-                                      { 
-                                       $BeforlogID = $row2[0];
-                                      echo '<tr><td>'.$ProductName.'</td><td>'.$row2[0].'₹</td><td>'.$row2[1].'</td></tr>' ;
-                               }
-                              }
-                            }
+                                                 while($row = mysqli_fetch_array($result))
+                                                      { 
+                                                          $logID = $row[1];
+                                                          $UserLog = mysqli_query($con,"SELECT * FROM `user_log` where `LogID`='$logID' and `Date` < '$addDate' ");
+                                                          while($row1 = mysqli_fetch_array($UserLog))
+                                                               { 
+                                                                    $BeforlogID = $row1[0];
+                                                                     $logDetails =mysqli_query($con,"SELECT SUM(`amount`),SUM(`No of products`) FROM `user_transactions` Where `LogID` = '$BeforlogID'");
+                                                                     while($row2 = mysqli_fetch_array($logDetails))
+                                                                       { 
+                                                                          $BeforlogID = $row2[0];
+                                                                          echo '<tr><td>'.$ProductName.'</td><td>'.$row2[0].'₹</td><td>'.$row2[1].'</td></tr>' ;
+                                                                       }
+                                                                 } 
+                                                        }
+                                     }
                               ?>
                           </tbody>
                         </table>
@@ -325,49 +332,60 @@ while($row=mysqli_fetch_array($productInfo)){
                         </tr>
                         </thead>
                         <tbody>
-                          <?php
+                        <?php
                           //echo $productid;
                           //echo $id;
                               include('../../BackEnd/Php/connection.php');
-                              $ProductDetails = mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID`='$productid'");
-                              while($row = mysqli_fetch_array($ProductDetails))
-                              {
-                                $ProductName=$row[1];
-                                //echo $ProductName;
-                              }
-                              $DateOFadd = mysqli_query($con,"SELECT * FROM `market_add` where `id` = '$id' and `productName` like '%$ProductName%'");
-                              while($row = mysqli_fetch_array($DateOFadd))
-                              {
-                                $addId = $row[0];
-                                $addDate=$row[6];
+                          
+                            $productInfo =  mysqli_query($con,"SELECT * FROM `market_ads` Where `InvID`='$id'");
+                               while($row=mysqli_fetch_array($productInfo))
+                                 {
+                                     $productid=$row[2];
+                                     $ProductDetails = mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID`='$productid'");
+                                     while($row1 = mysqli_fetch_array($ProductDetails))
+                                        {
+                                             $ProductName=$row1[1];
+                                             echo $ProductName;
+                              
+                                            $DateOFadd = mysqli_query($con,"SELECT * FROM `market_add` where `id` = '$id' and `productName` like '%$ProductName%'");
+                                            while($row2 = mysqli_fetch_array($DateOFadd))
+                                                {
+                                                   $addId = $row2[0];
+                                                   $addDate=$row2[6];
+                                                   //echo $addId;
                                 //echo $addId;
                                // echo $addDate;
-                              }
-                              $DueDateOfADd = mysqli_query($con,"SELECT * FROM `market_shopads` Where `AddID`='$addId'");
-                              while($row = mysqli_fetch_array($DueDateOfADd))
-                              {
-                                $DueDate=$row[4];
+                             
+                                                       $DueDateOfADd = mysqli_query($con,"SELECT * FROM `market_ads` Where `AddID`='$addId'");
+                                                       while($row3 = mysqli_fetch_array($DueDateOfADd))
+                                                        {
+                                                           $DueDate=$row3[6];
+                                                           echo $DueDate;
                                 //echo $DueDate;
-                              }
+                                                        } 
+                                                    }
+                                          }
+                                   
+                                        
+                                           $query = "SELECT * FROM `user_transactions` Where `ProductID` = '$productid'";
+                                            $result=mysqli_query($con,$query);
                               
-                              $query = "SELECT * FROM `user_transactions` Where `ProductID` = '$productid'";
-                              $result=mysqli_query($con,$query);
-                              
-                              while($row = mysqli_fetch_array($result))
-                              { 
-                                 $logID = $row[1];
-                                 $UserLog = mysqli_query($con,"SELECT * FROM `user_log` where `LogID`='$logID' and `Date` > '$addDate' ");
-                                 while($row1 = mysqli_fetch_array($UserLog))
-                                   { 
-                                      $BeforlogID = $row1[0];
-                                      $logDetails =mysqli_query($con,"SELECT SUM(`amount`),SUM(`No of products`) FROM `user_transactions` Where `LogID` = '$BeforlogID'");
-                                      while($row2 = mysqli_fetch_array($logDetails))
-                                      { 
-                                       $BeforlogID = $row2[0];
-                                      echo '<tr><td>'.$ProductName.'</td><td>'.$row2[0].'₹</td><td>'.$row2[1].'</td></tr>' ;
-                               }
-                              }
-                            }
+                                                 while($row = mysqli_fetch_array($result))
+                                                      { 
+                                                          $logID = $row[1];
+                                                          $UserLog = mysqli_query($con,"SELECT * FROM `user_log` where `LogID`='$logID' and `Date` > '$addDate' ");
+                                                          while($row1 = mysqli_fetch_array($UserLog))
+                                                               { 
+                                                                    $BeforlogID = $row1[0];
+                                                                     $logDetails =mysqli_query($con,"SELECT SUM(`amount`),SUM(`No of products`) FROM `user_transactions` Where `LogID` = '$BeforlogID'");
+                                                                     while($row2 = mysqli_fetch_array($logDetails))
+                                                                       { 
+                                                                          $BeforlogID = $row2[0];
+                                                                          echo '<tr><td>'.$ProductName.'</td><td>'.$row2[0].'₹</td><td>'.$row2[1].'</td></tr>' ;
+                                                                       }
+                                                                 } 
+                                                        }
+                                     }
                               ?>
                           </tbody>
                         </table>
