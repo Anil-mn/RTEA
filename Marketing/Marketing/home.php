@@ -185,8 +185,8 @@ if(!isset($_SESSION['id'])){
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../Distribution/Distribution/pages/icons/simple-line-icons.html">
-                <span class="menu-title">STATUS</span>
+              <a class="nav-link" href="payADD.php">
+                <span class="menu-title">PAY ADDS</span>
                 <i class="icon-globe menu-icon"></i>
               </a>
             </li>
@@ -344,13 +344,13 @@ if(!isset($_SESSION['id'])){
               ?>
                <div class="card" > 
                   <div class="card-body">
-                    <h4 class="card-title">MEMBERSHIP DETAILS</h4>
+                    <h4 class="card-title">Genarated ADD </h4>
                     <p class="card-description"></p>
                     <form class="forms-sample" action="ad_membership.php" method="POST">
                       <div class="form-group row">
                         <!-- <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Email</label> -->
                         <div class="col-sm-12">
-                          <select class="form-control" name="membership" id="membership">
+                          <select class="form-control" name="membership" id="membership" hidden>
                             <option>Type of membership</option>
                             <option>Silver</option>
                             <option>Gold</option>
@@ -361,12 +361,12 @@ if(!isset($_SESSION['id'])){
                       <div class="form-group row">
                         <!-- <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label> -->
                         <div class="col-sm-12">
-                          <input type="text" class="form-control" id="shopname" name="shopname" placeholder=" SHOP NAME">
+                          <input type="text" class="form-control" id="shopname" name="shopname" placeholder=" SHOP NAME" hidden>
                         </div>
                       </div>
                       <div class="form-group row">
                         <!-- <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label> -->
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" hidden>
                           <select class="form-control" id="slot" name="slot">
                             <option>SLOTS</option>
                             <option>1</option>
@@ -378,7 +378,7 @@ if(!isset($_SESSION['id'])){
                       <div class="form-group row">
                         <!-- <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label> -->
                         <div class="col-sm-12">
-                          <select class="form-control" id="pricead" name="pricead">
+                          <select class="form-control" id="pricead" name="pricead" hidden>
                             <option>PRICE OF AD</option>
                             <option>50K</option>
                             <option>100K</option>
@@ -386,57 +386,16 @@ if(!isset($_SESSION['id'])){
                           </select>
                         </div>
                       </div> 
-                      <button type="submit" class="btn btn-primary mr-2">Request</button>
+                      <button type="submit" class="btn btn-primary mr-2">Genarate ADD</button>
                       <button class="btn btn-light">Cancel</button>
-                    </form>
+                   </form>
                   </div>
                 </div>
               </div>
-              <div class="col-12 grid-margin stretch-card" hidden>
+              <div class="col-12 grid-margin stretch-card" >
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Basic form elements</h4>
-                    <p class="card-description"> Basic form elements </p>
-                    <form class="forms-sample">
-                      <div class="form-group">
-                        <label for="exampleInputName1">Name</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputEmail3">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputPassword4">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleSelectGender">Gender</label>
-                        <select class="form-control" id="exampleSelectGender">
-                          <option>Male</option>
-                          <option>Female</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label>File upload</label>
-                        <input type="file" name="img[]" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                          <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputCity1">City</label>
-                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleTextarea1">Textarea</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                      <button class="btn btn-light">Cancel</button>
+                  
                     </form>
                   </div>
                 </div>

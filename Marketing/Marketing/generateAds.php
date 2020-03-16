@@ -144,6 +144,7 @@ if($result2 == true){
 else {
 $query="INSERT INTO `market_ads`(`invID`, `ProductID`, `AddID`, `NoOfShops`, `NoOfUsers`,`DueDate`) VALUES ('$id','$productID','$add_id','$numberofshops','$TotalUserCount','$DueDate')";
 $result = mysqli_query($con,$query);
+
 }
 }
 ?>

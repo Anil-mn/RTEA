@@ -191,8 +191,8 @@ while($row=mysqli_fetch_array($productInfo)){
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../Distribution/Distribution/pages/icons/simple-line-icons.html">
-                <span class="menu-title">STATUS</span>
+            <a class="nav-link" href="payADD.php">
+                <span class="menu-title">PAY ADDS</span>
                 <i class="icon-globe menu-icon"></i>
               </a>
             </li>

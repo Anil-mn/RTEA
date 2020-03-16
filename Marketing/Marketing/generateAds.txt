@@ -1,0 +1,47 @@
+This is a file that contain discription of how it generating adds 
+
+Product name is getting from home.php 2 form
+
+Requirmets 
+
+
+a) In  `shop_link` Table There should be product_ID and `NumberOf` greater than 30
+In user_transation table should contain productID and amount greater than 30
+
+
+
+Steps :
+1:) Collectiong Add id and product name from `market_add` Table and it will take the last add id ..
+    From this we take ADD_ID and Product Name
+
+2:) Selecting product_ID from `Shop_product` by Product Name .
+
+3:) Collectin add details like dude date from `market_addcollection` by using ADD_ID
+    DueDate Of add is Fetched from this
+----------------------------------------------------------------------------------------------------
+SHOP Selection to POST ADD
+
+
+4:) Select shop IDs from `shop_link`  by product_ID and sales greater than 30
+    4.1:) Collecting Shops Available slots from `Shop info`  by shop_ids that have sales greater than 30
+    4.2:) If slot is not available then it rejact that shops
+    4.3:) if slot is available in that shops 
+          4.3.1) It check the add is already placed or not If yes then it will return
+          4.3.1) Else INSERT INTO `market_shopads`values like `ShopID`, `AddID`, `SoltNumber`, `DueDate`
+    4.4:) Then Check the count of shops that placed this add     
+
+
+
+--------------------------------------  ---------------------------------------------------------      -------------------  
+
+User Selection to POST ADD
+
+
+
+
+
+--------------------------------------  ---------------------------------------------------------      -------------------  
+
+6)INSERT INTO `market_ads` values like invID`, `ProductID`, `AddID`, `NoOfShops`, `NoOfUsers`,`DueDate`
+and show this table to ivent and generating price by 100 rs for each slot and addinf price to 
+membership details table
