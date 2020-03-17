@@ -400,24 +400,21 @@ if(!isset($_SESSION['id'])){
                   </div>
                 </div>
               </div>
-              <div class="col-md-6 grid-margin stretch-card" hidden>
+              <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Input size</h4>
+                  <form action='inveProDetails.php' method = 'POST'>
+                    <h4 class="card-title">Enter your Product Details</h4>
                     <p class="card-description"> Add classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>. </p>
                     <div class="form-group">
-                      <label>Large input</label>
-                      <input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username">
+                      <label>Prduct Name</label>
+                      <input type="text" name='product' class="form-control form-control-lg" placeholder="Username" aria-label="Product Name">
                     </div>
-                    <div class="form-group">
-                      <label>Default input</label>
-                      <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+                    <div class="input-group-append">
+                          <button class="btn btn-sm btn-primary" type="submit">ADD</button>
+                    
                     </div>
-                    <div class="form-group">
-                      <label>Small input</label>
-                      <input type="text" class="form-control form-control-sm" placeholder="Username" aria-label="Username">
-                    </div>
-                  </div>
+                  </div></form>
                 </div>
               </div>
               <div class="col-md-6 grid-margin stretch-card" hidden>
