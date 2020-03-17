@@ -13,11 +13,19 @@ while($row = mysqli_fetch_array($DisInfo))
 
 <!DOCTYPE html>
 <html lang="en">
+<!-- Title icon -->
+<link rel = "icon" href = "../../Logos/title.png" 
+        type = "image/x-icon"> 
+  <head>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+  <head>
     <title>RTEA DISTRIBUTION</title>
+
+   
     <!-- plugins:css -->
     <link rel="stylesheet" href="../Distribution/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="../Distribution/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -40,9 +48,9 @@ while($row = mysqli_fetch_array($DisInfo))
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
           <a class="navbar-brand brand-logo" href="index.html">
-            <img src="images/logo.svg" alt="logo" class="logo-dark" />
+            <img src="../../Logos/Untitled-1.jpg" alt="logo" class="logo-dark" />
           </a>
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../../Logos/title.png" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
           <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome to RTEA Distribution</h5>
@@ -110,11 +118,11 @@ while($row = mysqli_fetch_array($DisInfo))
             </li> -->
             <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle ml-2" src="../Distribution/images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
+                <img class="img-xs rounded-circle ml-2" src="../../Logos/title.png" alt="Profile image"> <span class="font-weight-normal"> NAme</span></a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
-                  <img class="img-md rounded-circle" src="../Distribution/images/faces/face8.jpg" alt="Profile image">
-                  <p class="mb-1 mt-3">Allen Moreno</p>
+                  <img class="img-md rounded-circle" src="../../Logos/title.png" alt="Profile image">
+                 <p class="mb-1 mt-3">Name</p> 
                   <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                 </div>
                 <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
@@ -136,12 +144,19 @@ while($row = mysqli_fetch_array($DisInfo))
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="../Distribution/images/faces/face8.jpg" alt="profile image">
+                <img class="img-xs rounded-circle" src="../../Logos/title.png" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Allen Moreno</p>
-                  <p class="designation">Administrator</p>
+                <?php 
+                 include('../../BackEnd/Php/connection.php');
+                 $query = mysqli_query($con,"SELECT * FROM `distribution_info` WHERE `Distribution_ID`='$disID'");
+                 while($row = mysqli_fetch_array($query)){
+                   $name = $row[2];
+                 }
+                 echo '<p class="profile-name">'.$name.'</p>';
+                  ?>
+                  <p class="designation">Distributor</p>
                 </div>
                 <div class="icon-container">
                   <i class="icon-bubbles"></i>
@@ -153,16 +168,17 @@ while($row = mysqli_fetch_array($DisInfo))
               <span class="nav-link">HOME</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <span class="menu-title">Home</span>
+              <a class="nav-link" href="home.php">
+                <span class="menu-title">Requests</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item nav-category"><span class="nav-link"></span></li>
+            <li class="nav-item nav-category"><span class="nav-link">Products</span></li>
             <li class="nav-item">
               <!-- <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic"> -->
-                <a class="nav-link" href="">
-                <span class="menu-title">Shop</span>
+                
+                <a class="nav-link" href="inventryInfo.php">
+                <span class="menu-title">TakeOrder</span>
                 <i class="icon-layers menu-icon"></i>
               </a>
               <!-- <div class="collapse" id="ui-basic">
@@ -173,8 +189,8 @@ while($row = mysqli_fetch_array($DisInfo))
               </div> -->
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Inventory</span>
+            <a class="nav-link" href="myOrders.php">
+                <span class="menu-title">MYOrders</span>
                 <i class="icon-globe menu-icon"></i>
               </a>
             </li>
