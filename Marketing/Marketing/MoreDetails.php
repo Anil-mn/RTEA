@@ -1,13 +1,14 @@
 <?php
 SESSION_START();
-if(!isset($_SESSION['id'])){
-  echo $_SESSION['id'];
-	header('location:index.html');
- }
- else{
-   $id=$_SESSION['id'];
- 
-}
+$disID=$_SESSION['phn_No'];
+//echo $disID;
+
+
+
+$filename = basename($_SERVER['REQUEST_URI']);
+$ReqestID =substr($filename,16);
+echo $ReqestID;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -247,12 +248,12 @@ if(!isset($_SESSION['id'])){
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th> PRODUCT NAME </th>
                   <th> Add </th>
-                  <th> NUmber of ADD placed in shop </th>
-                  <th> NUmber of ADD placed in USer </th>
-                  <th> price Paid </th>
-                  <th> MoreDetails</th> 
+                  <th> Shop Name </th>
+                  <th> Location </th>
+                  <th> Solt Which add placed </th>
+                  <!-- <th> price Paid </th>
+                  <th> MoreDetails</th>  -->
                 </tr>
               </thead>
               <tbody>
@@ -260,22 +261,23 @@ if(!isset($_SESSION['id'])){
            
             <?php
 include('../../BackEnd/Php/connection.php');
-  $query = mysqli_query($con,"SELECT * FROM `market_ads` where `invID` = '$id'");
+  $query = mysqli_query($con,"SELECT * FROM `market_ads` where `AddID` = '$ReqestID'");
   while ($row = mysqli_fetch_array($query)){
     $proID = $row[2];
     $addid = $row[3];
-    $prductId =mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID` = '$proID'");
-    while ($row1 = mysqli_fetch_array($prductId)){
-      $amount =mysqli_query($con,"SELECT * FROM `market_membership` where `add_id`='$addid'");
-      while ($row2 = mysqli_fetch_array($amount)){
-     echo '<tr><td>'.$row1[1].'</td><td><img style="height : 90px; width:80px"  src="../images/'.$row[3].'.jpg"></td><td>'.$row[4].'</td><td>'.$row[5].'</td><td>'.$row2[3].'</td>
-     <td><a href="MoreDetails.php?'.$addid.'">MoreDetails<a></td></tr>';
-  }
+        $ShopDetails = mysqli_query($con,"SELECT * FROM `market_shopads` where `AddID` = '$addid'");
+        while ($row2 = mysqli_fetch_array($ShopDetails)){
+           $ShopID = $row2[1];
+           $SlotNumber = $row2[3];
+                $ShopInfo = mysqli_query($con,"SELECT * FROM `shop_info` where `ShopID` = '$ShopID'");
+                while ($row3 = mysqli_fetch_array($ShopInfo)){
+                   $ShopName = $row3[2];
+                   $ShopLocation = $row3[4];
+    
+     echo '<tr><td><img style="height : 50px; width:40px"  src="../images/'.$row[3].'.jpg"></td><td>'.$ShopName.'</td><td>'.$ShopLocation.'</td><td>'.$SlotNumber.'th slot</td></tr>';
+   }
+ }
 }
-  }
-
-
-
 ?>
    </tbody>
             </table>
