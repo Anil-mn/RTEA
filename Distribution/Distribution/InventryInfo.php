@@ -195,10 +195,11 @@ while($row = mysqli_fetch_array($DisInfo))
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Request</span>
+              <a class="nav-link" href="deliverOrder.php">
+                <span class="menu-title">ShopDelivery</span>
                 <i class="icon-book-open menu-icon"></i>
               </a>
+            </li>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="">
@@ -284,9 +285,8 @@ while($row = mysqli_fetch_array($DisInfo))
                             <th class="font-weight-bold">Location</th>
                             <th class="font-weight-bold">Product</th>
                             <th class="font-weight-bold">To </th> 
-                           
-                            <!-- <th class="font-weight-bold">Date of Delivery</th>
-                            <th class="font-weight-bold">Price</th> -->
+                            <th class="font-weight-bold">Quntity</th>
+                           <!-- <th class="font-weight-bold">Price</th> -->
                             <th class="font-weight-bold">Enter The Coode</th>
                             <th class="font-weight-bold">Purchase The order</th>
                           </tr>
@@ -328,8 +328,9 @@ while($row = mysqli_fetch_array($DisInfo))
                                  
                                   $phoneNumber =  $row3[1];
                                   $name =  $row3[2];
-                                  echo '<tr><td>'.$name.'</td><td>'.$phoneNumber.'</td><td>'.$location.'</td><td>'.$productName.'</td><td>'.$shopName.'</td><td><input type="number"></td><td><a href=php/takeOrder.php?'.$reqID.'> takeOrder</a></td></tr>' ;
-  
+                                  echo '<tr><td>'.$name.'</td><td>'.$phoneNumber.'</td><td>'.$location.'</td><td>'.$productName.'</td><td>'.$shopName.'</td><td>'.$quntity.'</td>
+                                  <td><input  type="number"></td><td><a href=php/takeOrder.php?'.$reqID.'> takeOrder</a></td></tr>' ;
+                                   
                                }}
                               }
                             }}

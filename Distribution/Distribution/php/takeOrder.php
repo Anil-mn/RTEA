@@ -14,6 +14,6 @@ echo $ReqestID;
 
 $query = "UPDATE `distributor_orders` SET `Status` = 'Order Purchased' where `Request_ID`='$ReqestID'";
 $result = mysqli_query($con,$query);
-header('location : ../inventryInfo.php');
+header('Location: ../home.php');
 
 ?>

@@ -198,8 +198,8 @@ while($row = mysqli_fetch_array($DisInfo))
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Request</span>
+              <a class="nav-link" href="deliverOrder.php">
+                <span class="menu-title">ShopDelivery</span>
                 <i class="icon-book-open menu-icon"></i>
               </a>
             </li>
@@ -301,12 +301,12 @@ while($row = mysqli_fetch_array($DisInfo))
                           <span class="report-count"></span>
                         </div>
                         <!-- <div class="inner-card-icon bg-success"> -->
-                          <button class="inner-card-icon bg-success"><i class="icon-rocket"></i></button>
+                          <a class="inner-card-icon bg-success" href='home.php'><i class="icon-rocket"></i></a>
                         <!-- </div> -->
                       </div>
                       <div class="col-md-6 col-xl report-inner-card">
-                        <div class="inner-card-text">
-                          <span class="report-title"> STOCK DETAILS</span>
+                        <div class="inner-card-text" >
+                          <span class="report-title">MyOrders</span>
                           <h5></h5>
                           <span class="report-count"></span>
                         </div>
