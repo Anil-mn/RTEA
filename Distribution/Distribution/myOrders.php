@@ -1,3 +1,16 @@
+<?php
+SESSION_START();
+$disID=$_SESSION['phn_No'];
+echo $disID;
+include('../../BackEnd/Php/connection.php');
+$DisInfo =   mysqli_query($con,"SELECT * FROM `distribution_info` Where `Distribution_ID`='$disID'");
+while($row = mysqli_fetch_array($DisInfo))
+{
+ $DisLocation =$row[1];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -300,22 +313,43 @@
                             <th class="font-weight-bold">Location</th>
                             <th class="font-weight-bold">Product</th>
                             <th class="font-weight-bold">Quantity</th>
-                            <th class="font-weight-bold">Date of Delivery</th>
-                            <th class="font-weight-bold">Price</th>
-                            <th class="font-weight-bold">Payment</th>
+                            <th class="font-weight-bold">Order Status</th>
+                            <!--<th class="font-weight-bold">Price</th>
+                            <th class="font-weight-bold">Payment</th> -->
+                            <!-- <th class="font-weight-bold">Purchase The order</th> -->
                           </tr>
                         </thead>
                         <tbody>
-                          <!-- <?php
+                          
+                            <?php
                               include('../../BackEnd/Php/connection.php');
-                              $query = "SELECT * FROM `distribution_stock` WHERE Dis_ID = 2 ";
-                              $result=mysqli_query($con,$query);
-                              while($row = mysqli_fetch_array($result))
+                              
+                              $query = mysqli_query($con,"SELECT * FROM `distributor_orders` WHERE `Distributor_ID` = '$disID' ");
+                              while ($row = mysqli_fetch_array($query))
+                              {
+                                $reqID = $row[2];
+                                $satus = $row[3];
+                                //echo $reqID;
+                              
+                              $result=mysqli_query($con,"SELECT * FROM `dis_shopreq` Where `ReqID` = '$reqID'");
+                              while($row1 = mysqli_fetch_array($result))
                               { 
-                             echo '<tr><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td>'.$row[4].'</td><td>'.$row[5].'</td><td>'.$row[6].'</td></tr>' ;
+                                $ShopId = $row1[1];
+                                $productName = $row1[2];
+                                $quntity = $row1[3];
+                                $shopInfo = mysqli_query($con,"SELECT * FROM `shop_info` Where `ShopID` = '$ShopId'");
+                                while($row2 = mysqli_fetch_array($shopInfo))
+                                { 
+                                
+                                 $shopName =  $row2[2];
+                                 $location =  $row2[4];
+
+                                echo '<tr><td>'.$shopName.'</td><td>'.$location.'</td><td>'.$productName.'</td><td>'.$quntity.'</td><td>'.$satus.'</td></tr>' ;
   
                                }
-                              ?> -->
+                              }
+                            }
+                              ?> 
                           </tbody>
                       </table>
                     </div>

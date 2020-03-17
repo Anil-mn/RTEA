@@ -1,3 +1,16 @@
+<?php
+SESSION_START();
+$disID=$_SESSION['phn_No'];
+echo $disID;
+include('../../BackEnd/Php/connection.php');
+$DisInfo =   mysqli_query($con,"SELECT * FROM `distribution_info` Where `Distribution_ID`='$disID'");
+while($row = mysqli_fetch_array($DisInfo))
+{
+ $DisLocation =$row[1];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -236,38 +249,79 @@
                   </div>
                 </div>
               </div> -->
-                      <div class="col-md-8 grid-margin stretch-card">
-                        <div class="card">
-                          <div class="card-body">
-                            <h4 class="card-title">INVENTORY LIST</h4>
-                            <p class="card-description"></p>
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th><b>LOCATION</b></th>
-                                  <th><b>NAME</b></th>
-                                  <th><b>PHONE NUMBER</b></th>
-                                  <th><b>PRODUCT</b></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                          <?php
+                       <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-sm-flex align-items-center mb-4">
+                      <h4 class="card-title mb-sm-0">Quotations</h4>
+                      <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"></a>
+                    </div>
+                    <div class="table-responsive border rounded p-1">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th class="font-weight-bold">Company Name</th>
+                            <th class="font-weight-bold">Phone Number</th>
+                            <th class="font-weight-bold">Location</th>
+                            <th class="font-weight-bold">Product</th>
+                            <th class="font-weight-bold">To </th> 
+                           
+                            <!-- <th class="font-weight-bold">Date of Delivery</th>
+                            <th class="font-weight-bold">Price</th> -->
+                            <th class="font-weight-bold">Enter The Coode</th>
+                            <th class="font-weight-bold">Purchase The order</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                              <?php
                               include('../../BackEnd/Php/connection.php');
-                              $query = "SELECT * FROM `inventory`";
-                              $result=mysqli_query($con,$query);
                               
-                              while($row = mysqli_fetch_array($result))
+                              $query = mysqli_query($con,"SELECT * FROM `distributor_orders` WHERE `Distributor_ID` = '$disID' and `Status` = 'Order Accepted'");
+                              while ($row = mysqli_fetch_array($query))
+                              {
+                                $reqID = $row[2];
+                                //echo $reqID;
+                              
+                              $result=mysqli_query($con,"SELECT * FROM `dis_shopreq` Where `ReqID` = '$reqID'");
+                              while($row1 = mysqli_fetch_array($result))
                               { 
-                             echo "<tr><td>".$row[5]."</td><td>".$row[2]."</td><td>".$row[1]."</td></tr>" ;
+                                $ShopId = $row1[1];
+                                $productName = $row1[2];
+                                $quntity = $row1[3];
+                                $shopInfo = mysqli_query($con,"SELECT * FROM `shop_info` Where `ShopID` = '$ShopId'");
+                                while($row5 = mysqli_fetch_array($shopInfo))
+                                { 
+                                
+                                 $shopName =  $row5[2];
+                                 $location =  $row5[4];
+
+                                
+                                
+                                $invetryProduct = mysqli_query($con,"SELECT * FROM `inventory_products` Where `ProName` like '%$productName%'");
+                                while($row2 = mysqli_fetch_array($invetryProduct))
+                                { 
+                                
+                                 $invId =  $row2[2];
+                                 $location =  $row2[4];
+                                 $invetryDetails = mysqli_query($con,"SELECT * FROM `inventory` Where `id` = '$invId'");
+                                 while($row3 = mysqli_fetch_array($invetryDetails))
+                                 { 
+                                 
+                                  $phoneNumber =  $row3[1];
+                                  $name =  $row3[2];
+                                  echo '<tr><td>'.$name.'</td><td>'.$phoneNumber.'</td><td>'.$location.'</td><td>'.$productName.'</td><td>'.$shopName.'</td><td><input type="number"></td><td><a href=php/takeOrder.php?'.$reqID.'> takeOrder</a></td></tr>' ;
   
-                               }
-                              ?>
+                               }}
+                              }
+                            }}
+                              ?> 
                           </tbody>
                             </table>
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-4 grid-margin stretch-card">
+                      <div class="col-md-4 grid-margin stretch-card" hidden>
                         <div class="card">
                           <div class="card-body">
                             <h4 class="card-title">INVENTORY PRODUCT REQUEST</h4>

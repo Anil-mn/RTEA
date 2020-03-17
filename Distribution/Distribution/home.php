@@ -170,8 +170,8 @@ while($row = mysqli_fetch_array($DisInfo))
             <li class="nav-item nav-category"><span class="nav-link">Products</span></li>
             <li class="nav-item">
               <!-- <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic"> -->
-                <a class="nav-link" href="">
-                <span class="menu-title">Shop</span>
+                <a class="nav-link" href="myOrders.php">
+                <span class="menu-title">MYOrders</span>
                 <i class="icon-layers menu-icon"></i>
               </a>
               <!-- <div class="collapse" id="ui-basic">
@@ -372,7 +372,7 @@ while($row = mysqli_fetch_array($DisInfo))
                       <a href="#" class="text-dark ml-auto mb-3 mb-sm-0">   </a>
                     </div>
                     <div class="table-responsive border rounded p-1">
-                    <form action='demo.php' Method ='POST'>
+                    <form action='' Method ='POST'>
                       <table class="table">
                         <thead>
                           <tr>
@@ -393,7 +393,7 @@ while($row = mysqli_fetch_array($DisInfo))
                                 $ShopID =$row1[0];
                                  $shopName = $row1[2];
                                  $location = $row1[4];
-                                     $query = "SELECT * FROM `dis_shopreq` where `ShopID`='$ShopID'";
+                                     $query = "SELECT * FROM `dis_shopreq` where `ShopID`='$ShopID' and `Status` = 'Requested'";
                                      $result=mysqli_query($con,$query);
                                          while($row = mysqli_fetch_array($result))
                                              { 
@@ -401,7 +401,7 @@ while($row = mysqli_fetch_array($DisInfo))
                                                  $ProductName = $row[2];
                                    
                              
-                                   echo '<tr><td>'.$shopName.'</td><td>'. $location .'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td><a  href=demo.php?'.$row[0].' class="btn btn-primary mr-2">Confirm</a></td></tr>' ;
+                                   echo '<tr><td>'.$shopName.'</td><td>'. $location .'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[4].'</td><td><a  href=php/confirmOrder.php?'.$row[0].' class="btn btn-primary mr-2">Confirm</a></td></tr>' ;
   
                                }
                               }
