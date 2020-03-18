@@ -10,8 +10,7 @@ while($row = mysqli_fetch_array($query))
 }
 
 
-include('disreq.php');
- disreq();
+
 
 
 
@@ -350,7 +349,7 @@ include('disreq.php');
                          Date
                         </th>
                         <th>
-                          New Quantity
+                          Status
                         </th>
                         <th>
                           
@@ -370,31 +369,79 @@ $date = date('Y-m-d');
 //  {
 //      $prodname=$row[1];
      
-     $res1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ShopID`='$shopid' and `Status`='Not Requested'");
+     $res1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ShopID`='$shopid' ");
      while($row1 = mysqli_fetch_array($res1))
      {
          $ReqID=$row1[0];
+       
          $quantity=$row1[3];
          $prodname=$row1[2];
-         
-         echo "<tr><td>".$prodname."</td><td>".$quantity."</td><td>".$row1[4]."</td><td><input type='number' name=".$prodname."></input></td><td><button type='submit' name=".$ReqID."  class='btn btn-inverse-success btn-fw''>Confirm</button></td></tr>";
+         $status=$row1[6]; 
+         echo "<tr><td>".$prodname."</td><td>".$quantity."</td><td>".$row1[4]."</td>";
+         echo $ReqID;
+                      $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='$ReqID'");
+                     while($row2 = mysqli_fetch_array($res2))
+                        {
+                             $distributorid=$row2[1] ;
+                            echo $distributorid;
+                     
+                           $res3=mysqli_query($con,"SELECT * FROM `distribution_info` where `Distribution_ID`='$distributorid'");
+                            while($row3 = mysqli_fetch_array($res3))
+                                {
+                                    $distributorname=$row3[2] ;
+                                    $phonenum=$row3[3];
+                                    
+                       }
+
+
+
+                    }
+         if($status=='Requested')
+               {
+                  echo "<td>".$status."</td>" ; 
+               }
+
+         if($status=='Accepted')
+              {
+                     
+                                   echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td>" ; 
+
+             
+                               }
+             
+             if($status=='Order Purchased')
+             {
+                echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td>" ; 
+ 
+             }
+             elseif($status=='Delivered')
+             {
+                echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td>" ; 
+
+             }
+}
+
+
+
+
+
+        //  echo "<tr><td>".$prodname."</td><td>".$quantity."</td><td>".$row1[4]."</td><td>".$status."</td><td></td></tr>";
      
          if(isset($_POST[$ReqID]))
 {
- if($_POST[$prodname]=='')
- {
-  $quantity=$row1[3];
+//  if($_POST[$prodname]=='')
+//  {
+//   $quantity=$row1[3];
   
- }
- else{
+//  }
+//  else{
   $quantity = $_POST[$prodname];
- }
-  $query="UPDATE  `dis_shopreq`  set `Status`='Requested',`Quntity`='$quantity', `Date`='$date' Where `ReqID`='$ReqID'";
-  $result=mysqli_query($con,$query);
-  header("Refresh:0");
  
-}
-       }
+  $query="UPDATE  `dis_shopreq`  set  `Quntity`='$quantity', `Date`='$date' Where `ReqID`='$ReqID'";
+  $result=mysqli_query($con,$query);
+ }
+//}
+       
    
 
 
@@ -411,187 +458,11 @@ $date = date('Y-m-d');
 
 
 ?>
-                      <!-- <tr>
-                        <td class="py-1">
-                          <img src="../images/faces-clipart/pic-1.png" alt="image"/>
-                        </td>
-                        <td>
-                          Herman Beck
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $ 77.99
-                        </td>
-                        <td>
-                          May 15, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1">
-                          <img src="../images/faces-clipart/pic-2.png" alt="image"/>
-                        </td>
-                        <td>
-                          Messsy Adam
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $245.30
-                        </td>
-                        <td>
-                          July 1, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1">
-                          <img src="../images/faces-clipart/pic-3.png" alt="image"/>
-                        </td>
-                        <td>
-                          John Richards
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $138.00
-                        </td>
-                        <td>
-                          Apr 12, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1">
-                          <img src="../images/faces-clipart/pic-4.png" alt="image"/>
-                        </td>
-                        <td>
-                          Peter Meggik
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $ 77.99
-                        </td>
-                        <td>
-                          May 15, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1">
-                          <img src="../images/faces-clipart/pic-1.png" alt="image"/>
-                        </td>
-                        <td>
-                          Edward
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $ 160.25
-                        </td>
-                        <td>
-                          May 03, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1">
-                          <img src="../images/faces-clipart/pic-2.png" alt="image"/>
-                        </td>
-                        <td>
-                          John Doe
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $ 123.21
-                        </td>
-                        <td>
-                          April 05, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1">
-                          <img src="../images/faces-clipart/pic-3.png" alt="image"/>
-                        </td>
-                        <td>
-                          Henry Tom
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $ 150.00
-                        </td>
-                        <td>
-                          June 16, 2015
-                        </td>
-                      </tr> -->
+                      
                     </tbody>
                   </table></form>
                  
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12 grid-margin stretch-card" >
-              <div class="card">
-                <div class="card-body">
-                     <form action="#" method='POST'> 
-                      
-                  
-                    <h4 class="card-title">Add new product</h4>
-                      <p class="card-description">
-                      
-                      </p>
-                      <form class="forms-sample">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Product Name</label>
-                          <input type="text" name="productname" class="form-control" id="exampleInputEmail1" placeholder="Product Name">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Quantity</label>
-                          <input type="number" name="quantity" class="form-control" id="exampleInputPassword1" placeholder="Quantity">
-                        </div>
-                        <button type="submit" name='submit' class="btn btn-success mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
-                      
-                      <?php
-                      include('../../../BackEnd/php/connection.php');
-                      if(isset($_POST['submit']))
-                      {
-
-      $prodname=$_POST['productname'];
-      $prodname=ucfirst($prodname);
-     $quantity=$_POST['quantity'];
-     $quantity=ucfirst($quantity);           
-
-                        $query="INSERT INTO `dis_shopreq`(`ShopID`, `Product`, `Quntity`, `Date`) VALUES ('$shopid','$prodname','$quantity','$date')";
-                        $res=mysqli_query($con,$query);
-                        
-                      }
-                      
-                      ?>
-
-                       
-                      </form>
-                    </div>
+                
                       
 
                   <!-- <h4 class="card-title">Bordered table</h4>
@@ -1008,10 +879,10 @@ $date = date('Y-m-d');
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
-          <div class="container-fluid clearfix">
+          <!-- <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-          </div>
+          </div> -->
         </footer>
         <!-- partial -->
       </div>

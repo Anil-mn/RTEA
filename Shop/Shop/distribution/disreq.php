@@ -28,7 +28,7 @@ while($row = mysqli_fetch_array($query))
     $res=mysqli_fetch_array($dist);
     if($res==true)
     {
-        $q1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ShopID`='$shopid' and `Product`='$prodname' and `Status`!='Not Requested'");
+        $q1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ShopID`='$shopid' and `Product`='$prodname' and `Status`='Delivered'");
     $r1=mysqli_fetch_array($q1);
      if($r1==true)
      {
