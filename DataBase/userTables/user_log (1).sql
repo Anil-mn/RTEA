@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2020 at 06:11 PM
+-- Generation Time: Mar 17, 2020 at 05:59 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -33,19 +33,20 @@ CREATE TABLE `user_log` (
   `Date` date NOT NULL,
   `Time` time NOT NULL,
   `TotalAmt` float NOT NULL,
-  `TotalProducts` int(100) NOT NULL
+  `TotalProducts` int(100) NOT NULL,
+  `Behaviour` varchar(30) NOT NULL DEFAULT 'Neutral'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_log`
 --
 
-INSERT INTO `user_log` (`LogID`, `ShopID`, `User_ID`, `Date`, `Time`, `TotalAmt`, `TotalProducts`) VALUES
-(1, 3, 3, '2020-03-06', '08:30:51', 1837, 15),
-(2, 3, 3, '2020-03-06', '08:30:51', 1837, 12),
-(3, 3, 4, '2020-03-05', '12:50:15', 300, 7),
-(4, 4, 4, '2020-03-05', '09:00:00', 1232, 15),
-(5, 4, 4, '2020-03-12', '06:11:00', 1652, 14);
+INSERT INTO `user_log` (`LogID`, `ShopID`, `User_ID`, `Date`, `Time`, `TotalAmt`, `TotalProducts`, `Behaviour`) VALUES
+(1, 4, 23, '2020-03-06', '08:30:51', 1837, 15, 'Neutral'),
+(2, 3, 23, '2020-03-15', '08:30:51', 1837, 12, 'Happy'),
+(3, 3, 4, '2020-03-05', '12:50:15', 300, 7, 'Neutral'),
+(4, 4, 23, '2020-02-28', '09:00:00', 1232, 15, 'Angry'),
+(5, 4, 4, '2020-03-12', '06:11:00', 1652, 14, 'Sad');
 
 --
 -- Indexes for dumped tables
