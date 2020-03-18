@@ -348,9 +348,6 @@ while($row = mysqli_fetch_array($query))
                           Quantity
                         </th>
                         <th>
-                      
-                        </th>
-                        <th>
                           Status
                         </th>
                         <th>
@@ -381,134 +378,134 @@ $date = date('Y-m-d');
          $status=$row1[6]; 
          echo '<tr> 
          
-         <td>'.$prodname.'</td><td>'.$quantity.'</td><td><a href="trackStatus.php?'.$ReqID.'">Track</a></td>';
+         <td>'.$prodname.'</td><td>'.$quantity.'</td><td><a  class="btn btn-outline-primary" href="trackStatus.php?'.$ReqID.'">Track</a></td></tr>';
          //echo $ReqID;
-                      $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='$ReqID'");
-                     while($row2 = mysqli_fetch_array($res2))
-                        {
-                             $distributorid=$row2[1] ;
-                            echo $distributorid;
+//                       $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='$ReqID'");
+//                      while($row2 = mysqli_fetch_array($res2))
+//                         {
+//                              $distributorid=$row2[1] ;
+//                             echo $distributorid;
                      
-                           $res3=mysqli_query($con,"SELECT * FROM `distribution_info` where `Distribution_ID`='$distributorid'");
-                            while($row3 = mysqli_fetch_array($res3))
-                                {
-                                    $distributorname=$row3[2] ;
-                                    $phonenum=$row3[3];
+//                            $res3=mysqli_query($con,"SELECT * FROM `distribution_info` where `Distribution_ID`='$distributorid'");
+//                             while($row3 = mysqli_fetch_array($res3))
+//                                 {
+//                                     $distributorname=$row3[2] ;
+//                                     $phonenum=$row3[3];
                                     
-                       }
+//                        }
 
 
 
-                    }
-         if($status=='Requested')
-               {
-                  // echo "<td>".$status."</td></tr>" ;
-                  $progress=25; 
-                  $progressbarcolor ='progress-bar progress-bar-striped bg-danger';
-                  $textColor ='card-title font-weight-normal text-danger';
+//                     }
+//          if($status=='Requested')
+//                {
+//                   // echo "<td>".$status."</td></tr>" ;
+//                   $progress=25; 
+//                   $progressbarcolor ='progress-bar progress-bar-striped bg-danger';
+//                   $textColor ='card-title font-weight-normal text-danger';
                     
-               }
+//                }
 
-         if($status=='Accepted')
-              {
+//          if($status=='Accepted')
+//               {
                      
-                               //    echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td></tr>" ; 
-                                   $progress=50;
-                                   $progressbarcolor ='progress-bar progress-bar-striped bg-warning';
-                                   $textColor ='card-title font-weight-normal text-warning';
+//                                //    echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td></tr>" ; 
+//                                    $progress=50;
+//                                    $progressbarcolor ='progress-bar progress-bar-striped bg-warning';
+//                                    $textColor ='card-title font-weight-normal text-warning';
              
-                               }
+//                                }
              
-             if($status=='Order Purchased')
-             {
-               // echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td></tr>" ; 
-                $progress=75;
-                $progressbarcolor ='progress-bar progress-bar-striped bg-info';
-                $textColor ='card-title font-weight-normal text-info';
+//              if($status=='Order Purchased')
+//              {
+//                // echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td></tr>" ; 
+//                 $progress=75;
+//                 $progressbarcolor ='progress-bar progress-bar-striped bg-info';
+//                 $textColor ='card-title font-weight-normal text-info';
              
-             }
-             elseif($status=='Delivered')
-             {
-               // echo '<td>'.$status.'</td><td>'.$distributorname.'</td><td>'.$phonenum.'</td></div></tr> ' ; 
-                $progress=100;
-                $progressbarcolor ='progress-bar progress-bar-striped bg-success';
-                $textColor ='card-title font-weight-normal text-success';
+//              }
+//              elseif($status=='Delivered')
+//              {
+//                // echo '<td>'.$status.'</td><td>'.$distributorname.'</td><td>'.$phonenum.'</td></div></tr> ' ; 
+//                 $progress=100;
+//                 $progressbarcolor ='progress-bar progress-bar-striped bg-success';
+//                 $textColor ='card-title font-weight-normal text-success';
              
-             }
-             echo '<tr></tr>';
-}
+//              }
+//              echo '<tr></tr>';
+// }
 
 
-               echo '</tbody></table></form>';
+//                echo '</tbody></table></form>';
 
 
 
 
-        //  echo "<tr><td>".$prodname."</td><td>".$quantity."</td><td>".$row1[4]."</td><td>".$status."</td><td></td></tr>";
+//         //  echo "<tr><td>".$prodname."</td><td>".$quantity."</td><td>".$row1[4]."</td><td>".$status."</td><td></td></tr>";
      
-         if(isset($_POST[$ReqID]))
-{
-echo $ReqID;
-    echo '
+//          if(isset($_POST[$ReqID]))
+// {
+// echo $ReqID;
+//     echo '
     
               
-                <div class="card-body">
+//                 <div class="card-body">
 
-                <div class="row">';
+//                 <div class="row">';
 
-                if($status=='Requested' or $status=='Accepted' or $status=='Order Purchased' or $status=='Delivered') 
-                {
-       echo '      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card">
-                <div class="card-body">
-                  <h4 class="'.$textColor.'">Requested</h4>
-                  <p class="card-text">Processing</p>
-                   </div> 
-                   </div>  </div>';}
+//                 if($status=='Requested' or $status=='Accepted' or $status=='Order Purchased' or $status=='Delivered') 
+//                 {
+//        echo '      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+//                 <div class="card">
+//                 <div class="card-body">
+//                   <h4 class="'.$textColor.'">Requested</h4>
+//                   <p class="card-text">Processing</p>
+//                    </div> 
+//                    </div>  </div>';}
                    
-                   if($status=='Accepted' or $status=='Order Purchased' or $status=='Delivered') 
-                   {
+//                    if($status=='Accepted' or $status=='Order Purchased' or $status=='Delivered') 
+//                    {
 
-                   echo '           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-                   <div class="card">
-                   <div class="card-body">
-                     <h4 class="'.$textColor.'">Accepted</h4>
-                     <p class="card-text">'.$distributorname.'</p>
-                     <p class="card-text">'.$phonenum.'</p>
-                      </div> 
-                      </div>  </div>';}
+//                    echo '           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+//                    <div class="card">
+//                    <div class="card-body">
+//                      <h4 class="'.$textColor.'">Accepted</h4>
+//                      <p class="card-text">'.$distributorname.'</p>
+//                      <p class="card-text">'.$phonenum.'</p>
+//                       </div> 
+//                       </div>  </div>';}
 
-                      if($status=='Order Purchased' or $status=='Delivered') 
-                {
-                   echo '   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-                      <div class="card">
-                      <div class="card-body">
-                        <h4 class="'.$textColor.'">Order Purchased</h4>
-                        <p class="card-text">'.$distributorname.'</p>
-                        <p class="card-text">'.$phonenum.'</p>
+//                       if($status=='Order Purchased' or $status=='Delivered') 
+//                 {
+//                    echo '   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+//                       <div class="card">
+//                       <div class="card-body">
+//                         <h4 class="'.$textColor.'">Order Purchased</h4>
+//                         <p class="card-text">'.$distributorname.'</p>
+//                         <p class="card-text">'.$phonenum.'</p>
 
-                         </div> 
-                         </div> 
-                          </div>';}
-                          if($status=='Delivered') 
-                          {
+//                          </div> 
+//                          </div> 
+//                           </div>';}
+//                           if($status=='Delivered') 
+//                           {
 
-                  echo '       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-                         <div class="card">
-                         <div class="card-body">
-                           <h4 class="'.$textColor.'">Delivered</h4>
-                           <p class="card-text">'.$distributorname.'</p>
-                           <p class="card-text">'.$phonenum.'</p>
-                            </div> 
-                            </div>  </div>';}
+//                   echo '       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+//                          <div class="card">
+//                          <div class="card-body">
+//                            <h4 class="'.$textColor.'">Delivered</h4>
+//                            <p class="card-text">'.$distributorname.'</p>
+//                            <p class="card-text">'.$phonenum.'</p>
+//                             </div> 
+//                             </div>  </div>';}
 
-               echo '  </div>
-                  <div class="progress">
-                    <div class="'.$progressbarcolor.'" style="width: '.$progress.'%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                  </div>
-                </div>
-              </div>
-            </div>';
+//                echo '  </div>
+//                   <div class="progress">
+//                     <div class="'.$progressbarcolor.'" style="width: '.$progress.'%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>';
 //  if($_POST[$prodname]=='')
 //  {
 //   $quantity=$row1[3];
@@ -540,7 +537,7 @@ echo $ReqID;
 ?>
                       
                     
-                 
+                      </tbody></table></form>         
                 
                       
 

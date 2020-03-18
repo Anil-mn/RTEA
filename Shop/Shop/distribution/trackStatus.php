@@ -13,7 +13,7 @@ $filename = basename($_SERVER['REQUEST_URI']);
 
 $ReqID=substr($filename,16);
 
-echo $ReqID;
+//echo $ReqID;
 
 
 ?>
@@ -333,7 +333,7 @@ echo $ReqID;
               <div class="card">
                 <div class="card-body">
                  
-                  <h4 class="card-title">Distribution Request</h4>
+                  <h4 class="card-title">your Order Status</h4>
                   <p class="card-description">
                     <code></code>
                   </p>
@@ -355,7 +355,7 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
  while($row2 = mysqli_fetch_array($res2))
    {
       $distributorid=$row2[1] ;
-      echo $distributorid;
+     // echo $distributorid;
         $res3=mysqli_query($con,"SELECT * FROM `distribution_info` where `Distribution_ID`='$distributorid'");
              while($row3 = mysqli_fetch_array($res3))
                         {
@@ -367,7 +367,7 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
 
 
                     }
-                    echo $status;
+                   // echo $status;
          if($status=='Requested')
                {
                   // echo "<td>".$status."</td></tr>" ;
@@ -442,7 +442,7 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
                    echo '           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
                    <div class="card">
                    <div class="card-body">
-                     <h4 class="'.$textColor.'">Accepted</h4>
+                     <h4 class="'.$textColor.'">Order Accepted By</h4>
                      <p class="card-text">'.$distributorname.'</p>
                      <p class="card-text">'.$phonenum.'</p>
                       </div> 
@@ -456,7 +456,7 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
                    echo '   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
                       <div class="card">
                       <div class="card-body">
-                        <h4 class="'.$textColor.'">Order Purchased</h4>
+                        <h4 class="'.$textColor.'">Order Purchased By</h4>
                         <p class="card-text">'.$distributorname.'</p>
                         <p class="card-text">'.$phonenum.'</p>
 
@@ -472,7 +472,7 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
                   echo '       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
                          <div class="card">
                          <div class="card-body">
-                           <h4 class="'.$textColor.'">Delivered</h4>
+                           <h4 class="'.$textColor.'">Order  Delivered By</h4>
                            <p class="card-text">'.$distributorname.'</p>
                            <p class="card-text">'.$phonenum.'</p>
                             </div> 
