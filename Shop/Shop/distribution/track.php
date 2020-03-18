@@ -381,7 +381,7 @@ $date = date('Y-m-d');
          $status=$row1[6]; 
          echo '<tr> 
          
-         <td>'.$prodname.'</td><td>'.$quantity.'</td><td><button type="submit" name='.$ReqID.'>More</button></td>';
+         <td>'.$prodname.'</td><td>'.$quantity.'</td><td><button type="submit" name='.$ReqID.'>Track</button></td>';
          //echo $ReqID;
                       $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='$ReqID'");
                      while($row2 = mysqli_fetch_array($res2))
