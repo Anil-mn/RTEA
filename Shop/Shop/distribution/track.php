@@ -336,7 +336,9 @@ while($row = mysqli_fetch_array($query))
                     <code></code>
                   </p>
                   <form action="#" method='POST'>
+                 
                   <table class="table table-striped">
+                      
                     <thead>
                       <tr>
                         <th>
@@ -346,7 +348,7 @@ while($row = mysqli_fetch_array($query))
                           Quantity
                         </th>
                         <th>
-                         Date
+                      
                         </th>
                         <th>
                           Status
@@ -377,8 +379,10 @@ $date = date('Y-m-d');
          $quantity=$row1[3];
          $prodname=$row1[2];
          $status=$row1[6]; 
-         echo "<tr><td>".$prodname."</td><td>".$quantity."</td><td>".$row1[4]."</td>";
-         echo $ReqID;
+         echo '<tr> 
+         
+         <td>'.$prodname.'</td><td>'.$quantity.'</td><td><button type="submit" name='.$ReqID.'>More</button></td>';
+         //echo $ReqID;
                       $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='$ReqID'");
                      while($row2 = mysqli_fetch_array($res2))
                         {
@@ -398,29 +402,44 @@ $date = date('Y-m-d');
                     }
          if($status=='Requested')
                {
-                  echo "<td>".$status."</td>" ; 
+                  // echo "<td>".$status."</td></tr>" ;
+                  $progress=25; 
+                  $progressbarcolor ='progress-bar progress-bar-striped bg-danger';
+                  $textColor ='card-title font-weight-normal text-danger';
+                    
                }
 
          if($status=='Accepted')
               {
                      
-                                   echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td>" ; 
-
+                               //    echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td></tr>" ; 
+                                   $progress=50;
+                                   $progressbarcolor ='progress-bar progress-bar-striped bg-warning';
+                                   $textColor ='card-title font-weight-normal text-warning';
              
                                }
              
              if($status=='Order Purchased')
              {
-                echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td>" ; 
- 
+               // echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td></tr>" ; 
+                $progress=75;
+                $progressbarcolor ='progress-bar progress-bar-striped bg-info';
+                $textColor ='card-title font-weight-normal text-info';
+             
              }
              elseif($status=='Delivered')
              {
-                echo "<td>".$status."</td><td>".$distributorname."</td><td>".$phonenum."</td>" ; 
-
+               // echo '<td>'.$status.'</td><td>'.$distributorname.'</td><td>'.$phonenum.'</td></div></tr> ' ; 
+                $progress=100;
+                $progressbarcolor ='progress-bar progress-bar-striped bg-success';
+                $textColor ='card-title font-weight-normal text-success';
+             
              }
+             echo '<tr></tr>';
 }
 
+
+               echo '</tbody></table></form>';
 
 
 
@@ -429,18 +448,79 @@ $date = date('Y-m-d');
      
          if(isset($_POST[$ReqID]))
 {
+echo $ReqID;
+    echo '
+    
+              
+                <div class="card-body">
+
+                <div class="row">';
+
+                if($status=='Requested' or $status=='Accepted' or $status=='Order Purchased' or $status=='Delivered') 
+                {
+       echo '      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                <div class="card-body">
+                  <h4 class="'.$textColor.'">Requested</h4>
+                  <p class="card-text">Processing</p>
+                   </div> 
+                   </div>  </div>';}
+                   
+                   if($status=='Accepted' or $status=='Order Purchased' or $status=='Delivered') 
+                   {
+
+                   echo '           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                   <div class="card">
+                   <div class="card-body">
+                     <h4 class="'.$textColor.'">Accepted</h4>
+                     <p class="card-text">'.$distributorname.'</p>
+                     <p class="card-text">'.$phonenum.'</p>
+                      </div> 
+                      </div>  </div>';}
+
+                      if($status=='Order Purchased' or $status=='Delivered') 
+                {
+                   echo '   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                      <div class="card">
+                      <div class="card-body">
+                        <h4 class="'.$textColor.'">Order Purchased</h4>
+                        <p class="card-text">'.$distributorname.'</p>
+                        <p class="card-text">'.$phonenum.'</p>
+
+                         </div> 
+                         </div> 
+                          </div>';}
+                          if($status=='Delivered') 
+                          {
+
+                  echo '       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                         <div class="card">
+                         <div class="card-body">
+                           <h4 class="'.$textColor.'">Delivered</h4>
+                           <p class="card-text">'.$distributorname.'</p>
+                           <p class="card-text">'.$phonenum.'</p>
+                            </div> 
+                            </div>  </div>';}
+
+               echo '  </div>
+                  <div class="progress">
+                    <div class="'.$progressbarcolor.'" style="width: '.$progress.'%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                  </div>
+                </div>
+              </div>
+            </div>';
 //  if($_POST[$prodname]=='')
 //  {
 //   $quantity=$row1[3];
   
 //  }
 //  else{
-  $quantity = $_POST[$prodname];
+//   $quantity = $_POST[$prodname];
  
-  $query="UPDATE  `dis_shopreq`  set  `Quntity`='$quantity', `Date`='$date' Where `ReqID`='$ReqID'";
-  $result=mysqli_query($con,$query);
- }
-//}
+//   $query="UPDATE  `dis_shopreq`  set  `Quntity`='$quantity', `Date`='$date' Where `ReqID`='$ReqID'";
+//   $result=mysqli_query($con,$query);
+//  }
+}
        
    
 
@@ -459,8 +539,7 @@ $date = date('Y-m-d');
 
 ?>
                       
-                    </tbody>
-                  </table></form>
+                    
                  
                 
                       
@@ -628,6 +707,8 @@ $date = date('Y-m-d');
                 </div>
               </div>-->
             </div>
+            <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card"> -->
+              
             <div class="col-lg-12 grid-margin stretch-card" hidden>
               <div class="card">
                 <div class="card-body">
