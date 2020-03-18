@@ -25,7 +25,7 @@ include('disreq.php');
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin Free Bootstrap-4 Admin Dashboard Template</title>
+  <title>Rtea Shop</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../node_modules/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../node_modules/simple-line-icons/css/simple-line-icons.css">
@@ -332,28 +332,28 @@ include('disreq.php');
               <div class="card">
                 <div class="card-body">
                  
-                  <h4 class="card-title">Striped Table</h4>
+                  <h4 class="card-title">Distribution Request</h4>
                   <p class="card-description">
-                    Add class <code>.table-striped</code>
+                    <code></code>
                   </p>
                   <form action="#" method='POST'>
                   <table class="table table-striped">
                     <thead>
                       <tr>
                         <th>
-                          User
+                         Product Name
                         </th>
                         <th>
-                          First name
+                          Quantity
                         </th>
                         <th>
-                          Progress
+                         Date
                         </th>
                         <th>
-                          Amount
+                          New Quantity
                         </th>
                         <th>
-                          Deadline
+                          
                         </th>
                       </tr>
                     </thead>
@@ -752,9 +752,9 @@ $date = date('Y-m-d');
                         </td>
                       </tr>
                     </tbody>
-                  </table> -->
+                  </table> 
                 </div>
-              </div>
+              </div>-->
             </div>
             <div class="col-lg-12 grid-margin stretch-card" hidden>
               <div class="card">
