@@ -9,9 +9,11 @@ while($row = mysqli_fetch_array($query))
     //echo $shopid;
 }
 
+$filename = basename($_SERVER['REQUEST_URI']);
 
+$ReqID=substr($filename,16);
 
-
+echo $ReqID;
 
 
 ?>
@@ -337,61 +339,26 @@ while($row = mysqli_fetch_array($query))
                   </p>
                   <form action="trackStatus.php" method='POST'>
                  
-                  <table class="table table-striped">
-                      
-                    <thead>
-                      <tr>
-                        <th>
-                         Product Name
-                        </th>
-                        <th>
-                          Quantity
-                        </th>
-                        <th>
-                      
-                        </th>
-                        <th>
-                          Status
-                        </th>
-                        <th>
-                          
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
+                 
                     <?php
 $date = date('Y-m-d');      
-// $check=mysqli_query($con,"SELECT * FROM `shop_link` where `Shop_ID`='$shopid' and `NumberOf`<7");
-// while($row = mysqli_fetch_array($check))
-// {
-//     $prodid=$row[1];
-
-//     $res=mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID`='$prodid' ");
-//  while($row = mysqli_fetch_array($res))
-//  {
-//      $prodname=$row[1];
-     
-     $res1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ShopID`='$shopid' ");
-     while($row1 = mysqli_fetch_array($res1))
-     {
-         $ReqID=$row1[0];
-       
-         $quantity=$row1[3];
-         $prodname=$row1[2];
-         $status=$row1[6]; 
-         echo '<tr> 
-         
-         <td>'.$prodname.'</td><td>'.$quantity.'</td><td><a href="trackStatus.php?'.$ReqID.'">Track</a></td>';
-         //echo $ReqID;
-                      $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='$ReqID'");
-                     while($row2 = mysqli_fetch_array($res2))
+$res1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ReqID`='$ReqID' ");
+while($row1 = mysqli_fetch_array($res1))
+{
+ 
+  
+ 
+    $status=$row1[6]; 
+    
+}
+$res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='$ReqID'");
+ while($row2 = mysqli_fetch_array($res2))
+   {
+      $distributorid=$row2[1] ;
+      echo $distributorid;
+        $res3=mysqli_query($con,"SELECT * FROM `distribution_info` where `Distribution_ID`='$distributorid'");
+             while($row3 = mysqli_fetch_array($res3))
                         {
-                             $distributorid=$row2[1] ;
-                            echo $distributorid;
-                     
-                           $res3=mysqli_query($con,"SELECT * FROM `distribution_info` where `Distribution_ID`='$distributorid'");
-                            while($row3 = mysqli_fetch_array($res3))
-                                {
                                     $distributorname=$row3[2] ;
                                     $phonenum=$row3[3];
                                     
@@ -400,6 +367,7 @@ $date = date('Y-m-d');
 
 
                     }
+                    echo $status;
          if($status=='Requested')
                {
                   // echo "<td>".$status."</td></tr>" ;
@@ -428,6 +396,7 @@ $date = date('Y-m-d');
              
              }
              elseif($status=='Delivered')
+           
              {
                // echo '<td>'.$status.'</td><td>'.$distributorname.'</td><td>'.$phonenum.'</td></div></tr> ' ; 
                 $progress=100;
@@ -435,8 +404,7 @@ $date = date('Y-m-d');
                 $textColor ='card-title font-weight-normal text-success';
              
              }
-             echo '<tr></tr>';
-}
+           
 
 
                echo '</tbody></table></form>';
@@ -446,17 +414,15 @@ $date = date('Y-m-d');
 
         //  echo "<tr><td>".$prodname."</td><td>".$quantity."</td><td>".$row1[4]."</td><td>".$status."</td><td></td></tr>";
      
-         if(isset($_POST[$ReqID]))
-{
-echo $ReqID;
-    echo '
-    
-              
-                <div class="card-body">
 
-                <div class="row">';
 
-                if($status=='Requested' or $status=='Accepted' or $status=='Order Purchased' or $status=='Delivered') 
+    echo ' 
+    <div class="card-body">
+               <div class="row">';
+
+                
+               
+               if($status=='Requested' or $status=='Accepted' or $status=='Order Purchased' or $status=='Delivered') 
                 {
        echo '      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
@@ -465,7 +431,11 @@ echo $ReqID;
                   <p class="card-text">Processing</p>
                    </div> 
                    </div>  </div>';}
+                  
                    
+
+
+
                    if($status=='Accepted' or $status=='Order Purchased' or $status=='Delivered') 
                    {
 
@@ -478,6 +448,9 @@ echo $ReqID;
                       </div> 
                       </div>  </div>';}
 
+                      
+                      
+                      
                       if($status=='Order Purchased' or $status=='Delivered') 
                 {
                    echo '   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
@@ -490,6 +463,9 @@ echo $ReqID;
                          </div> 
                          </div> 
                           </div>';}
+                          
+                          
+                          
                           if($status=='Delivered') 
                           {
 
@@ -502,39 +478,17 @@ echo $ReqID;
                             </div> 
                             </div>  </div>';}
 
-               echo '  </div>
+              
+              
+              
+                            echo '  </div>
                   <div class="progress">
-                    <div class="'.$progressbarcolor.'" style="width: '.$progress.'%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                    <div class="'.$progressbarcolor.'" style="width: '.$progress.'%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">'.$progress.'%</div>
                   </div>
                 </div>
               </div>
             </div>';
-//  if($_POST[$prodname]=='')
-//  {
-//   $quantity=$row1[3];
-  
-//  }
-//  else{
-//   $quantity = $_POST[$prodname];
- 
-//   $query="UPDATE  `dis_shopreq`  set  `Quntity`='$quantity', `Date`='$date' Where `ReqID`='$ReqID'";
-//   $result=mysqli_query($con,$query);
-//  }
-}
-       
-   
 
-
-
-
-// $query ="SELECT * FROM `dis_shopreq` where `Product` LIKE '%$prodname%' " ;
-// $res1=mysqli_query($con,$query);
-// while($row = mysqli_fetch_array($res1))
-// {
-   
-//     echo "<tr><td>".$row[2]."</td></tr>";
-    
-// }
 
 
 ?>
@@ -544,419 +498,7 @@ echo $ReqID;
                 
                       
 
-                  <!-- <h4 class="card-title">Bordered table</h4>
-                  <p class="card-description">
-                    Add class <code>.table-bordered</code>
-                  </p>
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th>
-                          #
-                        </th>
-                        <th>
-                          First name
-                        </th>
-                        <th>
-                          Progress
-                        </th>
-                        <th>
-                          Amount
-                        </th>
-                        <th>
-                          Deadline
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          Herman Beck
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $ 77.99
-                        </td>
-                        <td>
-                          May 15, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          2
-                        </td>
-                        <td>
-                          Messsy Adam
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $245.30
-                        </td>
-                        <td>
-                          July 1, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          3
-                        </td>
-                        <td>
-                          John Richards
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $138.00
-                        </td>
-                        <td>
-                          Apr 12, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          4
-                        </td>
-                        <td>
-                          Peter Meggik
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $ 77.99
-                        </td>
-                        <td>
-                          May 15, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          5
-                        </td>
-                        <td>
-                          Edward
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $ 160.25
-                        </td>
-                        <td>
-                          May 03, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          6
-                        </td>
-                        <td>
-                          John Doe
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $ 123.21
-                        </td>
-                        <td>
-                          April 05, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          7
-                        </td>
-                        <td>
-                          Henry Tom
-                        </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td>
-                          $ 150.00
-                        </td>
-                        <td>
-                          June 16, 2015
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table> 
-                </div>
-              </div>-->
-            </div>
-            <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card"> -->
-              
-            <div class="col-lg-12 grid-margin stretch-card" hidden>
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Inverse table</h4>
-                  <p class="card-description">
-                    Add class <code>.table-dark</code>
-                  </p>
-                  <table class="table table-dark">
-                    <thead>
-                      <tr>
-                        <th>
-                          #
-                        </th>
-                        <th>
-                          First name
-                        </th>
-                        <th>
-                          Amount
-                        </th>
-                        <th>
-                          Deadline
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          Herman Beck
-                        </td>
-                        <td>
-                          $ 77.99
-                        </td>
-                        <td>
-                          May 15, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          2
-                        </td>
-                        <td>
-                          Messsy Adam
-                        </td>
-                        <td>
-                          $245.30
-                        </td>
-                        <td>
-                          July 1, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          3
-                        </td>
-                        <td>
-                          John Richards
-                        </td>
-                        <td>
-                          $138.00
-                        </td>
-                        <td>
-                          Apr 12, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          4
-                        </td>
-                        <td>
-                          Peter Meggik
-                        </td>
-                        <td>
-                          $ 77.99
-                        </td>
-                        <td>
-                          May 15, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          5
-                        </td>
-                        <td>
-                          Edward
-                        </td>
-                        <td>
-                          $ 160.25
-                        </td>
-                        <td>
-                          May 03, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          6
-                        </td>
-                        <td>
-                          John Doe
-                        </td>
-                        <td>
-                          $ 123.21
-                        </td>
-                        <td>
-                          April 05, 2015
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          7
-                        </td>
-                        <td>
-                          Henry Tom
-                        </td>
-                        <td>
-                          $ 150.00
-                        </td>
-                        <td>
-                          June 16, 2015
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12 stretch-card" hidden>
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Table with contextual classes</h4>
-                  <p class="card-description">
-                    Add class <code>.table-{color}</code>
-                  </p>
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th>
-                          #
-                        </th>
-                        <th>
-                          First name
-                        </th>
-                        <th>
-                          Product
-                        </th>
-                        <th>
-                          Amount
-                        </th>
-                        <th>
-                          Deadline
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="table-info">
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          Herman Beck
-                        </td>
-                        <td>
-                          Photoshop
-                        </td>
-                        <td>
-                          $ 77.99
-                        </td>
-                        <td>
-                          May 15, 2015
-                        </td>
-                      </tr>
-                      <tr class="table-warning">
-                        <td>
-                          2
-                        </td>
-                        <td>
-                          Messsy Adam
-                        </td>
-                        <td>
-                          Flash
-                        </td>
-                        <td>
-                          $245.30
-                        </td>
-                        <td>
-                          July 1, 2015
-                        </td>
-                      </tr>
-                      <tr class="table-danger">
-                        <td>
-                          3
-                        </td>
-                        <td>
-                          John Richards
-                        </td>
-                        <td>
-                          Premeire
-                        </td>
-                        <td>
-                          $138.00
-                        </td>
-                        <td>
-                          Apr 12, 2015
-                        </td>
-                      </tr>
-                      <tr class="table-success">
-                        <td>
-                          4
-                        </td>
-                        <td>
-                          Peter Meggik
-                        </td>
-                        <td>
-                          After effects
-                        </td>
-                        <td>
-                          $ 77.99
-                        </td>
-                        <td>
-                          May 15, 2015
-                        </td>
-                      </tr>
-                      <tr class="table-primary">
-                        <td>
-                          5
-                        </td>
-                        <td>
-                          Edward
-                        </td>
-                        <td>
-                          Illustrator
-                        </td>
-                        <td>
-                          $ 160.25
-                        </td>
-                        <td>
-                          May 03, 2015
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                  
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
