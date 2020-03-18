@@ -876,6 +876,14 @@ $avg =round($avg);
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
+                <?php
+                 
+
+
+
+
+?>
+                
                   <h6 class="card-title font-weight-normal text-info">7896</h6>                 
                   <h6 class="card-subtitle mb-4 text-muted">Visitors</h6>
                   <div class="progress progress-slim">

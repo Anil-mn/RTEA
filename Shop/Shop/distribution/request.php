@@ -10,8 +10,8 @@ while($row = mysqli_fetch_array($query))
 }
 
 
-
- 
+include('disreq.php');
+ disreq();
 
 
 
@@ -360,45 +360,42 @@ while($row = mysqli_fetch_array($query))
                     <tbody>
                     <?php
 $date = date('Y-m-d');      
-$check=mysqli_query($con,"SELECT * FROM `shop_link` where `Shop_ID`='$shopid' and `NumberOf`<7");
-while($row = mysqli_fetch_array($check))
-{
-    $prodid=$row[1];
+// $check=mysqli_query($con,"SELECT * FROM `shop_link` where `Shop_ID`='$shopid' and `NumberOf`<7");
+// while($row = mysqli_fetch_array($check))
+// {
+//     $prodid=$row[1];
 
-    $res=mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID`='$prodid' ");
- while($row = mysqli_fetch_array($res))
- {
-     $prodname=$row[1];
+//     $res=mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID`='$prodid' ");
+//  while($row = mysqli_fetch_array($res))
+//  {
+//      $prodname=$row[1];
      
-     $res1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `Product`='$prodname'");
+     $res1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ShopID`='$shopid' and `Status`='Not Requested'");
      while($row1 = mysqli_fetch_array($res1))
      {
          $ReqID=$row1[0];
          $quantity=$row1[3];
+         $prodname=$row1[2];
          
-         echo "<tr><td>".$prodname."</td><td>".$row1[3]."</td><td>".$row1[4]."</td><td><input type='number' name=".$prodname."></input></td><td><button type='submit' name=".$ReqID."  class='btn btn-inverse-success btn-fw''>Confirm</button></td></tr>";
-
+         echo "<tr><td>".$prodname."</td><td>".$quantity."</td><td>".$row1[4]."</td><td><input type='number' name=".$prodname."></input></td><td><button type='submit' name=".$ReqID."  class='btn btn-inverse-success btn-fw''>Confirm</button></td></tr>";
+     
          if(isset($_POST[$ReqID]))
 {
- if($_POST[$prodname]=='')
- {
-  $quantity=$row1[3];
+//  if($_POST[$prodname]=='')
+//  {
+//   $quantity=$row1[3];
   
- }
- else{
+//  }
+//  else{
   $quantity = $_POST[$prodname];
- }
-  
-  
  
   $query="UPDATE  `dis_shopreq`  set  `Quntity`='$quantity', `Date`='$date' Where `ReqID`='$ReqID'";
   $result=mysqli_query($con,$query);
-
-}
+ }
+//}
        }
    
-}
-}
+
 
 
 
