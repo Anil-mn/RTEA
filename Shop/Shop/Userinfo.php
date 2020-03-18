@@ -220,8 +220,8 @@ $date=date('Y-m-d');
             </div>
           </li>
           <li class="nav-item"><a class="nav-link" href="../index.html"><img class="menu-icon" src="images/menu_icons/01.png" alt="menu icon"><span class="menu-title">Dashboard</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/widgets.html"><img class="menu-icon" src="images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Widgets</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/ui-features/buttons.html"><img class="menu-icon" src="images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Buttons</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="userInfo.php"><img class="menu-icon" src="images/menu_icons/02.png" alt="menu icon"><span class="menu-title">User Info</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="productInstertion.php"><img class="menu-icon" src="images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Product Insertion</span></a></li>
           <li class="nav-item"><a class="nav-link" href="../pages/forms/basic_elements.html"><img class="menu-icon" src="images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Form</span></a></li>
           <li class="nav-item"><a class="nav-link" href="../pages/charts/chartjs.html"><img class="menu-icon" src="images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Charts</span></a></li>
           <li class="nav-item"><a class="nav-link" href="../pages/tables/basic-table.html"><img class="menu-icon" src="images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Table</span></a></li>
@@ -253,7 +253,6 @@ $date=date('Y-m-d');
                     <i class="fa fa-users float-right icon-md text-gray"></i>
                   </div>
                   <?php
-                 
                     
                        $check = mysqli_query($con, "SELECT COUNT('LogID') FROM `user_log` where `ShopID`= '$shopid'");
                        while($row = mysqli_fetch_array($check))
@@ -484,75 +483,6 @@ $avg =round($avg);
             </div>
           </div>
           <div class="row">
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-
-                  <h6 class="card-title font-weight-normal text-info">7896</h6>                 
-                  <h6 class="card-subtitle mb-4 text-muted">Visitors</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">7523</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Sales</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">6932</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Orders</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">$ 54123</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Revenue</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">23658</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">New clients</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">8965</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Comments</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
               <div class="card">
                 <div class="card-body" hidden>
@@ -685,10 +615,12 @@ $avg =round($avg);
                         <div class="form-group">
                         <button type="Submit" name="demo" class="btn btn-inverse-dark btn-rounded btn-fw">Search</button>
                         </div>
-                      </form>
+                      </form >
                  
                   <h5 class="card-title mb-4"></h5>
+                  <form action='#' method='POST'>
                   <table class="table ">
+
                     <thead>
                       <tr>
                       <th>Phone Number</th>
@@ -703,7 +635,9 @@ $avg =round($avg);
                      
                     <?php
                 
-                include('../../BackEnd/Php/connection.php');  
+                include('../../BackEnd/Php/connection.php'); 
+                $date = date('Y-m-1');
+            //  echo $date; 
                 if(isset($_POST['demo']))
                 {
                   $phonenum=$_POST['phonenum'];
@@ -742,16 +676,85 @@ $avg =round($avg);
 
                 
                  
-                }
-               
-             echo '<tr><td>
-                     <select> 
-                     <option>03-03-2020 </option>
-                     <option>13-03-2020 </option>  
-                     </select>
-                     </td></tr>';
+              echo '<tr><td>
+              <select name="date" class="form-control"> ';
+              
+
+               $query=mysqli_query($con,"SELECT * from `user_log` where `User_ID`='$userid' and `Date` > '$date'");
+               while($row=mysqli_fetch_array($query))
+               {
+                   $date=$row[3];
+                   
+                   echo '<option name='.$row[0].'>'.$date.' </option>';
+                  
+               }
+              
+            
+
+                     
+                    
+                  echo '</select>
+                     </td><td><button name="sub" class="btn btn-success mr-2">SUBMIT </button></td></tr>';
+                    }
+?>
+              </tbody></table>
+                       
+                      
+<?php
+
+                 if(isset($_POST['sub']))
+                 {
+                   
+                  echo '<table class="table ">
+                  <thead>
+                 <tr>
+                 <th>Product Name</th>
+                   <th>Quantity</th>
+                   <th>Amount</th>
+                 </tr>
+               </thead>
+               <tbody>
+                  ';
+                   $Datefromlog =$_POST['date'];
+                  echo $Datefromlog;
+                   
+                   $query=mysqli_query($con,"SELECT * from `user_log` where `date`='$Datefromlog'");
+                   while($row=mysqli_fetch_array($query))
+                   {
+                    $logid=$row[0];
+                    $Behaviour=$row[7];
+                    
+
+                 }
+                   $query2= mysqli_query($con,"SELECT * FROM `user_transactions` where `LogID`='$logid'");
+                   while($row=mysqli_fetch_array($query2))
+                   {
+                    $prodid=$row[2];
+                    //echo $prodid;
+                    $noofprod=$row[4];
+                    $totalamt=$row[3];
+                    $productName = mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid'");
+                    while($row1=mysqli_fetch_array($productName))
+                    {
+                     // echo $row1[1];
+                     $query3= mysqli_query($con,"SELECT sum(`amount`) FROM `user_transactions` where `LogID`='$logid'");
+                     while($row4=mysqli_fetch_array($query3))
+                     {
+                      $total = $row4[0];
+                   
+                      
+                     echo '<tr><td>'.$row1[1].'</td><td>'.$noofprod.'</td><td>'.$totalamt.'</td</tr>';
+                      
+                    }
+                    }
+                   } 
+                   echo '<tr><td>total</td><td></td><td>'.$total.'</td></tr>';
+                  }
+                 
+
                   ?>
-           
+                  
+                 
                       <!-- <tr>
                         <td>1</td>
                         <td>Bob Williams</td>
@@ -795,11 +798,16 @@ $avg =round($avg);
                         <td>South Africa</td>
                       </tr> -->
                     </tbody>
+                </form>
                   </table>
                 </div>
                 </div>
               </div>
             
+
+
+
+              
             <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body" hidden>
@@ -863,6 +871,75 @@ $avg =round($avg);
             </div> -->
           </div>
         </div>
+        
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title font-weight-normal text-info">7896</h6>                 
+                  <h6 class="card-subtitle mb-4 text-muted">Visitors</h6>
+                  <div class="progress progress-slim">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title font-weight-normal text-info">7523</h6>
+                  <h6 class="card-subtitle mb-4 text-muted">Sales</h6>
+                  <div class="progress progress-slim">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title font-weight-normal text-info">6932</h6>
+                  <h6 class="card-subtitle mb-4 text-muted">Orders</h6>
+                  <div class="progress progress-slim">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title font-weight-normal text-info">$ 54123</h6>
+                  <h6 class="card-subtitle mb-4 text-muted">Revenue</h6>
+                  <div class="progress progress-slim">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title font-weight-normal text-info">23658</h6>
+                  <h6 class="card-subtitle mb-4 text-muted">New clients</h6>
+                  <div class="progress progress-slim">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title font-weight-normal text-info">8965</h6>
+                  <h6 class="card-subtitle mb-4 text-muted">Comments</h6>
+                  <div class="progress progress-slim">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         <!-- content-wrapper ends -->
         <!-- partial:../partials/_footer.html -->
         <footer class="footer">
