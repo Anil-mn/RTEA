@@ -20,8 +20,8 @@ $result = mysqli_fetch_array($ChangeStatus);
 if($result == true){
     echo 'yes';
     echo $ReqestID;
-    $ChangeReq =  mysqli_query($con,"UPDATE `dis_shopreq` SET `Status`='Deliverd' where `ReqID` = '$ReqestID'");
-    $ChangeReqShop =  mysqli_query($con,"UPDATE `distributor_orders` SET `Status`='Order Deliverd' where `Request_ID` = '$ReqestID'");
+    $ChangeReq =  mysqli_query($con,"UPDATE `dis_shopreq` SET `Status`='Delivered' where `ReqID` = '$ReqestID'");
+    $ChangeReqShop =  mysqli_query($con,"UPDATE `distributor_orders` SET `Status`='Order Delivered' where `Request_ID` = '$ReqestID'");
     header('Location: ../home.php');
 
 }
