@@ -14,7 +14,8 @@ $filename = basename($_SERVER['REQUEST_URI']);
 $ReqID=substr($filename,16);
 
 //echo $ReqID;
-
+include('ShopLinkInsertion.php');
+LinkInsertion();
 
 ?>
 
@@ -395,7 +396,7 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
                 $textColor ='card-title font-weight-normal text-info';
              
              }
-             elseif($status=='Delivered')
+             elseif($status=='Delivery Confirmed')
            
              {
                // echo '<td>'.$status.'</td><td>'.$distributorname.'</td><td>'.$phonenum.'</td></div></tr> ' ; 
@@ -422,7 +423,7 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
 
                 
                
-               if($status=='Requested' or $status=='Accepted' or $status=='Order Purchased' or $status=='Delivered') 
+               if($status=='Requested' or $status=='Accepted' or $status=='Order Purchased' or $status=='Delivery Confirmed') 
                 {
        echo '      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
@@ -436,7 +437,7 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
 
 
 
-                   if($status=='Accepted' or $status=='Order Purchased' or $status=='Delivered') 
+                   if($status=='Accepted' or $status=='Order Purchased' or $status=='Delivery Confirmed') 
                    {
 
                    echo '           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
@@ -451,7 +452,7 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
                       
                       
                       
-                      if($status=='Order Purchased' or $status=='Delivered') 
+                      if($status=='Order Purchased' or $status=='Delivery Confirmed') 
                 {
                    echo '   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
                       <div class="card">
@@ -466,7 +467,7 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
                           
                           
                           
-                          if($status=='Delivered') 
+                          if($status=='Delivery Confirmed') 
                           {
 
                   echo '       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">

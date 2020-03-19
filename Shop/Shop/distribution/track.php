@@ -10,6 +10,8 @@ while($row = mysqli_fetch_array($query))
 }
 
 
+include('ShopLinkInsertion.php');
+LinkInsertion();
 
 
 
@@ -341,6 +343,9 @@ while($row = mysqli_fetch_array($query))
                       
                     <thead>
                       <tr>
+                      <th>
+                         Id 
+                        </th>
                         <th>
                          Product Name
                         </th>
@@ -350,14 +355,12 @@ while($row = mysqli_fetch_array($query))
                         <th>
                           Status
                         </th>
-                        <th>
-                          
-                        </th>
+                        
                       </tr>
                     </thead>
                     <tbody>
                     <?php
-$date = date('Y-m-d');      
+$date = date('Y-m-1');      
 // $check=mysqli_query($con,"SELECT * FROM `shop_link` where `Shop_ID`='$shopid' and `NumberOf`<7");
 // while($row = mysqli_fetch_array($check))
 // {
@@ -368,7 +371,7 @@ $date = date('Y-m-d');
 //  {
 //      $prodname=$row[1];
      
-     $res1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ShopID`='$shopid' ");
+     $res1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ShopID`='$shopid' and `Date`>'$date' order by `Date` desc ");
      while($row1 = mysqli_fetch_array($res1))
      {
          $ReqID=$row1[0];
@@ -377,7 +380,7 @@ $date = date('Y-m-d');
          $prodname=$row1[2];
          $status=$row1[6]; 
          echo '<tr> 
-         
+         <td>'.$ReqID.'</td>
          <td>'.$prodname.'</td><td>'.$quantity.'</td><td><a  class="btn btn-outline-primary" href="trackStatus.php?'.$ReqID.'">Track</a></td></tr>';
          //echo $ReqID;
 //                       $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='$ReqID'");

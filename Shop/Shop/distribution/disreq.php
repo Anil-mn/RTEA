@@ -24,20 +24,22 @@ while($row = mysqli_fetch_array($query))
     while($row = mysqli_fetch_array($query1))
 {
     $prodname=$row[1];
+    echo $prodname;
     $dist=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ShopID`='$shopid' and `Product`='$prodname'");
     $res=mysqli_fetch_array($dist);
     if($res==true)
     {
-        $q1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ShopID`='$shopid' and `Product`='$prodname' and `Status`='Delivered'");
+        $q1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ShopID`='$shopid' and `Product`='$prodname' and `Status`='Delivery Confirmed'");
     $r1=mysqli_fetch_array($q1);
      if($r1==true)
      {
+         echo "hai";
         $check=mysqli_query($con,"UPDATE `dis_shopreq` SET `Status`='Not Requested',`Date`='$date' where `ShopID`='$shopid' and `Product`='$prodname'");
     }
   }
     else
     {
-        
+      echo "ami";  
         
         $check=mysqli_query($con,"INSERT INTO `dis_shopreq`( `ShopID`, `Product`, `Quntity`, `Date`) VALUES ('$shopid','$prodname','20','$date')");
     }

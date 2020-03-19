@@ -391,7 +391,7 @@ $date = date('Y-m-d');
  }
   $query="UPDATE  `dis_shopreq`  set `Status`='Requested',`Quntity`='$quantity', `Date`='$date' Where `ReqID`='$ReqID'";
   $result=mysqli_query($con,$query);
-  header("Refresh:0");
+  // header("Refresh:0");
  
 }
        }
