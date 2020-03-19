@@ -30,13 +30,8 @@ while($row = mysqli_fetch_array($check))
 //$query= mysqli_query($con,"INSERT INTO `shop_link`(`Product_ID`, `Shop_ID`, `NumberOf`, `Location`) VALUES  ('$productID',' $shopId','$numberOfProducts','$location')";
 $query="INSERT INTO `shop_link`(`Product_ID`, `Shop_ID`, `NumberOf`, `Location`) VALUES ('$productID','$shopId','$numberOfProducts','$location')";
  $result=mysqli_query($con,$query); 
- include('phpqrcode/qrlib.php'); 
-$text=$productID;
-$path="images/";
-$file=$path.".png";
-QRcode::png($text,$path);
-echo "<center><img src='".$file."'></center>"; 
+  
 
-//header('Location:productInstertion.php');
+header('Location:productInstertion.php');
 }
 ?>
