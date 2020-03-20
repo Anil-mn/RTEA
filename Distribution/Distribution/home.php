@@ -23,10 +23,13 @@ while($row = mysqli_fetch_array($DisInfo))
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   
     
-  <head>
-  
-    <title>RTEA DISTRIBUTION</title>
+        <title>RTEA DISTRIBUTION</title>
+   
+   
+ 
+   <!-- Title icon -->
 
    
     <!-- plugins:css -->
@@ -43,7 +46,8 @@ while($row = mysqli_fetch_array($DisInfo))
     <!-- Layout styles -->
     <link rel="stylesheet" href="./css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="./images/favicon.png" />
+    <link rel="shortcut icon" href="images/favicon.png" />
+ 
   </head>
   <body>
     <div class="container-scroller">
