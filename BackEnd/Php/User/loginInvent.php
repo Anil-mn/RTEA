@@ -1,15 +1,17 @@
 <?php
 include('../connection.php');
- $companyName = $_POST ['phoneNumber'];
- $password = $_POST['password'];
+ $Distribution_ID = $_POST ['Distribution_ID'];
+ $Password = $_POST['Password'];
 
- $query = "select * from inventory where companyName = '$companyName' and password = '$password'";
+ $query = "SELECT * FROM `distribution_info` WHERE  Distribution_ID = '$Distribution_ID' and Password = '$Password'";
  $result = mysqli_query($con, $query);
  $check = mysqli_fetch_array($result);
  if ($check == true){
-     echo "success";
+     header('location:../../../Distribution/Distribution/home.html');
  }
-
+else{
+    echo "login faild";
+}
 
 
 ?>

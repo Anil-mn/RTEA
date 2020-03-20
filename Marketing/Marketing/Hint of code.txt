@@ -1,0 +1,75 @@
+This is a file that contain discription of how it generating adds 
+
+Product name is getting from home.php 2 form
+
+Requirmets 
+------------------
+
+a) In  `shop_link` Table There should be product_ID and `NumberOf` greater than 30
+b) In user_transation table should contain productID and amount greater than 30
+
+
+
+Steps :
+1:) Collectiong Add id and product name from `market_add` Table and it will take the last add id ..
+    From this we take ADD_ID and Product Name
+
+2:) Selecting product_ID from `Shop_product` by Product Name .
+
+3:) Collectin add details like dude date from `market_addcollection` by using ADD_ID
+    DueDate Of add is Fetched from this
+----------------------------------------------------------------------------------------------------
+SHOP Selection to POST ADD
+
+
+4:) Select shop IDs from `shop_link`  by product_ID and sales greater than 30
+    4.1:) Collecting Shops Available slots from `Shop info`  by shop_ids that have sales greater than 30
+    4.2:) If slot is not available then it rejact that shops
+    4.3:) if slot is available in that shops 
+          4.3.1) It check the add is already placed or not If yes then it will return
+          4.3.1) Else INSERT INTO `market_shopads`values like `ShopID`, `AddID`, `SoltNumber`, `DueDate`
+    4.4:) Then Check the count of shops that placed this add     
+
+
+
+--------------------------------------  ---------------------------------------------------------      -------------------  
+
+``User Selection to POST ADD```
+
+5) Select user Transation From transation table where he/she bought the product more than a specific amont 
+   5.1:) select that users : Select userId form user Log Who bought that product by using LOG ID
+   5.2 :) Select the slot of Users .
+       5.2.1) Check the Add is already placed or not in the user
+       5.2.2)If not insert the add
+       5.2.3) User side have 10 slot of add it is fixed
+       5.2.4) Check the slot available or not .. if yes post ...
+
+   5.3)Then Check the count of Users that placed this add    
+
+
+
+--------------------------------------  ---------------------------------------------------------      -------------------  
+
+6)INSERT INTO `market_ads` values like invID`, `ProductID`, `AddID`, `NoOfShops`, `NoOfUsers`,`DueDate`
+and show this table to ivent and generating price by 100 rs for each slot and addinf price to 
+membership details table
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Last it show the details of sale before posting the add and after posting the add
+
+
+
+
+payMent of add
+
+1) Select add id an Slot number 
+2) Each slot is charged 100 rs
+3)Multiplay the add and insert into membership table
+
+
