@@ -26,7 +26,9 @@ LinkInsertion();
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>RTEA</title>
+  <link rel = "shortcut icon" href = "../../../Logos/title.png" 
+        type = "image/x-icon">
+  <title>RTEA shop/Distribution</title>
 
   <!-- Title icon -->
   <link rel = "icon" href = "../../../Logos/title.png" 
@@ -133,7 +135,13 @@ LinkInsertion();
         </ul>
       </nav>
       <!-- partial -->
-            
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              
+              </div>
+            </div>
             <div class="col-lg-12 grid-margin stretch-card">
              
 

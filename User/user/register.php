@@ -34,8 +34,8 @@
     </div>
 
     <!-- Header Section Begin -->
-    <header class="header-section">
-        <div class="header-top" hidden>
+    <header class="header-section" hidden>
+        <div class="header-top">
             <div class="container">
                 <div class="ht-left">
                     <div class="mail-service">
@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="../index.html">
                                 <img src="img/logo.png" alt="">
                             </a>
                         </div>    
@@ -281,7 +281,7 @@
                             <button type="submit" name="submit" class="site-btn register-btn">REGISTER</button>
                         </form>
                         <div class="switch-login">
-                            <a href="./login.html" class="or-login">Or Login</a>
+                            <a href="../index.html" class="or-login">Or Login</a>
                         </div>
                     </div>
                 </div>
@@ -291,7 +291,7 @@
     <!-- Register Form Section End -->
     
     <!-- Partner Logo Section Begin -->
-    <div class="partner-logo">
+    <div class="partner-logo" hidden>
         <div class="container">
             <div class="logo-carousel owl-carousel">
                 <div class="logo-item">
@@ -325,7 +325,7 @@
     <!-- Partner Logo Section End -->
 
     <!-- Footer Section Begin -->
-    <footer class="footer-section">
+    <footer class="footer-section" hidden>
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
