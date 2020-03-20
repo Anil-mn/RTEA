@@ -26,7 +26,9 @@ LinkInsertion();
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>RTEA</title>
+  <link rel = "shortcut icon" href = "../../../Logos/title.png" 
+        type = "image/x-icon">
+  <title>RTEA shop/Distribution</title>
 
   <!-- Title icon -->
   <link rel = "icon" href = "../../../Logos/title.png" 

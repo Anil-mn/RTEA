@@ -29,7 +29,7 @@ LinkInsertion();
   <!-- Title icon -->
   <link rel = "shortcut icon" href = "../../../Logos/title.png" 
         type = "image/x-icon"> 
-  <title>RTEA</title>
+  <title>RTEA shop/Distribution</title>
 
    
     <!-- Google Font -->
