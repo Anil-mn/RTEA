@@ -1,9 +1,10 @@
 <?php
+
 function LinkInsertion()
 {
 include('../../../BackEnd/php/connection.php');
 
-session_start();
+///session_start();
 
 
 $PhoneNumber=$_SESSION['PhoneNumber'];

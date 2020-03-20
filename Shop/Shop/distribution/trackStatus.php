@@ -26,11 +26,12 @@ LinkInsertion();
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>RTEA</title>
-
   <!-- Title icon -->
-  <link rel = "icon" href = "../../../Logos/title.png" 
+  <link rel = "shortcut icon" href = "../../../Logos/title.png" 
         type = "image/x-icon"> 
+  <title>RTEA shop/Distribution</title>
+
+   
     <!-- Google Font -->
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../../node_modules/mdi/css/materialdesignicons.min.css">
@@ -91,6 +92,7 @@ LinkInsertion();
       </div>
     </nav>
     <!-- partial -->
+
     <div class="container-fluid page-body-wrapper">
       <!-- partial:../../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -133,20 +135,19 @@ LinkInsertion();
         </ul>
       </nav>
       <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              
+              </div>
+            </div>
             <div class="col-lg-12 grid-margin stretch-card">
              
 
               <div class="card">
                 <div class="card-body">
-                 
-                  <h4 class="card-title">your Order Status</h4>
-                  <p class="card-description">
-                    <code></code>
-                  </p>
-                  <form action="trackStatus.php" method='POST'>
-                 
-                 
-                    <?php
+                <?php
 $date = date('Y-m-d');      
 $res1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ReqID`='$ReqID' ");
 while($row1 = mysqli_fetch_array($res1))
@@ -154,9 +155,22 @@ while($row1 = mysqli_fetch_array($res1))
  
   
  
-    $status=$row1[6]; 
+    $status=$row1[6];
+    $proname = $row1[2]; 
     
 }
+echo '<h4 class="card-title">your Order Status of '.$proname.'</h4>';
+?>
+                 
+                  <!-- <h4 class="card-title">your Order Status</h4> -->
+                  <p class="card-description">
+                    <code></code>
+                  </p>
+                  <form action="trackStatus.php" method='POST'>
+                 
+                 
+
+<?php
 $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='$ReqID'");
  while($row2 = mysqli_fetch_array($res2))
    {
