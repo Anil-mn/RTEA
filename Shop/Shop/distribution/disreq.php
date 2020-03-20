@@ -5,7 +5,7 @@ function disreq()
 
 include('../../../BackEnd/php/connection.php');
 
-session_start();
+//session_start();
 $PhoneNumber=$_SESSION['PhoneNumber'];
 $query=mysqli_query($con,"SELECT * FROM `shop_info` where `PhoneNumber`='$PhoneNumber'");
 while($row = mysqli_fetch_array($query))
