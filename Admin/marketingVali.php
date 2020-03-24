@@ -346,9 +346,9 @@
                     echo '<h6 class="card-title font-weight-normal text-info">'.$adcount.'</h6>';
                     ?>
                   <!-- <h6 class="card-title font-weight-normal text-info"></h6> -->
-                  <h6 class="card-subtitle mb-4 text-muted">Advertisements</h6>
+                  <h6 class="card-subtitle mb-4 text-muted">Total Ads</h6>
                   <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    <?php echo '<div class="progress-bar bg-info" role="progressbar" style="width: '.$adcount.'%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">'.$adcount.'</div>'; ?>
                   </div>
                 </div>
               </div>
@@ -359,35 +359,53 @@
                     <?php
                        $date=date('Y-m-d');
                 include('../Backend/php/connection.php');
-                    $Advdue=mysqli_query($con,"SELECT count(`date`) from `market_add` where `date`>'$date'");
+                    $Advdue=mysqli_query($con,"SELECT COUNT(`AddID`) from `market_ads` where `DueDate`>'$date'");
                     while($row=mysqli_fetch_array($Advdue))
                     {
                         $addue=$row[0];
+                        
                     }
-                     echo '<h6 class="card-title font-weight-normal text-info">'.$addue.'</h6>' ;         
-                    ?>
-                  <!-- <h6 class="card-title font-weight-normal text-info">6932</h6>-->
-                  <h6 class="card-subtitle mb-4 text-muted">Orders</h6> 
+                    $avg=($addue/$adcount)*100;
+                     echo '<h6 class="card-title font-weight-normal text-info">'.$addue.'</h6>        
+                    
+                 
+                  <h6 class="card-subtitle mb-4 text-muted">Ads</h6> 
                   <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
+                    <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:'.$avg.'%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">'.$avg.'%</div>
+                  </div>' ; 
+                  ?>
                 </div>
               </div>
             </div>
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">$ 54123</h6>
+                  <?php
+                  include('../Backend/php/connection.php');
+                  $revenue=mysqli_query($con,"SELECT sum(`price`) from `market_membership`");
+                  while($row=mysqli_fetch_array($revenue))
+                    {
+                        $rev=$row[0]; 
+                    }
+                  
+                  
+         echo '  <h6 class="card-title font-weight-normal text-info">'.$rev.'</h6>
                   <h6 class="card-subtitle mb-4 text-muted">Revenue</h6>
                   <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
+                    <div class="progress-bar bg-info" role="progressbar" style="width:10%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>'; ?>
                 </div>
               </div>
             </div>
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
+                 <?php
+                 
+
+
+
+?>
                   <h6 class="card-title font-weight-normal text-info">23658</h6>
                   <h6 class="card-subtitle mb-4 text-muted">New clients</h6>
                   <div class="progress progress-slim">
