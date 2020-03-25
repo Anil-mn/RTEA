@@ -27,8 +27,8 @@ type = "image/x-icon">
     <!-- partial:../shop/shop/partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="../shop/shop/index.html">        <img style="height:60px; width:150px; margin-top:20px;"       src="../Logos/Name.jpg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="../shop/shop/index.html">   <img style="height:60px; width:150px; margin-top:20px;"        src="../Logos/Name.jpg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo" href="../shop/shop/index.html">        <img style="height:50px; width:150px; margin-top:20px;"       src="../Logos/Name.jpg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../shop/shop/index.html">   <img style="height:50px; width:150px; margin-top:20px;"        src="../Logos/Name.jpg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
@@ -46,7 +46,20 @@ type = "image/x-icon">
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="mdi mdi-bell-ring"></i>
-              <span class="count">4</span>
+              <?php
+              include('../Backend/php/connection.php');
+              $date = date('Y-m-d');
+                   
+                   $Adexp=mysqli_query($con,"SELECT count(`ID`) from `market_ads` where `DueDate`='$date'");
+                   while($row=mysqli_fetch_array($Adexp))
+                   {
+                       $adid=$row[0];
+ 
+                   }
+                            
+                      echo '<span class="count">'.$adid.'</span>';
+                   
+                       ?>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <a class="dropdown-item">
@@ -101,6 +114,10 @@ type = "image/x-icon">
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <i class="mdi mdi-email-variant"></i>
+
+
+
+
               <span class="count">7</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
@@ -126,7 +143,7 @@ type = "image/x-icon">
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="../shop/shop/images/faces/face2.jpg" alt="image" class="profile-pic">
+                  <img src="../Logos/title.png" alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium">Tim Cook
@@ -155,7 +172,7 @@ type = "image/x-icon">
           </li>
           <li class="nav-item d-none d-lg-block">
             <a class="nav-link" href="#">
-              <img class="img-xs rounded-circle" src="../shop/shop/images/faces/face4.jpg" alt="">
+              <img class="img-xs rounded-circle" src="../Logos/title.png" alt="">
             </a>
           </li>
         </ul>
@@ -171,9 +188,9 @@ type = "image/x-icon">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
-              <div class="profile-image"> <img src="../shop/shop/images/faces/face4.jpg" alt="image"/> <span class="online-status online"></span> </div>
+              <div class="profile-image"> <img src="../Logos/title.png" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
-                <p class="name">Richard V.Welsh</p>
+                <p class="name">Admin</p>
                 <p class="designation">Manager</p>
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
@@ -205,110 +222,7 @@ type = "image/x-icon">
       <!-- partial -->
        <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-             <div class="card">
-               <!-- <div class="card-body">
-                  <div class="clearfix">
-                    <i class="fa fa-users float-right icon-md text-gray"></i>
-                  </div>
-                  <h4 class="card-title font-weight-normal text-success">45465</h4>
-                  <h6 class="card-subtitle mb-4">Visitors</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-success-gadient" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <i class="fa fa-shopping-cart float-right icon-md text-gray"></i>
-                  </div>
-                  <h4 class="card-title font-weight-normal text-info">7895</h4>
-                  <h6 class="card-subtitle mb-4">Sales</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info-gadient" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <i class="fa fa-bookmark float-right icon-md text-gray"></i>
-                  </div>
-                  <h4 class="card-title font-weight-normal text-warning">1569</h4>
-                  <h6 class="card-subtitle mb-4">Orders</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-warning-gadient" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <i class="fa fa-pie-chart float-right icon-md text-gray"></i>
-                  </div>
-                  <h4 class="card-title font-weight-normal text-danger">$ 63259</h4>
-                  <h6 class="card-subtitle mb-4">Revenue</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-danger-gadient" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>-->
-              </div>
-            </div>
-          </div> 
-          <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-               <div class="card">
-                <!--<div class="card-body">
-                  <h4 class="card-title font-weight-normal text-success">7896</h4>
-                  <p class="card-text">Visitors</p>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title font-weight-normal text-info">5623</h4>
-                  <p class="card-text">Sales</p>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title font-weight-normal text-warning">1236</h4>
-                  <p class="card-text">Orders</p>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title font-weight-normal text-danger">$ 7832</h4>
-                  <p class="card-text">Revenue</p>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
-                  </div>
-                </div>-->
-              </div> 
-            </div>
-          </div>
+          <!--  -->
           <div class="row">
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
               <div class="card">
@@ -496,46 +410,7 @@ type = "image/x-icon">
                      }   
                     ?>
                         
-                        <!-- <tr>
-                          <td>035</td>
-                          <td>Galaxy S8</td>
-                          <td>15 May 2017</td>
-                          <td>Dispatched</td>
-                          <td>Internet banking</td>
-                          <td><label class="badge badge-warning">Pending</label></td>
-                          <td><a href="#" class="btn btn-outline-success btn-sm">View Order</a></td>
-                          <td><a href="#" class="btn btn-outline-danger btn-sm">Cancel</a></td>
-                        </tr>
-                        <tr>
-                          <td>036</td>
-                          <td>Amazon Echo</td>
-                          <td>17 May 2017</td>
-                          <td>Dispatched</td>
-                          <td>Credit card</td>
-                          <td><label class="badge badge-teal">Approved</label></td>
-                          <td><a href="#" class="btn btn-outline-success btn-sm">View Order</a></td>
-                          <td><a href="#" class="btn btn-outline-danger btn-sm">Cancel</a></td>
-                        </tr>
-                        <tr>
-                          <td>037</td>
-                          <td>Google Pixel</td>
-                          <td>17 May 2017</td>
-                          <td>Dispatched</td>
-                          <td>Cash on delivery</td>
-                          <td><label class="badge badge-danger">Rejected</label></td>
-                          <td><a href="#" class="btn btn-outline-success btn-sm">View Order</a></td>
-                          <td><a href="#" class="btn btn-outline-danger btn-sm">Cancel</a></td>
-                        </tr>
-                        <tr>
-                          <td>038</td>
-                          <td>Mac Mini</td>
-                          <td>19 May 2017</td>
-                          <td>Dispatched</td>
-                          <td>Debit card</td>
-                          <td><label class="badge badge-teal">Approved</label></td>
-                          <td><a href="#" class="btn btn-outline-success btn-sm">View Order</a></td>
-                          <td><a href="#" class="btn btn-outline-danger btn-sm">Cancel</a></td>
-                        </tr> -->
+                        
                       </tbody>
                     </table>
                   </div>
@@ -608,107 +483,17 @@ type = "image/x-icon">
 
 
 
-
-                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-xs-12">
-                      <div class="rounded" id="map" style="min-height:300px;"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title mb-4">Testimonial</h5>
-                  <div class="row d-flex align-items-center justify-items-center flex-column">
-                    <div class="text-center">
-                      <img src="../shop/shop/images/faces/face8.jpg" class="rounded-circle" width="100" height="100" />
-                    </div>
-                    <div class="text-center mt-3">
-                      <i class="fa fa-quote-right icon-grey-big"></i>
-                    </div>
-                    <p class="font-italic text-muted mt-3 mb-4 text-center">
-                      Your products, all the kits that I have downloaded from your site and worked with are sooo cool!. Keep up the great work!
-                    </p>
-                    <h5 class="text-center bolder">Tom Swayer</h5>
-                    <h6 class="text-center text-muted">Co-founder</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title mb-4">Employees</h5>
-                  <table class="table table-hover table-striped">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Salary</th>
-                        <th>Country</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Bob Williams</td>
-                        <td>$23,566</td>
-                        <td>USA</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Mike Tyson</td>
-                        <td>$10,200</td>
-                        <td>Canada</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Tim Sebastian</td>
-                        <td>$32,190</td>
-                        <td>Netherlands</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Philip Morris</td>
-                        <td>$31,123</td>
-                        <td>Korea, South</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>Minerva Hooper</td>
-                        <td>$23,789</td>
-                        <td>South Africa</td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>Cooper</td>
-                        <td>$27,789</td>
-                        <td>Canada</td>
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>Philip</td>
-                        <td>$13,789</td>
-                        <td>South Africa</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
             </div>
           </div>
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../shop/shop/partials/_footer.html -->
-        <footer class="footer">
+        <!-- <footer class="footer">
           <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"> <a href="http://www.bootstrapdash.com/" target="_blank"></a>. </span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <i class="mdi mdi-heart text-danger"></i></span>
           </div>
-        </footer>
+        </footer> -->
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
