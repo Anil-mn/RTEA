@@ -10,40 +10,37 @@ while($row = mysqli_fetch_array($DisInfo))
 }
 
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- Title icon -->
 <link rel = "icon" href = "../../Logos/title.png" 
         type = "image/x-icon"> 
-
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>RTEA Distribution</title>
+
    
     
         <title>RTEA DISTRIBUTION</title>
-   
-   
- 
-   <!-- Title icon -->
-
-   
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../Distribution/vendors/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="../Distribution/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../Distribution/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../Distribution/Distribution/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../Distribution/Distribution/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../Distribution/Distribution/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="../Distribution/vendors/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="../Distribution/vendors/chartist/chartist.min.css">
+    <link rel="stylesheet" href="../../Distribution/Distribution/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="../../Distribution/Distribution/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
+
+    
+    
+
     <link rel="stylesheet" href="./css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="images/favicon.png" />
