@@ -5,6 +5,8 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel = "icon" href = "../Logos/title.png" 
+type = "image/x-icon"> 
   <title>RTEA ADMIN</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../shop/shop/node_modules/mdi/css/materialdesignicons.min.css">
@@ -16,16 +18,16 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../shop/shop/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../shop/shop/images/favicon.png" />
+  
 </head>
 
 <body>
   <div class="container-scroller">
     <!-- partial:../partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="../index.html"><img src="../shop/shop/images/logo.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="../index.html"><img src="../shop/shop/images/logo-mini.svg" alt="logo"/></a>
+    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="../shop/shop/index.html">        <img style="height:50px; width:150px; margin-top:20px;"       src="../Logos/Name.jpg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../shop/shop/index.html">   <img style="height:50px; width:150px; margin-top:20px;"        src="../Logos/Name.jpg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
@@ -152,7 +154,7 @@
           </li>
           <li class="nav-item d-none d-lg-block">
             <a class="nav-link" href="#">
-              <img class="img-xs rounded-circle" src="../shop/shop/images/faces/face4.jpg" alt="">
+              <img class="img-xs rounded-circle" src="../Logos/title.png" alt="">
             </a>
           </li>
         </ul>
@@ -163,15 +165,15 @@
     </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:../partials/_sidebar.html -->
+      <!-- partial:../shop/shop/partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
-              <div class="profile-image"> <img src="../shop/shop/images/faces/face4.jpg" alt="image"/> <span class="online-status online"></span> </div>
+              <div class="profile-image"> <img src="../Logos/title.png" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
-                <p class="name">Richard V.Welsh</p>
-                <p class="designation">Manager</p>
+                <p class="name">Admin</p>
+                <p class="designation">Shop</p>
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
             </div>
@@ -493,12 +495,13 @@
                         }?>
                         </select><br>
                         <button type="submit" name="details" class="btn btn-success mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button></div>
+                        <button type="reset" class="btn btn-light">Cancel</button></div>
                         <div class="card-body">
-                  <h5 class="card-title mb-4">Global Sales by Top Locations</h5>
+                  <h5 class="card-title mb-4">Shop info</h5>
                   <div class="row">
                   <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
                       <table class="table table-striped">
+                      <th class="table-info">Name</th><th class="table-info">PhoneNumber</th><th class="table-info">Join Date</th>
                         <tbody>
                   <?php
                    include('../BackEnd/php/connection.php');
@@ -509,7 +512,7 @@
                        while($row = mysqli_fetch_array($query))
                        {
                          $superid=$row[0];
-                         echo '<tr><td class="text-right">'.$row[1].'</td><td>'.$row[2].'</td><td>'.$row[4].'</td><td>'.$row[5].'</td></tr>';
+                         echo '<tr class="table-info"><td>'.$row[2].'</td><td>'.$row[1].'</td><td>'.$row[5].'</td></tr>';
                        }
                       
 
@@ -534,85 +537,13 @@
               </div>
             </div>
           </div>
-          <div class="row" >
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card" hidden>
-                <div class="card-body">
-                  <h5 class="card-title mb-4">Testimonial</h5>
-                  <div class="row d-flex align-items-center justify-items-center flex-column">
-                    <div class="text-center">
-                      <img src="../images/faces/face8.jpg" class="rounded-circle" width="100" height="100" />
-                    </div>
-                    <div class="text-center mt-3">
-                      <i class="fa fa-quote-right icon-grey-big"></i>
-                    </div>
-                    <p class="font-italic text-muted mt-3 mb-4 text-center">
-                      Your products, all the kits that I have downloaded from your site and worked with are sooo cool!. Keep up the great work!
-                    </p>
-                    <h5 class="text-center bolder">Tom Swayer</h5>
-                    <h6 class="text-center text-muted">Co-founder</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
+          
+             
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card" hidden>
                 <div class="card-body">
                   <h5 class="card-title mb-4">Employees</h5>
-                  <table class="table table-hover table-striped">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Salary</th>
-                        <th>Country</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Bob Williams</td>
-                        <td>$23,566</td>
-                        <td>USA</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Mike Tyson</td>
-                        <td>$10,200</td>
-                        <td>Canada</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Tim Sebastian</td>
-                        <td>$32,190</td>
-                        <td>Netherlands</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Philip Morris</td>
-                        <td>$31,123</td>
-                        <td>Korea, South</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>Minerva Hooper</td>
-                        <td>$23,789</td>
-                        <td>South Africa</td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>Cooper</td>
-                        <td>$27,789</td>
-                        <td>Canada</td>
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>Philip</td>
-                        <td>$13,789</td>
-                        <td>South Africa</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                
                 </div>
               </div>
             </div>
@@ -620,12 +551,12 @@
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../partials/_footer.html -->
-        <footer class="footer">
+        <!-- <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
           </div>
-        </footer>
+        </footer> -->
         <!-- partial -->
       </div>
       <!-- main-panel ends -->

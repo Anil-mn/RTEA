@@ -381,7 +381,7 @@ type = "image/x-icon">
                        while($row = mysqli_fetch_array($query))
                        {
                          $superid=$row[0];
-                         echo '<tr><td class="text-right">'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[1].'</td></tr>';
+                         echo '<tr><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[1].'</td></tr>';
                        }
                       
 

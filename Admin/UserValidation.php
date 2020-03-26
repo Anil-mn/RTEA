@@ -5,6 +5,8 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel = "icon" href = "../Logos/title.png" 
+type = "image/x-icon"> 
   <title>RTEA ADMIN</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../shop/shop/node_modules/mdi/css/materialdesignicons.min.css">
@@ -16,16 +18,16 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../shop/shop/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../shop/shop/images/favicon.png" />
+  
 </head>
 
 <body>
   <div class="container-scroller">
     <!-- partial:../partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="../index.html"><img src="../shop/shop/images/logo.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="../index.html"><img src="../shop/shop/images/logo-mini.svg" alt="logo"/></a>
+    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="../shop/shop/index.html">        <img style="height:50px; width:150px; margin-top:20px;"       src="../Logos/Name.jpg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../shop/shop/index.html">   <img style="height:50px; width:150px; margin-top:20px;"        src="../Logos/Name.jpg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
@@ -152,7 +154,7 @@
           </li>
           <li class="nav-item d-none d-lg-block">
             <a class="nav-link" href="#">
-              <img class="img-xs rounded-circle" src="../shop/shop/images/faces/face4.jpg" alt="">
+              <img class="img-xs rounded-circle" src="../Logos/title.png" alt="">
             </a>
           </li>
         </ul>
@@ -163,15 +165,15 @@
     </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:../partials/_sidebar.html -->
+      <!-- partial:../shop/shop/partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
-              <div class="profile-image"> <img src="../shop/shop/images/faces/face4.jpg" alt="image"/> <span class="online-status online"></span> </div>
+              <div class="profile-image"> <img src="../Logos/title.png" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
-                <p class="name">Richard V.Welsh</p>
-                <p class="designation">Manager</p>
+                <p class="name">Admin</p>
+                <p class="designation">User</p>
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
             </div>
@@ -653,12 +655,12 @@
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../partials/_footer.html -->
-        <footer class="footer">
+        <!-- <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
           </div>
-        </footer>
+        </footer> -->
         <!-- partial -->
       </div>
       <!-- main-panel ends -->

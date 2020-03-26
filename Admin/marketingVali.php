@@ -191,7 +191,7 @@ type = "image/x-icon">
               <div class="profile-image"> <img src="../Logos/title.png" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
                 <p class="name">Admin</p>
-                <p class="designation">Manager</p>
+                <p class="designation">Marketing</p>
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
             </div>
