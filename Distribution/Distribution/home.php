@@ -19,7 +19,12 @@ while($row = mysqli_fetch_array($DisInfo))
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>RTEA Distribution</title>
+
+   
+    
+        <title>RTEA DISTRIBUTION</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../Distribution/Distribution/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="../../Distribution/Distribution/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -32,8 +37,14 @@ while($row = mysqli_fetch_array($DisInfo))
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../../Distribution/Distribution/css/style.css "> <!-- End layout styles -->
+
     
+    
+
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+ 
   </head>
   <body>
     <div class="container-scroller">
