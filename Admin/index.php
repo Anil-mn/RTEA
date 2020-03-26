@@ -5,6 +5,8 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel = "icon" href = "../Logos/title.png" type = "image/x-icon"> 
+
   <title>RTEA ADMIN</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../Shop/Shop/node_modules/mdi/css/materialdesignicons.min.css">
@@ -15,7 +17,8 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../Shop/Shop/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../Shop/Shop/images/favicon.png" />
+  <!-- Title icon -->
+
 </head>
 
 <body>
@@ -175,11 +178,11 @@
               </div>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="index.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/01.png" alt="menu icon"><span class="menu-title">HOME</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/widgets.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Users</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="index.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/01.png" alt="menu icon"><span class="menu-title">HOME</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="userValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Users</span></a></li>
           <li class="nav-item"><a class="nav-link" href="ShopValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Shop</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Distribution</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/charts/chartjs.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Markting</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="distributionvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Distribution</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="marketingvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Markting</span></a></li>
           <li class="nav-item"><a class="nav-link" href="pages/tables/basic-table.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Table</span></a></li>
           <li class="nav-item"><a class="nav-link" href="pages/icons/font-awesome.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
           <li class="nav-item">

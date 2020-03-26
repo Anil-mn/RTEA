@@ -196,13 +196,13 @@ type = "image/x-icon">
               </div>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="../shop/shop/index.html"><img class="menu-icon" src="../shop/shop/images/menu_icons/01.png" alt="menu icon"><span class="menu-title">Dashboard</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../shop/shop/pages/widgets.html"><img class="menu-icon" src="../shop/shop/images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Widgets</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../shop/shop/pages/ui-features/buttons.html"><img class="menu-icon" src="../shop/shop/images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Buttons</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../shop/shop/pages/forms/basic_elements.html"><img class="menu-icon" src="../shop/shop/images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Form</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../shop/shop/pages/charts/chartjs.html"><img class="menu-icon" src="../shop/shop/images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Charts</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../shop/shop/pages/tables/basic-table.html"><img class="menu-icon" src="../shop/shop/images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Table</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../shop/shop/pages/icons/font-awesome.html"><img class="menu-icon" src="../shop/shop/images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="index.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/01.png" alt="menu icon"><span class="menu-title">HOME</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="userValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Users</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="ShopValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Shop</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="distributionvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Distribution</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="marketingvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Markting</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/tables/basic-table.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Table</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/icons/font-awesome.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="../shop/shop/images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
             <div class="collapse" id="general-pages">
