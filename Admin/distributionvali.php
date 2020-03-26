@@ -115,7 +115,7 @@ type = "image/x-icon">
             <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <i class="mdi mdi-email-variant"></i>
 
-
+              
 
 
               <span class="count">7</span>
@@ -191,7 +191,7 @@ type = "image/x-icon">
               <div class="profile-image"> <img src="../Logos/title.png" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
                 <p class="name">Admin</p>
-                <p class="designation">Manager</p>
+                <p class="designation">Distributor</p>
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
             </div>
@@ -340,79 +340,6 @@ type = "image/x-icon">
           </div>
 
 
-
-<div class="row">
-            <div class="col-12 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title mb-4">Orders</h5>
-                  <div class="table-responsive">
-                   
-                    <table class="table center-aligned-table">
-                      <thead>
-                        <tr>
-                          <th class="border-bottom-0">Ad Name</th>
-                          <th class="border-bottom-0">Inventory Name</th>
-                          <th class="border-bottom-0">Product Name</th>
-                          
-                          <th class="border-bottom-0">Ad Status</th>
-                          <th class="border-bottom-0"></th>
-                          <th class="border-bottom-0"></th>
-                          <th class="border-bottom-0"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <?php
-                    include('../Backend/php/connection.php');
-                   
-                    $Adexpired=mysqli_query($con,"SELECT * from `market_ads` where `DueDate`='$date'");
-                    while($row=mysqli_fetch_array( $Adexpired))
-                    {
-                        $adid=$row[3];
-                        $inventid=$row[1];
-                        $prodid=$row[2];
-
-
-                          $inventinfo=mysqli_query($con,"SELECT * from `inventory` where `id`='$inventid'");
-                          while($row=mysqli_fetch_array( $inventinfo))
-                          {
-                              $inventname=$row[2];
-                             
-                             $prodinfo=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid'");
-                             while($row=mysqli_fetch_array( $prodinfo))
-                               {
-                                  $prodname=$row[1];
-                                  echo $prodname;
-                                  $adinfo=mysqli_query($con,"SELECT * from `market_add` where `Add_ID`='$adid'");
-                                  while($row=mysqli_fetch_array( $adinfo))
-                                  {
-                                     $adname=$row[2];
-
-                                     
-
-                                            echo '<tr>
-                                            <td>'.$adname.'</td>
-                                            <td>'.$inventname.'</td>
-                                            <td>'.$prodname.'</td>
-                                            
-                                            <td><label class="badge badge-danger">Expired</label></td>
-                                            
-                                            <td><a href="php/marketDeleteAd.php?'.$adid.'" class="btn btn-outline-danger btn-sm">Delete</a></td>
-                                          </tr>'  ; 
-                                }  
-                              }   
-                          }
-                     }   
-                    ?>
-                        
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
 
 
