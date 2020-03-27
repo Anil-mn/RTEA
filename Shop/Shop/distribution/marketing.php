@@ -138,25 +138,22 @@ include('disreq.php');
       <div class="main-panel">
         <div class="content-wrapper">
         <div class="row" >
-           
+        <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                     
                      <form action="#" method='POST'> 
                       
                   
-                    <h4 class="card-title">Add new product</h4>
+                    <h4 class="card-title">Add Slots </h4>
                       <p class="card-description">
                       
                       </p>
                       <form class="forms-sample">
+                       
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Product Name</label>
-                          <input type="text" name="productname" class="form-control" id="exampleInputEmail1" placeholder="Product Name">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Quantity</label>
-                          <input type="number" name="quantity" class="form-control" id="exampleInputPassword1" placeholder="Quantity">
+                          <label for="exampleInputPassword1">No of Slots</label>
+                          <input type="number" name="slots" class="form-control" id="exampleInputPassword1" placeholder="No of Slots">
                         </div>
                         <button type="submit" name='submit' class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
@@ -166,69 +163,77 @@ include('disreq.php');
                       if(isset($_POST['submit']))
                       {
 
-      $prodname=$_POST['productname'];
-      $prodname=ucfirst($prodname);
-     $quantity=$_POST['quantity'];
-     $quantity=ucfirst($quantity);           
+      $Slotupdate=$_POST['slots'];
+      
+                
 
-                        $query="INSERT INTO `dis_shopreq`(`ShopID`, `Product`, `Quntity`, `Date`) VALUES ('$shopid','$prodname','$quantity','$date')";
+                        $query="UPDATE `shop_info` SET `AddSlots`='$Slotupdate' where `shopID`='$shopid'";
                         $res=mysqli_query($con,$query);
                         
                       }
-                      
+                
                       ?>
 
                        
                       </form>
-                    </div></div>
+                    </div></div></div>
 
 
 
 
 
-         
+                    <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                      <form action="#" method='POST'> 
                       
                   
-                    <h4 class="card-title">Add new product</h4>
+                    <h4 class="card-title">Add Slot Details</h4>
                       <p class="card-description">
                       
                       </p>
                       <form class="forms-sample">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Product Name</label>
-                          <input type="text" name="productname" class="form-control" id="exampleInputEmail1" placeholder="Product Name">
+                        <select class="form-control form-control-sm" name='SlotNum' id="exampleFormControlSelect3">
+                          <?php
+                          include('../../../BackEnd/php/connection.php');
+                          $query = mysqli_query($con,"SELECT  `AddSlots` FROM `shop_info` WHERE  `shopID`='$shopid'");
+                          while($row = mysqli_fetch_array($query))
+                          {
+                            $slotNumber = $row[0];
+                          }
+                          $i = 1 ;
+                          for($i;$i<=$slotNumber;$i++)
+                          {echo '<option>'.$i.'</option>'; 
+                        }
+ 
+                          ?>
+                    </select>
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPassword1">Quantity</label>
-                          <input type="number" name="quantity" class="form-control" id="exampleInputPassword1" placeholder="Quantity">
+                          <label for="exampleInputPassword1">Slot Details</label>
+                          <input type="text" name="quantity" class="form-control" id="exampleInputPassword1" placeholder="Quantity">
                         </div>
-                        <button type="submit" name='submit' class="btn btn-success mr-2">Submit</button>
+                        <button type="submit" name='submit1' class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                       
                       <?php
                       include('../../../BackEnd/php/connection.php');
-                      if(isset($_POST['submit']))
+                      if(isset($_POST['submit1']))
                       {
-
-      $prodname=$_POST['productname'];
-      $prodname=ucfirst($prodname);
-     $quantity=$_POST['quantity'];
-     $quantity=ucfirst($quantity);           
-
-                        $query="INSERT INTO `dis_shopreq`(`ShopID`, `Product`, `Quntity`, `Date`) VALUES ('$shopid','$prodname','$quantity','$date')";
+                        $quantity=$_POST['quantity'];
+                        $slotnum = $_POST['SlotNum'];
+                        $query="INSERT INTO `market_shopslots`(`ShopID`,`SlotNumber`,`SlotName`) VALUES ('$shopid','$slotnum','$quantity')";
                         $res=mysqli_query($con,$query);
                         
-                      }
+                    }
                       
                       ?>
 
                        
                       </form></div></div></div>
                     </div>
-                      
+
 
                   
         <!-- content-wrapper ends -->
