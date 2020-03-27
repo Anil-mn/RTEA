@@ -35,8 +35,8 @@ include('disreq.php');
         type = "image/x-icon"> 
     <!-- Google Font -->
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../../../node_modules/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../../../node_modules/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="../node_modules/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../node_modules/simple-line-icons/css/simple-line-icons.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -50,9 +50,9 @@ include('disreq.php');
   <div class="container-scroller">
     <!-- partial:../../../partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="home.php"><img src="../../../Logos/Untitled-1.jpg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="home.php"><img src="../../../Logos/Untitled-1.jpg" alt="logo"/></a>
+       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="../shop/shop/index.html">        <img style="height:50px; width:150px; margin-top:20px;"       src="../../../Logos/Name.jpg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../shop/shop/index.html">   <img style="height:50px; width:150px; margin-top:20px;"        src="../../../Logos/Name.jpg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
@@ -135,87 +135,73 @@ include('disreq.php');
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-        <div class="row" >
-        <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                    
-                     <form action="#" method='POST'> 
-                      
-                  
-                    <h4 class="card-title">Add Slots </h4>
-                      <p class="card-description">
-                      
-                      </p>
-                      <form class="forms-sample">
-                       
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">No of Slots</label>
-                          <input type="number" name="slots" class="form-control" id="exampleInputPassword1" placeholder="No of Slots">
-                        </div>
-                        <button type="submit" name='submit' class="btn btn-success mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
+       <div class="main-panel">
+         <div class="content-wrapper">
+           <div class="row" >
+               <div class="col-lg-6 grid-margin stretch-card">
+                  <div class="card">
+                      <div class="card-body">
+                         <form action="#" method='POST'> 
+                           <h4 class="card-title">Add Slots </h4>
+                           <p class="card-description"></p>
+                           <form class="forms-sample">
+                              <div class="form-group">
+                                <label for="exampleInputPassword1">No of Slots</label>
+                                <input type="number" name="slots" class="form-control" id="exampleInputPassword1" placeholder="No of Slots">
+                              </div>
+                              <button type="submit" name='submit' class="btn btn-success mr-2">Updat Slot</button>
+                              <button type="reset" class="btn btn-danger btn-fw">Cancel</button>
                       
                       <?php
                       include('../../../BackEnd/php/connection.php');
                       if(isset($_POST['submit']))
                       {
 
-      $Slotupdate=$_POST['slots'];
-      
-                
-
+                        $Slotupdate=$_POST['slots'];
                         $query="UPDATE `shop_info` SET `AddSlots`='$Slotupdate' where `shopID`='$shopid'";
                         $res=mysqli_query($con,$query);
                         
                       }
                 
                       ?>
-
-                       
-                      </form>
-                    </div></div></div>
-
-
+                              </form>
+                            </div>
+                          </div>
+                        </div>
 
 
 
-                    <div class="col-lg-6 grid-margin stretch-card">
+
+
+            <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                     <form action="#" method='POST'> 
-                      
-                  
-                    <h4 class="card-title">Add Slot Details</h4>
-                      <p class="card-description">
-                      
-                      </p>
+                  <form action="#" method='POST'> 
+                     <h4 class="card-title">Add Slot Details</h4>
+                      <p class="card-description"> </p>
                       <form class="forms-sample">
                         <div class="form-group">
                         <select class="form-control form-control-sm" name='SlotNum' id="exampleFormControlSelect3">
                           <?php
                           include('../../../BackEnd/php/connection.php');
                           $query = mysqli_query($con,"SELECT  `AddSlots` FROM `shop_info` WHERE  `shopID`='$shopid'");
-                          while($row = mysqli_fetch_array($query))
-                          {
-                            $slotNumber = $row[0];
-                          }
-                          $i = 1 ;
+                             while($row = mysqli_fetch_array($query))
+                              {
+                                 $slotNumber = $row[0];
+                              }
+                           $i = 1 ;
                           for($i;$i<=$slotNumber;$i++)
-                          {echo '<option>'.$i.'</option>'; 
-                        }
+                          {echo '<option>'.$i.'</option>';  }
  
                           ?>
-                    </select>
+                        </select>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Slot Details</label>
                           <input type="text" name="quantity" class="form-control" id="exampleInputPassword1" placeholder="Quantity">
                         </div>
-                        <button type="submit" name='submit1' class="btn btn-success mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
+                        <button type="submit" name='submit1' class="btn btn-success"><i class="mdi mdi-cloud-download"></i>ADD</button>
+                        <button type="reset" class="btn btn-danger btn-fw">Cancel</button>
                       
                       <?php
                       include('../../../BackEnd/php/connection.php');
@@ -226,13 +212,16 @@ include('disreq.php');
                         $query="INSERT INTO `market_shopslots`(`ShopID`,`SlotNumber`,`SlotName`) VALUES ('$shopid','$slotnum','$quantity')";
                         $res=mysqli_query($con,$query);
                         
-                    }
+                       }
                       
                       ?>
 
                        
-                      </form></div></div></div>
+                      </form>
                     </div>
+                  </div>
+                </div>    
+              </div>
 
 
                   
