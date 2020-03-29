@@ -30,17 +30,6 @@ $ShopId =$row[0];
 //$ShopName=$row[2];
 
 }
-
-
-
-
-
-
-
-
-
-
-?>
 ?>
 
 <!DOCTYPE html>
@@ -131,10 +120,8 @@ $ShopId =$row[0];
                     </div>
                     <div class="col-lg-7 col-md-7">
                         <div class="advanced-search">
-                        <form action="StartShopping.php" method='POST'>
-                             <button type="submit" name="submit" class="category-btn">StartShopping</button> 
-   
-                            </form>
+                        <form action="StartShopping.php">
+                             <button type="submit"  class="category-btn">StartShopping</button> </form>
                             <form action="#" class="input-group">
                                 <input type="text" placeholder="What do you need?">
                                 <button type="button"><i class="ti-search"></i></button>
