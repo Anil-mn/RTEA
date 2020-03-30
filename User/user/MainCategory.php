@@ -6,8 +6,13 @@
  else{
 $place=$_SESSION['loc'];//location
 $PhoneNumber=$_SESSION['PhoneNumber'];
- }
 include('../../BackEnd/php/connection.php');
+$Userinfo = mysqli_query($con,"SELECT * FROM `user_info` where `PhoneNumber` = '$PhoneNumber'");
+while ($row = mysqli_fetch_array($Userinfo)){
+    $UserId = $row[0];
+}
+ }
+
 // $loc=$_POST['loc'];
  $location=$_POST['location'];//shop name 
  $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$location'  ");
@@ -346,7 +351,22 @@ $ShopName=$row[2];
                        
                     <?php
                                 include('../../BackEnd/php/connection.php');
-                                 $query = "SELECT * from `shop_link` where `Shop_ID`='$ShopId' group by `Product_ID`";
+                                // has to complte
+                                // $Calcualation = mysqli_query($con,"SELECT * FROM `user_log` where `User_ID` =  '$UserId'");
+                                // while($row9=mysqli_fetch_array($Calcualation))
+                                // {
+                                //     $logId = $row9[0];
+                                //     $transationInfo = mysqli_query($con,"SELECT `ProductID` FROM `user_transactions` where `LogID`='$logId' order by `No of products` DESC");
+                                //     while($row8=mysqli_fetch_array($transationInfo))
+                                //     {
+                                //         $productID = $row8[0];
+                                //         echo $productID;
+                                       
+                                //     }
+
+                                // }
+
+                                $query = "SELECT * from `shop_link` where `Shop_ID`='$ShopId' group by `Product_ID`";
                                 $que=mysqli_query($con,$query);
                                   
                                   while($row=mysqli_fetch_array($que))
