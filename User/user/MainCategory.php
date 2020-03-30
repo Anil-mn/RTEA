@@ -15,6 +15,8 @@ while ($row = mysqli_fetch_array($Userinfo)){
 
 // $loc=$_POST['loc'];
  $location=$_POST['location'];//shop name 
+ $_SESSION['location']=$location;
+ 
  $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$location'  ");
                             
 
@@ -117,9 +119,9 @@ $ShopName=$row[2];
                         <div class="advanced-search">
                         <form action="StartShopping.php">
                              <button type="submit"  class="category-btn">StartShopping</button> </form>
-                            <form action="#" class="input-group">
-                                <input type="text" placeholder="What do you need?">
-                                <button type="button"><i class="ti-search"></i></button>
+                            <form action="" method="POST" class="input-group">
+                                <input type="text" name="search" placeholder="What do you need?">
+                                <button type="submit" name="Ser"><i class="ti-search"></i></button>
                             </form>
                         </div>
                     </div>
@@ -265,10 +267,6 @@ $ShopName=$row[2];
     </div>
 
 
-
-
-
-
     <div class="banner-section spad">
         <div class="container-fluid">
             <div class="row">
@@ -287,7 +285,7 @@ $ShopName=$row[2];
                                 <img src="img/categoryimages/'.$row[0].'.jpg" alt="image not found 404">
                                 <div class="inner-text">
                                     <button>
-                                    <h4>'.$row[1].'</h4></button>d
+                                    <h4>'.$row[1].'</h4></button>
                                 </div></form>
                             </div>
                         </div>';
