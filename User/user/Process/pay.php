@@ -35,7 +35,7 @@ while($row = mysqli_fetch_array($loginfo))
 { 
 $time=$row[3];
 }
-//$insertlog = mysqli_query($con,"INSERT INTO `user_log`(`ShopID`, `User_ID`, `Date`, `Time`) values ('$ShopId','$userId','$date','$time')");
+$insertlog = mysqli_query($con,"INSERT INTO `user_log`(`ShopID`, `User_ID`, `Date`, `Time`) values ('$ShopId','$userId','$date','$time')");
     
     $usercartinfo = mysqli_query($con, "SELECT `id`, `onlineID`, `ProductID`, `Numberofprod`, `price`,sum(`Numberofprod`),Sum(`price`) FROM `user_cart` where `onlineID`='$userId'");
     while($row1 = mysqli_fetch_array($usercartinfo))
@@ -50,9 +50,10 @@ $time=$row[3];
     while($row2 = mysqli_fetch_array($userloginfo))
     { 
     $logID=$row2[0];
-    }
     $inserttoTrans = mysqli_query($con,"INSERT INTO `user_transactions`( `LogID`, `ProductID`, `amount`, `No of products`) VALUES ('$logID','$prodid','$price','$noofprod')");
     }
+}
+
     $updatelog = mysqli_query($con, "UPDATE `user_log` SET  `TotalAmt`='$totalPrice' ,`TotalProducts`='$totalNumberOfPro' Where `LogID`='$logID'");
     if($updatelog ==true ){
      
