@@ -30,6 +30,21 @@ $ShopId =$row[0];
 //$ShopName=$row[2];
 
 }
+$timezone=date_default_timezone_set('Asia/Kolkata');
+         $time =  date("h:i:s", time());
+         
+         $check1 = mysqli_query($con,"SELECT * FROM `user_online` where `userID`='$userId' and `shopID`='$ShopId'");
+         $res=mysqli_fetch_array($check1);
+         if( $res==true)
+         {
+                  
+         }
+         else
+         {
+            $ousers= mysqli_query($con,"INSERT INTO `user_online`( `userID`, `shopID`, `Time`) VALUES ('$userId','$ShopId','$time')");
+
+         }
+
 ?>
 
 <!DOCTYPE html>

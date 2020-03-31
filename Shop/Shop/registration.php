@@ -65,7 +65,7 @@
                     </div>
                   </div>
                   <div class="mt-2 text-center">
-                    <a href="index.html" class="auth-link text-black">Already have an account? <span class="font-weight-medium">Sign in</span></a>
+                    <a href="../index.html" class="auth-link text-black">Already have an account? <span class="font-weight-medium">Sign in</span></a>
                   </div>
                 </form>                  
               </form>

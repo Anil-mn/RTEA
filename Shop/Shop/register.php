@@ -23,6 +23,6 @@ $query="INSERT INTO `shop_info`( `PhoneNumber`, `ShopName`, `Password`,`Location
 $result=mysqli_query($con,$query); 
 
 
-header('Location:index.html');
+header('Location:../index.html');
 // completed
 ?>

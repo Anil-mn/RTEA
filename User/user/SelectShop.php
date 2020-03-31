@@ -173,6 +173,7 @@ SESSION_START();
                   
                      SESSION_START();
                       $_SESSION['loc']=$loc;
+                      
 
  
                     
@@ -183,7 +184,7 @@ SESSION_START();
                             
                             <div class="input-group">
                             
-                            <button type="submit"><i class="ti-search"></i></button>
+                            <button type="submit" name="shop"><i class="ti-search"></i></button>
                             </div>
                             </form>
                             
