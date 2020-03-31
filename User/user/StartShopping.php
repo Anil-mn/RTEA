@@ -327,7 +327,7 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                                    
                                    echo '<tr>
                                   
-                                   <td class="cart-pic first-row"><img style="height:80px ; width:50px;" src="img/ProductImages/'.$productid.'.jpg" alt=""></td>
+                                   <td class="cart-pic first-row"><img style="height:80px ; width:50px;" src="../../Images/productImages/'.$productid.'.jpg" alt=""></td>
                                    <td class="cart-title first-row">
                                        <h5 name="name">'.$prodname.'</h5>
                                    </td>

@@ -76,7 +76,7 @@ $proid=$row[0];
 $target_dir = "..\Images/";
  $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
- $name = $proid+1;
+ $name = $proid;
 
  $newfilename=$name ;
  echo $newfilename;
@@ -115,7 +115,7 @@ $target_dir = "..\Images/";
  // if everything is ok, try to upload file
  } else {
      //if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "..\images/" . $newfilename.'.jpg')){
+        if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "../../Images/ProductImages/" . $newfilename.'.jpg')){
          echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
          header('Location:../Shop_CategorieInsertion.php');
      } else {
