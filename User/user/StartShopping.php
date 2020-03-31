@@ -306,7 +306,13 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                             
                                 <?php
                                include('../../BackEnd/php/connection.php');
-                               $query=mysqli_query($con,"SELECT * from `user_cart` where `onlineID`='$userId' ");
+                               //echo $userId;
+                               $query1=mysqli_query($con,"SELECT * from `user_online` where `userID`='$userId' and `shopID`='$ShopId'");
+                               while($row=mysqli_fetch_array($query1))
+                                                                  {
+                                                                    $onlineid=$row[1];
+                                                                  }   
+                               $query=mysqli_query($con,"SELECT * from `user_cart` where `onlineID`='$onlineid' ");
                                while($row=mysqli_fetch_array($query))
                                {
                                    $productid=$row[2];
