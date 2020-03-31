@@ -278,7 +278,7 @@ if(!isset($_SESSION['id'])){
     $totalPrize = $totalSlot * 100;
     $prductId =mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID` = '$proID'");
     while ($row1 = mysqli_fetch_array($prductId)){
-     echo '<tr><td>'.$row1[1].'</td><td><img style="height : 90px; width:80px"  src="../images/'.$row[3].'.jpg"></td><td>'.$row[4].'</td><td>'.$row[5].'</td><td>'.$totalPrize.'</td><td><button type="submit" name="pay">Pay</button></td></tr>';
+     echo '<tr><td>'.$row1[1].'</td><td><img style="height : 90px; width:80px"  src="../../Images/AdsImages'.$row[3].'.jpg"></td><td>'.$row[4].'</td><td>'.$row[5].'</td><td>'.$totalPrize.'</td><td><button type="submit" name="pay">Pay</button></td></tr>';
   }
 }
   }

@@ -55,7 +55,7 @@ echo $target_file ;
  // if everything is ok, try to upload file
  } else {
      //if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "..\images/" . $newfilename.'.jpg')){
+        if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "../../Images/AdsImages/" . $newfilename.'.jpg')){
          echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
          header('location:home.php');
      } else {

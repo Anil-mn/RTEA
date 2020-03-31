@@ -268,7 +268,7 @@ include('../../BackEnd/Php/connection.php');
     while ($row1 = mysqli_fetch_array($prductId)){
       $amount =mysqli_query($con,"SELECT * FROM `market_membership` where `add_id`='$addid'");
       while ($row2 = mysqli_fetch_array($amount)){
-     echo '<tr><td>'.$row1[1].'</td><td><img style="height : 90px; width:80px"  src="../images/'.$row[3].'.jpg"></td><td>'.$row[4].'</td><td>'.$row[5].'</td><td>'.$row2[3].'</td>
+     echo '<tr><td>'.$row1[1].'</td><td><img style="height : 90px; width:80px"  src="../../Images/AdsImages/'.$row[3].'.jpg"></td><td>'.$row[4].'</td><td>'.$row[5].'</td><td>'.$row2[3].'</td>
      <td><a href="MoreDetails.php?'.$addid.'">MoreDetails<a></td></tr>';
   }
 }

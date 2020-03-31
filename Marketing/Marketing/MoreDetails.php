@@ -274,7 +274,7 @@ include('../../BackEnd/Php/connection.php');
                    $ShopName = $row3[2];
                    $ShopLocation = $row3[4];
     
-     echo '<tr><td><img style="height : 50px; width:40px"  src="../images/'.$row[3].'.jpg"></td><td>'.$ShopName.'</td><td>'.$ShopLocation.'</td><td>'.$SlotNumber.'th slot</td></tr>';
+     echo '<tr><td><img style="height : 50px; width:40px"  src="../../Images/AdsImages/'.$row[3].'.jpg"></td><td>'.$ShopName.'</td><td>'.$ShopLocation.'</td><td>'.$SlotNumber.'th slot</td></tr>';
    }
  }
 }
