@@ -1,4 +1,3 @@
-
 <?php
  SESSION_START();
  if(!isset($_SESSION['loc'])){
@@ -16,8 +15,17 @@ $check=mysqli_query($con, "SELECT * FROM `user_info` where `PhoneNumber`='$Phone
 while($row = mysqli_fetch_array($check))
 { 
 $userId =$row[0];
-//echo $userId;
-}
+$username=$row[1];
+$emailID=$row[3];
+$gender=$row[5];
+$dob=$row[6];
+$locationID=$row[7];
+$locationInfo = mysqli_query($con, "SELECT * FROM `location` where `LocationID`='$locationID'");
+while($row1 = mysqli_fetch_array($locationInfo))
+{ 
+$locationName = $row1[1];
+
+}}
 // $loc=$_POST['loc'];
  //$location=$_POST['location'];//shop name 
 
@@ -129,14 +137,13 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
                             <a href="./index.html">
-                                <img src="../../Logos/title.png" alt="">
+                                <img src="img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7">
                         <div class="advanced-search">
-                        <form action="StartShopping.php">
-                             <button type="submit"  class="category-btn">StartShopping</button> </form>
+                            <button type="button" class="category-btn">All Categories</button>
                             <form action="#" class="input-group">
                                 <input type="text" placeholder="What do you need?">
                                 <button type="button"><i class="ti-search"></i></button>
@@ -190,7 +197,7 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                                         <h5>$120.00</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CART</a>
+                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
@@ -221,7 +228,7 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./home.html">Home</a></li>
                         <li><a href="./shop.html">Shop</a></li>
                         <li><a href="#">Collection</a>
                             <ul class="dropdown">
@@ -256,193 +263,114 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text product-more">
-                        <a href="./home.html"><i class="fa fa-home"></i> Home</a>
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
                         <a href="./shop.html">Shop</a>
-                        <span>Shopping Cart</span>
+                        <span>Check Out</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Breadcrumb Section Begin -->
-    <!-- <div class="row">
-                        <div class="col-lg-4">
-                            <div class="cart-buttons">
-                                <a href="#" class="primary-btn continue-shop">Continue shopping</a>
-                                <a href="#" class="primary-btn up-cart">Update cart</a>
-                            </div> -->
-    <div class="container">
-            <div class="row">
-    <div class="cart-buttons">
-                                
-                                <form action="Process/insertItem.php" method='POST' class="coupon-form">
-                                    <input type="text" name="prodname" placeholder="Enter product name">
-                                    <input type="text" name="quantity" placeholder="Enter quantity">
-                                    <button href="#" name="submit1" class="primary-btn up-cart">Update cart</button>
-                                    <!-- <button type="submit" class="site-btn coupon-btn">Apply</button> -->
-                                    
-                                </form>
-                            </div></div></div>
-    <!-- Shopping Cart Section Begin -->
-    <section class="shopping-cart spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="cart-table">
-                    <form action="Process/ProductDeletion.php" method="GET">
-                    <!-- <form action="" method="POST"> -->
-                        <table >
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th class="p-name">Product Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th><i class="ti-close"></i></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            
-                                <?php
-                               include('../../BackEnd/php/connection.php');
-                               //echo $userId;
-                               $query1=mysqli_query($con,"SELECT * from `user_online` where `userID`='$userId' and `shopID`='$ShopId'");
-                               while($row=mysqli_fetch_array($query1))
-                                                                  {
-                                                                    $onlineid=$row[1];
-                                                                  }   
-                               $query=mysqli_query($con,"SELECT * from `user_cart` where `onlineID`='$onlineid' ");
-                               while($row=mysqli_fetch_array($query))
-                               {
-                                   $productid=$row[2];
-                                   $price=$row[4];
-                                   $quantity=$row[3];
-                                   $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$productid'");
-                                   while($row1=mysqli_fetch_array($check))
-                                   {
-                                     $prodname=$row1[1];
-                                     $priceperone= $row1[2];}
-                           
-                                   
-                                   echo '<tr>
-                                  
-                                   <td class="cart-pic first-row"><img style="height:80px ; width:50px;" src="../../Images/productImages/'.$productid.'.jpg" alt=""></td>
-                                   <td class="cart-title first-row">
-                                       <h5 name="name">'.$prodname.'</h5>
-                                   </td>
-                                   <td class="p-price first-row">₹'.$priceperone.'</td>
-                                   <td class="qua-col first-row">
-                                       <div class="quantity">
-                                         <div class="pro-qty">
-                                           <a href="Process/subItem.php?'.$productid.'" class="dec qtybtn">-</a>
-                                               <input type="text"  value="'.$quantity.'">
-                                           <a href="Process/AddItem.php?'.$productid.'" class="inc qtybtn">+</a>
-                                           </div>
-                                       </div>
-                                   </td>
-                                   <td class="total-price first-row">₹'.$price.'</td>
-                                   <td class="close-td first-row"><a  class="ti-close name="'.$prodname.'" href="Process/ProductDeletion.php?'.$productid.'"></a></td>
-                                 </tr>';
-                             
-                                
-                                }
-                               
-                               
-                               
 
-?>
-                                <!-- <tr>
-                                    <td class="cart-pic first-row"><img src="img/cart-page/product-1.jpg" alt=""></td>
-                                    <td class="cart-title first-row">
-                                        <h5>Pure Pineapple</h5>
-                                    </td>
-                                    <td class="p-price first-row">$60.00</td>
-                                    <td class="qua-col first-row">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="2">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price first-row">$60.00</td>
-                                  <td class="close-td first-row"><button class="ti-close" name='.$prodname.'></button></td>
-                                </tr> -->
-                                 <!--<tr>
-                                    <td class="cart-pic"><img src="img/cart-page/product-2.jpg" alt=""></td>
-                                    <td class="cart-title">
-                                        <h5>American lobster</h5>
-                                    </td>
-                                    <td class="p-price">$60.00</td>
-                                    <td class="qua-col">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price">$60.00</td>
-                                    <td class="close-td"><i class="ti-close"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart-pic"><img src="img/cart-page/product-3.jpg" alt=""></td>
-                                    <td class="cart-title">
-                                        <h5>Guangzhou sweater</h5>
-                                    </td>
-                                    <td class="p-price">$60.00</td>
-                                    <td class="qua-col">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price">$60.00</td>
-                                    <td class="close-td"><i class="ti-close"></i></td>
-                                </tr> -->
-                            </tbody>
-                        </table>
-                        </form>
-                    </div>
-                  
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="cart-buttons">
-                                <a href="#" class="primary-btn continue-shop">Continue shopping</a>
-                                <a href="#" class="primary-btn up-cart">Update cart</a>
+    <!-- Shopping Cart Section Begin -->
+    <section class="checkout-section spad">
+        <div class="container">
+            <form action="#" class="checkout-form">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="checkout-content">
+                            <a href="#" class="content-btn">Click Here To Login</a>
+                        </div>
+                        <?php
+                        include('../../BackEnd/php/connection.php');
+                        $userinfo=mysqli_query($con,"SELECT * from `user_info` where `UserId`=")
+
+
+                        ?>
+                        <h4>Biiling Details</h4>
+                        <div class="row">
+                            <?php
+                           echo '<div class="col-lg-6">
+                                <label for="fir">First Name<span></span></label>
+                                <input type="text" value='.$username.' id="fir">
                             </div>
-                            <div class="discount-coupon">
-                                <h6>Discount Codes</h6>
-                                <form action="#" class="coupon-form">
-                                    <input type="text" placeholder="Enter your codes">
-                                    <button type="submit" class="site-btn coupon-btn">Apply</button>
-                                </form>
+                            <div class="col-lg-6">
+                                <label for="last">Last Name<span></span></label>
+                                <input type="text" id="last">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="cun">Country<span></span></label>
+                                <input type="text" value="India" id="cun">
+                            </div>
+                            <div class="col-lg-12">
+                            <label for="cun-name">Gender</label>
+                            <input type="text" value='.$gender.' id="cun-name">
+                        </div>
+                            <div class="col-lg-12">
+                                <label for="town">Town / City<span></span></label>
+                                <input type="text" value='.$locationName.' id="town">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="email">Email Address<span></span></label>
+                                <input type="text" value='.$emailID.' id="email">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="phone">Phone<span></span></label>
+                                <input type="text" value='.$PhoneNumber.' id="phone">
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="create-item">
+                                    <label for="acc-create">
+                                        Create an account?
+                                        <input type="checkbox" id="acc-create">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 offset-lg-4">
-                            <div class="proceed-checkout">
-                                <?php
-          include('../../BackEnd/php/connection.php');
-        $query=mysqli_query($con,"SELECT SUM(`price`) from `user_cart` where `onlineID`='$userId' ");
-       while($row=mysqli_fetch_array($query))
-       { $total=$row[0];}
+                    </div>';
 
-       echo '<ul>
-       <li class="subtotal">Subtotal <span>₹'.$total.'</span></li>
-       <li class="cart-total">Total <span>₹'.$total.'</span></li>
-   </ul>'
-
-                                 ?>
-                                <!-- <ul>
-                                    <li class="subtotal">Subtotal <span>$240.00</span></li>
-                                    <li class="cart-total">Total <span>$240.00</span></li>
-                                </ul> -->
-                                <a href="checkout.php" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                    ?>
+                    <div class="col-lg-6">
+                        <div class="checkout-content">
+                            <input type="text" placeholder="Enter Your Coupon Code">
+                        </div>
+                        <div class="place-order">
+                            <h4>Your Order</h4>
+                            <div class="order-total">
+                                <ul class="order-table">
+                                    <li>Product <span>Total</span></li>
+                                    <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
+                                    <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
+                                    <li class="fw-normal">Combination x 1 <span>$120.00</span></li>
+                                    <li class="fw-normal">Subtotal <span>$240.00</span></li>
+                                    <li class="total-price">Total <span>$240.00</span></li>
+                                </ul>
+                                <div class="payment-check">
+                                    <div class="pc-item">
+                                        <label for="pc-check">
+                                            Cheque Payment
+                                            <input type="checkbox" id="pc-check">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="pc-item">
+                                        <label for="pc-paypal">
+                                            Paypal
+                                            <input type="checkbox" id="pc-paypal">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="order-btn">
+                                    <button type="submit" class="site-btn place-btn">Place Order</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
     <!-- Shopping Cart Section End -->
