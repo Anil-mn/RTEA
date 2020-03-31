@@ -336,17 +336,51 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                         <div class="checkout-content">
                             <input type="text" placeholder="Enter Your Coupon Code">
                         </div>
-                        <div class="place-order">
-                            <h4>Your Order</h4>
-                            <div class="order-total">
+                        <div class="place-order"  >
+                            <h4>My items</h4>
+                            <div class="order-total" >
+                                <ul class="order-table" style="height:200px; width:490px; overflow:hidden; overflow-y:scroll;">
+
+                                    <li>Product<span>Total</span></li>
+                                    <?php
+                                    include('../../BackEnd/php/connection.php');
+                                    //echo $userId;
+                                    $query1=mysqli_query($con,"SELECT * from `user_online` where `userID`='$userId' and `shopID`='$ShopId'");
+                                    while($row=mysqli_fetch_array($query1))
+                                                                       {
+                                                                         $onlineid=$row[1];
+                                                                       }   
+                                    $query=mysqli_query($con,"SELECT * from `user_cart` where `onlineID`='$onlineid' ");
+                                    while($row=mysqli_fetch_array($query))
+                                    {
+                                        $productid=$row[2];
+                                        $price=$row[4];
+                                        $quantity=$row[3];
+                                        $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$productid'");
+                                        while($row1=mysqli_fetch_array($check))
+                                        {
+                                          $prodname=$row1[1];
+                                          $priceperone= $row1[2];
+                                        }
+                                        echo '<li class="fw-normal">'.$prodname.' x '.$quantity.' <span>₹'.$price.'</span></li>
+                                        
+                                        ';
+
+                                        }
+                                         
+
+                                        include('../../BackEnd/php/connection.php');
+                                        $query=mysqli_query($con,"SELECT SUM(`price`) from `user_cart` where `onlineID`='$userId' ");
+                                       while($row=mysqli_fetch_array($query))
+                                       { $total=$row[0];}
+                                     
+                               echo ' </ul>
                                 <ul class="order-table">
-                                    <li>Product <span>Total</span></li>
-                                    <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
-                                    <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
-                                    <li class="fw-normal">Combination x 1 <span>$120.00</span></li>
-                                    <li class="fw-normal">Subtotal <span>$240.00</span></li>
-                                    <li class="total-price">Total <span>$240.00</span></li>
+                                    <li class="fw-normal">Subtotal <span>₹'.$total.'</span></li>
+                                    <li class="total-price">Total <span>₹'.$total.'</span></li>';
+                                    ?>
                                 </ul>
+                                
                                 <div class="payment-check">
                                     <div class="pc-item">
                                         <label for="pc-check">
@@ -364,7 +398,7 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                                     </div>
                                 </div>
                                 <div class="order-btn">
-                                    <button type="submit" class="site-btn place-btn">Place Order</button>
+                                    <a href="Process/pay.php" class="site-btn place-btn">Pay</a>
                                 </div>
                             </div>
                         </div>

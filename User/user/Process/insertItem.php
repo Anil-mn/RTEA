@@ -19,8 +19,8 @@ while($row=mysqli_fetch_array($query))
 
  $prodname=$_POST['prodname'];
 $quantity=$_POST['quantity'];
-
-$check=mysqli_query($con,"SELECT * from `shop_link` where `Name` like '%$prodname%' ");
+echo $prodname;
+$check=mysqli_query($con,"SELECT * from `shop_products` where `Name` like '%$prodname%' ");
                                    while($row1=mysqli_fetch_array($check))
                                    {
                                      $prodid=$row1[0];
