@@ -51,10 +51,12 @@ $time=$row[3];
     { 
     $logID=$row2[0];
     }
-    //$inserttoTrans = mysqli_query($con,"INSERT INTO `user_transactions`( `LogID`, `ProductID`, `amount`, `No of products`) VALUES ('$logID','$prodid','$price','$noofprod')");
+    $inserttoTrans = mysqli_query($con,"INSERT INTO `user_transactions`( `LogID`, `ProductID`, `amount`, `No of products`) VALUES ('$logID','$prodid','$price','$noofprod')");
     }
     $updatelog = mysqli_query($con, "UPDATE `user_log` SET  `TotalAmt`='$totalPrice' ,`TotalProducts`='$totalNumberOfPro' Where `LogID`='$logID'");
-    if($updatelog ==true){
-
+    if($updatelog ==true ){
+     
+        $deleteUseronline=mysqli_query($con,"DELETE FROM `user_online` WHERE `userID`='$userId'");
+        $delecart =mysqli_query($con,"DELETE FROM `user_cart` WHERE `onlineID`='$userId'");
         
     }
