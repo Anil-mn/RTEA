@@ -282,7 +282,7 @@ $ShopName=$row[2];
                                 
                             echo '<div class="col-lg-4"><form method="POST" action="ProductDis/categories.php?'.$row[1].'">
                             <div class="single-banner">
-                                <img src="img/categoryimages/'.$row[0].'.jpg" alt="image not found 404">
+                                <img src="../../Images/categoryimages/'.$row[0].'.jpg" alt="image not found 404">
                                 <div class="inner-text">
                                     <button>
                                     <h4>'.$row[1].'</h4></button>
@@ -387,7 +387,7 @@ $ShopName=$row[2];
                     echo    '<div class="product-item">
                             <div class="pi-pic">
                             <Form action="Todo.php" method="POST">
-                                <img src="img/ProductImages/'.$prodid.'.jpg" alt="">
+                                <img src="../../Images/productImages/'.$prodid.'.jpg" alt="">
                                 <div class="sale">Sale</div>
                                 <div class="icon">
                                 <i class="icon_heart_alt"></i>
