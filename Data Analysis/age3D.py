@@ -1,3 +1,39 @@
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+df = pd.read_csv("A://Datasets/Mall_Customers.csv")
+df.head()
+
+df.drop(["CustomerID"], axis = 1, inplace=True)
+
+from flask import Flask, render_template, Response
+from matplotlib.figure import Figure
+app = Flask(__name__)
+
+
+plt.figure(figsize=(10,6))
+plt.title("Ages Frequency")
+sns.axes_style("dark")
+sns.violinplot(y=df["Age"])
+plt.savefig('Data Analysis/images/new_plot.png')
+#plt.show()
+
+# Initialize for web app
+@app.route('/')
+def index():
+    return render_template('status.html')
+
+# Entry point for web app
+# @app.route('/video_viewer')
+# def video_viewer():
+#     return Response(plt.show(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/plot.png')
+def plot_png():
     fig = create_figure()
     output = io.BytesIO()
     FigureCanvas(fig).print_png(output)
