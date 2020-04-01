@@ -19,7 +19,7 @@ plt.figure(figsize=(10,6))
 plt.title("Ages Frequency")
 sns.axes_style("dark")
 sns.violinplot(y=df["Age"])
-plt.savefig('Data Analysis/images/new_plot.png')
+plt.savefig('Images/DataAnalysis/new_plot.png')
 #plt.show()
 
 # Initialize for web app

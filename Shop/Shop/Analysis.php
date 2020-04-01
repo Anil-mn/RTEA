@@ -206,7 +206,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Line chart</h4>
-                  <canvas id="lineChart" style="height:250px"></canvas>
+                  <img src="../../Images/DataAnalysis/NoOfAndAge.png" style="width:100%; height:100%;">
                 </div>
               </div>
             </div>
@@ -214,7 +214,25 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Bar chart</h4>
-                  <canvas id="barChart" style="height:230px"></canvas>
+                  <embed src="../../Images/DataAnalysis/NoOfAndAge.pdf" width="100%" height="100%" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Line chart</h4>
+                  <img src="../../Images/DataAnalysis/3d.png" style="width:100%; height:100%;">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Bar chart</h4>
+                  <embed src="../../Images/DataAnalysis/3d.pdf" width="100%" height="100%" />
                 </div>
               </div>
             </div>
@@ -224,7 +242,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Area chart</h4>
-                  <canvas id="areaChart" style="height:250px"></canvas>
+                  <img src="../../Images/DataAnalysis/Anuual.png" style="width:100%; height:100%;">
                 </div>
               </div>
             </div>
@@ -232,7 +250,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Doughnut chart</h4>
-                  <canvas id="doughnutChart" style="height:250px"></canvas>
+                  <embed src="../../Images/DataAnalysis/Anuual.pdf" width="100%" height="100%" />
                 </div>
               </div>
             </div>
