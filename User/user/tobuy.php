@@ -306,9 +306,9 @@ $ShopId =$row[0];
                                    <td class="qua-col first-row">
                                        <div class="quantity">
                                          <div class="pro-qty">
-                                           <a href="Process/subItem.php?'.$productid.'" class="dec qtybtn">-</a>
+                                           <a href="Process/subItemlist.php?'.$productid.'" class="dec qtybtn">-</a>
                                                <input type="text"  value="'.$quantity.'">
-                                           <a href="Process/AddItem.php?'.$productid.'" class="inc qtybtn">+</a>
+                                           <a href="Process/AddItemlist.php?'.$productid.'" class="inc qtybtn">+</a>
                                            </div>
                                        </div>
                                    </td>
@@ -379,14 +379,14 @@ $ShopId =$row[0];
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="cart-buttons">
-                                <a href="#" class="primary-btn continue-shop">Continue shopping</a>
-                                <a href="#" class="primary-btn up-cart">Update cart</a>
+                                <!-- <a href="#" class="primary-btn continue-shop">Continue shopping</a>
+                                <a href="#" class="primary-btn up-cart">Update cart</a> -->
                             </div>
                             <div class="discount-coupon">
                                 <h6>Discount Codes</h6>
                                 <form action="#" class="coupon-form">
-                                    <input type="text" placeholder="Enter your codes">
-                                    <button type="submit" class="site-btn coupon-btn">Apply</button>
+                                    <!-- <input type="text" placeholder="Enter your codes">
+                                    <button type="submit" class="site-btn coupon-btn">Apply</button> -->
                                 </form>
                             </div>
                         </div>
@@ -394,7 +394,7 @@ $ShopId =$row[0];
                             <div class="proceed-checkout">
                                 <?php
           include('../../BackEnd/php/connection.php');
-        $query=mysqli_query($con,"SELECT SUM(`price`) from `user_cart` where `onlineID`='$userId' ");
+        $query=mysqli_query($con,"SELECT SUM(`price`) from `user_tobuylist` where `UserID`='$userId' ");
        while($row=mysqli_fetch_array($query))
        { $total=$row[0];}
 
@@ -408,7 +408,7 @@ $ShopId =$row[0];
                                     <li class="subtotal">Subtotal <span>$240.00</span></li>
                                     <li class="cart-total">Total <span>$240.00</span></li>
                                 </ul> -->
-                                <a href="checkout.php" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                <!-- <a href="checkout.php" class="proceed-btn">PROCEED TO CHECK OUT</a> -->
                             </div>
                         </div>
                     </div>
