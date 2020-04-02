@@ -313,7 +313,7 @@ $ShopId =$row[0];
                                        </div>
                                    </td>
                                    <td class="total-price first-row">₹'.$price.'</td>
-                                   <td class="close-td first-row"><a  class="ti-close name="'.$prodname.'" href="Process/ProductDeletion.php?'.$productid.'"></a></td>
+                                   <td class="close-td first-row"><a  class="ti-close name="'.$prodname.'" href="Process/tobyProDelete.php?'.$productid.'"></a></td>
                                  </tr>';
                              
                                 
