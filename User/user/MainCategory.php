@@ -386,7 +386,7 @@ $ShopName=$row[2];
 
                     echo    '<div class="product-item">
                             <div class="pi-pic">
-                            <Form action="Todo.php" method="POST">
+                            <Form action="list.php" method="POST">
                                 <img src="../../Images/productImages/'.$prodid.'.jpg" alt="">
                                 <div class="sale">Sale</div>
                                 <div class="icon">
@@ -394,7 +394,7 @@ $ShopName=$row[2];
                                 </div>
                                   <ul>
                                   <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                  <li class="quick-view"><button name='.$prodid.' type="submit">+ To do</Button></li>
+                                  <li class="quick-view"><a href="process/list.php?'.$prodid.'" name='.$prodid.'>+ Add List</a></li>
                                   <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                               </ul>
                           </div>
