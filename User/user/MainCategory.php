@@ -134,7 +134,15 @@ $ShopName=$row[2];
                             </li>
                             <li class="cart-icon"><a href="#">
                                     <i class="icon_bag_alt"></i>
-                                    <span>3</span>
+                                    <?php
+                                    $query=mysqli_query($con,"SELECT count(`listid`) from `user_tobuylist` where `UserID`='$UserId'");
+                                    while($row=mysqli_fetch_array($query))
+                                    {
+                                        $num = $row[0];
+                                        echo ' <span>'.$num.'</span>';
+                                     }
+                                    ?>
+                                    <!-- <span>3</span> -->
                                 </a>
                                 <div class="cart-hover">
                                     <div class="select-items">
