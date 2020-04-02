@@ -173,7 +173,7 @@ $ShopName=$row[2];
                                     </div>
                                     <div class="select-button">
                                         <a href="#" class="primary-btn view-card">VIEW CART</a>
-                                        <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                        <a href="tobuy.php" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
                             </li>

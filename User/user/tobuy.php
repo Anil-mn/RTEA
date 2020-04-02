@@ -257,18 +257,7 @@ $ShopId =$row[0];
                                 <a href="#" class="primary-btn continue-shop">Continue shopping</a>
                                 <a href="#" class="primary-btn up-cart">Update cart</a>
                             </div> -->
-    <div class="container">
-            <div class="row">
-    <div class="cart-buttons">
-                                
-                                <form action="Process/insertItem.php" method='POST' class="coupon-form">
-                                    <input type="text" name="prodname" placeholder="Enter product name">
-                                    <input type="text" name="quantity" placeholder="Enter quantity">
-                                    <button href="#" name="submit1" class="primary-btn up-cart">Update cart</button>
-                                    <!-- <button type="submit" class="site-btn coupon-btn">Apply</button> -->
-                                    
-                                </form>
-                            </div></div></div>
+   
     <!-- Shopping Cart Section Begin -->
     <section class="shopping-cart spad">
         <div class="container">
@@ -293,16 +282,12 @@ $ShopId =$row[0];
                                 <?php
                                include('../../BackEnd/php/connection.php');
                                //echo $userId;
-                               $query1=mysqli_query($con,"SELECT * from `user_online` where `userID`='$userId' and `shopID`='$ShopId'");
-                               while($row=mysqli_fetch_array($query1))
-                                                                  {
-                                                                    $onlineid=$row[1];
-                                                                  }   
-                               $query=mysqli_query($con,"SELECT * from `user_cart` where `onlineID`='$onlineid' ");
+                                  
+                               $query=mysqli_query($con,"SELECT * from `user_tobuylist` where `userID`='$userId' ");
                                while($row=mysqli_fetch_array($query))
                                {
-                                   $productid=$row[2];
-                                   $price=$row[4];
+                                   $productid=$row[1];
+                                   $price=$row[2];
                                    $quantity=$row[3];
                                    $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$productid'");
                                    while($row1=mysqli_fetch_array($check))
