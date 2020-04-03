@@ -7,6 +7,11 @@ SESSION_START();
    $PhoneNumber=$_SESSION['PhoneNumber'];
    //echo $PhoneNumber ;
  }
+ include('../../BackEnd/php/connection.php');
+ $Userinfo = mysqli_query($con,"SELECT * FROM `user_info` where `PhoneNumber` = '$PhoneNumber'");
+while ($row = mysqli_fetch_array($Userinfo)){
+    $UserId = $row[0];
+}
 
  // Session started
 ?>
@@ -204,7 +209,7 @@ SESSION_START();
                             ?>
                         </div>
                     </div>
-                    <div class="col-lg-3 text-right col-md-3">
+                    <div class="col-lg-3 text-right col-md-3" hidden>
                         <ul class="nav-right">
                             <li class="heart-icon">
                                 <a href="#">
@@ -316,7 +321,37 @@ SESSION_START();
     <!-- Hero Section Begin -->
   <section class="hero-section">
         <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="img/hero-1.jpg">
+            <?php
+            include('../../BackEnd/php/connection.php');
+            $Ads = mysqli_query($con,"SELECT * FROM `market_userads` Where  `User_id` = '$UserId' limit 2");
+            while($row1=mysqli_fetch_array($Ads)){
+                $addID=$row1[2];
+                $Adsinfo = mysqli_query($con,"SELECT * FROM `market_add` Where  `Add_ID` = '$addID'");
+                  while($row=mysqli_fetch_array($Adsinfo)){
+                  $addName=$row[2];
+                  $addProduct=$row[4];
+                  $addDis=$row[5];
+                  echo '<div class="single-hero-items set-bg" data-setbg="../../Images/AdsImages/'.$addID.'.jpg">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-5">
+                              <span>'.$addName.'</span>
+                              <h1>'.$addProduct.'</h1>
+                              <p>'.$addDis.' </p>
+                              <a href="#" class="primary-btn">Shop Now</a>
+                          </div>
+                      </div>
+                      <div class="off-card">
+                          <h2>Sale <span>50%</span></h2>
+                      </div>
+                  </div>
+              </div>
+                  ';
+                }
+            }
+
+            ?>
+            <!-- <div class="single-hero-items set-bg" data-setbg="img/hero-1.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
@@ -345,7 +380,7 @@ SESSION_START();
                         <h2>Sale <span>50%</span></h2>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section> 
     <!-- Hero Section End-->

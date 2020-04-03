@@ -465,6 +465,9 @@ $ShopName=$row[2];
                                     </select>
                                 </div>
                             </div>
+                            <?php
+
+                            ?>
                             <div class="col-lg-5 col-md-5 text-right">
                                 <p>Show 01- 09 Of 36 Product</p>
                             </div>
@@ -489,8 +492,8 @@ $ShopName=$row[2];
                               echo '<div class="col-lg-4 col-sm-6">
                               <div class="product-item">
                                   <div class="pi-pic">
-                                      <img  src="../../Images/ProductImages/'.$pid.'.jpg" alt="">
-                                      <div class="sale pp-sale">Available '.$quntity.'</div>
+                                      <img style="height:240px; width:340px" src="../../Images/ProductImages/'.$pid.'.jpg" alt="">
+                                      <div class="sale pp-sale">Available stock  :'.$quntity.'</div>
                                       <div class="icon">
                                           <i class="icon_heart_alt"></i>
                                       </div>
@@ -514,7 +517,7 @@ $ShopName=$row[2];
                                   </div>
                               </div>
                           </div>
-                          </div>
+                          
                               ';}
                             }
                         ?>
@@ -745,8 +748,8 @@ $ShopName=$row[2];
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div> -->
+                        </div>-->
+                    </div> 
                     <div class="loading-more">
                         <i class="icon_loading"></i>
                         <a href="#">
