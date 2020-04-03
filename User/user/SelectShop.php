@@ -167,12 +167,15 @@ SESSION_START();
                        { 
                         echo "<option>".$row['ShopName']."</option>" ;
                         //$ShopId =$row[0];
-                        }  }
+                        }  
+                    }
                        
                 
-                  
+                 
                      SESSION_START();
                       $_SESSION['loc']=$loc;
+                      echo $_SESSION['loc'];
+
                       
 
  
@@ -187,7 +190,18 @@ SESSION_START();
                             <button type="submit" name="shop"><i class="ti-search"></i></button>
                             </div>
                             </form>
-                            
+                            <?php
+                             if(isset($_POST['shop'])){
+
+                                $shopName = $_POST['location'];
+                                echo $shopName;
+                                $_SESSION['shopeName'] = $shopName;
+                                
+                                 
+
+                             }
+
+                            ?>
                         </div>
                     </div>
                     <div class="col-lg-3 text-right col-md-3">

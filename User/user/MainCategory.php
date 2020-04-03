@@ -14,8 +14,8 @@ while ($row = mysqli_fetch_array($Userinfo)){
  }
 
 // $loc=$_POST['loc'];
- $location=$_POST['location'];//shop name 
- $_SESSION['location']=$location;
+ $location=$_SESSION['shopeName'];//shop name 
+//  $_SESSION['location']=$location;
  
  $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$location'  ");
                             
