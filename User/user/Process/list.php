@@ -42,8 +42,17 @@ while($row1 = mysqli_fetch_array($query2))
 { 
 
 $price =$row1[2];
+$check = mysqli_query($con,"SELECT * From `user_tobuylist` where `ProductID`='$prodId' and  `userID`='$userId'");
+$result = mysqli_fetch_array($check);
+if($result ==  true){
+   echo '<script>
+   alert("Already in list");
+   </scripts>';
 
-$buylist=mysqli_query($con,"INSERT INTO `user_tobuylist`( `ProductID`, `Price`,`Quantity`,`userID`) VALUES ('$prodId','$price','1','$userId')");
+}
+else {
+   $buylist=mysqli_query($con,"INSERT INTO `user_tobuylist`( `ProductID`, `Price`,`Quantity`,`userID`) VALUES ('$prodId','$price','1','$userId')");
+}
 }
 header('location:../MainCategory.php');
 
