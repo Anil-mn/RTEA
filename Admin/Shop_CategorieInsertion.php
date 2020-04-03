@@ -211,10 +211,12 @@
                       <p class="card-description">
                         
                       </p>
-                      <form class="forms-sample" action="php/CategoryInsertion.php" method='POST'>
+                      <form class="forms-sample" action="php/CategoryInsertion.php" method='POST' enctype="multipart/form-data">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Catagory Name</label>
                           <input type="text" class="form-control" name="CategoryName" id="exampleInputEmail1" placeholder="Catagorie Name">
+                          <br><br>
+                        <input type="file" name="fileToUploadCata"> 
                         </div>
                         <!-- <div class="form-group">
                           <label for="exampleInputPassword1">Password</label>
@@ -233,7 +235,7 @@
                       <p class="card-description">
                        
                       </p>
-                      <form class="forms-sample" action="php/CategoryInsertion.php" method='POST'>
+                      <form class="forms-sample" action="php/CategoryInsertion.php" method='POST' enctype="multipart/form-data">
                       <div class="form-group">
                           <label for="exampleFormControlSelect1">Catagory Name</label>
                           <select class="form-control form-control-lg" name='subcata' id="exampleFormControlSelect1">
@@ -254,6 +256,8 @@
                           <div class="col-sm-9">
                             <input type="text" name="subcat" class="form-control" id="exampleInputPassword2" required placeholder="">
                           </div>
+                          <br><br>
+                    <input type="file" name="fileToUploadSub"> 
                         </div>
                         <button type="submit" class="btn btn-success mr-2" name="subcategory">Submit</button>
                         <button class="btn btn-light">Cancel</button>
@@ -270,7 +274,7 @@
                   <p class="card-description">
                    
                   </p>
-                  <form class="forms-sample" action="php/CategoryInsertion.php" method='POST'>
+                  <form class="forms-sample" action="php/CategoryInsertion.php" method='POST' enctype="multipart/form-data">
                     <div class="form-group">
                     <label for="exampleFormControlSelect1">SubCategory Name</label>
                     <select class="form-control form-control-lg" name='superSub' id="exampleFormControlSelect1">
@@ -291,6 +295,7 @@
                     <div class="form-group">
                        <label for="exampleInputEmail3">Super Category</label>
                       <input type="text" name="supercat" class="form-control" id="exampleInputEmail3" placeholder=""> 
+                      <input type="file" name="fileToUploadSuper"> 
                     </div>
                     <!-- <div class="form-group">
                       <label for="exampleInputPassword4">Password</label>
