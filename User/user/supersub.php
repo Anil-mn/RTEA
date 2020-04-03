@@ -1,18 +1,37 @@
 <?php
-SESSION_START();
- if(!isset($_SESSION['PhoneNumber'])){
-	header('location:index.html');
+ SESSION_START();
+ if(!isset($_SESSION['place'])){
+    //header('location:index.html');
  }
  else{
-   $PhoneNumber=$_SESSION['PhoneNumber'];
-   //echo $PhoneNumber ;
+$place=$_SESSION['place'];//location
+$ShopName=$_SESSION['ShopName'];
+
+$filename = basename($_SERVER['REQUEST_URI']);
+
+$subcategory =substr($filename,13);
+
+
  }
+ $PhoneNumber=$_SESSION['PhoneNumber'];
+ include('../../BackEnd/php/connection.php');
+ $Userinfo = mysqli_query($con,"SELECT * FROM `user_info` where `PhoneNumber` = '$PhoneNumber'");
+ while ($row = mysqli_fetch_array($Userinfo)){
+     $UserId = $row[0];
+ }
+// $loc=$_POST['loc'];
+ //$location=$_POST['location'];//shop name 
+ $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$ShopName'  ");
+                            
 
- // Session started
+while($row = mysqli_fetch_array($query))
+{ 
+
+$ShopId =$row[0];
+$ShopName=$row[2];
+
+}
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -24,12 +43,10 @@ SESSION_START();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RTEA</title>
 
-    <!-- Title icon -->
-    <link rel = "icon" href = "../../Logos/title.png" 
-        type = "image/x-icon"> 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <script src='test.js'></script>
+    <link rel = "icon" href = "../../Logos/title.png" 
+        type = "image/x-icon">  
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -52,61 +69,37 @@ SESSION_START();
     <header class="header-section">
         <div class="header-top">
             <div class="container">
-            <?php
-                    include('../../BackEnd/php/connection.php');
-                    $userInfo = mysqli_query($con, "SELECT * FROM `user_info` where `PhoneNumber`= '$PhoneNumber'");
-                 while($row = mysqli_fetch_array($userInfo)){
-                    $userLocation  = $row['Location'];
-                    
-                 }
-                 ?>
                 <div class="ht-left">
-                
-                  <div class="mail-service">
-                  <?php  
-                   $query = mysqli_query($con, "SELECT * FROM `location` where `LocationID`='$userLocation'");
-                   while($row = mysqli_fetch_array($query))
-                  { 
-                    //   echo ' <i class=" fa fa-envelope"></i>'.$row['Name'];
-                      echo ' <i class=" fa fa-envelope"></i>'.$row['Name'];
-                      $name =$row['Name'];
-
-                    }
-                      ?>
-                    </div> 
-                   
-                    <div class="phone-service">
-                        <i class=" fa fa-phone" hidden id=''></i>
+                    <div class="mail-service">
+                        <i class=" fa fa-envelope"></i>
+                        <?php
+                        echo $place;
                         
+                        $_SESSION['place']=$place;
+                        ?>
+                    </div>
+                    <div class="phone-service">
+                        <i class=" fa fa-phone"></i>
+                        <?php
+                        echo $ShopName;
+                        $_SESSION['ShopName']=$ShopName;
+                        ?>
                     </div>
                 </div>
-             
-                <form action='' method ='POST' >
                 <div class="ht-right">
-                    <button href="#" name="changeloc" class="login-panel"><i class="fa fa-user"></i>Change location</button>
-                  <div class="lan-selector">
-                   <select class="language_drop"  name="countries" id="countries" style="width:300px;">
-                        <?php
-                   
-                    
-                 
-                 $query = mysqli_query($con, "SELECT * FROM `location`");
-                 
-                      while($row = mysqli_fetch_array($query))
-                     { 
-                        echo "<option>".$row['Name']."</option>" ;
-                       
-                     }
-                     $query = mysqli_query($con, "SELECT * FROM `location` where `Name`='$name'");
-                 
-                     while($row = mysqli_fetch_array($query))
-                    { $loc=$row['Name'];
-                    }
-                ?>
-                     </select>
+
+               <!--shop changing using same procedure of change location-->     
+
+               <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                    <div class="lan-selector">
+                        <select class="language_drop" name="countries" id="countries" style="width:300px;">
+                            <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
+                                data-title="English">English</option>
+                            <option value='yu' data-image="img/flag-2.jpg" data-imagecss="flag yu"
+                                data-title="Bangladesh">German </option>
+                        </select>
                     </div>
-                </form>
-                     <div class="top-social">
+                    <div class="top-social">
                         <a href="#"><i class="ti-facebook"></i></a>
                         <a href="#"><i class="ti-twitter-alt"></i></a>
                         <a href="#"><i class="ti-linkedin"></i></a>
@@ -114,114 +107,81 @@ SESSION_START();
                     </div>
                 </div>
             </div>
-        </div>  <form action='MainCategory.php' method ='POST' >
+        </div>
         <div class="container">
             <div class="inner-header">
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
-                   
                         <div class="logo">
                             <a href="./index.html">
-                            <?php 
-                            
-                            //echo '<img src="../images/'.$PhoneNumber.'.jpg" alt="not found">';
-                            ?>
-                              <img src="../../Logos/title.png" alt="not found"> 
+                                <img src="../../Logos/title.png" alt="">
                             </a>
                         </div>
                     </div>
-                  
-        <!-- </form>   -->
                     <div class="col-lg-7 col-md-7">
-                           
                         <div class="advanced-search">
-                            
-                            <select id="loc" name='location' class="category-btn" aria-placeholder="select loc">
-                            <?php
-                             
-                            if(isset($_POST['changeloc'])){
-                                $loc=$_POST['countries'];
-                                // $location=$_POST['location'];
-                            
-     
-                            
-                   //shops displaying after clicking change location
-                             include('../../BackEnd/php/connection.php');
-                           
-                             $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc'  ");
-                            
-
-                        while($row = mysqli_fetch_array($query))
-                       { 
-                        echo "<option>".$row['ShopName']."</option>" ;
-                        $ShopId =$row[0];
-                        //echo "<option>".$loc."</option>" ;
-                        }
-                    }
-                    //displaying default location
-                    else{
-                        $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc' ");
-                            
-
-                        while($row = mysqli_fetch_array($query))
-                       { 
-                        echo "<option>".$row['ShopName']."</option>" ;
-                        //$ShopId =$row[0];
-                        }  
-                    }
-                       
-                
-                 
-                     SESSION_START();
-                      $_SESSION['loc']=$loc;
-                      echo $_SESSION['loc'];
-
-                      
-
- 
-                    
-                        ?>
-                             
-                            </select>  
-                            
-                            
-                            <div class="input-group">
-                            
-                            <button type="submit" name="shop"><i class="ti-search"></i></button>
-                            </div>
+                        <form action="StartShopping.php">
+                             <button type="submit"  class="category-btn">StartShopping</button> </form>
+                            <form action="" method="POST" class="input-group">
+                                <input type="text" name="search" placeholder="What do you need?">
+                                <button type="submit" name="Ser"><i class="ti-search"></i></button>
                             </form>
-                            <?php
-                             if(isset($_POST['shop'])){
-
-                                $shopName = $_POST['location'];
-                                echo $shopName;
-                                $_SESSION['shopeName'] = $shopName;
-                                
-                                 
-
-                             }
-
-                            ?>
                         </div>
                     </div>
                     <div class="col-lg-3 text-right col-md-3">
                         <ul class="nav-right">
-                            <li class="heart-icon">
-                                <a href="#">
+                            <li class="heart-icon"><a href="#">
                                     <i class="icon_heart_alt"></i>
                                     <span>1</span>
                                 </a>
                             </li>
-                            <li class="cart-icon">
-                                <a href="#">
+                            <li class="cart-icon"><a href="#">
                                     <i class="icon_bag_alt"></i>
-                                    <span>3</span>
+                                    <?php
+                                    $query=mysqli_query($con,"SELECT count(`listid`) from `user_tobuylist` where `UserID`='$UserId'");
+                                    while($row=mysqli_fetch_array($query))
+                                    {
+                                        $num = $row[0];
+                                        echo ' <span>'.$num.'</span>';
+                                     }
+                                    ?>
+                                    <!-- <span>3</span> -->
                                 </a>
                                 <div class="cart-hover">
                                     <div class="select-items">
+
                                         <table>
                                             <tbody>
-                                                <tr>
+                                            <?php
+                               include('../../BackEnd/php/connection.php');
+                               //echo $userId;
+                                  
+                               $query=mysqli_query($con,"SELECT * from `user_tobuylist` where `userID`='$UserId' order by `listid` DESC limit 2");
+                               while($row=mysqli_fetch_array($query))
+                               {
+                                   $productid=$row[1];
+                                   $price=$row[2];
+                                   $quantity=$row[3];
+                                   $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$productid'");
+                                   while($row1=mysqli_fetch_array($check))
+                                   {
+                                     $prodname=$row1[1];
+                                     $priceperone= $row1[2];
+                                     echo '
+                                     <tr>
+                                                    <td class="si-pic"><img style="height:80px ; width:60px;"  src="../../Images/productImages/'.$productid.'.jpg" alt=""></td>
+                                                    <td class="si-text">
+                                                        <div class="product-selected">
+                                                            <p>₹'.$priceperone.' x '.$quantity.'</p>
+                                                            <h6>'.$prodname.'</h6>
+                                                        </div>
+                                                    </td>
+                                                    </tr>';
+                                    }
+                                }
+                           
+                                   ?>
+                                                <!-- <tr>
                                                     <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
                                                     <td class="si-text">
                                                         <div class="product-selected">
@@ -244,21 +204,30 @@ SESSION_START();
                                                     <td class="si-close">
                                                         <i class="ti-close"></i>
                                                     </td>
-                                                </tr>
+                                                </tr> -->
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="select-total">
+                                    <!-- <div class="select-total">
                                         <span>total:</span>
                                         <h5>$120.00</h5>
-                                    </div>
+                                    </div> -->
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
-                                        <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                        <a href="tobuy.php" class="primary-btn view-card">click here to see list</a>
+                                    
                                     </div>
                                 </div>
                             </li>
-                            <li class="cart-price">$150.00</li>
+                            <?php
+          include('../../BackEnd/php/connection.php');
+        $query=mysqli_query($con,"SELECT SUM(`price`) from `user_tobuylist` where `UserID`='$UserId' ");
+       while($row=mysqli_fetch_array($query))
+       { $total=$row[0];}
+
+       echo '<li class="cart-price">₹'.$total.'</li>';
+
+                                 ?>
+                            <!-- <li class="cart-price">$150.00</li> -->
                         </ul>
                     </div>
                 </div>
@@ -269,22 +238,41 @@ SESSION_START();
                 <div class="nav-depart">
                     <div class="depart-btn">
                         <i class="ti-menu"></i>
-                        <span>All Categories</span>
-                        <ul class="depart-hover">
-                            <li class="active"><a href="#">Electronics</a></li>
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Home and Furniture</a></li>
-                            <li><a href="#">Beauty and Personal Care</a></li>
-                            <li><a href="#">Toys and Baby</a></li>
-                            <li><a href="#">Accessories/Footwear</a></li>
-                            <li><a href="#">Sports,Books and More</a></li>
-                            <!-- <li><a href="#"></a></li> -->
+                        <span>All Category</span>
+                        <form id='category' action="demo.php" method='POST'>
+                        <ul name="category" class="depart-hover">
+                            <?php
+                            include('../../Backend/Php/Connection.php');
+                             $catid=mysqli_query($con,"SELECT * from `Shop_supersub` where `SubCategorie_ID`='$subcategory'");
+                                  while($row1=mysqli_fetch_array($catid))
+                                  {
+                                      $subid = $row1[0];
+                                      $subcatname = $row1[2];
+                                
+                               // echo '<button><li name="category"><a href="demo.php">'.$row[1].'</a></li></button>';
+                                 echo '<li name="category"><a href="products.php?'.$subid.'">'.$subcatname.'</a></li>';
+                              
+                            
+                        }
+                          
+                            ?>
+                            <!-- <li class="active"><a href="#">Women’s Clothing</a></li>
+                            <li><a href="#">Men’s Clothing</a></li>
+                            <li><a href="#">Underwear</a></li>
+                            <li><a href="#">Kid's Clothing</a></li>
+                            <li><a href="#">Brand Fashion</a></li>
+                            <li><a href="#">Accessories/Shoes</a></li>
+                            <li><a href="#">Luxury Brands</a></li>
+                            <li><a href="#">Brand Outdoor Apparel</a></li> -->
+
                         </ul>
+                        </form>
+                       
                     </div>
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
+                        <li><a href="./index.html">Home</a></li>
                         <li><a href="./shop.html">Shop</a></li>
                         <li><a href="#">Collection</a>
                             <ul class="dropdown">
@@ -297,10 +285,10 @@ SESSION_START();
                         <li><a href="./contact.html">Contact</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="./blog-details.html">My Profile</a></li>
-                                <li><a href="./shopping-cart.html">My Cart</a></li>
-                                <li><a href="./check-out.html">My Wishlist</a></li>
-                                <li><a href="./faq.html">My Orders</a></li>
+                                <li><a href="./blog-details.html">Blog Details</a></li>
+                                <li><a href="./shopping-cart.html">Shopping Cart</a></li>
+                                <li><a href="./check-out.html">Checkout</a></li>
+                                <li><a href="./faq.html">Faq</a></li>
                                 <li><a href="./register.html">Register</a></li>
                                 <li><a href="./login.html">Login</a></li>
                             </ul>
@@ -309,52 +297,58 @@ SESSION_START();
                 </nav>
                 <div id="mobile-menu-wrap"></div>
             </div>
-        </div> 
+        </div>
     </header>
     <!-- Header End -->
 
-    <!-- Hero Section Begin -->
-  <section class="hero-section">
-        <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="img/hero-1.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <span>women,men</span>
-                            <h1>Cool Winks</h1>
-                            <p>Love shopping. There is a little bit of magic found in buying something new. It is instant gratification, a quick fix.   </p>
-                            <a href="#" class="primary-btn">Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="single-hero-items set-bg" data-setbg="img/hero-2.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <span>kids,bags</span>
-                            <h1>Black Friday</h1>
-                            <p></p>
-                            <a href="#" class="primary-btn">Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home"></i> Home</a>
+                        <span>Shop</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section> 
-    <!-- Hero Section End-->
+    </div>
 
-    <!-- Banner Section Begin -->
+
     <div class="banner-section spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-4"><form action="demo.php">
+                 <?php
+                          $catid=mysqli_query($con,"SELECT * from `Shop_supersub` where `SubCategorie_ID`='$subcategory'");
+                          while($row1=mysqli_fetch_array($catid))
+                          {
+                              $subid = $row1[0];
+                              $subcatname = $row1[2];
+                        
+                               
+                               // echo '<button><li name="category"><a href="demo.php">'.$row[1].'</a></li></button>';
+                                
+
+                                
+                            echo '<div class="col-lg-4"><form method="POST" action="products.php?'.$subid.'">
+                            <div class="single-banner">
+                                <img  style="height:300px ; width:400px;" src="../../Images/supersubImg/'.$subid.'.jpg" alt="image not found 404">
+                                <div class="inner-text">
+                                    <button>
+                                    <h4>'.$subcatname.'</h4></button>
+                                </div></form>
+                            </div>
+                        </div>';
+                              
+                            
+                        }
+                            ?>
+
+                          
+                            
+
+                <!-- <div class="col-lg-4"><form action="demo.php">
                     <div class="single-banner">
                         <img src="img/banner-1.jpg" alt="">
                         <div class="inner-text">
@@ -370,7 +364,7 @@ SESSION_START();
                             <h4>Women’s</h4>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <div class="col-lg-4">
                     <div class="single-banner">
                         <img src="img/banner-3.jpg" alt="">
@@ -378,14 +372,14 @@ SESSION_START();
                             <h4>Kid’s</h4>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
     <!-- Banner Section End -->
 
     <!-- Women Banner Section Begin -->
-    <!-- <section class="women-banner spad">
+    <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
@@ -393,8 +387,8 @@ SESSION_START();
                         <h2>Women’s</h2>
                         <a href="#">Discover More</a>
                     </div>
-                </div> -->
-                <!-- <div class="col-lg-8 offset-lg-1">
+                </div> 
+                 <div class="col-lg-8 offset-lg-1">
                     <div class="filter-control">
                         <ul>
                             <li class="active">Clothings</li>
@@ -404,14 +398,83 @@ SESSION_START();
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel">
-                        <div class="product-item">
+                       
+                    <?php
+                                include('../../BackEnd/php/connection.php');
+                                // has to complte
+                                // $Calcualation = mysqli_query($con,"SELECT * FROM `user_log` where `User_ID` =  '$UserId'");
+                                // while($row9=mysqli_fetch_array($Calcualation))
+                                // {
+                                //     $logId = $row9[0];
+                                //     $transationInfo = mysqli_query($con,"SELECT `ProductID` FROM `user_transactions` where `LogID`='$logId' order by `No of products` DESC");
+                                //     while($row8=mysqli_fetch_array($transationInfo))
+                                //     {
+                                //         $productID = $row8[0];
+                                //         echo $productID;
+                                       
+                                //     }
+
+                                // }
+
+                                $query = "SELECT * from `shop_link` where `Shop_ID`='$ShopId' group by `Product_ID`";
+                                $que=mysqli_query($con,$query);
+                                  
+                                  while($row=mysqli_fetch_array($que))
+                                {
+                                  $prodid=$row[1];
+                                  
+                            //   $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid'");
+                            $check=mysqli_query($con,"SELECT `Product_ID`,`Name`,`Price`,`superSubID`  from `shop_products` where `Product_ID`='$prodid' group by `superSubID`  order by `superSubID` desc limit 1");
+                              while($row1=mysqli_fetch_array($check))
+                              {
+                                  $superID=$row1['superSubID'];
+                                  $price=$row1['Price'];
+                                  
+                                  $che=mysqli_query($con,"SELECT * from `shop_supersub` where `SuperSubCat_ID`='$superID'");
+                                  while($row2=mysqli_fetch_array($che))
+                              {
+                                  $name=$row2[2];
+                                  
+
+                    echo    '<div class="product-item">
                             <div class="pi-pic">
-                                <img src="img/products/women-1.jpg" alt="">
+                            <Form action="list.php" method="POST">
+                                <img src="../../Images/productImages/'.$prodid.'.jpg" alt="">
                                 <div class="sale">Sale</div>
                                 <div class="icon">
-                                    <i class="icon_heart_alt"></i>
+                                <i class="icon_heart_alt"></i>
                                 </div>
-                                <ul>
+                                  <ul>
+                                  <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                  <li class="quick-view"><a href="process/list.php?'.$prodid.'" name='.$prodid.'>+ Add List</a></li>
+                                  <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                              </ul>
+                          </div>
+
+                           <div class="pi-text">
+                              <div class="catagory-name">'.$name.'</div>
+                              <a href="#">
+                                  <h5>'.$row1['Name'].'</h5>
+                              </a>
+                              <div class="product-price">
+                                  '.$price.'
+                                  <span>$35.00</span>
+                              </div>
+                              </from>
+                          </div>
+                      </div>';
+                  } } }?>
+                     <!-- <div class="product-item">
+                          <div class="pi-pic">
+                              <img src="img/products/women-2.jpg" alt="">
+                              <div class="icon">
+                                  <i class="icon_heart_alt"></i>
+                              </div>
+                                
+                                
+ -->
+                                   
+                                <!-- <ul>
                                     <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
                                     <li class="quick-view"><a href="#">+ Quick View</a></li>
                                     <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
@@ -493,16 +556,17 @@ SESSION_START();
                                     $34.00
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+               
                     </div>
                 </div>
             </div>
         </div>
-    </section> -->
+    </section> 
     <!-- Women Banner Section End -->
 
     <!-- Deal Of The Week Section Begin-->
-    <!-- <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
+     <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
         <div class="container">
             <div class="col-lg-6 text-center">
                 <div class="section-title">
@@ -535,7 +599,7 @@ SESSION_START();
                 <a href="#" class="primary-btn">Shop Now</a>
             </div>
         </div>
-    </section> -->
+    </section> 
     <!-- Deal Of The Week Section End -->
 
     <!-- Man Banner Section Begin -->
@@ -543,14 +607,14 @@ SESSION_START();
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8">
-                 <!-- <div class="filter-control">
+                  <div class="filter-control">
                         <ul>
                             <li class="active">Clothings</li>
                             <li>HandBag</li>
                             <li>Shoes</li>
                             <li>Accessories</li>
                         </ul>
-                    </div>-->
+                    </div>
                     <div class="product-slider owl-carousel">
                         <div class="product-item">
                             <div class="pi-pic">
@@ -644,11 +708,11 @@ SESSION_START();
                         </div>
                     </div>
                 </div>
-              <!--  <div class="col-lg-3 offset-lg-1">
+               <div class="col-lg-3 offset-lg-1">
                     <div class="product-large set-bg m-large" data-setbg="img/products/man-large.jpg">
                         <h2>Men’s</h2>
                         <a href="#">Discover More</a>
-                    </div>-->
+                    </div>
                 </div>
             </div>
         </div>
@@ -656,7 +720,7 @@ SESSION_START();
     <!-- Man Banner Section End -->
 
     <!-- Instagram Section Begin -->
-    <!--<div class="instagram-photo">
+    <div class="instagram-photo">
         <div class="insta-item set-bg" data-setbg="img/insta-1.jpg">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
@@ -773,7 +837,7 @@ SESSION_START();
                     </div>
                 </div>
             </div>
-        <!--    <div class="benefit-items">
+            <div class="benefit-items">
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="single-benefit">
@@ -811,11 +875,11 @@ SESSION_START();
                 </div>
             </div>
         </div>
-    </section>-->
+    </section>
     <!-- Latest Blog Section End -->
 
     <!-- Partner Logo Section Begin -->
-   <!-- <div class="partner-logo">
+    <div class="partner-logo">
         <div class="container">
             <div class="logo-carousel owl-carousel">
                 <div class="logo-item">
@@ -845,7 +909,7 @@ SESSION_START();
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
     <!-- Partner Logo Section End -->
 
     <!-- Footer Section Begin -->
@@ -937,3 +1001,4 @@ SESSION_START();
 </body>
 
 </html>
+    

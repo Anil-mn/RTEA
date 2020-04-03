@@ -153,7 +153,7 @@ $ShopName=$row[2];
                                include('../../BackEnd/php/connection.php');
                                //echo $userId;
                                   
-                               $query=mysqli_query($con,"SELECT * from `user_tobuylist` where `userID`='$UserId' limit 2");
+                               $query=mysqli_query($con,"SELECT * from `user_tobuylist` where `userID`='$UserId' order by `listid` DESC limit 2");
                                while($row=mysqli_fetch_array($query))
                                {
                                    $productid=$row[1];
@@ -248,7 +248,7 @@ $ShopName=$row[2];
                                 
 
                                 
-                            echo '<li name="category"><a href="ProductDis/categories.php?'.$row[1].'">'.$row[1].'</a></li>
+                            echo '<li name="category"><a href="categories.php?'.$row[1].'">'.$row[1].'</a></li>
             
                             ';
                               
@@ -329,7 +329,7 @@ $ShopName=$row[2];
                                 
 
                                 
-                            echo '<div class="col-lg-4"><form method="POST" action="ProductDis/categories.php?'.$row[1].'">
+                            echo '<div class="col-lg-4"><form method="POST" action="categories.php?'.$row[1].'">
                             <div class="single-banner">
                                 <img  style="height:300px ; width:400px;" src="../../Images/categoryimages/'.$row[0].'.jpg" alt="image not found 404">
                                 <div class="inner-text">

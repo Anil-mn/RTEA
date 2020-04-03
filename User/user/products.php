@@ -6,12 +6,19 @@
  else{
 $place=$_SESSION['place'];//location
 $ShopName=$_SESSION['ShopName'];
+
 $filename = basename($_SERVER['REQUEST_URI']);
 
-$maincategory =substr($filename,15);
+$productID =substr($filename,13);
+
 
  }
-include('../../../BackEnd/php/connection.php');
+ $PhoneNumber=$_SESSION['PhoneNumber'];
+ include('../../BackEnd/php/connection.php');
+ $Userinfo = mysqli_query($con,"SELECT * FROM `user_info` where `PhoneNumber` = '$PhoneNumber'");
+ while ($row = mysqli_fetch_array($Userinfo)){
+     $UserId = $row[0];
+ }
 // $loc=$_POST['loc'];
  //$location=$_POST['location'];//shop name 
  $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$ShopName'  ");
@@ -25,7 +32,6 @@ $ShopName=$row[2];
 
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -42,15 +48,15 @@ $ShopName=$row[2];
     <link rel = "icon" href = "../../Logos/title.png" 
         type = "image/x-icon">  
     <!-- Css Styles -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/themify-icons.css" type="text/css">
-    <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/themify-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
 <body>
@@ -68,13 +74,15 @@ $ShopName=$row[2];
                         <i class=" fa fa-envelope"></i>
                         <?php
                         echo $place;
+                        
+                        $_SESSION['place']=$place;
                         ?>
                     </div>
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
                         <?php
-
                         echo $ShopName;
+                        $_SESSION['ShopName']=$ShopName;
                         ?>
                     </div>
                 </div>
@@ -85,9 +93,9 @@ $ShopName=$row[2];
                <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                            <option value='yt' data-image="../img/flag-1.jpg" data-imagecss="flag yt"
+                            <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
                                 data-title="English">English</option>
-                            <option value='yu' data-image="../img/flag-2.jpg" data-imagecss="flag yu"
+                            <option value='yu' data-image="img/flag-2.jpg" data-imagecss="flag yu"
                                 data-title="Bangladesh">German </option>
                         </select>
                     </div>
@@ -112,10 +120,11 @@ $ShopName=$row[2];
                     </div>
                     <div class="col-lg-7 col-md-7">
                         <div class="advanced-search">
-                             <button type="button" class="category-btn">StartShopping</button> 
-                            <form action="#" class="input-group">
-                                <input type="text" placeholder="What do you need?">
-                                <button type="button"><i class="ti-search"></i></button>
+                        <form action="StartShopping.php">
+                             <button type="submit"  class="category-btn">StartShopping</button> </form>
+                            <form action="" method="POST" class="input-group">
+                                <input type="text" name="search" placeholder="What do you need?">
+                                <button type="submit" name="Ser"><i class="ti-search"></i></button>
                             </form>
                         </div>
                     </div>
@@ -128,14 +137,52 @@ $ShopName=$row[2];
                             </li>
                             <li class="cart-icon"><a href="#">
                                     <i class="icon_bag_alt"></i>
-                                    <span>3</span>
+                                    <?php
+                                    $query=mysqli_query($con,"SELECT count(`listid`) from `user_tobuylist` where `UserID`='$UserId'");
+                                    while($row=mysqli_fetch_array($query))
+                                    {
+                                        $num = $row[0];
+                                        echo ' <span>'.$num.'</span>';
+                                     }
+                                    ?>
+                                    <!-- <span>3</span> -->
                                 </a>
                                 <div class="cart-hover">
                                     <div class="select-items">
+
                                         <table>
                                             <tbody>
-                                                <tr>
-                                                    <td class="si-pic"><img src="../img/select-product-1.jpg" alt=""></td>
+                                            <?php
+                               include('../../BackEnd/php/connection.php');
+                               //echo $userId;
+                                  
+                               $query=mysqli_query($con,"SELECT * from `user_tobuylist` where `userID`='$UserId' order by `listid` DESC limit 2");
+                               while($row=mysqli_fetch_array($query))
+                               {
+                                   $productid=$row[1];
+                                   $price=$row[2];
+                                   $quantity=$row[3];
+                                   $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$productid'");
+                                   while($row1=mysqli_fetch_array($check))
+                                   {
+                                     $prodname=$row1[1];
+                                     $priceperone= $row1[2];
+                                     echo '
+                                     <tr>
+                                                    <td class="si-pic"><img style="height:80px ; width:60px;"  src="../../Images/productImages/'.$productid.'.jpg" alt=""></td>
+                                                    <td class="si-text">
+                                                        <div class="product-selected">
+                                                            <p>₹'.$priceperone.' x '.$quantity.'</p>
+                                                            <h6>'.$prodname.'</h6>
+                                                        </div>
+                                                    </td>
+                                                    </tr>';
+                                    }
+                                }
+                           
+                                   ?>
+                                                <!-- <tr>
+                                                    <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
                                                     <td class="si-text">
                                                         <div class="product-selected">
                                                             <p>$60.00 x 1</p>
@@ -147,7 +194,7 @@ $ShopName=$row[2];
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="si-pic"><img src="../img/select-product-2.jpg" alt=""></td>
+                                                    <td class="si-pic"><img src="img/select-product-2.jpg" alt=""></td>
                                                     <td class="si-text">
                                                         <div class="product-selected">
                                                             <p>$60.00 x 1</p>
@@ -157,21 +204,30 @@ $ShopName=$row[2];
                                                     <td class="si-close">
                                                         <i class="ti-close"></i>
                                                     </td>
-                                                </tr>
+                                                </tr> -->
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="select-total">
+                                    <!-- <div class="select-total">
                                         <span>total:</span>
                                         <h5>$120.00</h5>
-                                    </div>
+                                    </div> -->
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CART</a>
-                                        <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                        <a href="tobuy.php" class="primary-btn view-card">click here to see list</a>
+                                    
                                     </div>
                                 </div>
                             </li>
-                            <li class="cart-price">$150.00</li>
+                            <?php
+          include('../../BackEnd/php/connection.php');
+        $query=mysqli_query($con,"SELECT SUM(`price`) from `user_tobuylist` where `UserID`='$UserId' ");
+       while($row=mysqli_fetch_array($query))
+       { $total=$row[0];}
+
+       echo '<li class="cart-price">₹'.$total.'</li>';
+
+                                 ?>
+                            <!-- <li class="cart-price">$150.00</li> -->
                         </ul>
                     </div>
                 </div>
@@ -186,19 +242,18 @@ $ShopName=$row[2];
                         <form id='category' action="demo.php" method='POST'>
                         <ul name="category" class="depart-hover">
                             <?php
-                            include('../../../Backend/Php/Connection.php');
-                            $query=mysqli_query($con,"SELECT * from Shop_Categories");
-                            while($row=mysqli_fetch_array($query))
-                            {
-                               
+                            include('../../Backend/Php/Connection.php');
+                             $catid=mysqli_query($con,"SELECT * from `Shop_supersub` where `SubCategorie_ID`='$subcategory'");
+                                  while($row1=mysqli_fetch_array($catid))
+                                  {
+                                      $subid = $row1[0];
+                                      $subcatname = $row1[2];
+                                
                                // echo '<button><li name="category"><a href="demo.php">'.$row[1].'</a></li></button>';
-                                
-
-                                
-                            echo '<li name="category"><a href="'.$row[1].'.php">'.$row[1].'</a></li>';
+                                 echo '<li name="category"><a href="products.php?'.$subid.'">'.$subcatname.'</a></li>';
                               
-                            }
-
+                            
+                        }
                           
                             ?>
                             <!-- <li class="active"><a href="#">Women’s Clothing</a></li>
@@ -265,7 +320,7 @@ $ShopName=$row[2];
     <section class="product-shop spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
+                <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter" >
                     <div class="filter-widget">
                         <h4 class="fw-title">Categories</h4>
                         <ul class="filter-catagories">
@@ -408,66 +463,69 @@ $ShopName=$row[2];
                     </div>
                     <div class="product-list">
                         <div class="row">
-
                         <?php
-                        include('../../../Backend/Php/Connection.php');
-                        echo $maincategory;
-                        $categoryinfo = mysqli_query($con,"SELECT * from `shop_categories` WHERE  `Categories`= '$maincategory'");
-                        while($row=mysqli_fetch_array($categoryinfo))
-                        {
-                             $CatId=$row[0];
-                        }    
-                             $Subcategoryinfo = mysqli_query($con,"SELECT * from `shop_subcategories` WHERE  `Categorie_ID`= '$CatId'");
-                             while($row=mysqli_fetch_array($Subcategoryinfo))
-                             {
-                                  $SubCatId=$row[0];   
-                                  
-                                  $Supercategoryinfo = mysqli_query($con,"SELECT * from `shop_supersub` WHERE  `SubCategorie_ID`= '$SubCatId'");
-                                   while($row=mysqli_fetch_array($Supercategoryinfo))
-                                     {
-                                         $SuperCatId=$row[0]; 
-                                         $query=mysqli_query($con,"SELECT * from Shop_Products where `superSubID`='$SuperCatId'");
-                                          while($row=mysqli_fetch_array($query))
-                                          {
-                                                $proid=$row[0];
-                                                $proname=$row[1];
-                                                $price=$row[2];
-                                    
-                                  
-                                               echo '<div class="col-lg-4 col-sm-6">
-                                                    <div class="product-item">
-                                                        <div class="pi-pic">
-                                                            <img src="../../../Images/productImages/'.$proid.'.jpg" alt="">
-                                                            <div class="sale pp-sale">Sale</div>
-                                                            <div class="icon">
-                                                                <i class="icon_heart_alt"></i>
-                                                            </div>
-                                                            <ul>
-                                                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="pi-text">
-                                                        
-                                                            <div class="catagory-name">Towel</div>
-                                                            <a href="#">
-                                                                <h5>'.$proname.'</h5>
-                                                            </a>
-                                                            <div class="product-price">
-                                                                '.$price.'
-                                                                <span>'.$proid.'</span>
-                                                            </div>
-                                                        </div>
-                                                       </div> 
-                                                </div>';
-                                            }
-                                        }
-                                    }
-                                
-                            ?>
-                            
+                          $catid=mysqli_query($con,"SELECT * from `Shop_products` where `superSubID`='$productID'");
+                          while($row1=mysqli_fetch_array($catid))
+                          {
+                              $pid = $row1[0];
+                              $pname = $row1[1];
+                              $pprice = $row1[2];
+                              $Dis =$row1[3];
+                              echo '<div class="col-lg-4 col-sm-6">
+                              <div class="product-item">
+                                  <div class="pi-pic">
+                                      <img src="../../Images/ProductImages/'.$pid.'.jpg" alt="">
+                                      <div class="sale pp-sale">Sale</div>
+                                      <div class="icon">
+                                          <i class="icon_heart_alt"></i>
+                                      </div>
+                                      <ul>
+                                          <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                          <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                          <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="pi-text">
+                                      <div class="catagory-name">'.$Dis.'</div>
+                                      <a href="#">
+                                          <h5>'.$pname.'</h5>
+                                      </a>
+                                      <div class="product-price">
+                                          '.$pprice.'
+                                          <span>40</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                              ';}
+                        ?>
                             <!-- <div class="col-lg-4 col-sm-6">
+                                <div class="product-item">
+                                    <div class="pi-pic">
+                                        <img src="img/products/product-1.jpg" alt="">
+                                        <div class="sale pp-sale">Sale</div>
+                                        <div class="icon">
+                                            <i class="icon_heart_alt"></i>
+                                        </div>
+                                        <ul>
+                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="pi-text">
+                                        <div class="catagory-name">Towel</div>
+                                        <a href="#">
+                                            <h5>Pure Pineapple</h5>
+                                        </a>
+                                        <div class="product-price">
+                                            $14.00
+                                            <span>$35.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
                                         <img src="img/products/product-2.jpg" alt="">
@@ -516,7 +574,7 @@ $ShopName=$row[2];
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
@@ -545,7 +603,7 @@ $ShopName=$row[2];
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="../img/products/product-5.jpg" alt="">
+                                        <img src="img/products/product-5.jpg" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -570,7 +628,7 @@ $ShopName=$row[2];
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="../img/products/product-6.jpg" alt="">
+                                        <img src="img/products/product-6.jpg" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -595,7 +653,7 @@ $ShopName=$row[2];
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="../img/products/product-7.jpg" alt="">
+                                        <img src="img/products/product-7.jpg" alt="">
                                         <div class="sale pp-sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
@@ -621,7 +679,7 @@ $ShopName=$row[2];
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="../img/products/product-8.jpg" alt="">
+                                        <img src="img/products/product-8.jpg" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -646,7 +704,7 @@ $ShopName=$row[2];
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="../img/products/product-9.jpg" alt="">
+                                        <img src="img/products/product-9.jpg" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -669,13 +727,13 @@ $ShopName=$row[2];
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- <div class="loading-more">
+                    </div> -->
+                    <div class="loading-more">
                         <i class="icon_loading"></i>
                         <a href="#">
                             Loading More
                         </a>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -683,32 +741,32 @@ $ShopName=$row[2];
     <!-- Product Shop Section End -->
 
     <!-- Partner Logo Section Begin -->
-    <div class="partner-logo" hidden>
+    <div class="partner-logo">
         <div class="container">
             <div class="logo-carousel owl-carousel">
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="../img/logo-carousel/logo-1.png" alt="">
+                        <img src="img/logo-carousel/logo-1.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="../img/logo-carousel/logo-2.png" alt="">
+                        <img src="img/logo-carousel/logo-2.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="../img/logo-carousel/logo-3.png" alt="">
+                        <img src="img/logo-carousel/logo-3.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="../img/logo-carousel/logo-4.png" alt="">
+                        <img src="img/logo-carousel/logo-4.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="../img/logo-carousel/logo-5.png" alt="">
+                        <img src="img/logo-carousel/logo-5.png" alt="">
                     </div>
                 </div>
             </div>
@@ -723,7 +781,7 @@ $ShopName=$row[2];
                 <div class="col-lg-3">
                     <div class="footer-left">
                         <div class="footer-logo">
-                            <a href="#"><img src="../img/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -745,7 +803,7 @@ $ShopName=$row[2];
                             <li><a href="#">About Us</a></li>
                             <li><a href="#">Checkout</a></li>
                             <li><a href="#">Contact</a></li>
-                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Serivius</a></li>
                         </ul>
                     </div>
                 </div>
@@ -778,11 +836,11 @@ $ShopName=$row[2];
                     <div class="col-lg-12">
                         <div class="copyright-text">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-<!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </div>
                         <div class="payment-pic">
-                            <!-- <img src="img/payment-method.png" alt=""> -->
+                            <img src="img/payment-method.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -792,16 +850,16 @@ $ShopName=$row[2];
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>
-    <script src="../js/jquery.countdown.min.js"></script>
-    <script src="../js/jquery.nice-select.min.js"></script>
-    <script src="../js/jquery.zoom.min.js"></script>
-    <script src="../js/jquery.dd.min.js"></script>
-    <script src="../js/jquery.slicknav.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/main.js"></script>
-</body>s
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.zoom.min.js"></script>
+    <script src="js/jquery.dd.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
 
 </html>
