@@ -49,6 +49,9 @@ $logID=$row2[0];
     $noofprod = $row1[3]; 
     
     $inserttoTrans = mysqli_query($con,"INSERT INTO `user_transactions`( `LogID`, `ProductID`, `amount`, `No of products`) VALUES ('$logID','$prodid','$price','$noofprod')");
+    if($inserttoTrans == true){
+        $deltetoByList = mysqli_query($con,"DELETE FROM `user_tobuylist` WHERE `ProductID`='$prodid' and `userID`='$userId'");
+    }
     
     } 
 

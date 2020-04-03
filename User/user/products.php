@@ -9,7 +9,7 @@ $ShopName=$_SESSION['ShopName'];
 
 $filename = basename($_SERVER['REQUEST_URI']);
 
-$productID =substr($filename,13);
+$suID =substr($filename,13);
 
 
  }
@@ -156,6 +156,11 @@ $ShopName=$row[2];
                                include('../../BackEnd/php/connection.php');
                                //echo $userId;
                                   
+                               $filename = basename($_SERVER['REQUEST_URI']);
+                               #$pagename =substr($filename,15);
+                               $pagename =$filename;
+                               //echo $pagename;
+                               //echo $userId;
                                $query=mysqli_query($con,"SELECT * from `user_tobuylist` where `userID`='$UserId' order by `listid` DESC limit 2");
                                while($row=mysqli_fetch_array($query))
                                {
@@ -176,6 +181,10 @@ $ShopName=$row[2];
                                                             <h6>'.$prodname.'</h6>
                                                         </div>
                                                     </td>
+                                                    </td>
+                                                    <td class="si-close">
+                                                    <a class="ti-close" href="process/tobyproDelete.php?'.$pagename.','.$productid.'"></a>
+                                                </td>
                                                     </tr>';
                                     }
                                 }
@@ -464,26 +473,32 @@ $ShopName=$row[2];
                     <div class="product-list">
                         <div class="row">
                         <?php
-                          $catid=mysqli_query($con,"SELECT * from `Shop_products` where `superSubID`='$productID'");
+                          
+                          $catid=mysqli_query($con,"SELECT * from `Shop_products` where `superSubID`='$suID'");
                           while($row1=mysqli_fetch_array($catid))
                           {
                               $pid = $row1[0];
                               $pname = $row1[1];
                               $pprice = $row1[2];
                               $Dis =$row1[3];
+                              $check = mysqli_query($con,"SELECT * from `Shop_link` where `Product_ID`='$pid' and `Shop_ID`='$ShopId' ");
+                              while($result = mysqli_fetch_array($check))
+                              {
+                              $quntity = $result[3];
+                              $location = $result[4];
                               echo '<div class="col-lg-4 col-sm-6">
                               <div class="product-item">
                                   <div class="pi-pic">
                                       <img  src="../../Images/ProductImages/'.$pid.'.jpg" alt="">
-                                      <div class="sale pp-sale">Sale</div>
+                                      <div class="sale pp-sale">Available '.$quntity.'</div>
                                       <div class="icon">
                                           <i class="icon_heart_alt"></i>
                                       </div>
                                       <ul>
-                                          <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                          <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                          <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                      </ul>
+                                      <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                      <li class="quick-view"><a href="process/list.php?'.$pagename.','.$pid.'" name='.$pid.'>+ Add List</a></li>
+                                      <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                  </ul>
                                   </div>
                                   <div class="pi-text">
                                       <div class="catagory-name">'.$Dis.'</div>
@@ -491,13 +506,17 @@ $ShopName=$row[2];
                                           <h5>'.$pname.'</h5>
                                       </a>
                                       <div class="product-price">
-                                          '.$pprice.'
-                                          <span>40</span>
+                                      ₹'.$pprice.'
+                                         
                                       </div>
+                                      <span>Location</span><br>
+                                      <span>'.$location.'</span>
                                   </div>
                               </div>
                           </div>
+                          </div>
                               ';}
+                            }
                         ?>
                             <!-- <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">

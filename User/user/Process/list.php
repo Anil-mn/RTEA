@@ -32,17 +32,29 @@ $ShopId =$row[0];
 
 
 $filename = basename($_SERVER['REQUEST_URI']);
-
+//echo $filename;
 $prodId =substr($filename,9);
 
-echo $prodId;
+//echo $prodId;
 
-$query2=mysqli_query($con, "SELECT * FROM  `shop_products` where `Product_ID`='$prodId'");
+$demo= stristr($filename,",");
+ $len = strlen($demo);
+ $pageName =substr($filename,9,-$len);
+ //echo $pageName;
+ //echo $pageName."<br>";
+
+
+ $productId=substr($demo,1);
+ echo $productId;
+
+ $demo = stristr($filename,",");
+
+$query2=mysqli_query($con, "SELECT * FROM  `shop_products` where `Product_ID`='$productId'");
 while($row1 = mysqli_fetch_array($query2))
 { 
 
 $price =$row1[2];
-$check = mysqli_query($con,"SELECT * From `user_tobuylist` where `ProductID`='$prodId' and  `userID`='$userId'");
+$check = mysqli_query($con,"SELECT * From `user_tobuylist` where `ProductID`='$productId' and  `userID`='$userId'");
 $result = mysqli_fetch_array($check);
 if($result ==  true){
    echo '<script>
@@ -51,9 +63,9 @@ if($result ==  true){
 
 }
 else {
-   $buylist=mysqli_query($con,"INSERT INTO `user_tobuylist`( `ProductID`, `Price`,`Quantity`,`userID`) VALUES ('$prodId','$price','1','$userId')");
+   $buylist=mysqli_query($con,"INSERT INTO `user_tobuylist`( `ProductID`, `Price`,`Quantity`,`userID`) VALUES ('$productId','$price','1','$userId')");
 }
 }
-header('location:../MainCategory.php');
+header('location:../'.$pageName);
 
 ?>

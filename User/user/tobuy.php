@@ -282,7 +282,10 @@ $ShopId =$row[0];
                                 <?php
                                include('../../BackEnd/php/connection.php');
                                //echo $userId;
-                                  
+                               $filename = basename($_SERVER['REQUEST_URI']);
+                               #$pagename =substr($filename,15);
+                               $pagename =$filename;
+                               echo $pagename;
                                $query=mysqli_query($con,"SELECT * from `user_tobuylist` where `userID`='$userId' ");
                                while($row=mysqli_fetch_array($query))
                                {
@@ -313,7 +316,7 @@ $ShopId =$row[0];
                                        </div>
                                    </td>
                                    <td class="total-price first-row">₹'.$price.'</td>
-                                   <td class="close-td first-row"><a  class="ti-close name="'.$prodname.'" href="Process/tobyProDelete.php?'.$productid.'"></a></td>
+                                   <td class="close-td first-row"><a  class="ti-close name="'.$prodname.'" href="Process/tobyProDelete.php?'.$pagename.','.$productid.'"></a></td>
                                  </tr>';
                              
                                 

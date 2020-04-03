@@ -155,7 +155,11 @@ $ShopName=$row[2];
                                             <?php
                                include('../../BackEnd/php/connection.php');
                                //echo $userId;
-                                  
+                               $filename = basename($_SERVER['REQUEST_URI']);
+                               #$pagename =substr($filename,15);
+                               $pagename =$filename;
+                               //echo $pagename;
+                               //echo $userId;
                                $query=mysqli_query($con,"SELECT * from `user_tobuylist` where `userID`='$UserId' order by `listid` DESC limit 2");
                                while($row=mysqli_fetch_array($query))
                                {
@@ -176,6 +180,10 @@ $ShopName=$row[2];
                                                             <h6>'.$prodname.'</h6>
                                                         </div>
                                                     </td>
+                                                    </td>
+                                                    <td class="si-close">
+                                                    <a class="ti-close" href="process/tobyproDelete.php?'.$pagename.','.$productid.'"></a>
+                                                </td>
                                                     </tr>';
                                     }
                                 }
