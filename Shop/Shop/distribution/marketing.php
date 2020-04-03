@@ -121,9 +121,9 @@ include('disreq.php');
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
             </div>   </li>
-          <li class="nav-item"><a class="nav-link" href=""><img class="menu-icon" src="../images/menu_icons/01.png" alt="menu icon"><span class="menu-title">Request</span></a></li>
-          <li class="nav-item"><a class="nav-link" href=""><img class="menu-icon" src="../images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Track</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../userinfo.php"><img class="menu-icon" src="../images/menu_icons/03.png" alt="menu icon"><span class="menu-title">User Information</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="request.php"><img class="menu-icon" src="../images/menu_icons/01.png" alt="menu icon"><span class="menu-title">Request</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="track.php"><img class="menu-icon" src="../images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Track</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../shopstock.php"><img class="menu-icon" src="../images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Shop Information</span></a></li>
           <!-- <li class="nav-item"><a class="nav-link" href="../../../pages/forms/basic_elements.html"><img class="menu-icon" src="../../images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Form</span></a></li>
           <li class="nav-item"><a class="nav-link" href="../../../pages/charts/chartjs.html"><img class="menu-icon" src="../../images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Charts</span></a></li>
           <li class="nav-item"><a class="nav-link" href="../../../pages/tables/basic-table.html"><img class="menu-icon" src="../../images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Table</span></a></li>
@@ -131,7 +131,7 @@ include('disreq.php');
           <li class="nav-item"> -->
             
           </li>
-            <li class="nav-item purchase-button"><a class="nav-link" href="../UserInfo.php" >BACK</a></li>
+            <li class="nav-item purchase-button"><a class="nav-link" href="../CurrentUser.php" >BACK</a></li>
         </ul>
       </nav>
       <!-- partial -->
@@ -256,7 +256,7 @@ include('disreq.php');
                           <div class="clearfix">
                             <i class="fa fa-users float-right icon-md text-gray"></i>
                           </div>
-                          <img src="../../../User/user/img/ProductImages/10003.jpg" style="height:150px; width:150px; margin-left:20px;  margin-bottom:40px;">
+                          <img src="../../../Images/AdsImages/'.$addid.'.jpg" style="height:150px; width:150px; margin-left:20px;  margin-bottom:40px;">
                           <div >
                           <h4 class="card-title font-weight-normal text-info">'.$addname.'</h4>
                           <h6 class="card-subtitle mb-4">'.$slotName.'</h6>

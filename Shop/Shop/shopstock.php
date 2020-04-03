@@ -220,10 +220,10 @@ $date=date('Y-m-d');
             </div>
           </li>
           <li class="nav-item"><a class="nav-link" href="../index.html"><img class="menu-icon" src="images/menu_icons/01.png" alt="menu icon"><span class="menu-title">online Users</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="userInfo.php"><img class="menu-icon" src="images/menu_icons/02.png" alt="menu icon"><span class="menu-title">User Info</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="shopstock.php"><img class="menu-icon" src="images/menu_icons/03.png" alt="menu icon"><span class="menu-title">My Shop process</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="distribution/request.php"><img class="menu-icon" src="images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Distribution Request</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="distribution/marketing.php"><img class="menu-icon" src="images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Advertisements</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="productInstertion.php"><img class="menu-icon" src="images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Product Insertion</span></a></li>
+          <li class="nav-item"><a class="nav-link" href=""><img class="menu-icon" src="images/menu_icons/03.png" alt="menu icon"><span class="menu-title">My Shop process</span></a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="distribution/request.php"><img class="menu-icon" src="images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Distribution Request</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="distribution/marketing.php"><img class="menu-icon" src="images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Advertisements</span></a></li> -->
           <li class="nav-item"><a class="nav-link" href="Analysis.php"><img class="menu-icon" src="images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Analysis</span></a></li>
           <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/"><img class="menu-icon" src="images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Behaviuor</span></a></li>
           <li class="nav-item">
@@ -243,203 +243,125 @@ $date=date('Y-m-d');
         </ul>
       </nav>
       <!-- partial -->
+      
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row purchace-popup">
-            <div class="col-12">
-             
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-cube text-danger icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="card-text text-right">Total Revenue</p>
-                      <div class="fluid-container">
-                        <?php
-                        include('../../BackEnd/php/connection.php');
-                        $total=mysqli_query($con,"SELECT SUM(`TotalAmt`) from `user_log` where `ShopID`='$shopid'");
-                        while($row = mysqli_fetch_array($total)){
-                          $revanew = $row[0];
-                          echo ' <h3 class="card-title font-weight-bold text-right mb-0">₹'.$revanew.'</h3>';
-                        }
-                       
-
-                        ?>
-                        <!-- <h3 class="card-title font-weight-bold text-right mb-0">$65,650</h3> -->
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3">
-                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> 65% lower growth
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-receipt text-warning icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="card-text text-right">Orders</p>
-                      <div class="fluid-container">
-                      <?php
-                     include('../../BackEnd/php/connection.php');
-                           $query=mysqli_query($con,"SELECT SUM(`Quntity`) from `dis_shopreq` where `ShopID`='$shopid'");
-                           while($row=mysqli_fetch_array($query))
-                           {
-                              $Totalproducts=$row[0]; 
-                             echo '<h3 class="card-title font-weight-bold text-right mb-0">'.$row[0].'</h3>';
-                           }
-                           ?>
-                        <!-- <h3 class="card-title font-weight-bold text-right mb-0">3455</h3> -->
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3">
-                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Product-wise sales
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-poll-box text-teal icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="card-text text-right">Sales</p>
-                      <div class="fluid-container">
-                      <?php
-                     include('../../BackEnd/php/connection.php');
-                           $query=mysqli_query($con,"SELECT SUM(`TotalProducts`) from `user_log` where `ShopID`='$shopid'");
-                           while($row=mysqli_fetch_array($query))
-                           {
-                              $Totalproducts=$row[0]; 
-                             echo '<h3 class="card-title font-weight-bold text-right mb-0">'.$row[0].'</h3>';
-                           }
-                           ?>
-                        <!-- <h3 class="card-title font-weight-bold text-right mb-0">5693</h3> -->
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3">
-                    <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Weekly Sales
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-account-location text-info icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="card-text text-right">Customer online</p>
-                      <div class="fluid-container">
-                        <?php
-                      include('../../BackEnd/php/connection.php');
-                           $query=mysqli_query($con,"SELECT Count(`onlineid`) from `user_online` where `ShopID`='$shopid'");
-                           while($row=mysqli_fetch_array($query))
-                           {
-                              $Totalproducts=$row[0]; 
-                             echo '<h3 class="card-title font-weight-bold text-right mb-0">'.$row[0].'</h3>';
-                           }
-                           ?>
-                        <!-- <h3 class="card-title font-weight-bold text-right mb-0">246</h3> -->
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3">
-                    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Product-wise sales
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title mb-4">Sales</h5>
-                  <canvas id="dashoard-area-chart" height="100px"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-    
+        
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
               <div class="card">
                 <div class="card-body" >
                   <h5 class="card-title mb-4">Global Sales by Top Locations</h5>
                   <div class="row">
+                  <form action="" method='POST'>
+                  <div><label>User Search</label>
+                  <div class="form-group">
+                          <label for="exampleInputEmail1">Enter Product</label>
+                          <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter product">
+                        </div>
+                        <div class="form-group">
+                        <button type="Submit" name="demo" class="btn btn-inverse-dark btn-rounded btn-fw">Search</button>
+                        </div>
+                      </form >
                       <form action=" " method="POST">
                     <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
                       <table class="table table-striped">
                       
                         <tbody>
-                            <th>User</th><th>User_Name</th><th>PhoneNumber</th><th>Current Amount</th><th>Entry Time</th>
+                            <th>       </th><th>Product</th><th>Stock</th><th>Location</th><th>Price</th>
                         <?php
                             include('../../BackEnd/php/connection.php');
-                            $onlineUsers=mysqli_query($con,"SELECT * FROM `user_online` where `shopID`='$shopid'");
+                            if(isset($_POST['demo'])){
+                                $productname = $_POST['name'];
+                                echo $productname;
+                                $productInfo=mysqli_query($con,"SELECT * FROM `shop_products` where `Name` like '%$productname%'");
+                                while($row=mysqli_fetch_array($productInfo))
+                                 {
+                                     $productId = $row[0];
+                                     $price = $row[2];
+                                     echo $productId;
+
+ 
+                                 }
+                            $onlineUsers=mysqli_query($con,"SELECT * FROM `shop_link` where `shop_ID`='$shopid' and `Product_ID`='$productId'");
                              while($row=mysqli_fetch_array($onlineUsers))
                               {
-                                  $userid=$row[1];
-                                  $time=$row[3];
-                                   $userinfo=mysqli_query($con,"SELECT * FROM `user_info` where `UserId`='$userid'");
-                                   while($row1=mysqli_fetch_array($userinfo))
-                                    {
-                                        $userName = $row1[1];
-                                        $UserNumber = $row1[2];
-                                        $usercart=mysqli_query($con,"SELECT sum(price),`ProductID` FROM `user_cart` where `onlineID`='$userid'");
-                                        while($row2=mysqli_fetch_array($usercart))
-                                         {
-                                             $TotalPrice = $row2[0];
-                                             $productId  = $row2[1];
+                                $quntity=$row[3];
+                                $location =$row[4];
+                                echo $quntity;
 
-                                             echo '
-                                             <tr>
-                                 <td>
-                                   <div class="flag">
-                                     <img src="../../Images/UserImages/'.$UserNumber.'.jpg">
-                                   </div>
-                                 </td>
-                                 
-                                 <td >
-                                   '.$userName.'
-                                 </td>
-                                 <td>
-                                 '.$UserNumber.'
-                                 </td>
-                                 <td >
-                                 '.$TotalPrice.'
-                                 </td>
-                                 <td >
-                                 '.$time.'
-                                 </td>
-                                 
-                                 
-                               </tr>
-                               
-                                             ';
-                                         }
+                                echo '
+                                                 <tr>
+                                     <td>
+                                        <div class="flag">
+                                        <img src="../../Images/ProductImages/'.$productId.'.jpg" ">
+                                        </div>
+                                      </td>
+                                     
+                                      <td >
+                                        '.$productname.'
+                                      </td>
+                                      <td>
+                                    '.$quntity.'
+                                     </td>
+                                     
+                                      <td>
+                                     '.$location.'
+                                      </td>
+                                      <td>
+                                     '.$price.'
+                                      </td>
+                                
+                                     
+                                     
+                                    </tr>
+                                   
+                                                 ';
  
-                                    }
                               }
+                            }
+                            //       $productId=$row[1];
+                            //       $quntity=$row[3];
+                            //        $userinfo=mysqli_query($con,"SELECT * FROM `user_info` where `UserId`='$userid'");
+                            //        while($row1=mysqli_fetch_array($userinfo))
+                            //         {
+                            //             $userName = $row1[1];
+                            //             $UserNumber = $row1[2];
+                            //             $usercart=mysqli_query($con,"SELECT sum(price),`ProductID` FROM `user_cart` where `onlineID`='$userid'");
+                            //             while($row2=mysqli_fetch_array($usercart))
+                            //              {
+                            //                  $TotalPrice = $row2[0];
+                            //                  $productId  = $row2[1];
+
+                            //                  echo '
+                            //                  <tr>
+                            //      <td>
+                            //        <div class="flag">
+                            //          <img src="../../user/images/'.$userid.'.jpg">
+                            //        </div>
+                            //      </td>
+                                 
+                            //      <td >
+                            //        '.$userName.'
+                            //      </td>
+                            //      <td>
+                            //      '.$UserNumber.'
+                            //      </td>
+                            //      <td >
+                            //      '.$TotalPrice.'
+                            //      </td>
+                            //      <td >
+                            //      '.$time.'
+                            //      </td>
+                                 
+                                 
+                            //    </tr>
+                               
+                            //                  ';
+                            //              }
+ 
+                            //         }
+                            //   }
                             ?>
                           
                         </tbody>
@@ -612,21 +534,19 @@ $date=date('Y-m-d');
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
-  <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5NXz9eVnyJOA81wimI8WYE08kW_JMe8g&callback=initMap" async defer></script>
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-  <script src="js/off-canvas.js"></script>
-  <script src="js/misc.js"></script>
+  <script src="../js/off-canvas.js"></script>
+  <script src="../js/misc.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="js/dashboard.js"></script>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5NXz9eVnyJOA81wimI8WYE08kW_JMe8g&callback=initMap" async defer></script> -->
-  <script src="js/maps.js"></script>
+  <script src="../js/maps.js"></script>
   <!-- End custom js for this page-->
 </body>
 

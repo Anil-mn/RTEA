@@ -10,7 +10,7 @@ SESSION_START();
  $check = mysqli_fetch_array($result);
  if ($check == true){
     $_SESSION['PhoneNumber'] = $_POST['PhoneNumber'];
-     header('location:../../../Shop/Shop/Userinfo.php');
+     header('location:../../../Shop/Shop/CurrentUser.php');
  }
 
 else{
