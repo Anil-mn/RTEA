@@ -8,7 +8,7 @@ $place=$_SESSION['place'];//location
 $ShopName=$_SESSION['ShopName'];
 $filename = basename($_SERVER['REQUEST_URI']);
 
-$filename =substr($filename,15);
+$maincategory =substr($filename,15);
 
  }
 include('../../../BackEnd/php/connection.php');
@@ -411,49 +411,61 @@ $ShopName=$row[2];
 
                         <?php
                         include('../../../Backend/Php/Connection.php');
-                        $check=mysqli_query($con,"SELECT * from Shop_link where `Shop_ID`='$ShopId'");
-                        while($row=mysqli_fetch_array($check))
+                        echo $maincategory;
+                        $categoryinfo = mysqli_query($con,"SELECT * from `shop_categories` WHERE  `Categories`= '$maincategory'");
+                        while($row=mysqli_fetch_array($categoryinfo))
                         {
-                             $ProdId=$row['Product_ID'];
-                             
-                        
-                        $query=mysqli_query($con,"SELECT * from Shop_Products where `Product_ID`='$ProdId' limit 3");
-                        
-                        
-                                    while($row=mysqli_fetch_array($query))
-                                    {
-                                         $proid=$row[0];
-                                        $proname=$row[1];
-                                        $price=$row[2];
+                             $CatId=$row[0];
+                        }    
+                             $Subcategoryinfo = mysqli_query($con,"SELECT * from `shop_subcategories` WHERE  `Categorie_ID`= '$CatId'");
+                             while($row=mysqli_fetch_array($Subcategoryinfo))
+                             {
+                                  $SubCatId=$row[0];   
+                                  
+                                  $Supercategoryinfo = mysqli_query($con,"SELECT * from `shop_supersub` WHERE  `SubCategorie_ID`= '$SubCatId'");
+                                   while($row=mysqli_fetch_array($Supercategoryinfo))
+                                     {
+                                         $SuperCatId=$row[0]; 
+                                         $query=mysqli_query($con,"SELECT * from Shop_Products where `superSubID`='$SuperCatId'");
+                                          while($row=mysqli_fetch_array($query))
+                                          {
+                                                $proid=$row[0];
+                                                $proname=$row[1];
+                                                $price=$row[2];
                                     
                                   
-                           echo '<div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="../../../Images/productImages/'.$proid.'.jpg" alt="">
-                                        <div class="sale pp-sale">Sale</div>
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                    
-                                        <div class="catagory-name">Towel</div>
-                                        <a href="#">
-                                            <h5>'.$proname.'</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            '.$price.'
-                                            <span>'.$proid.'</span>
-                                        </div>
-                                    </div>
-                                   </div> 
-                            </div>';}}?>
+                                               echo '<div class="col-lg-4 col-sm-6">
+                                                    <div class="product-item">
+                                                        <div class="pi-pic">
+                                                            <img src="../../../Images/productImages/'.$proid.'.jpg" alt="">
+                                                            <div class="sale pp-sale">Sale</div>
+                                                            <div class="icon">
+                                                                <i class="icon_heart_alt"></i>
+                                                            </div>
+                                                            <ul>
+                                                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                                <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="pi-text">
+                                                        
+                                                            <div class="catagory-name">Towel</div>
+                                                            <a href="#">
+                                                                <h5>'.$proname.'</h5>
+                                                            </a>
+                                                            <div class="product-price">
+                                                                '.$price.'
+                                                                <span>'.$proid.'</span>
+                                                            </div>
+                                                        </div>
+                                                       </div> 
+                                                </div>';
+                                            }
+                                        }
+                                    }
+                                
+                            ?>
                             
                             <!-- <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">

@@ -219,7 +219,7 @@ $date=date('Y-m-d');
               </div>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="../index.html"><img class="menu-icon" src="images/menu_icons/01.png" alt="menu icon"><span class="menu-title">Dashboard</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="currentUser.php"><img class="menu-icon" src="images/menu_icons/01.png" alt="menu icon"><span class="menu-title">Dashboard</span></a></li>
           <li class="nav-item"><a class="nav-link" href="userInfo.php"><img class="menu-icon" src="images/menu_icons/02.png" alt="menu icon"><span class="menu-title">User Info</span></a></li>
           <li class="nav-item"><a class="nav-link" href="productInstertion.php"><img class="menu-icon" src="images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Product Insertion</span></a></li>
           <li class="nav-item"><a class="nav-link" href="../pages/forms/basic_elements.html"><img class="menu-icon" src="images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Form</span></a></li>
