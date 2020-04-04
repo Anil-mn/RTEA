@@ -418,16 +418,33 @@ while ($row = mysqli_fetch_array($Userinfo)){
     <!-- Banner Section End -->
 
     <!-- Women Banner Section Begin -->
-    <!-- <section class="women-banner spad">
+    <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3">
+            <?php
+                include('../../BackEnd/php/connection.php');
+            $Ads = mysqli_query($con,"SELECT * FROM `market_userads` Where  `User_id` = '$UserId' and `SlotNumbers` = 3");
+            while($row1=mysqli_fetch_array($Ads)){
+                $addID=$row1[2];
+                $Adsinfo = mysqli_query($con,"SELECT * FROM `market_add` Where  `Add_ID` = '$addID'");
+                  while($row=mysqli_fetch_array($Adsinfo)){
+                  $addName=$row[2];
+                  $addProduct=$row[4];
+                  $addDis=$row[5];
+                  }
+                }
+                  echo '<div class="product-large set-bg" data-setbg=""../../Images/AdsImages/'.$addID.'.jpg">
+                      <h2>Women’s</h2>
+                      <a href="#">Discover More</a>
+                     </div>'
+                  ?>
+                <!-- <div class="col-lg-3">
                     <div class="product-large set-bg" data-setbg="img/products/women-large.jpg">
                         <h2>Women’s</h2>
                         <a href="#">Discover More</a>
                     </div>
                 </div> -->
-                <!-- <div class="col-lg-8 offset-lg-1">
+                 <div class="col-lg-8 offset-lg-1">
                     <div class="filter-control">
                         <ul>
                             <li class="active">Clothings</li>
@@ -531,7 +548,7 @@ while ($row = mysqli_fetch_array($Userinfo)){
                 </div>
             </div>
         </div>
-    </section> -->
+    </section> 
     <!-- Women Banner Section End -->
 
     <!-- Deal Of The Week Section Begin-->
@@ -572,7 +589,7 @@ while ($row = mysqli_fetch_array($Userinfo)){
     <!-- Deal Of The Week Section End -->
 
     <!-- Man Banner Section Begin -->
-    <section class="man-banner spad">
+    <section class="man-banner spad"  hidden>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8">
@@ -730,7 +747,7 @@ while ($row = mysqli_fetch_array($Userinfo)){
     <!-- Instagram Section End -->
 
     <!-- Latest Blog Section Begin -->
-    <section class="latest-blog spad">
+    <section class="latest-blog spad" hidden>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
