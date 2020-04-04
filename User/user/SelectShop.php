@@ -101,7 +101,8 @@ while ($row = mysqli_fetch_array($Userinfo)){
                    while($row = mysqli_fetch_array($query))
                   {
                        $loc=$row['Name'];
-                       $_SESSION['loc']=$loc;                  }
+                       $_SESSION['loc']=$loc;           
+                           }
               ?>
                      <div class="top-social">
                         <a href="#"><i class="ti-facebook"></i></a>

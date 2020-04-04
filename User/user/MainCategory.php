@@ -18,17 +18,17 @@ while ($row = mysqli_fetch_array($Userinfo)){
  $_SESSION['shopeName']=$location;
  //echo $location;//shop name 
 //  $_SESSION['location']=$location;
- 
- $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopID`='$location' or `ShopName`='$location'  ");
-                            
-
-while($row = mysqli_fetch_array($query))
+ $query1 = "SELECT * FROM `shop_info` where `Location` = '$place' and (`ShopID`='$location' or `ShopName`='$location')";
+ $query = mysqli_query($con, "SELECT * FROM `shop_info` where `ShopID`='$location' or `ShopName`='$location'  ");
+ while($row = mysqli_fetch_array($query))
 { 
 
 $ShopId =$row[0];
 $ShopName=$row[2];
+//echo $ShopName;
 
 }
+//echo $query1;
 ?>
 
 <!DOCTYPE html>
