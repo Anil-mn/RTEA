@@ -2,7 +2,12 @@
 include('../connection.php');
  $Distribution_ID = $_POST ['Distribution_ID'];
  $Password = $_POST['Password'];
-
+ if($Distribution_ID=='admin' and $Password=='rtea') 
+    {
+        header('location:../../../admin/index.php');
+    }
+   else 
+  { 
  $query = "SELECT * FROM `distribution_info` WHERE  Distribution_ID = '$Distribution_ID' and Password = '$Password'";
  $result = mysqli_query($con, $query);
  $check = mysqli_fetch_array($result);
@@ -12,6 +17,6 @@ include('../connection.php');
 else{
     echo "login faild";
 }
-
+  }
 
 ?>
