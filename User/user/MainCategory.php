@@ -388,12 +388,34 @@ $ShopName=$row[2];
     <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="product-large set-bg" data-setbg="img/products/women-large.jpg">
+            <?php
+                include('../../BackEnd/php/connection.php');
+            $Ads = mysqli_query($con,"SELECT * FROM `market_userads` Where  `User_id` = '$UserId' and `SlotNumbers` = 1");
+            while($row1=mysqli_fetch_array($Ads)){
+                $addID=$row1[2]; 
+                $Adsinfo = mysqli_query($con,"SELECT * FROM `market_add` Where  `Add_ID` = '$addID'");
+                  while($row=mysqli_fetch_array($Adsinfo)){
+                  $addName=$row[2];
+                  $addProduct=$row[4];
+                  $addDis=$row[5];
+                 
+                  }
+                }
+                  echo '<div class="col-lg-3">
+                  <div class="product-large set-bg" data-setbg="../../Images/AdsImages/'.$addID.'.jpg">
+                      <h2>Women’s</h2>
+                      <a href="#">Discover More</a>
+                  </div> 
+              </div> ';
+                
+                
+                  ?>
+                   <!-- <div class="col-lg-3">
+                    <div class="product-large set-bg" data-setbg="../../Images/AdsImages/5.jpg">
                         <h2>Women’s</h2>
                         <a href="#">Discover More</a>
-                    </div>
-                </div> 
+                    </div> 
+                </div>  -->
                  <div class="col-lg-8 offset-lg-1">
                     <div class="filter-control">
                         <ul>
@@ -421,55 +443,50 @@ $ShopName=$row[2];
                                 //     }
 
                                 // }
-
-                                $query = "SELECT * from `shop_link` where `Shop_ID`='$ShopId' group by `Product_ID`";
-                                $que=mysqli_query($con,$query);
-                                  
-                                  while($row=mysqli_fetch_array($que))
-                                {
-                                  $prodid=$row[1];
-                                  
-                            //   $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid'");
-                            $check=mysqli_query($con,"SELECT `Product_ID`,`Name`,`Price`,`superSubID`  from `shop_products` where `Product_ID`='$prodid' group by `superSubID`  order by `superSubID` desc limit 1");
-                              while($row1=mysqli_fetch_array($check))
-                              {
-                                  $superID=$row1['superSubID'];
-                                  $price=$row1['Price'];
-                                  
-                                  $che=mysqli_query($con,"SELECT * from `shop_supersub` where `SuperSubCat_ID`='$superID'");
-                                  while($row2=mysqli_fetch_array($che))
-                              {
-                                  $name=$row2[2];
-                                  
-
-                    echo    '<div class="product-item">
-                            <div class="pi-pic">
-                            <Form action="list.php" method="POST">
-                                <img src="../../Images/productImages/'.$prodid.'.jpg" alt="">
-                                <div class="sale">Sale</div>
-                                <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                                </div>
-                                  <ul>
-                                  <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                  <li class="quick-view"><a href="process/list.php?'.$prodid.'" name='.$prodid.'>+ Add List</a></li>
-                                  <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                              </ul>
-                          </div>
-
-                           <div class="pi-text">
-                              <div class="catagory-name">'.$name.'</div>
-                              <a href="#">
-                                  <h5>'.$row1['Name'].'</h5>
-                              </a>
-                              <div class="product-price">
-                                  '.$price.'
-                                  <span>$35.00</span>
-                              </div>
-                              </from>
-                          </div>
-                      </div>';
-                  } } }?>
+                                
+                                     $query = "SELECT * from `shop_link` where `Shop_ID`='$maincategory' group by `Product_ID` order by `NumberOf` DESC ";
+                                     $que=mysqli_query($con,$query);
+                                      while($row2=mysqli_fetch_array($que))
+                                       {   $linkID = $row2[0];
+                                           $prodid=$row2[1];
+                                           $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid' ");
+                                           //$check=mysqli_query($con,"SELECT `Product_ID`,`Name`,`Price`,`superSubID`  from `shop_products` where `Product_ID`='$prodid' group by `superSubID`  order by `superSubID` desc limit 1");
+                                            while($row3=mysqli_fetch_array($check))
+                                            {
+                                                $superID=$row3['superSubID'];
+                                                $name=$row3[0];
+                                                $price=$row3['Price'];
+                                                echo    '<div class="product-item">
+                                                        <div class="pi-pic">
+                                                        <Form action="list.php" method="POST">
+                                                            <img src="../../Images/productImages/'.$prodid.'.jpg" alt="">
+                                                            <div class="sale">Sale</div>
+                                                            <div class="icon">
+                                                            <i class="icon_heart_alt"></i>
+                                                            </div>
+                                                              <ul>
+                                                              <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                              <li class="quick-view"><a href="process/list.php?'.$prodid.'" name='.$prodid.'>+ Add List</a></li>
+                                                              <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                                          </ul>
+                                                      </div>
+                            
+                                                       <div class="pi-text">
+                                                          <div class="catagory-name">'.$linkID.'</div>
+                                                          <a href="#">
+                                                              <h5>'.$row1['Name'].'</h5>
+                                                          </a>
+                                                          <div class="product-price">
+                                                              '.$price.'
+                                                              <span>$35.00</span>
+                                                          </div>
+                                                          </from>
+                                                      </div>
+                                                  </div>';
+                                              }
+                                               } 
+                 
+                   ?>
                      <!-- <div class="product-item">
                           <div class="pi-pic">
                               <img src="img/products/women-2.jpg" alt="">
@@ -609,8 +626,8 @@ $ShopName=$row[2];
     <!-- Deal Of The Week Section End -->
 
     <!-- Man Banner Section Begin -->
-    <section class="man-banner spad">
-        <div class="container-fluid">
+    <section class="man-banner spad" >
+        <div class="container-fluid" hidden>
             <div class="row">
                 <div class="col-lg-8">
                   <div class="filter-control">
@@ -714,7 +731,7 @@ $ShopName=$row[2];
                         </div>
                     </div>
                 </div>
-               <div class="col-lg-3 offset-lg-1">
+               <div class="col-lg-3 offset-lg-1" hidden>
                     <div class="product-large set-bg m-large" data-setbg="img/products/man-large.jpg">
                         <h2>Men’s</h2>
                         <a href="#">Discover More</a>
@@ -726,7 +743,7 @@ $ShopName=$row[2];
     <!-- Man Banner Section End -->
 
     <!-- Instagram Section Begin -->
-    <div class="instagram-photo">
+    <div class="instagram-photo" hidden>
         <div class="insta-item set-bg" data-setbg="img/insta-1.jpg">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
@@ -763,12 +780,12 @@ $ShopName=$row[2];
                 <h5><a href="#">colorlib_Collection</a></h5>
             </div>
         </div>
-    </div>-->
+    </div>
     <!-- Instagram Section End -->
 
     <!-- Latest Blog Section Begin -->
     <section class="latest-blog spad">
-        <div class="container">
+        <div class="container" hidden>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
@@ -886,7 +903,7 @@ $ShopName=$row[2];
 
     <!-- Partner Logo Section Begin -->
     <div class="partner-logo">
-        <div class="container">
+        <div class="container" hidden>
             <div class="logo-carousel owl-carousel">
                 <div class="logo-item">
                     <div class="tablecell-inner">

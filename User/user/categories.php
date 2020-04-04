@@ -341,6 +341,20 @@ $ShopName=$row[2];
         <div class="container-fluid">
             <div class="row">
                  <?php
+                 echo $maincategory;
+                 $subInfo = mysqli_query($con,"SELECT * from  `shop_subcategories` WHERE `Categorie_ID`='$maincategory'");
+                 while($row=mysqli_fetch_array($subInfo))
+                 {
+                   $subID=$row[0];
+                   echo $subID;
+                   $SuperInfo = mysqli_query($con,"SELECT * from `shop_supersub` where `SuperSubCat_ID`='$subID'");
+                   while($row1=mysqli_fetch_array($SuperInfo))
+                   {
+                     $superID=$row[0];
+                     echo $superID;
+                   }
+                }
+
                            $query=mysqli_query($con,"SELECT * from Shop_Categories where `Categories`='$maincategory'");
                            while($row=mysqli_fetch_array($query))
                            {
