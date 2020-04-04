@@ -12,12 +12,14 @@ while ($row = mysqli_fetch_array($Userinfo)){
     $UserId = $row[0];
 }
  }
-
-// $loc=$_POST['loc'];
- $location=$_SESSION['shopeName'];//shop name 
+ $filename = basename($_SERVER['REQUEST_URI']);
+ $maincategory =substr($filename,17);
+ $location=$maincategory;
+ $_SESSION['shopeName']=$location;
+ //echo $location;//shop name 
 //  $_SESSION['location']=$location;
  
- $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$location'  ");
+ $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopID`='$location' or `ShopName`='$location'  ");
                             
 
 while($row = mysqli_fetch_array($query))

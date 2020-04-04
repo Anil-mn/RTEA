@@ -281,10 +281,12 @@ $ShopName=$row[2];
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li><a href="./index.html">Home</a></li>
+                    <?php 
+                        echo '<li><a href="MainCategory.php?'.$ShopName.'">Home</a></li>
                         <li><a href="./shop.html">Shop</a></li>
                         <li><a href="#">Collection</a>
-                            <ul class="dropdown">
+                            <ul class="dropdown">';
+                            ?>
                                 <li><a href="#">Men's</a></li>
                                 <li><a href="#">Women's</a></li>
                                 <li><a href="#">Kid's</a></li>

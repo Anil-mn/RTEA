@@ -91,26 +91,18 @@ while ($row = mysqli_fetch_array($Userinfo)){
                     <button href="#" name="changeloc" class="login-panel"><i class="fa fa-user"></i>Change location</button>
                   <div class="lan-selector">
                    <select class="language_drop"  name="countries" id="countries" style="width:300px;">
-                        <?php
-                   
-                    
-                 
-                 $query = mysqli_query($con, "SELECT * FROM `location`");
-                 
-                      while($row = mysqli_fetch_array($query))
-                     { 
-                        echo "<option>".$row['Name']."</option>" ;
-                       
-                     }
-                     $query = mysqli_query($con, "SELECT * FROM `location` where `Name`='$name'");
-                 
-                     while($row = mysqli_fetch_array($query))
-                    { $loc=$row['Name'];
-                    }
-                ?>
+                        
                      </select>
                     </div>
-                </form>
+                    <?php
+                   
+                   $query = mysqli_query($con, "SELECT * FROM `location` where `Name`='$name'");
+               
+                   while($row = mysqli_fetch_array($query))
+                  {
+                       $loc=$row['Name'];
+                       $_SESSION['loc']=$loc;                  }
+              ?>
                      <div class="top-social">
                         <a href="#"><i class="ti-facebook"></i></a>
                         <a href="#"><i class="ti-twitter-alt"></i></a>
@@ -119,7 +111,9 @@ while ($row = mysqli_fetch_array($Userinfo)){
                     </div>
                 </div>
             </div>
-        </div>  <form action='MainCategory.php' method ='POST' >
+        </div>  
+        
+        <form action='' method ='POST' >
         <div class="container">
             <div class="inner-header">
                 <div class="row">
@@ -141,7 +135,7 @@ while ($row = mysqli_fetch_array($Userinfo)){
                            
                         <div class="advanced-search">
                             
-                            <select id="loc" name='location' class="category-btn" aria-placeholder="select loc">
+                            <select id="loc" name='loc' class="category-btn" aria-placeholder="select loc">
                             <?php
                              
                             if(isset($_POST['changeloc'])){
@@ -158,7 +152,7 @@ while ($row = mysqli_fetch_array($Userinfo)){
 
                         while($row = mysqli_fetch_array($query))
                        { 
-                        echo "<option>".$row['ShopName']."</option>" ;
+                        // echo "<option>".$row['ShopName']."</option>" ;
                         $ShopId =$row[0];
                         //echo "<option>".$loc."</option>" ;
                         }
@@ -170,45 +164,35 @@ while ($row = mysqli_fetch_array($Userinfo)){
 
                         while($row = mysqli_fetch_array($query))
                        { 
-                        echo "<option>".$row['ShopName']."</option>" ;
+                        // echo "<option>".$row['ShopName']."</option>" ;
                         //$ShopId =$row[0];
                         }  
                     }
-                       
-                
+                    $query = mysqli_query($con, "SELECT * FROM `location`");
                  
-                     SESSION_START();
-                      $_SESSION['loc']=$loc;
-                      echo $_SESSION['loc'];
-
-                      
-
- 
-                    
-                        ?>
-                             
-                            </select>  
-                            
-                            
+                    while($row = mysqli_fetch_array($query))
+                   { 
+                      echo "<option>".$row['Name']."</option>" ;
+                     
+                   }
+                  ?>
+                        </select>  
                             <div class="input-group">
-                            
                             <button type="submit" name="shop"><i class="ti-search"></i></button>
                             </div>
-                            </form>
-                            <?php
-                             if(isset($_POST['shop'])){
-
-                                $shopName = $_POST['location'];
-                                echo $shopName;
-                                $_SESSION['shopeName'] = $shopName;
-                                
-                                 
-
-                             }
-
-                            ?>
+                         </form>
                         </div>
                     </div>
+                    <?php
+                            if(isset($_POST["shop"])){
+                                $loc = $_POST["loc"];
+                                $_SESSION['loc']=$loc;
+                                //echo $_SESSION['loc'];
+
+
+                            }
+
+                            ?>
                     <div class="col-lg-3 text-right col-md-3" hidden>
                         <ul class="nav-right">
                             <li class="heart-icon">
@@ -274,15 +258,29 @@ while ($row = mysqli_fetch_array($Userinfo)){
                 <div class="nav-depart">
                     <div class="depart-btn">
                         <i class="ti-menu"></i>
-                        <span>All Categories</span>
-                        <ul class="depart-hover">
-                            <li class="active"><a href="#">Electronics</a></li>
+                        <!-- <span>Select Shop</span>
+                        <ul class="depart-hover"> -->
+                        <?php
+                        echo '<span>Select Shop from '.$loc.'</span>
+                        <ul class="depart-hover">';
+                         $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$loc' ");
+                            
+
+                         while($row = mysqli_fetch_array($query))
+                        { 
+                         echo "<li><a href='MainCategory.php?".$row[0]."'>".$row['ShopName']."</a></li>" ;
+                         //$ShopId =$row[0];
+                         }  
+
+                        ?>
+                       
+                            <!-- <li class="active"><a href="#">Electronics</a></li>
                             <li><a href="#">Fashion</a></li>
                             <li><a href="#">Home and Furniture</a></li>
                             <li><a href="#">Beauty and Personal Care</a></li>
                             <li><a href="#">Toys and Baby</a></li>
                             <li><a href="#">Accessories/Footwear</a></li>
-                            <li><a href="#">Sports,Books and More</a></li>
+                            <li><a href="#">Sports,Books and More</a></li> -->
                             <!-- <li><a href="#"></a></li> -->
                         </ul>
                     </div>
@@ -298,8 +296,8 @@ while ($row = mysqli_fetch_array($Userinfo)){
                                 <li><a href="#">Kid's</a></li>
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <!-- <li><a href="./blog.html">Blog</a></li>
+                        <li><a href="./contact.html">Contact</a></li> -->
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
                                 <li><a href="./blog-details.html">My Profile</a></li>
