@@ -653,6 +653,7 @@ $avg =round($avg);
                   while($row=mysqli_fetch_array($query1))
                   {
                        $Uid=$row[2];
+                      
                        
                        
                   }
@@ -880,20 +881,45 @@ $avg =round($avg);
               </div>
             </div> 
          
-        
-        <div class="row">
+       
         <?php
                 if(isset($_POST['demo']))
                 {
-                  echo '<div class="row">';
+                  $query=mysqli_query($con,"SELECT * from `user_log` where `User_ID`='$userid'");
+                while($row=mysqli_fetch_array($query))
+                {
+                 $logid=$row[0]; 
+                 $Behaviour=$row[7];
+                 $date = $row[3];
+                 echo '
+                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
+                 <div class="card">
+                   <div class="card-body">  
+                   <h6 class="card-title font-weight-normal text-info" Style=margin-left:10px;>Behaviour</h6>  
+                   <h6 class="card-title font-weight-normal text-warning" Style=margin-left:20px;>'.$Behaviour.'</h6>  
+                   <img src="../../Images/emojis/'.$Behaviour.'.gif" style="Height:80px; width:80px; margin-left:10px;">
+                      <h6 class="card-title font-weight-normal text-info"></h6>                 
+                     <h6 class="card-title font-weight-normal text-success">'.$date.'</h6>
+                   </div>
+                 </div>
+               </div>
+                 ';}
                 }
                 else {
-                  echo '<div class="row" hidden>';
+               
                 }
-              ?>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
+            
+               
+                 
+                
+                 ?>
+                
+            <!-- <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">  
+                
+                <h6 class="card-title font-weight-normal text-info">7896</h6>  
+                <img src="../../Images/emojis/Love.gif" style="Height:80px; width:80px;">
                   <h6 class="card-title font-weight-normal text-info">7896</h6>                 
                   <h6 class="card-subtitle mb-4 text-muted">Visitors</h6>
                   <div class="progress progress-slim">
@@ -956,6 +982,7 @@ $avg =round($avg);
                   </div>
                 </div>
               </div>
+            </div> -->
             </div>
           
         <!-- content-wrapper ends -->
