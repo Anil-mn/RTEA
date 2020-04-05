@@ -696,7 +696,7 @@ $avg =round($avg);
                   echo '</select>
                      </td><td><button name="sub" class="btn btn-success mr-2">SUBMIT </button></td></tr>';
                     }
-?>
+              ?>
               </tbody></table>
                        
                       
@@ -803,87 +803,97 @@ $avg =round($avg);
                 </div>
                 </div>
               </div>
+              </div>
             
 
 
 
-              
-            <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
+              <?php
+                if(isset($_POST['demo']))
+                {
+                  echo '<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">';
+                }
+                else {
+                  echo '<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card" hidden>';
+                }
+              ?>
+           <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card"> -->
               <div class="card">
-                <div class="card-body" hidden>
+                <div class="card-body">
                   <h5 class="card-title mb-4">Employees</h5>
                   <table class="table table-hover table-striped">
                     <thead>
                       <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Salary</th>
-                        <th>Country</th>
+                        <th>Quantity</th>
+                        <th>Availablity in shop</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Bob Williams</td>
-                        <td>$23,566</td>
-                        <td>USA</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Mike Tyson</td>
-                        <td>$10,200</td>
-                        <td>Canada</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Tim Sebastian</td>
-                        <td>$32,190</td>
-                        <td>Netherlands</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Philip Morris</td>
-                        <td>$31,123</td>
-                        <td>Korea, South</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>Minerva Hooper</td>
-                        <td>$23,789</td>
-                        <td>South Africa</td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>Cooper</td>
-                        <td>$27,789</td>
-                        <td>Canada</td>
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>Philip</td>
-                        <td>$13,789</td>
-                        <td>South Africa</td>
-                      </tr>
+                    <?php
+                   $phonenum=$_POST['phonenum'];
+                   $user=mysqli_query($con,"SELECT * from  `user_tobuylist` where `userID`='$userid'");
+                   while($row=mysqli_fetch_array($user))
+                   {
+                     $prodid=$row[1];
+                     $quan=$row[3];
+
+                     $prodinfo=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid'");
+                     while($row=mysqli_fetch_array($prodinfo))
+                     {
+                       $prodname=$row[1];
+                       $linkinfo=mysqli_query($con,"SELECT `NumberOf` from `shop_link` where `Product_ID`='$prodid' and `Shop_ID`='$shopid' ");
+                       while($row=mysqli_fetch_array($linkinfo))
+                       {
+                         $noof=$row[0];
+                         echo '<tr>
+                         <td>'.$prodid.'</td>
+                         <td>'.$prodname.'</td>
+                         <td>'.$quan.'</td>';
+                         if($noof < $quan)
+                         {
+                           $warning = 'Unavailable';
+                           echo '<td>
+                           <label class="badge badge-danger">'.$warning.'</label></td>';
+                           
+                         }
+                         else {
+                           $warning = 'Available';
+                           echo '<td>
+                           <label class="badge badge-success">'.$warning.'</label></td>';
+                         }
+
+                    
+                     echo '
+                   </tr>';
+                   }
+
+                  }
+                }
+
+?>
+                    
                     </tbody>
                   </table>
                 </div>
               </div>
-            </div> -->
-          </div>
-        </div>
+            </div> 
+         
         
         <div class="row">
+        <?php
+                if(isset($_POST['demo']))
+                {
+                  echo '<div class="row">';
+                }
+                else {
+                  echo '<div class="row" hidden>';
+                }
+              ?>
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
-                <?php
-                 
-
-
-
-
-?>
-                
+                <div class="card-body">  
                   <h6 class="card-title font-weight-normal text-info">7896</h6>                 
                   <h6 class="card-subtitle mb-4 text-muted">Visitors</h6>
                   <div class="progress progress-slim">
@@ -947,7 +957,7 @@ $avg =round($avg);
                 </div>
               </div>
             </div>
-          </div>
+          
         <!-- content-wrapper ends -->
         <!-- partial:../partials/_footer.html -->
         <footer class="footer">
