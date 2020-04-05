@@ -18,13 +18,13 @@ while ($row = mysqli_fetch_array($Userinfo)){
  $_SESSION['shopeName']=$location;
  //echo $location;//shop name 
 //  $_SESSION['location']=$location;
- $query1 = "SELECT * FROM `shop_info` where `Location` = '$place' and (`ShopID`='$location' or `ShopName`='$location')";
+ 
  $query = mysqli_query($con, "SELECT * FROM `shop_info` where `ShopID`='$location' or `ShopName`='$location'  ");
  while($row = mysqli_fetch_array($query))
 { 
 
 $ShopId =$row[0];
-$ShopName=$row[2];
+$Shop1=$row[2];
 //echo $ShopName;
 
 }
@@ -80,8 +80,8 @@ $ShopName=$row[2];
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
                         <?php
-                        echo $ShopName;
-                        $_SESSION['ShopName']=$ShopName;
+                        echo $Shop1;
+                        //$_SESSION['ShopName']=$ShopName;
                         ?>
                     </div>
                 </div>

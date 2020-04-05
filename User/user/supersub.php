@@ -5,7 +5,8 @@
  }
  else{
 $place=$_SESSION['place'];//location
-$ShopName=$_SESSION['ShopName'];
+$ShopName=$_SESSION['shopeName'];
+
 //echo $ShopName;
 $filename = basename($_SERVER['REQUEST_URI']);
 
@@ -21,14 +22,13 @@ $subcategory =substr($filename,13);
  }
 // $loc=$_POST['loc'];
  //$location=$_POST['location'];//shop name 
- $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and (`ShopID`='$ShopName' or `ShopName`='$ShopName')  ");
-                            
+ $query = mysqli_query($con, "SELECT * FROM `shop_info` where `ShopID`='$ShopName' or `ShopName`='$ShopName' ");
 
-while($row = mysqli_fetch_array($query))
+ while($row = mysqli_fetch_array($query))
 { 
 
 $ShopId =$row[0];
-$ShopName=$row[2];
+$Shop1Name=$row[2];
 
 }
 ?>
@@ -81,8 +81,8 @@ $ShopName=$row[2];
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
                         <?php
-                        echo $ShopName;
-                        $_SESSION['ShopName']=$ShopName;
+                        echo $Shop1Name;
+                       // $_SESSION['ShopName']=$ShopName;
                         ?>
                     </div>
                 </div>
