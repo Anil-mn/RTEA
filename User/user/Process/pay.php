@@ -47,8 +47,10 @@ $logID=$row2[0];
     $prodid = $row1[2];
     $price = $row1[4];      
     $noofprod = $row1[3]; 
+
+    $updateprodcount=mysqli_query($con, "UPDATE `shop_link` SET `NumberOf`=`NumberOf`-'$noofprod' Where `Product_ID`='$prodid' and `Shop_ID`='$ShopId' ");
     
-    $inserttoTrans = mysqli_query($con,"INSERT INTO `user_transactions`( `LogID`, `ProductID`, `amount`, `No of products`) VALUES ('$logID','$prodid','$price','$noofprod')");
+   $inserttoTrans = mysqli_query($con,"INSERT INTO `user_transactions`( `LogID`, `ProductID`, `amount`, `No of products`) VALUES ('$logID','$prodid','$price','$noofprod')");
     if($inserttoTrans == true){
         $deltetoByList = mysqli_query($con,"DELETE FROM `user_tobuylist` WHERE `ProductID`='$prodid' and `userID`='$userId'");
     }
@@ -60,16 +62,16 @@ $logID=$row2[0];
      {
       $totalNumberOfPro = $row1[0];
       $totalPrice = $row1[1];
-      //echo $totalNumberOfPro."<br>".$totalPrice."<br>".$prodid;
+      echo $totalNumberOfPro."<br>".$totalPrice."<br>".$prodid;
      }
     $updatelog = mysqli_query($con, "UPDATE `user_log` SET  `TotalAmt`='$totalPrice' ,`TotalProducts`='$totalNumberOfPro' Where `LogID`='$logID'");
     if($updatelog ==true ){
      
-        $deleteUseronline=mysqli_query($con,"DELETE FROM `user_online` WHERE `userID`='$userId'");
+       $deleteUseronline=mysqli_query($con,"DELETE FROM `user_online` WHERE `userID`='$userId'");
         $delecart =mysqli_query($con,"DELETE FROM `user_cart` WHERE `onlineID`='$userId'");
         if($delecart == true){
             echo "<script> alert('Thanks for the shopping') </script>";
-           // header('location:../selectshop.php');
+            header('location:../selectshop.php');
         }
-        
+       
     }
