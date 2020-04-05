@@ -250,7 +250,7 @@ $Shop1Name=$row[2];
                         <ul name="category" class="depart-hover">
                             <?php
                             include('../../Backend/Php/Connection.php');
-                            $query=mysqli_query($con,"SELECT * from Shop_Categories where `Categories`='$maincategory'");
+                            $query=mysqli_query($con,"SELECT * from Shop_Categories where `Categorie_ID`='$maincategory'");
                             while($row=mysqli_fetch_array($query))
                             {
                                 $cataID = $row[0];
@@ -290,25 +290,23 @@ $Shop1Name=$row[2];
                     <ul>
                         <?php 
                         echo '<li><a href="MainCategory.php?'.$ShopName.'">Home</a></li>
-                        <li><a href="./shop.html">Shop</a></li>
-                        <li><a href="#">Collection</a>
-                            <ul class="dropdown">';
-                            ?>
+                        <li><a href="selectshop.php">Shop</a></li>';?>
+                       <li><a href="#">Collection</a>
+                            <ul class="dropdown">
                                 <li><a href="#">Men's</a></li>
                                 <li><a href="#">Women's</a></li>
                                 <li><a href="#">Kid's</a></li>
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="tobuy.php">List</a></li>
+                        <li><a href="feedback.php">FeedBack</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                                <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                <li><a href="./check-out.html">Checkout</a></li>
-                                <li><a href="./faq.html">Faq</a></li>
-                                <li><a href="./register.html">Register</a></li>
-                                <li><a href="./login.html">Login</a></li>
+                                <li><a href="MainCategory.php">Home</a></li>
+                                <li><a href="SelectShop.php">Shop</a></li>
+                                <li><a href="tobuy.php">List</a></li>
+                                <li><a href="feedback.php">FeedBack</a></li>
+                                
                             </ul>
                         </li>
                     </ul>
@@ -338,21 +336,8 @@ $Shop1Name=$row[2];
         <div class="container-fluid">
             <div class="row">
                  <?php
-                 echo $maincategory;
-                 $subInfo = mysqli_query($con,"SELECT * from  `shop_subcategories` WHERE `Categorie_ID`='$maincategory'");
-                 while($row=mysqli_fetch_array($subInfo))
-                 {
-                   $subID=$row[0];
-                   echo $subID;
-                   $SuperInfo = mysqli_query($con,"SELECT * from `shop_supersub` where `SuperSubCat_ID`='$subID'");
-                   while($row1=mysqli_fetch_array($SuperInfo))
-                   {
-                     $superID=$row[0];
-                     echo $superID;
-                   }
-                }
-
-                           $query=mysqli_query($con,"SELECT * from Shop_Categories where `Categories`='$maincategory'");
+             
+                           $query=mysqli_query($con,"SELECT * from Shop_Categories where `Categorie_ID`='$maincategory'");
                            while($row=mysqli_fetch_array($query))
                            {
                                $cataID = $row[0];
@@ -417,88 +402,123 @@ $Shop1Name=$row[2];
     <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="product-large set-bg" data-setbg="img/products/women-large.jpg">
+            <?php
+             $addID=0;
+                include('../../BackEnd/php/connection.php');
+            $Ads = mysqli_query($con,"SELECT * FROM `market_userads` Where  `User_id` = '$UserId' and `SlotNumbers` = 1");
+            while($row1=mysqli_fetch_array($Ads)){
+                $addID=$row1[2]; 
+                $Adsinfo = mysqli_query($con,"SELECT * FROM `market_add` Where  `Add_ID` = '$addID'");
+                  while($row=mysqli_fetch_array($Adsinfo)){
+                  $addName=$row[2];
+                  $addProduct=$row[4];
+                  $addDis=$row[5];
+                 
+                  }
+                }
+                  echo '<div class="col-lg-3">
+                  <div class="product-large set-bg" data-setbg="../../Images/AdsImages/'.$addID.'.jpg">
+                      <h2>Women’s</h2>
+                      <a href="#">Discover More</a>
+                  </div> 
+              </div> ';
+                
+                
+                  ?>
+                   <!-- <div class="col-lg-3">
+                    <div class="product-large set-bg" data-setbg="../../Images/AdsImages/5.jpg">
                         <h2>Women’s</h2>
                         <a href="#">Discover More</a>
-                    </div>
-                </div> 
+                    </div> 
+                </div>  -->
                  <div class="col-lg-8 offset-lg-1">
                     <div class="filter-control">
-                        <ul>
-                            <li class="active">Clothings</li>
+                    <ul>
+                    <?php
+             
+             $query=mysqli_query($con,"SELECT * from Shop_Categories where `Categorie_ID`='$maincategory'");
+             while($row=mysqli_fetch_array($query))
+             {
+                 $cataID = $row[0];
+                 $catid=mysqli_query($con,"SELECT * from `Shop_subcategories` where `Categorie_ID`='$cataID'");
+                   while($row1=mysqli_fetch_array($catid))
+                   {
+                       $subid = $row1[0];
+                       $subcatname = $row1[2];
+                       echo '<li >'.$subcatname.'</li>';
+                   }
+                }
+                 ?>
+                      
+                            <!-- <li class="active">Clothings</li>
                             <li>HandBag</li>
                             <li>Shoes</li>
-                            <li>Accessories</li>
+                            <li>Accessories</li> -->
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel">
                        
                     <?php
                                 include('../../BackEnd/php/connection.php');
-                                // has to complte
-                                // $Calcualation = mysqli_query($con,"SELECT * FROM `user_log` where `User_ID` =  '$UserId'");
-                                // while($row9=mysqli_fetch_array($Calcualation))
-                                // {
-                                //     $logId = $row9[0];
-                                //     $transationInfo = mysqli_query($con,"SELECT `ProductID` FROM `user_transactions` where `LogID`='$logId' order by `No of products` DESC");
-                                //     while($row8=mysqli_fetch_array($transationInfo))
-                                //     {
-                                //         $productID = $row8[0];
-                                //         echo $productID;
-                                       
-                                //     }
-
-                                // }
-
-                                $query = "SELECT * from `shop_link` where `Shop_ID`='$ShopId' group by `Product_ID`";
-                                $que=mysqli_query($con,$query);
+                               // echo $maincategory;
+                                $subInfo = mysqli_query($con,"SELECT * from  `shop_subcategories` WHERE `Categorie_ID`='$maincategory'");
+                                    while($row=mysqli_fetch_array($subInfo))
+                                    {
+                                         $subID=$row[0];
+                                         //echo $subID;
+                                         $SuperInfo = mysqli_query($con,"SELECT * from `shop_supersub` where `SuperSubCat_ID`='$subID'");
+                                         while($row1=mysqli_fetch_array($SuperInfo))
+                                         {
+                                           $superID=$row1[0];
+                                           //echo $superID;
+                                           $check=mysqli_query($con,"SELECT *   from `shop_products` where `superSubID`= '$superID'");
+                                           while($row2=mysqli_fetch_array($check))
+                                             {
+                                                $prodid=$row2[0];
+                                                
+                                                $price=$row2[2];
+                                                $name=$row2[1];
+                                                $check1 = mysqli_query($con,"SELECT * from `Shop_link` where `Product_ID`='$prodid' and `Shop_ID`='$ShopId' ");
+                                                while($result = mysqli_fetch_array($check1))
+                                                {
                                   
-                                  while($row=mysqli_fetch_array($que))
-                                {
-                                  $prodid=$row[1];
-                                  
-                            //   $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid'");
-                            $check=mysqli_query($con,"SELECT `Product_ID`,`Name`,`Price`,`superSubID`  from `shop_products` where `Product_ID`='$prodid' group by `superSubID`  order by `superSubID` desc limit 1");
-                              while($row1=mysqli_fetch_array($check))
-                              {
-                                  $superID=$row1['superSubID'];
-                                  $price=$row1['Price'];
-                                  
-                                  $che=mysqli_query($con,"SELECT * from `shop_supersub` where `SuperSubCat_ID`='$superID'");
-                                  while($row2=mysqli_fetch_array($che))
-                              {
-                                  $name=$row2[2];
-                                  
+                                                    
+                                                    echo    '<div class="product-item">
+                                                    <div class="pi-pic">
+                                                    <Form action="list.php" method="POST">
+                                                        <img src="../../Images/productImages/'.$prodid.'.jpg" alt="">
+                                                        <div class="sale">Sale</div>
+                                                        <div class="icon">
+                                                        <i class="icon_heart_alt"></i>
+                                                        </div>
+                                                          <ul>
+                                                          <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                          <li class="quick-view"><a href="process/list.php?'.$prodid.'" name='.$prodid.'>+ Add List</a></li>
+                                                          <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                                      </ul>
+                                                  </div>
 
-                    echo    '<div class="product-item">
-                            <div class="pi-pic">
-                            <Form action="list.php" method="POST">
-                                <img src="../../Images/productImages/'.$prodid.'.jpg" alt="">
-                                <div class="sale">Sale</div>
-                                <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                                </div>
-                                  <ul>
-                                  <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                  <li class="quick-view"><a href="process/list.php?'.$prodid.'" name='.$prodid.'>+ Add List</a></li>
-                                  <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                              </ul>
-                          </div>
+                                                   <div class="pi-text">
+                                                      <div class="catagory-name">'.$name.'</div>
+                                                      <a href="#">
+                                                          <h5>'.$name.'</h5>
+                                                      </a>
+                                                      <div class="product-price">
+                                                          '.$price.'
+                                                          <span>$35.00</span>
+                                                      </div>
+                                                      </from>
+                                                  </div>
+                                              </div>';
 
-                           <div class="pi-text">
-                              <div class="catagory-name">'.$name.'</div>
-                              <a href="#">
-                                  <h5>'.$row1['Name'].'</h5>
-                              </a>
-                              <div class="product-price">
-                                  '.$price.'
-                                  <span>$35.00</span>
-                              </div>
-                              </from>
-                          </div>
-                      </div>';
-                  } } }?>
+                                                }
+                                         
+                                            }
+                                        } 
+                                    }
+
+               
+                               ?>
                      <!-- <div class="product-item">
                           <div class="pi-pic">
                               <img src="img/products/women-2.jpg" alt="">

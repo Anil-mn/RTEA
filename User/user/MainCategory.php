@@ -18,7 +18,7 @@ while ($row = mysqli_fetch_array($Userinfo)){
  $_SESSION['shopeName']=$location;
  //echo $location;//shop name 
 //  $_SESSION['location']=$location;
- 
+$Shop1='No Shop selected';
  $query = mysqli_query($con, "SELECT * FROM `shop_info` where `ShopID`='$location' or `ShopName`='$location'  ");
  while($row = mysqli_fetch_array($query))
 { 
@@ -257,7 +257,7 @@ $Shop1=$row[2];
                                 
 
                                 
-                            echo '<li name="category"><a href="categories.php?'.$row[1].'">'.$row[1].'</a></li>
+                            echo '<li name="category"><a href="categories.php?'.$row[0].'">'.$row[1].'</a></li>
             
                             ';
                               
@@ -281,8 +281,8 @@ $Shop1=$row[2];
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li><a href="./index.html">Home</a></li>
-                        <li><a href="./shop.html">Shop</a></li>
+                        <li><a href="MainCategory.php">Home</a></li>
+                        <li><a href="SelectShop.php">Shop</a></li>
                         <li><a href="#">Collection</a>
                             <ul class="dropdown">
                                 <li><a href="#">Men's</a></li>
@@ -290,16 +290,15 @@ $Shop1=$row[2];
                                 <li><a href="#">Kid's</a></li>
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="tobuy.php">List</a></li>
+                        <li><a href="feedback.php">FeedBack</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                                <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                <li><a href="./check-out.html">Checkout</a></li>
-                                <li><a href="./faq.html">Faq</a></li>
-                                <li><a href="./register.html">Register</a></li>
-                                <li><a href="./login.html">Login</a></li>
+                                <li><a href="MainCategory.php">Home</a></li>
+                                <li><a href="SelectShop.php">Shop</a></li>
+                                <li><a href="tobuy.php">List</a></li>
+                                <li><a href="feedback.php">FeedBack</a></li>
+                                
                             </ul>
                         </li>
                     </ul>
@@ -338,7 +337,7 @@ $Shop1=$row[2];
                                 
 
                                 
-                            echo '<div class="col-lg-4"><form method="POST" action="categories.php?'.$row[1].'">
+                            echo '<div class="col-lg-4"><form method="POST" action="categories.php?'.$row[0].'">
                             <div class="single-banner">
                                 <img  style="height:300px ; width:400px;" src="../../Images/categoryimages/'.$row[0].'.jpg" alt="image not found 404">
                                 <div class="inner-text">

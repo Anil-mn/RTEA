@@ -89,7 +89,7 @@ $Shop1Name=$row[2];
 
                <!--shop changing using same procedure of change location-->     
 
-               <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
+               <a href="process/logout.php" class="login-panel"><i class="fa fa-user"></i>LogOut</a>
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
                             <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
@@ -247,23 +247,8 @@ $Shop1Name=$row[2];
                     <div class="depart-btn">
                         <i class="ti-menu"></i>
                         <span>All Category</span>
-                        <form id='category' action="demo.php" method='POST'>
+                        
                         <ul name="category" class="depart-hover">
-                            <?php
-                            include('../../Backend/Php/Connection.php');
-                             $catid=mysqli_query($con,"SELECT * from `Shop_supersub` where `SubCategorie_ID`='$subcategory'");
-                                  while($row1=mysqli_fetch_array($catid))
-                                  {
-                                      $subid = $row1[0];
-                                      $subcatname = $row1[2];
-                                
-                               // echo '<button><li name="category"><a href="demo.php">'.$row[1].'</a></li></button>';
-                                 echo '<li name="category"><a href="products.php?'.$subid.'">'.$subcatname.'</a></li>';
-                              
-                            
-                        }
-                          
-                            ?>
                             <!-- <li class="active"><a href="#">Women’s Clothing</a></li>
                             <li><a href="#">Men’s Clothing</a></li>
                             <li><a href="#">Underwear</a></li>
@@ -327,10 +312,10 @@ $Shop1Name=$row[2];
     <!-- Breadcrumb Section Begin -->
 
     <!-- Product Shop Section Begin -->
-    <section class="product-shop spad">
+    <section class="product-shop spad" >
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter" >
+                <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter" hidden>
                     <div class="filter-widget">
                         <h4 class="fw-title">Categories</h4>
                         <ul class="filter-catagories">

@@ -1,53 +1,39 @@
-
 <?php
  SESSION_START();
- if(!isset($_SESSION['loc'])){
+ if(!isset($_SESSION['place'])){
     //header('location:index.html');
  }
  else{
-    $PhoneNumber=$_SESSION['PhoneNumber'];
-   
-$place=$_SESSION['loc'];//location
-
+$place=$_SESSION['place'];//location
 $ShopName=$_SESSION['shopeName'];
 
- }
-include('../../BackEnd/php/connection.php');
-$check=mysqli_query($con, "SELECT * FROM `user_info` where `PhoneNumber`='$PhoneNumber'");
-while($row = mysqli_fetch_array($check))
-{ 
-$userId =$row[0];
-//echo $userId;
+$filename = basename($_SERVER['REQUEST_URI']);
+
+$suID =substr($filename,13);
 }
+
+ $PhoneNumber=$_SESSION['PhoneNumber'];
+ include('../../BackEnd/php/connection.php');
+ $Userinfo = mysqli_query($con,"SELECT * FROM `user_info` where `PhoneNumber` = '$PhoneNumber'");
+ while ($row = mysqli_fetch_array($Userinfo)){
+     $UserId = $row[0];
+     $userName =$row[1];
+     $userEmail = $row[3];
+ }
 // $loc=$_POST['loc'];
  //$location=$_POST['location'];//shop name 
-
- $query = mysqli_query($con, "SELECT * FROM `shop_info` where `ShopID`='$ShopName' or `ShopName`='$ShopName'  ");
+ $query = mysqli_query($con, "SELECT * FROM `shop_info` where `ShopID`='$ShopName' or `ShopName`='$ShopName' ");
+                            
 
 while($row = mysqli_fetch_array($query))
 { 
 
 $ShopId =$row[0];
+$shopNumber = $row[1];
 $Shop1Name=$row[2];
 
 }
-$timezone=date_default_timezone_set('Asia/Kolkata');
-         $time =  date("h:i:s", time());
-         
-         $check1 = mysqli_query($con,"SELECT * FROM `user_online` where `userID`='$userId' or (`userID`='$userId' and `shopID`='$ShopId')");
-         $res=mysqli_fetch_array($check1);
-         if( $res==true)
-         {
-                  
-         }
-         else
-         {
-            $ousers= mysqli_query($con,"INSERT INTO `user_online`( `userID`, `shopID`, `Time`) VALUES ('$userId','$ShopId','$time')");
-
-         }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -98,7 +84,7 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                         <i class=" fa fa-phone"></i>
                         <?php
                         echo $Shop1Name;
-                      //  $_SESSION['ShopName']=$ShopName;
+                        //$_SESSION['ShopName']=$ShopName;
                         ?>
                     </div>
                 </div>
@@ -106,7 +92,7 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
 
                <!--shop changing using same procedure of change location-->     
 
-               <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
+               <a href="process/logout.php" class="login-panel"><i class="fa fa-user"></i>LogOut</a>
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
                             <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
@@ -136,11 +122,11 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                     </div>
                     <div class="col-lg-7 col-md-7">
                         <div class="advanced-search">
-                        <form action="StartShopping.php">
-                             <button type="submit"  class="category-btn">StartShopping</button> </form>
-                            <form action="#" class="input-group">
-                                <input type="text" placeholder="What do you need?">
-                                <button type="button"><i class="ti-search"></i></button>
+                        <form action="">
+                             <button type="submit"  class="category-btn">FeedBack</button> </form>
+                            <form action="" method="POST" class="input-group">
+                                <input type="text" name="search" placeholder="What do you need?">
+                                <button type="submit" name="Ser"><i class="ti-search"></i></button>
                             </form>
                         </div>
                     </div>
@@ -153,12 +139,24 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                             </li>
                             <li class="cart-icon"><a href="#">
                                     <i class="icon_bag_alt"></i>
-                                    <span>3</span>
+                                    <?php
+                                    $query=mysqli_query($con,"SELECT count(`listid`) from `user_tobuylist` where `UserID`='$UserId'");
+                                    while($row=mysqli_fetch_array($query))
+                                    {
+                                        $num = $row[0];
+                                        echo ' <span>'.$num.'</span>';
+                                     }
+                                    ?>
+                                    <!-- <span>3</span> -->
                                 </a>
                                 <div class="cart-hover">
                                     <div class="select-items">
+
                                         <table>
                                             <tbody>
+                                            <?php
+                              
+                                   ?>
                                                 <tr>
                                                     <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
                                                     <td class="si-text">
@@ -186,17 +184,26 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="select-total">
+                                    <!-- <div class="select-total">
                                         <span>total:</span>
                                         <h5>$120.00</h5>
-                                    </div>
+                                    </div> -->
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CART</a>
-                                        <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                        <a href="tobuy.php" class="primary-btn view-card">click here to see list</a>
+                                    
                                     </div>
                                 </div>
                             </li>
-                            <li class="cart-price">$150.00</li>
+                            <?php
+          include('../../BackEnd/php/connection.php');
+        $query=mysqli_query($con,"SELECT SUM(`price`) from `user_tobuylist` where `UserID`='$UserId' ");
+       while($row=mysqli_fetch_array($query))
+       { $total=$row[0];}
+
+       echo '<li class="cart-price">₹'.$total.'</li>';
+
+                                 ?>
+                            <!-- <li class="cart-price">$150.00</li> -->
                         </ul>
                     </div>
                 </div>
@@ -207,25 +214,31 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                 <div class="nav-depart">
                     <div class="depart-btn">
                         <i class="ti-menu"></i>
-                        <span>All departments</span>
-                        <ul class="depart-hover">
-                            <li class="active"><a href="#">Women’s Clothing</a></li>
+                        <span>All Category</span>
+                        
+                        <ul name="category" class="depart-hover">
+                            <!-- <li class="active"><a href="#">Women’s Clothing</a></li>
                             <li><a href="#">Men’s Clothing</a></li>
                             <li><a href="#">Underwear</a></li>
                             <li><a href="#">Kid's Clothing</a></li>
                             <li><a href="#">Brand Fashion</a></li>
                             <li><a href="#">Accessories/Shoes</a></li>
                             <li><a href="#">Luxury Brands</a></li>
-                            <li><a href="#">Brand Outdoor Apparel</a></li>
+                            <li><a href="#">Brand Outdoor Apparel</a></li> -->
+
                         </ul>
+                        </form>
+                       
                     </div>
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li><a href="./index.html">Home</a></li>
+                    <?php 
+                        echo '<li><a href="MainCategory.php?'.$ShopName.'">Home</a></li>
                         <li><a href="./shop.html">Shop</a></li>
                         <li><a href="#">Collection</a>
-                            <ul class="dropdown">
+                            <ul class="dropdown">';
+                            ?>
                                 <li><a href="#">Men's</a></li>
                                 <li><a href="#">Women's</a></li>
                                 <li><a href="#">Kid's</a></li>
@@ -256,197 +269,82 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="breadcrumb-text product-more">
-                        <a href="./home.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./shop.html">Shop</a>
-                        <span>Shopping Cart</span>
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home"></i> Home</a>
+                        <span>Contact</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Breadcrumb Section Begin -->
-    <!-- <div class="row">
-                        <div class="col-lg-4">
-                            <div class="cart-buttons">
-                                <a href="#" class="primary-btn continue-shop">Continue shopping</a>
-                                <a href="#" class="primary-btn up-cart">Update cart</a>
-                            </div> -->
-    <div class="container">
-            <div class="row">
-    <div class="cart-buttons">
-                                
-                                <form action="Process/insertItem.php" method='POST' class="coupon-form">
-                                    <input type="text" name="prodname" placeholder="Enter product name">
-                                    <input type="text" name="quantity" placeholder="Enter quantity">
-                                    <button href="#" name="submit1" class="primary-btn up-cart">Update cart</button>
-                                    <!-- <button type="submit" class="site-btn coupon-btn">Apply</button> -->
-                                    
-                                </form>
-                            </div></div></div>
-    <!-- Shopping Cart Section Begin -->
-    <section class="shopping-cart spad">
+
+    <!-- Map Section Begin -->
+    
+    <!-- Map Section Begin -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="cart-table">
-                    <form action="Process/ProductDeletion.php" method="GET">
-                    <!-- <form action="" method="POST"> -->
-                        <table >
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th class="p-name">Product Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th><i class="ti-close"></i></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            
-                                <?php
-                               include('../../BackEnd/php/connection.php');
-                               //echo $userId;
-                               $query1=mysqli_query($con,"SELECT * from `user_online` where `userID`='$userId' and `shopID`='$ShopId'");
-                               while($row=mysqli_fetch_array($query1))
-                                                                  {
-                                                                    $onlineid=$row[1];
-                                                                  }   
-                               $query=mysqli_query($con,"SELECT * from `user_cart` where `onlineID`='$onlineid' ");
-                               while($row=mysqli_fetch_array($query))
-                               {
-                                   $productid=$row[2];
-                                   $price=$row[4];
-                                   $quantity=$row[3];
-                                   $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$productid'");
-                                   while($row1=mysqli_fetch_array($check))
-                                   {
-                                     $prodname=$row1[1];
-                                     $priceperone= $row1[2];}
-                           
-                                   
-                                   echo '<tr>
-                                  
-                                   <td class="cart-pic first-row"><img style="height:80px ; width:50px;" src="../../Images/productImages/'.$productid.'.jpg" alt=""></td>
-                                   <td class="cart-title first-row">
-                                       <h5 name="name">'.$prodname.'</h5>
-                                   </td>
-                                   <td class="p-price first-row">₹'.$priceperone.'</td>
-                                   <td class="qua-col first-row">
-                                       <div class="quantity">
-                                         <div class="pro-qty">
-                                           <a href="Process/subItem.php?'.$productid.'" class="dec qtybtn">-</a>
-                                               <input type="text"  value="'.$quantity.'">
-                                           <a href="Process/AddItem.php?'.$productid.'" class="inc qtybtn">+</a>
-                                           </div>
-                                       </div>
-                                   </td>
-                                   <td class="total-price first-row">₹'.$price.'</td>
-                                   <td class="close-td first-row"><a  class="ti-close name="'.$prodname.'" href="Process/ProductDeletion.php?'.$productid.'"></a></td>
-                                 </tr>';
-                             
-                                
-                                }
-                               
-                               
-                               
-
-?>
-                                <!-- <tr>
-                                    <td class="cart-pic first-row"><img src="img/cart-page/product-1.jpg" alt=""></td>
-                                    <td class="cart-title first-row">
-                                        <h5>Pure Pineapple</h5>
-                                    </td>
-                                    <td class="p-price first-row">$60.00</td>
-                                    <td class="qua-col first-row">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="2">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price first-row">$60.00</td>
-                                  <td class="close-td first-row"><button class="ti-close" name='.$prodname.'></button></td>
-                                </tr> -->
-                                 <!--<tr>
-                                    <td class="cart-pic"><img src="img/cart-page/product-2.jpg" alt=""></td>
-                                    <td class="cart-title">
-                                        <h5>American lobster</h5>
-                                    </td>
-                                    <td class="p-price">$60.00</td>
-                                    <td class="qua-col">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price">$60.00</td>
-                                    <td class="close-td"><i class="ti-close"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart-pic"><img src="img/cart-page/product-3.jpg" alt=""></td>
-                                    <td class="cart-title">
-                                        <h5>Guangzhou sweater</h5>
-                                    </td>
-                                    <td class="p-price">$60.00</td>
-                                    <td class="qua-col">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price">$60.00</td>
-                                    <td class="close-td"><i class="ti-close"></i></td>
-                                </tr> -->
-                            </tbody>
-                        </table>
-                        </form>
+                <div class="col-lg-5">
+                    <div class="contact-title">
+                        <h4>Contacts Us</h4>
+                        <p>Contrary to popular belief, Lorem Ipsum is simply random text. It has roots in a piece of
+                            classical Latin literature from 45 BC, maki years old.</p>
                     </div>
-                  
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="cart-buttons">
-                                <a href="#" class="primary-btn continue-shop">Continue shopping</a>
-                                <a href="#" class="primary-btn up-cart">Update cart</a>
+                    <div class="contact-widget">
+                        <div class="cw-item">
+                            <div class="ci-icon">
+                                <i class="ti-location-pin"></i>
                             </div>
-                            <div class="discount-coupon">
-                                <h6>Discount Codes</h6>
-                                <form action="#" class="coupon-form">
-                                    <input type="text" placeholder="Enter your codes">
-                                    <button type="submit" class="site-btn coupon-btn">Apply</button>
-                                </form>
+                            <?php
+                            echo ' <div class="ci-text">
+                            <span>Address:</span>
+                            <p>'.$Shop1Name.' '.$place.'</p>
+                        </div>     
+                        </div>
+                        <div class="cw-item">
+                            <div class="ci-icon">
+                                <i class="ti-mobile"></i>
+                            </div>
+                            <div class="ci-text">
+                                <span>Phone:</span>
+                                <p>+91'.$shopNumber.'</p>
                             </div>
                         </div>
-                        <div class="col-lg-4 offset-lg-4">
-                            <div class="proceed-checkout">
-                                <?php
-          include('../../BackEnd/php/connection.php');
-        $query=mysqli_query($con,"SELECT SUM(`price`) from `user_cart` where `onlineID`='$userId' ");
-       while($row=mysqli_fetch_array($query))
-       { $total=$row[0];}
-
-       echo '<ul>
-       <li class="subtotal">Subtotal <span>₹'.$total.'</span></li>
-       <li class="cart-total">Total <span>₹'.$total.'</span></li>
-   </ul>'
-
-                                 ?>
-                                <!-- <ul>
-                                    <li class="subtotal">Subtotal <span>$240.00</span></li>
-                                    <li class="cart-total">Total <span>$240.00</span></li>
-                                </ul> -->
-                                <a href="checkout.php" class="proceed-btn">PROCEED TO CHECK OUT</a>
-                            </div>
+                        
+                    </div>
+                </div>';
+                ?>
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="contact-form">
+                        <div class="leave-comment">
+                            <h4>Leave A Comment</h4>
+                            <p>Our staff will call back later and answer your questions.</p>
+                            <form action="#" class="comment-form">
+                                <div class="row">
+                                    <?php
+                                   echo '<div class="col-lg-6">
+                                        <input type="text" placeholder="'.$userName.'">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="'.$userEmail.'">
+                                    </div>';
+                                    ?>
+                                    <div class="col-lg-12">
+                                        <textarea placeholder="Your message"></textarea>
+                                        <button type="submit" class="site-btn">Send message</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Shopping Cart Section End -->
+    <!-- Contact Section End -->
 
     <!-- Partner Logo Section Begin -->
     <div class="partner-logo">

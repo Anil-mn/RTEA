@@ -71,7 +71,7 @@ $logID=$row2[0];
         $delecart =mysqli_query($con,"DELETE FROM `user_cart` WHERE `onlineID`='$userId'");
         if($delecart == true){
             echo "<script> alert('Thanks for the shopping') </script>";
-            header('location:../selectshop.php');
+            header('location:../feedback.php');
         }
        
     }
