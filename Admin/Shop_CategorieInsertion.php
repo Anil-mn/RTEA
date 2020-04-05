@@ -433,8 +433,9 @@
                         <div class="card-body">
                   <h5 class="card-title mb-4">Global Sales by Top Locations</h5>
                   <div class="row">
-                  <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
-                      <table class="table table-striped">
+                  <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12" style="height:200px; width:490px; overflow:hidden; overflow-y:scroll;">
+                      <table class="table table-striped" >
+                      <th>...</th><th>Name</th><th>Price</th>
                         <tbody>
                   <?php
                    include('../BackEnd/php/connection.php');
@@ -451,10 +452,10 @@
                         $query=mysqli_query($con, "SELECT * FROM `shop_products` where  `superSubID`='$superid'");
                         while($row = mysqli_fetch_array($query))
                        {
-                         $image=$row[1];
+                         $image=$row[0];
                          $image =$image.'.jpg';
-                         echo $image;
-                        echo '<tr><td><div class="flag"> <img src="Images/'.$image.'" style="height: 35px;width: 35px; "></div> </td><td class="text-right">'.$row[1].'</td><td>'.$row[2].'</td></tr>';
+                         //echo $image;
+                        echo '<tr><td><div class="flag"> <img src="../Images/ProductImages/'.$image.'" style="height: 35px;width: 35px; " alt="no"></div> </td><td class="text-right">'.$row[1].'</td><td>'.$row[2].'</td></tr>';
                        }}
                     ?> 
                         </tbody>
