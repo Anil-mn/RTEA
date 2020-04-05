@@ -226,7 +226,7 @@ echo $ReqestID;
             </li> -->
             <li class="nav-item pro-upgrade">
               <span class="nav-link">
-                <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="https://www.bootstrapdash.com/product/stellar-admin-template/" target="_blank"> <i class="icon-badge mx-2"></i> Finish</a>
+                <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="logout.php"> <i class="icon-badge mx-2"></i> LogOut</a>
               </span>
             </li>
           </ul>
