@@ -14,16 +14,18 @@ SESSION_START();
  $result = mysqli_query($con, $query);
  $check = mysqli_fetch_array($result);
  if ($check == true){
-    $_SESSION['PhoneNumber'] = $_POST['PhoneNumber'];}
+    $_SESSION['PhoneNumber'] = $_POST['PhoneNumber'];
+    header('location:../../../Shop/Shop/CurrentUser.php');}
 
     else{
-     header('location:../../../Shop/Shop/CurrentUser.php');
+        echo '<script>alert("login failed");</script>';
+}
+    
         }
-    }
+    
 
-// else{
+
    
-//     echo '<script>alert("login failed");</script>';
-// }
+    
 
 ?>

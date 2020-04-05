@@ -51,9 +51,9 @@ $date=date('Y-m-d');
   <div class="container-scroller">
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="../shop/shop/index.html">        <img style="height:50px; width:150px; margin-top:20px;"       src="../../Logos/Name.jpg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../shop/shop/index.html">   <img style="height:50px; width:150px; margin-top:20px;"        src="../../Logos/Name.jpg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
@@ -180,7 +180,7 @@ $date=date('Y-m-d');
           </li>
           <li class="nav-item d-none d-lg-block">
             <a class="nav-link" href="#">
-              <img class="img-xs rounded-circle" src="images/faces/face4.jpg" alt="">
+              <img class="img-xs rounded-circle" src="../../images/Emojis/Neutral.gif" alt="">
             </a>
           </li>
         </ul>
@@ -196,7 +196,7 @@ $date=date('Y-m-d');
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
-              <div class="profile-image"> <img src="images/faces/face4.jpg" alt="image"/> <span class="online-status online"></span> </div>
+              <div class="profile-image"> <img src="../../images/Emojis/Happy.gif" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
               
              
@@ -219,13 +219,13 @@ $date=date('Y-m-d');
               </div>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="currentUser.php"><img class="menu-icon" src="images/menu_icons/01.png" alt="menu icon"><span class="menu-title">online Users</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="userInfo.php"><img class="menu-icon" src="images/menu_icons/02.png" alt="menu icon"><span class="menu-title">User Info</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="shopstock.php"><img class="menu-icon" src="images/menu_icons/03.png" alt="menu icon"><span class="menu-title">My Shop process</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="distribution/request.php"><img class="menu-icon" src="images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Distribution Request</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="distribution/marketing.php"><img class="menu-icon" src="images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Advertisements</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="currentUser.php"><img class="menu-icon" src="images/menu_icons/user.png" alt="menu icon"><span class="menu-title">online Users</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="userInfo.php"><img class="menu-icon" src="images/menu_icons/user1.png" alt="menu icon"><span class="menu-title">User Info</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="shopstock.php"><img class="menu-icon" src="images/menu_icons/shops.png" alt="menu icon"><span class="menu-title">My Shop process</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="distribution/request.php"><img class="menu-icon" src="images/menu_icons/dis.png" alt="menu icon"><span class="menu-title">Distribution Request</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="distribution/marketing.php"><img class="menu-icon" src="images/menu_icons/ads.png" alt="menu icon"><span class="menu-title">Advertisements</span></a></li>
           <li class="nav-item"><a class="nav-link" href="Analysis.php"><img class="menu-icon" src="images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Analysis</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/"><img class="menu-icon" src="images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Behaviuor</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/"><img class="menu-icon" src="../../images/emojis/happy.gif" alt="menu icon"> <span class="menu-title">Behaviuor</span></a></li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
             <div class="collapse" id="general-pages">

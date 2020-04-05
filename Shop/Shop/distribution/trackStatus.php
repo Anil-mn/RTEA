@@ -34,8 +34,8 @@ LinkInsertion();
    
     <!-- Google Font -->
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../../../node_modules/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../../../node_modules/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="../node_modules/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../node_modules/simple-line-icons/css/simple-line-icons.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -49,9 +49,9 @@ LinkInsertion();
   <div class="container-scroller">
     <!-- partial:../../../partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="home.php"><img src="../../../Logos/Untitled-1.jpg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="home.php"><img src="../../../Logos/Untitled-1.jpg" alt="logo"/></a>
+    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="../shop/shop/index.html">        <img style="height:50px; width:150px; margin-top:20px;"       src="../../../Logos/Name.jpg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../shop/shop/index.html">   <img style="height:50px; width:150px; margin-top:20px;"        src="../../../Logos/Name.jpg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
@@ -121,9 +121,9 @@ LinkInsertion();
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
             </div>   </li>
-            <li class="nav-item"><a class="nav-link" href="request.php"><img class="menu-icon" src="../images/menu_icons/01.png" alt="menu icon"><span class="menu-title">Request</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="track.php"><img class="menu-icon" src="../images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Track</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../shopstock.php"><img class="menu-icon" src="../images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Shop Information</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="request.php"><img class="menu-icon" src="../images/menu_icons/req.png" alt="menu icon"><span class="menu-title">Request</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="track.php"><img class="menu-icon" src="../images/menu_icons/track.png" alt="menu icon"><span class="menu-title">Track</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../shopstock.php"><img class="menu-icon" src="../images/menu_icons/shops.png" alt="menu icon"><span class="menu-title">Shop Information</span></a></li>
           <!-- <li class="nav-item"><a class="nav-link" href="../../../pages/forms/basic_elements.html"><img class="menu-icon" src="../../images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Form</span></a></li>
           <li class="nav-item"><a class="nav-link" href="../../../pages/charts/chartjs.html"><img class="menu-icon" src="../../images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Charts</span></a></li>
           <li class="nav-item"><a class="nav-link" href="../../../pages/tables/basic-table.html"><img class="menu-icon" src="../../images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Table</span></a></li>
