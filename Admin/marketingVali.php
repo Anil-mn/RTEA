@@ -5,35 +5,34 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel = "icon" href = "../Logos/title.png" 
-type = "image/x-icon"> 
-  <title>Admin</title>
+  <link rel = "icon" href = "../Logos/title.png" type = "image/x-icon"> 
+
+  <title>RTEA ADMIN</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../shop/shop/node_modules/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../shop/shop/node_modules/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="../Shop/Shop/node_modules/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../Shop/Shop/node_modules/simple-line-icons/css/simple-line-icons.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
-  <link rel="stylesheet" href="../shop/shop/node_modules/font-awesome/css/font-awesome.min.css" />
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../shop/shop/css/style.css">
+  <link rel="stylesheet" href="../Shop/Shop/css/style.css">
   <!-- endinject -->
-<!-- Title icon -->
+  <!-- Title icon -->
 
 </head>
 
 <body>
   <div class="container-scroller">
-    <!-- partial:../shop/shop/partials/_navbar.html -->
+    <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="../shop/shop/index.html">        <img style="height:50px; width:150px; margin-top:20px;"       src="../Logos/Name.jpg" alt="logo"/></a>
         <a class="navbar-brand brand-logo-mini" href="../shop/shop/index.html">   <img style="height:50px; width:150px; margin-top:20px;"        src="../Logos/Name.jpg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
           <li class="nav-item">
-            <a href="#" class="nav-link"><i class="mdi mdi-image-filter"></i>Gallery</a>
+            <a href="#" class="nav-link"><i class="mdi mdi-image-filter"></i>info</a>
           </li>
           <li class="nav-item active">
             <a href="#" class="nav-link"><i class="mdi mdi-email-outline"></i>Inbox</a>
@@ -41,25 +40,13 @@ type = "image/x-icon">
           <li class="nav-item">
             <a href="#" class="nav-link"><i class="mdi mdi-calendar"></i>Calendar</a>
           </li>
+
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="mdi mdi-bell-ring"></i>
-              <?php
-              include('../Backend/php/connection.php');
-              $date = date('Y-m-d');
-                   
-                   $Adexp=mysqli_query($con,"SELECT count(`ID`) from `market_ads` where `DueDate`='$date'");
-                   while($row=mysqli_fetch_array($Adexp))
-                   {
-                       $adid=$row[0];
- 
-                   }
-                            
-                      echo '<span class="count">'.$adid.'</span>';
-                   
-                       ?>
+              <span class="count">4</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <a class="dropdown-item">
@@ -114,10 +101,6 @@ type = "image/x-icon">
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <i class="mdi mdi-email-variant"></i>
-
-
-
-
               <span class="count">7</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
@@ -129,7 +112,7 @@ type = "image/x-icon">
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="../shop/shop/images/faces/face4.jpg" alt="image" class="profile-pic">
+                  <img src="../Shop/Shop/images/faces/face4.jpg" alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium">David Grey
@@ -143,7 +126,7 @@ type = "image/x-icon">
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="../Logos/title.png" alt="image" class="profile-pic">
+                  <img src="../Shop/Shop/images/faces/face2.jpg" alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium">Tim Cook
@@ -157,7 +140,7 @@ type = "image/x-icon">
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="../shop/shop/images/faces/face3.jpg" alt="image" class="profile-pic">
+                  <img src="../Shop/Shop/images/faces/face3.jpg" alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium"> Johnson
@@ -172,7 +155,7 @@ type = "image/x-icon">
           </li>
           <li class="nav-item d-none d-lg-block">
             <a class="nav-link" href="#">
-              <img class="img-xs rounded-circle" src="../Logos/title.png" alt="">
+              <img class="img-xs rounded-circle" src="" alt="">
             </a>
           </li>
         </ul>
@@ -183,7 +166,7 @@ type = "image/x-icon">
     </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:../shop/shop/partials/_sidebar.html -->
+      <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
@@ -191,32 +174,32 @@ type = "image/x-icon">
               <div class="profile-image"> <img src="../Logos/title.png" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
                 <p class="name">Admin</p>
-                <p class="designation">Marketing</p>
+                <p class="designation"></p>
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="index.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/01.png" alt="menu icon"><span class="menu-title">HOME</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="userValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Users</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="ShopValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Shop</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="distributionvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Distribution</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="marketingvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Markting</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/tables/basic-table.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Table</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/icons/font-awesome.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="index.php"><img class="menu-icon" src="../Logos/title.png" alt="menu icon"><span class="menu-title">HOME</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="userValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/user.png" alt="menu icon"><span class="menu-title">Users</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="ShopValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/shops.png" alt="menu icon"><span class="menu-title">Shop</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="distributionvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/dis.png" alt="menu icon"><span class="menu-title">Distribution</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="marketingvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/ads.png" alt="menu icon"><span class="menu-title">Markting</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="Shop_CategorieInsertion.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/products.png" alt="menu icon"><span class="menu-title">ADD Products</span></a></li>
+             <!--<li class="nav-item"><a class="nav-link" href="pages/icons/font-awesome.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="../shop/shop/images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
+            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="../Shop/Shop/images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
             <div class="collapse" id="general-pages">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../shop/shop/pages/samples/blank-page.html">Blank Page</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../shop/shop/pages/samples/login.html">Login</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../shop/shop/pages/samples/register.html">Register</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../shop/shop/pages/samples/error-404.html">404</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../shop/shop/pages/samples/error-500.html">500</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html">Blank Page</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html">Login</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html">Register</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html">404</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html">500</a></li>
               </ul>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="../shop/shop/pages/ui-features/typography.html"><img class="menu-icon" src="../shop/shop/images/menu_icons/09.png" alt="menu icon"> <span class="menu-title">Typography</span></a></li>
-          <li class="nav-item purchase-button"><a class="nav-link" href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Get full version</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/09.png" alt="menu icon"> <span class="menu-title">Typography</span></a></li>-->
+          <li class="nav-item purchase-button"><a class="nav-link" href="" >LOG OUT</a></li> 
         </ul>
       </nav>
       <!-- partial -->

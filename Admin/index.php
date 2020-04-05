@@ -25,14 +25,14 @@
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="../Shop/Shop/images/logo.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../Shop/Shop/images/logo-mini.svg" alt="logo"/></a>
+    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="../shop/shop/index.html">        <img style="height:50px; width:150px; margin-top:20px;"       src="../Logos/Name.jpg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../shop/shop/index.html">   <img style="height:50px; width:150px; margin-top:20px;"        src="../Logos/Name.jpg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
           <li class="nav-item">
-            <a href="#" class="nav-link"><i class="mdi mdi-image-filter"></i>Gallery</a>
+            <a href="#" class="nav-link"><i class="mdi mdi-image-filter"></i>info</a>
           </li>
           <li class="nav-item active">
             <a href="#" class="nav-link"><i class="mdi mdi-email-outline"></i>Inbox</a>
@@ -40,6 +40,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link"><i class="mdi mdi-calendar"></i>Calendar</a>
           </li>
+
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown">
@@ -154,7 +155,7 @@
           </li>
           <li class="nav-item d-none d-lg-block">
             <a class="nav-link" href="#">
-              <img class="img-xs rounded-circle" src="../Shop/Shop/images/faces/face4.jpg" alt="">
+              <img class="img-xs rounded-circle" src="" alt="">
             </a>
           </li>
         </ul>
@@ -170,21 +171,21 @@
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
-              <div class="profile-image"> <img src="../Shop/Shop/images/faces/face4.jpg" alt="image"/> <span class="online-status online"></span> </div>
+              <div class="profile-image"> <img src="../Logos/title.png" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
-                <p class="name">Richard V.Welsh</p>
-                <p class="designation">Manager</p>
+                <p class="name">Admin</p>
+                <p class="designation"></p>
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="index.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/01.png" alt="menu icon"><span class="menu-title">HOME</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="userValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Users</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="ShopValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Shop</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="distributionvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Distribution</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="marketingvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Markting</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/tables/basic-table.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Table</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/icons/font-awesome.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="index.php"><img class="menu-icon" src="../Logos/title.png" alt="menu icon"><span class="menu-title">HOME</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="userValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/user.png" alt="menu icon"><span class="menu-title">Users</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="ShopValidation.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/shops.png" alt="menu icon"><span class="menu-title">Shop</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="distributionvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/dis.png" alt="menu icon"><span class="menu-title">Distribution</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="marketingvali.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/ads.png" alt="menu icon"><span class="menu-title">Markting</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="Shop_CategorieInsertion.php"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/products.png" alt="menu icon"><span class="menu-title">ADD Products</span></a></li>
+             <!--<li class="nav-item"><a class="nav-link" href="pages/icons/font-awesome.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="../Shop/Shop/images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
             <div class="collapse" id="general-pages">
@@ -197,8 +198,8 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/09.png" alt="menu icon"> <span class="menu-title">Typography</span></a></li>
-          <li class="nav-item purchase-button"><a class="nav-link" href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Get full version</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html"><img class="menu-icon" src="../Shop/Shop/images/menu_icons/09.png" alt="menu icon"> <span class="menu-title">Typography</span></a></li>-->
+          <li class="nav-item purchase-button"><a class="nav-link" href="" >LOG OUT</a></li> 
         </ul>
       </nav>
       <!-- partial -->
@@ -345,7 +346,7 @@
             </div> -->
           </div>
           <div class="row">
-            <div class="col-12 grid-margin" hidden>
+            <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title mb-4">Targets</h5>
@@ -354,201 +355,21 @@
               </div>
             </div>
           </div>
+         
+          
           <div class="row">
             <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-4">Orders</h5>
-                  <div class="table-responsive">
-                    <table class="table center-aligned-table">
-                      <thead>
-                        <tr>
-                          <th class="border-bottom-0">Order No</th>
-                          <th class="border-bottom-0">Product Name</th>
-                          <th class="border-bottom-0">Purchased On</th>
-                          <th class="border-bottom-0">Shipping Status</th>
-                          <th class="border-bottom-0">Payment Method</th>
-                          <th class="border-bottom-0">Payment Status</th>
-                          <th class="border-bottom-0"></th>
-                          <th class="border-bottom-0"></th>
-                          <th class="border-bottom-0"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>034</td>
-                          <td>Iphone 7</td>
-                          <td>12 May 2017</td>
-                          <td>Dispatched</td>
-                          <td>Credit card</td>
-                          <td><label class="badge badge-teal">Approved</label></td>
-                          <td><a href="#" class="btn btn-outline-success btn-sm">View Order</a></td>
-                          <td><a href="#" class="btn btn-outline-danger btn-sm">Cancel</a></td>
-                        </tr>
-                        <tr>
-                          <td>035</td>
-                          <td>Galaxy S8</td>
-                          <td>15 May 2017</td>
-                          <td>Dispatched</td>
-                          <td>Internet banking</td>
-                          <td><label class="badge badge-warning">Pending</label></td>
-                          <td><a href="#" class="btn btn-outline-success btn-sm">View Order</a></td>
-                          <td><a href="#" class="btn btn-outline-danger btn-sm">Cancel</a></td>
-                        </tr>
-                        <tr>
-                          <td>036</td>
-                          <td>Amazon Echo</td>
-                          <td>17 May 2017</td>
-                          <td>Dispatched</td>
-                          <td>Credit card</td>
-                          <td><label class="badge badge-teal">Approved</label></td>
-                          <td><a href="#" class="btn btn-outline-success btn-sm">View Order</a></td>
-                          <td><a href="#" class="btn btn-outline-danger btn-sm">Cancel</a></td>
-                        </tr>
-                        <tr>
-                          <td>037</td>
-                          <td>Google Pixel</td>
-                          <td>17 May 2017</td>
-                          <td>Dispatched</td>
-                          <td>Cash on delivery</td>
-                          <td><label class="badge badge-danger">Rejected</label></td>
-                          <td><a href="#" class="btn btn-outline-success btn-sm">View Order</a></td>
-                          <td><a href="#" class="btn btn-outline-danger btn-sm">Cancel</a></td>
-                        </tr>
-                        <tr>
-                          <td>038</td>
-                          <td>Mac Mini</td>
-                          <td>19 May 2017</td>
-                          <td>Dispatched</td>
-                          <td>Debit card</td>
-                          <td><label class="badge badge-teal">Approved</label></td>
-                          <td><a href="#" class="btn btn-outline-success btn-sm">View Order</a></td>
-                          <td><a href="#" class="btn btn-outline-danger btn-sm">Cancel</a></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title mb-4">Global Sales by Top Locations</h5>
-                  <div class="row">
-                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
-                      <table class="table table-striped">
-                        <tbody>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/US.png">
-                              </div>
-                            </td>
-                            <td>USA</td>
-                            <td class="text-right">
-                              2.920
-                            </td>
-                            <td class="text-right">
-                              53.23%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/DE.png">
-                              </div>
-                            </td>
-                            <td>Germany</td>
-                            <td class="text-right">
-                              1.300
-                            </td>
-                            <td class="text-right">
-                              20.43%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/AU.png">
-                              </div>
-                            </td>
-                            <td>Australia</td>
-                            <td class="text-right">
-                              760
-                            </td>
-                            <td class="text-right">
-                              10.35%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/GB.png">
-                              </div>
-                            </td>
-                            <td>United Kingdom</td>
-                            <td class="text-right">
-                              690
-                            </td>
-                            <td class="text-right">
-                              7.87%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/RO.png">
-                              </div>
-                            </td>
-                            <td>Romania</td>
-                            <td class="text-right">
-                              600
-                            </td>
-                            <td class="text-right">
-                              5.94%
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="flag">
-                                <img src="../Shop/Shop/images/flags/BR.png">
-                              </div>
-                            </td>
-                            <td>Brasil</td>
-                            <td class="text-right">
-                              550
-                            </td>
-                            <td class="text-right">
-                              4.34%
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-xs-12">
-                      <div class="rounded" id="map" style="min-height:300px;"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title mb-4">Manage Tickets</h5>
+                  <h5 class="card-title mb-4">RTEA Part</h5>
                   <div class="fluid-container">
                     <div class="row ticket-card mt-3 pb-2 border-bottom">
                       <div class="col-1">
-                        <img class="img-sm rounded-circle" src="../Shop/Shop/images/faces/face1.jpg" alt="profile image">
+                        <img class="img-sm rounded-circle" src="../Shop/Shop/images/menu_icons/user.png" alt="profile image">
                       </div>
                       <div class="ticket-details col-9">
                         <div class="d-flex">
-                          <p class="text-primary font-weight-bold mr-2 mb-0 no-wrap">James :</p>
+                          <p class="text-primary font-weight-bold mr-2 mb-0 no-wrap">User :</p>
                           <p class="font-weight-medium mr-1 mb-0">[#23047]</p>
                           <p class="font-weight-bold mb-0 ellipsis">Lorem ipsum dolor sit amet, consectetur.</p>
                         </div>
@@ -581,7 +402,7 @@
                     </div>
                     <div class="row ticket-card mt-3 pb-2 border-bottom">
                       <div class="col-1">
-                        <img class="img-sm rounded-circle" src="../Shop/Shop/images/faces/face2.jpg" alt="profile image">
+                        <img class="img-sm rounded-circle" src="../Shop/Shop/images/menu_icons/shops.png" alt="profile image">
                       </div>
                       <div class="ticket-details col-9">
                         <div class="d-flex">
@@ -618,7 +439,7 @@
                     </div>
                     <div class="row ticket-card mt-3 pb-2 border-bottom">
                       <div class="col-1">
-                        <img class="img-sm rounded-circle" src="../Shop/Shop/images/faces/face3.jpg" alt="profile image">
+                        <img class="img-sm rounded-circle" src="../Shop/Shop/images/menu_icons/dis.png" alt="profile image">
                       </div>
                       <div class="ticket-details col-9">
                         <div class="d-flex">
@@ -655,7 +476,7 @@
                     </div>
                     <div class="row ticket-card mt-3 pb-2 border-bottom">
                       <div class="col-1">
-                        <img class="img-sm rounded-circle" src="../Shop/Shop/images/faces/face4.jpg" alt="profile image">
+                        <img class="img-sm rounded-circle" src="../Shop/Shop/images/menu_icons/ads.png" alt="profile image">
                       </div>
                       <div class="ticket-details col-9">
                         <div class="d-flex">
@@ -690,7 +511,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row ticket-card mt-3 pb-2">
+                    <div class="row ticket-card mt-3 pb-2" hidden>
                       <div class="col-1">
                         <img class="img-sm rounded-circle" src="../Shop/Shop/images/faces/face5.jpg" alt="profile image">
                       </div>
@@ -737,8 +558,8 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"> <a href="" target=""></a>..</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <i class="mdi mdi-heart text-danger"></i></span>
           </div>
         </footer>
         <!-- partial -->
@@ -750,12 +571,12 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../Shop/Shop/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../Shop/Shop/node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="../Shop/Shop/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
-  <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+  <script src="../Shop/Shop/node_modules/chart.js/dist/Chart.min.js"></script>
   <!-- End plugin js for this page-->
   <!-- inject:js -->
   <script src="../Shop/Shop/js/off-canvas.js"></script>
