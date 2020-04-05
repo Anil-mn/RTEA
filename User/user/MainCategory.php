@@ -388,6 +388,7 @@ $Shop1=$row[2];
         <div class="container-fluid">
             <div class="row">
             <?php
+            $addID=0;
                 include('../../BackEnd/php/connection.php');
             $Ads = mysqli_query($con,"SELECT * FROM `market_userads` Where  `User_id` = '$UserId' and `SlotNumbers` = 1");
             while($row1=mysqli_fetch_array($Ads)){
