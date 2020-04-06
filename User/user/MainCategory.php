@@ -394,7 +394,8 @@ $Shop1=$row[2];
             while($row1=mysqli_fetch_array($Ads)){
                 $addID=$row1[2]; 
                 $Adsinfo = mysqli_query($con,"SELECT * FROM `market_add` Where  `Add_ID` = '$addID'");
-                  while($row=mysqli_fetch_array($Adsinfo)){
+                  while($row=mysqli_fetch_array($Adsinfo))
+                  {
                   $addName=$row[2];
                   $addProduct=$row[4];
                   $addDis=$row[5];
