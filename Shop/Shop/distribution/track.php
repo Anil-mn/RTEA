@@ -99,7 +99,7 @@ LinkInsertion();
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
-              <div class="profile-image"> <img src="../../../Logos/title.png" alt="image"/> <span class="online-status online"></span> </div>
+              <div class="profile-image"> <img src="../../../images/Emojis/dis.gif" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
               
              

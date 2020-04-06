@@ -82,7 +82,7 @@ LinkInsertion();
           </li>
           <li class="nav-item d-none d-lg-block">
             <a class="nav-link" href="#">
-              <img class="img-xs rounded-circle" src="../../../Logos/title.png" alt="">
+              <img class="img-xs rounded-circle" src="../../../images/Emojis/dis.gif" alt="">
             </a>
           </li>
         </ul>

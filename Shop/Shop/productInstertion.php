@@ -25,8 +25,8 @@ SESSION_START();
         type = "image/x-icon"> 
     <!-- Google Font -->
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../../node_modules/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../../node_modules/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="node_modules/simple-line-icons/css/simple-line-icons.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -40,9 +40,9 @@ SESSION_START();
   <div class="container-scroller">
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="../shop/shop/index.html">        <img style="height:50px; width:150px; margin-top:20px;"       src="../../Logos/Name.jpg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../shop/shop/index.html">   <img style="height:50px; width:150px; margin-top:20px;"        src="../../Logos/Name.jpg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
@@ -169,7 +169,7 @@ SESSION_START();
           </li>
           <li class="nav-item d-none d-lg-block">
             <a class="nav-link" href="#">
-              <img class="img-xs rounded-circle" src="images/faces/face4.jpg" alt="">
+              <img class="img-xs rounded-circle" src="../../images/Emojis/Neutral.gif" alt="">
             </a>
           </li>
         </ul>
@@ -185,7 +185,7 @@ SESSION_START();
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
-              <div class="profile-image"> <img src="images/faces/face4.jpg" alt="image"/> <span class="online-status online"></span> </div>
+              <div class="profile-image"> <img src="../../images/Emojis/ShopCart.gif" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
               
              
@@ -204,31 +204,20 @@ SESSION_START();
                 ?>
                 <!-- <p class="name">Richard V.Welsh</p> -->
                 <!-- <p class="designation">Manager</p> -->
-                <div class="badge badge-teal mx-auto mt-3">Online</div>
+                <div class="badge badge-teal mx-auto mt-3">Stock</div>
               </div>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="index.html"><img class="menu-icon" src="images/menu_icons/01.png" alt="menu icon"><span class="menu-title">Dashboard</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/widgets.html"><img class="menu-icon" src="images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Widgets</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html"><img class="menu-icon" src="images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Buttons</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html"><img class="menu-icon" src="images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Form</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/charts/chartjs.html"><img class="menu-icon" src="images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Charts</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/tables/basic-table.html"><img class="menu-icon" src="images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Table</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/icons/font-awesome.html"><img class="menu-icon" src="images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="currentUser.php"><img class="menu-icon" src="images/menu_icons/user.png" alt="menu icon"><span class="menu-title">online Users</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="productInstertion.php"><img class="menu-icon" src="images/menu_icons/Products.png" alt="menu icon"><span class="menu-title">Product Insertion</span></a></li>
+          <li class="nav-item"><a class="nav-link" href=""><img class="menu-icon" src="images/menu_icons/Shops.png" alt="menu icon"><span class="menu-title">My Shop process</span></a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="distribution/request.php"><img class="menu-icon" src="images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Distribution Request</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="distribution/marketing.php"><img class="menu-icon" src="images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Advertisements</span></a></li> -->
+          <li class="nav-item"><a class="nav-link" href="Analysis.php"><img class="menu-icon" src="../../images/Emojis/ana.gif" alt="menu icon"><span class="menu-title">Analysis</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/"><img class="menu-icon" src="../../images/Emojis/emoji.gif" alt="menu icon"> <span class="menu-title">Behaviuor</span></a></li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
-            <div class="collapse" id="general-pages">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html">Blank Page</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html">Login</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html">Register</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html">404</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html">500</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html"><img class="menu-icon" src="images/menu_icons/09.png" alt="menu icon"> <span class="menu-title">Typography</span></a></li>
-          <li class="nav-item purchase-button"><a class="nav-link" href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Get full version</a></li>
+           
+          <li class="nav-item purchase-button"><a class="nav-link" href="shopstock.php" >Back</a></li>
         </ul>
       </nav>
       <!-- partial -->
