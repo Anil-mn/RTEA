@@ -11,6 +11,14 @@ $password = $_POST['password'];
 $Gender = $_POST['Gender'];
 $dob = $_POST['dob'];
 $Location = $_POST['location'];
+$numvalid=mysqli_query($con, "SELECT `PhoneNumber` FROM `user_info` where `PhoneNumber`='$phoneNumber'");
+$res=mysqli_fetch_array($numvalid);
+if($res==true)
+{
+    echo '<script> confirm("Phone Number:'.$phoneNumber.' Already Exist",window.location="register.php")</script>';
+}
+else {
+
 
 $target_dir = "profileImg/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -75,7 +83,7 @@ $newfilename=$name ;
      }
  }
 
-
+}
 
 
 
