@@ -419,10 +419,10 @@ $Shop1Name=$row[2];
                     <?php
                                 include('../../BackEnd/php/connection.php');
                                 
-                                $SuperInfo = mysqli_query($con,"SELECT * from `shop_supersub` where `SuperSubCat_ID`='$subcategory'");
-                                         while($row1=mysqli_fetch_array($SuperInfo))
-                                         {
-                                           $superID=$row1[0];
+                                $SuperInfo = mysqli_query($con,"SELECT * from `shop_supersub` where `SubCategorie_ID`='$subcategory'");
+                                     while($row1=mysqli_fetch_array($SuperInfo))
+                                     {
+                                       $superID=$row1[0];
                                            //echo $superID;
                                            $check=mysqli_query($con,"SELECT *   from `shop_products` where `superSubID`= '$superID'");
                                            while($row2=mysqli_fetch_array($check))
@@ -435,7 +435,7 @@ $Shop1Name=$row[2];
                                                 {
                                   
 
-                    echo    '<div class="product-item">
+                    echo    '<div class="product-item" onclick="view('.$prodid.')">
                             <div class="pi-pic">
                             <Form action="list.php" method="POST">
                                 <img  style="height:280px; width:200px" src="../../Images/productImages/'.$prodid.'.jpg" alt="">
@@ -463,6 +463,12 @@ $Shop1Name=$row[2];
                           </div>
                       </div>';
                   } } }?>
+                   <script>
+                                  function view(proid){
+                                      
+                                     window.location="productDetails.php?"+proid;
+                                }
+                                  </script>   
                      <!-- <div class="product-item">
                           <div class="pi-pic">
                               <img src="img/products/women-2.jpg" alt="">

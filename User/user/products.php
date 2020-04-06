@@ -318,9 +318,9 @@ $Shop1Name=$row[2];
                     <div class="filter-widget">
                         <h4 class="fw-title">Categories</h4>
                         <ul class="filter-catagories">
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Women</a></li>
-                            <li><a href="#">Kids</a></li>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">shop</a></li>
+                            <li><a href="#">List</a></li>
                         </ul>
                     </div>
                     <div class="filter-widget">
@@ -461,6 +461,7 @@ $Shop1Name=$row[2];
                     <div class="product-list">
                         <div class="row">
                         <?php
+                        
                           
                           $catid=mysqli_query($con,"SELECT * from `Shop_products` where `superSubID`='$suID'");
                           while($row1=mysqli_fetch_array($catid))
@@ -475,7 +476,7 @@ $Shop1Name=$row[2];
                               $quntity = $result[3];
                               $location = $result[4];
                               echo '<div class="col-lg-4 col-sm-6">
-                              <div class="product-item">
+                              <div class="product-item" onclick="view('.$pid.')">
                                   <div class="pi-pic">
                                       <img style="height:280px; width:200px" src="../../Images/ProductImages/'.$pid.'.jpg" alt="">
                                       <div class="sale pp-sale">Available stock  :'.$quntity.'</div>
@@ -506,6 +507,12 @@ $Shop1Name=$row[2];
                               ';}
                             }
                         ?>
+                                  <script>
+                                  function view(proid){
+                                      
+                                     window.location="productDetails.php?"+proid;
+                                }
+                                  </script>  
                             <!-- <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">

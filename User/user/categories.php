@@ -462,18 +462,18 @@ $Shop1Name=$row[2];
                                 include('../../BackEnd/php/connection.php');
                                // echo $maincategory;
                                 $subInfo = mysqli_query($con,"SELECT * from  `shop_subcategories` WHERE `Categorie_ID`='$maincategory'");
-                                    while($row=mysqli_fetch_array($subInfo))
-                                    {
-                                         $subID=$row[0];
-                                         //echo $subID;
-                                         $SuperInfo = mysqli_query($con,"SELECT * from `shop_supersub` where `SuperSubCat_ID`='$subID'");
-                                         while($row1=mysqli_fetch_array($SuperInfo))
+                                while($row=mysqli_fetch_array($subInfo))
+                                {
+                                     $subID=$row[0];
+                                     //echo $subID;
+                                     $SuperInfo = mysqli_query($con,"SELECT * from `shop_supersub` where `SubCategorie_ID`='$subID'");
+                                     while($row1=mysqli_fetch_array($SuperInfo))
+                                     {
+                                       $superID=$row1[0];
+                                      // echo $superID;
+                                       $check=mysqli_query($con,"SELECT *   from `shop_products` where `superSubID`= '$superID'");
+                                       while($row2=mysqli_fetch_array($check))
                                          {
-                                           $superID=$row1[0];
-                                           //echo $superID;
-                                           $check=mysqli_query($con,"SELECT *   from `shop_products` where `superSubID`= '$superID'");
-                                           while($row2=mysqli_fetch_array($check))
-                                             {
                                                 $prodid=$row2[0];
                                                 
                                                 $price=$row2[2];
@@ -483,7 +483,7 @@ $Shop1Name=$row[2];
                                                 {
                                   
                                                     
-                                                    echo    '<div class="product-item">
+                                                    echo    '<div class="product-item"  onclick="view('.$prodid.')">
                                                     <div class="pi-pic">
                                                     <Form action="list.php" method="POST">
                                                         <img style="height:280px; width:200px"src="../../Images/productImages/'.$prodid.'.jpg" alt="">
@@ -519,99 +519,7 @@ $Shop1Name=$row[2];
 
                
                                ?>
-                     <!-- <div class="product-item">
-                          <div class="pi-pic">
-                              <img src="img/products/women-2.jpg" alt="">
-                              <div class="icon">
-                                  <i class="icon_heart_alt"></i>
-                              </div>
-                                
-                                
- -->
-                                   
-                                <!-- <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name">Coat</div>
-                                <a href="#">
-                                    <h5>Pure Pineapple</h5>
-                                </a>
-                                <div class="product-price">
-                                    $14.00
-                                    <span>$35.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="img/products/women-2.jpg" alt="">
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name">Shoes</div>
-                                <a href="#">
-                                    <h5>Guangzhou sweater</h5>
-                                </a>
-                                <div class="product-price">
-                                    $13.00
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="img/products/women-3.jpg" alt="">
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name">Towel</div>
-                                <a href="#">
-                                    <h5>Pure Pineapple</h5>
-                                </a>
-                                <div class="product-price">
-                                    $34.00
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="img/products/women-4.jpg" alt="">
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name">Towel</div>
-                                <a href="#">
-                                    <h5>Converse Shoes</h5>
-                                </a>
-                                <div class="product-price">
-                                    $34.00
-                                </div>
-                            </div>
-                        </div> -->
+                    
                
                     </div>
                 </div>
@@ -660,17 +568,10 @@ $Shop1Name=$row[2];
     <!-- Man Banner Section Begin -->
     <section class="man-banner spad">
         <div class="container-fluid">
-           
-            <div class="row">
-            <div class="col-lg-3">
-                    <div class="product-large set-bg" data-setbg="../../Images/AdsImages/5.jpg">
-                        <h2>Women’s</h2>
-                        <a href="#">Discover More</a>
-                    </div> 
-                </div> 
+            <div class = "row">
             <div class="col-lg-8">
                   <div class="filter-control">
-                        <ul>
+               <ul>
             <?php
              
              $query=mysqli_query($con,"SELECT * from Shop_Categories where `Categorie_ID`='$maincategory'");
@@ -702,24 +603,24 @@ $Shop1Name=$row[2];
                                     {
                                          $subID=$row[0];
                                          //echo $subID;
-                                         $SuperInfo = mysqli_query($con,"SELECT * from `shop_supersub` where `SuperSubCat_ID`='$subID'");
+                                         $SuperInfo = mysqli_query($con,"SELECT * from `shop_supersub` where `SubCategorie_ID`='$subID'");
                                          while($row1=mysqli_fetch_array($SuperInfo))
                                          {
                                            $superID=$row1[0];
-                                           //echo $superID;
+                                          // echo $superID;
                                            $check=mysqli_query($con,"SELECT *   from `shop_products` where `superSubID`= '$superID'");
                                            while($row2=mysqli_fetch_array($check))
                                              {
                                                 $prodid=$row2[0];
-                                                
                                                 $price=$row2[2];
                                                 $name=$row2[1];
                                                 $check1 = mysqli_query($con,"SELECT * from `Shop_link` where `Product_ID`='$prodid' and `Shop_ID`='$ShopId' ");
                                                 while($result = mysqli_fetch_array($check1))
                                                 {
+                                                    //echo $result[2];
                                   
                                                     
-                                                    echo    '<div class="product-item">
+                                                    echo    '<div class="product-item" onclick="view('.$prodid.')">
                                                     <div class="pi-pic">
                                                     <Form action="list.php" method="POST">
                                                         <img style="height:280px; width:200px"src="../../Images/productImages/'.$prodid.'.jpg" alt="">
@@ -755,6 +656,12 @@ $Shop1Name=$row[2];
 
                
                                ?>
+                               <script>
+                                  function view(proid){
+                                      
+                                     window.location="productDetails.php?"+proid;
+                                }
+                                  </script>   
                      <!-- <div class="product-item">
                           <div class="pi-pic">
                               <img src="img/products/women-2.jpg" alt="">

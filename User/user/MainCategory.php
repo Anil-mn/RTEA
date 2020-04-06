@@ -458,10 +458,10 @@ $Shop1=$row[2];
                                                 $superID=$row3['superSubID'];
                                                 $name=$row3[1];
                                                 $price=$row3['Price'];
-                                                echo    '<div class="product-item">
+                                                echo    '<div class="product-item" onclick="view('.$prodid.')">
                                                         <div class="pi-pic">
                                                         <Form action="list.php" method="POST">
-                                                            <img style="height:280px; width:200px" src="../../Images/productImages/'.$prodid.'.jpg" alt="">
+                                                            <img style="height:280px; width:200px" src="../../Images/productImages/'.$prodid.'.jpg" alt="" >
                                                             <div class="sale">Sale</div>
                                                             <div class="icon">
                                                             <i class="icon_heart_alt"></i>
@@ -484,11 +484,23 @@ $Shop1=$row[2];
                                                           </div>
                                                           </from>
                                                       </div>
-                                                  </div>';
+                                                  </div>
+                                    
+                                                  ';
+                                                 
                                               }
                                                } 
                  
                    ?>
+                                   <script>
+                                  function view(proid){
+                                      
+                                     window.location="productDetails.php?"+proid;
+                                }
+                                  </script>   
+
+
+                                           
                      <!-- <div class="product-item">
                           <div class="pi-pic">
                               <img src="img/products/women-2.jpg" alt="">
