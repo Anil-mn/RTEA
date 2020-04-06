@@ -89,7 +89,7 @@ $Shop1=$row[2];
 
                <!--shop changing using same procedure of change location-->     
 
-               <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
+               <a href="Process/Logout.php" class="login-panel"><i class="fa fa-user"></i>Logout</a>
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
                             <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
@@ -456,7 +456,7 @@ $Shop1=$row[2];
                                             while($row3=mysqli_fetch_array($check))
                                             {
                                                 $superID=$row3['superSubID'];
-                                                $name=$row3[0];
+                                                $name=$row3[1];
                                                 $price=$row3['Price'];
                                                 echo    '<div class="product-item">
                                                         <div class="pi-pic">

@@ -88,7 +88,7 @@ while ($row = mysqli_fetch_array($Userinfo)){
              
                 <form action='' method ='POST' >
                 <div class="ht-right">
-                    <button href="#" name="changeloc" class="login-panel"><i class="fa fa-user"></i>Change location</button>
+                    <a href="Process/Logout.php" name="changeloc" class="login-panel"><i class="fa fa-user"></i>Logout</a>
                   <div class="lan-selector">
                    <select class="language_drop"  name="countries" id="countries" style="width:300px;">
                         
@@ -288,26 +288,28 @@ while ($row = mysqli_fetch_array($Userinfo)){
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
-                        <li><a href="./shop.html">Shop</a></li>
+                        <li class="active"><a href="#">Home</a></li>
+                        
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">ToBuyList</a></li>
                         <li><a href="#">Collection</a>
-                            <ul class="dropdown">
+                            <!-- <ul class="dropdown">
                                 <li><a href="#">Men's</a></li>
                                 <li><a href="#">Women's</a></li>
                                 <li><a href="#">Kid's</a></li>
-                            </ul>
+                            </ul> -->
                         </li>
                         <!-- <li><a href="./blog.html">Blog</a></li>
                         <li><a href="./contact.html">Contact</a></li> -->
                         <li><a href="#">Pages</a>
-                            <ul class="dropdown">
-                                <li><a href="./blog-details.html">My Profile</a></li>
-                                <li><a href="./shopping-cart.html">My Cart</a></li>
-                                <li><a href="./check-out.html">My Wishlist</a></li>
-                                <li><a href="./faq.html">My Orders</a></li>
+                            <!-- <ul class="dropdown">
+                                <li><a href="#">My Profile</a></li>
+                                <li><a href="#">My Cart</a></li>
+                                <li><a href="#">My Wishlist</a></li>
+                                <li><a href="#">My Orders</a></li>
                                 <li><a href="./register.html">Register</a></li>
                                 <li><a href="./login.html">Login</a></li>
-                            </ul>
+                            </ul> -->
                         </li>
                     </ul>
                 </nav>
