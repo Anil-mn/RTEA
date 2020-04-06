@@ -543,7 +543,7 @@ $Shop1Name=$row[2];
                                     </div>
                                 </div>
                             </div>
-                            <div class="pd-size-choose">
+                            <div class="pd-size-choose" hidden>
                                 <div class="sc-item">
                                     <input type="radio" id="sm-size">
                                     <label for="sm-size">s</label>
@@ -577,7 +577,7 @@ $Shop1Name=$row[2];
                                 <li><span>CATEGORIES</span>: '.$cataName.'</li>
                             </ul>
                             <div class="pd-share">
-                                <div class="p-code">Sku : 00012</div>
+                                <div class="p-code">ID : '.$pID.'</div>
                                 <div class="pd-social">
                                     <a href="#"><i class="ti-facebook"></i></a>
                                     <a href="#"><i class="ti-twitter-alt"></i></a>
@@ -599,7 +599,7 @@ $Shop1Name=$row[2];
                                     <a class="active" data-toggle="tab" href="#tab-1" role="tab">DESCRIPTION</a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#tab-2" role="tab">SPECIFICATIONS</a>
+                                    <a data-toggle="tab" href="#tab-2" role="tab">More Details</a>
                                 </li>
                                 <li>
                                     <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews (02)</a>
@@ -702,13 +702,7 @@ $Shop1Name=$row[2];
                                                 <img src="../../Images/UserImages/'.$PhoneNumber.'.jpg" alt="">
                                             </div>
                                             <div class="avatar-text">
-                                                <div class="at-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
+                                                
                                                 <h5>'.$name.'<span></span></h5>
                                                 <div class="at-reply">'.$view.'</div>
                                             </div>
@@ -756,14 +750,8 @@ $Shop1Name=$row[2];
                                             <h4>Leave A Comment</h4>
                                             <form action="process/review.php" Method="POST" class="comment-form">
                                                 <div class="personal-rating">
-                                                <h6>Your Ratind</h6>
-                                                <div class="rating">
-                                                    <i class="fa fa-star-o" onClick="rate()" name="rate"></i>
-                                                    <i class="fa fa-star-o" name="rate"></i>
-                                                    <i class="fa fa-star-o" name="rate"></i>
-                                                    <i class="fa fa-star-o" name="rate"></i>
-                                                    <i class="fa fa-star-o" name="rate"></i>
-                                                </div>
+                                                <h6></h6>
+                                               
                                             </div>
                                                 <div class="row">
                                             
