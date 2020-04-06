@@ -322,19 +322,19 @@ $Shop1Name=$row[2];
                         <div class="leave-comment">
                             <h4>Leave A Comment</h4>
                             <p>Our staff will call back later and answer your questions.</p>
-                            <form action="#" class="comment-form">
+                            <form action="" class="comment-form" method='POST'>
                                 <div class="row">
                                     <?php
                                    echo '<div class="col-lg-6">
-                                        <input type="text" placeholder="'.$userName.'">
+                                        <input type="text" value="'.$userName.'">
                                     </div>
                                     <div class="col-lg-6">
-                                        <input type="text" placeholder="'.$userEmail.'">
+                                        <input type="text" value="'.$userEmail.'">
                                     </div>';
                                     ?>
                                     <div class="col-lg-12">
-                                        <textarea placeholder="Your message"></textarea>
-                                        <button type="submit" class="site-btn">Send message</button>
+                                        <textarea placeholder="Your message" name="msg"></textarea>
+                                        <button type="submit" name="submit" class="site-btn">Send message</button>
                                     </div>
                                 </div>
                             </form>
@@ -344,6 +344,20 @@ $Shop1Name=$row[2];
             </div>
         </div>
     </section>
+    <?php
+      if(isset($_POST['submit']))
+      {
+          $msg=$_POST['msg'];
+          echo $msg;
+          $feedback=mysqli_query($con,"INSERT INTO `User_Feedback`( `UserID`, `ShopID`, `Message`) VALUES ('$UserId','$ShopName','$msg')");
+          if($feedback==true)
+          {
+              header('location:SelectShop.php');;
+          }
+      }
+
+?>
+
     <!-- Contact Section End -->
 
     <!-- Partner Logo Section Begin -->

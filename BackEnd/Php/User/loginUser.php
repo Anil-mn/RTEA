@@ -17,6 +17,9 @@ SESSION_START();
     $_SESSION['PhoneNumber'] = $_POST['PhoneNumber'];
     header('location: ../../../User/user/SelectShop.php');
 }
+else {
+  echo '<script> confirm("Wrog Password",window.location="../../../User")</script>';
+}
   }
 
 

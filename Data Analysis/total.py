@@ -32,6 +32,7 @@ for x in myin:
         arry.append(i) 
 
 df = pd.DataFrame(np.array([arry]).T)
+#df = pd.DataFrame(arry)
 df.head()
 df.columns =['Count']
 print(df.head())
@@ -41,7 +42,7 @@ plt.figure(figsize=(15,6))
 x = [arry[3],arry[2],arry[1],arry[0],20]
 y = [arry[0],arry[1],arry[2],arry[3],20]
 
-genders = df.Count.value_counts()
+# genders = df.Count.value_counts()
 sns.set_style("darkgrid")
 sns.barplot(x=x, y=y, palette="rocket")
 plt.show()

@@ -227,7 +227,7 @@ $date=date('Y-m-d');
           <li class="nav-item"><a class="nav-link" href="Analysis.php"><img class="menu-icon" src="images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Analysis</span></a></li>
           <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/"><img class="menu-icon" src="../../images/emojis/happy.gif" alt="menu icon"> <span class="menu-title">Behaviuor</span></a></li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
+            <!-- <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
             <div class="collapse" id="general-pages">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="../pages/samples/blank-page.html">Blank Page</a></li>
@@ -236,10 +236,10 @@ $date=date('Y-m-d');
                 <li class="nav-item"> <a class="nav-link" href="../pages/samples/error-404.html">404</a></li>
                 <li class="nav-item"> <a class="nav-link" href="../pages/samples/error-500.html">500</a></li>
               </ul>
-            </div>
+            </div> -->
           </li>
-          <li class="nav-item"><a class="nav-link" href="../pages/ui-features/typography.html"><img class="menu-icon" src="images/menu_icons/09.png" alt="menu icon"> <span class="menu-title">Typography</span></a></li>
-          <li class="nav-item purchase-button"><a class="nav-link" href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Get full version</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="../pages/ui-features/typography.html"><img class="menu-icon" src="images/menu_icons/09.png" alt="menu icon"> <span class="menu-title">Typography</span></a></li> -->
+          <li class="nav-item purchase-button"><a class="nav-link" href="logout.php" >LogOUT</a></li>
         </ul>
       </nav>
       <!-- partial -->

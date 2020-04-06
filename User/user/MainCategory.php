@@ -444,12 +444,13 @@ $Shop1=$row[2];
                                 //     }
 
                                 // }
-                                
-                                     $query = "SELECT * from `shop_link` where `Shop_ID`='$maincategory' group by `Product_ID` order by `NumberOf` DESC ";
+                                     
+                                     $query = "SELECT `Product_ID` from `shop_link` where `Shop_ID`='$maincategory' ";
                                      $que=mysqli_query($con,$query);
                                       while($row2=mysqli_fetch_array($que))
-                                       {   $linkID = $row2[0];
-                                           $prodid=$row2[1];
+                                       {   
+                                           $prodid=$row2[0];
+                                           
                                            $check=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid' ");
                                            //$check=mysqli_query($con,"SELECT `Product_ID`,`Name`,`Price`,`superSubID`  from `shop_products` where `Product_ID`='$prodid' group by `superSubID`  order by `superSubID` desc limit 1");
                                             while($row3=mysqli_fetch_array($check))
@@ -460,20 +461,20 @@ $Shop1=$row[2];
                                                 echo    '<div class="product-item">
                                                         <div class="pi-pic">
                                                         <Form action="list.php" method="POST">
-                                                            <img src="../../Images/productImages/'.$prodid.'.jpg" alt="">
+                                                            <img style="height:280px; width:200px" src="../../Images/productImages/'.$prodid.'.jpg" alt="">
                                                             <div class="sale">Sale</div>
                                                             <div class="icon">
                                                             <i class="icon_heart_alt"></i>
                                                             </div>
                                                               <ul>
                                                               <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                                              <li class="quick-view"><a href="process/list.php?'.$prodid.'" name='.$prodid.'>+ Add List</a></li>
+                                                              <li class="quick-view"><a href="process/list.php?'.$pagename.','.$prodid.'" name='.$prodid.'>+ Add List</a></li>
                                                               <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                                           </ul>
                                                       </div>
                             
                                                        <div class="pi-text">
-                                                          <div class="catagory-name">'.$linkID.'</div>
+                                                          <div class="catagory-name">'.$name.'</div>
                                                           <a href="#">
                                                               <h5>'.$row1['Name'].'</h5>
                                                           </a>

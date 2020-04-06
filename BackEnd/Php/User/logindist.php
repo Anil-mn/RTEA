@@ -21,10 +21,9 @@ else
     $_SESSION['phn_No'] = $ID;
      header('location:../../../Distribution/Distribution/home.php');
  }
-else{
-    echo $ID;
-    echo "login failed";
-}
+ else {
+    echo '<script> confirm("Wrog Password",window.location="../../../Distribution")</script>';
+  }
 
 }
 ?>

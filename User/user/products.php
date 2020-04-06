@@ -478,7 +478,7 @@ $Shop1Name=$row[2];
                               echo '<div class="col-lg-4 col-sm-6">
                               <div class="product-item">
                                   <div class="pi-pic">
-                                      <img style="height:240px; width:340px" src="../../Images/ProductImages/'.$pid.'.jpg" alt="">
+                                      <img style="height:280px; width:200px" src="../../Images/ProductImages/'.$pid.'.jpg" alt="">
                                       <div class="sale pp-sale">Available stock  :'.$quntity.'</div>
                                       <div class="icon">
                                           <i class="icon_heart_alt"></i>

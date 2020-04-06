@@ -440,14 +440,14 @@ $Shop1Name=$row[2];
                     echo    '<div class="product-item">
                             <div class="pi-pic">
                             <Form action="list.php" method="POST">
-                                <img src="../../Images/productImages/'.$prodid.'.jpg" alt="">
+                                <img  style="height:280px; width:200px" src="../../Images/productImages/'.$prodid.'.jpg" alt="">
                                 <div class="sale">Sale</div>
                                 <div class="icon">
                                 <i class="icon_heart_alt"></i>
                                 </div>
                                   <ul>
                                   <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                  <li class="quick-view"><a href="process/list.php?'.$prodid.'" name='.$prodid.'>+ Add List</a></li>
+                                  <li class="quick-view"><a href="process/list.php?'.$pagename.','.$prodid.'" name='.$prodid.'>+ Add List</a></li>
                                   <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                               </ul>
                           </div>
@@ -606,7 +606,7 @@ $Shop1Name=$row[2];
     <!-- Man Banner Section Begin -->
     <section class="man-banner spad">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" hidden>
                 <div class="col-lg-8">
                   <div class="filter-control">
                         <ul>
@@ -721,7 +721,7 @@ $Shop1Name=$row[2];
     <!-- Man Banner Section End -->
 
     <!-- Instagram Section Begin -->
-    <div class="instagram-photo">
+    <div class="instagram-photo" hidden>
         <div class="insta-item set-bg" data-setbg="img/insta-1.jpg">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
@@ -762,7 +762,7 @@ $Shop1Name=$row[2];
     <!-- Instagram Section End -->
 
     <!-- Latest Blog Section Begin -->
-    <section class="latest-blog spad">
+    <section class="latest-blog spad" hidden>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

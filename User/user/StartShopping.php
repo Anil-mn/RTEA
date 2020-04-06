@@ -38,7 +38,7 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
          $res=mysqli_fetch_array($check1);
          if( $res==true)
          {
-                  
+            //$ousers= mysqli_query($con,"UPDATE `user_online` SET `shopID`='$ShopId',`Time`='$time' where `userID`='$userId'");
          }
          else
          {

@@ -17,9 +17,9 @@ SESSION_START();
     $_SESSION['PhoneNumber'] = $_POST['PhoneNumber'];
     header('location:../../../Shop/Shop/CurrentUser.php');}
 
-    else{
-        echo '<script>alert("login failed");</script>';
-}
+    else {
+        echo '<script> confirm("Wrog Password",window.location="../../../Shop")</script>';
+      }
     
         }
     

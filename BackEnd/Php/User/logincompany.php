@@ -17,8 +17,8 @@ $id = $_POST ['id'];
     echo  $_SESSION['id'];
     header('location:../../../Marketing/Marketing/home.php');
  }
-else{
-    echo "login faild";
+ else {
+  echo '<script> confirm("Wrog Password",window.location="../../../Marketing")</script>';
 }
 
   }
