@@ -352,7 +352,7 @@ $Shop1Name=$row[2];
           $feedback=mysqli_query($con,"INSERT INTO `User_Feedback`( `UserID`, `ShopID`, `Message`) VALUES ('$UserId','$ShopName','$msg')");
           if($feedback==true)
           {
-              header('location:SelectShop.php');;
+              header('location:SelectShop.php');
           }
       }
 
