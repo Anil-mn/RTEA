@@ -211,7 +211,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Category</h4>
+                      <h4 class="card-title">Main Category</h4>
                       <p class="card-description">
                         
                       </p>
@@ -227,7 +227,7 @@
                           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div> -->
                         <button type="submit" name="categorySubmit" class="btn btn-success mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
+                        <button class="btn btn-light" type="reset">Cancel</button>
                       </form>
                     </div>
                   </div>
@@ -235,7 +235,7 @@
                 <div class="col-12 stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Category</h4>
+                      <h4 class="card-title">Sub Category</h4>
                       <p class="card-description">
                        
                       </p>
@@ -264,7 +264,7 @@
                     <input type="file" name="fileToUploadSub"> 
                         </div>
                         <button type="submit" class="btn btn-success mr-2" name="subcategory">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
+                        <button class="btn btn-light" type="reset">Cancel</button>
                       </form>
                     </div>
                   </div>
@@ -274,7 +274,7 @@
             <div class="col-md-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Sub Category</h4>
+                  <h4 class="card-title">SuperSub Category</h4>
                   <p class="card-description">
                    
                   </p>
@@ -301,30 +301,9 @@
                       <input type="text" name="supercat" class="form-control" id="exampleInputEmail3" placeholder=""> 
                       <input type="file" name="fileToUploadSuper"> 
                     </div>
-                    <!-- <div class="form-group">
-                      <label for="exampleInputPassword4">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label>File upload</label>
-                      <input type="file" name="img[]" class="file-upload-default">
-                      <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                        <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-info" type="button">Upload</button>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputCity1">City</label>
-                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleTextarea1">Textarea</label>
-                      <textarea class="form-control" id="exampleTextarea1" rows="2"></textarea>
-                    </div> -->
+                    
                     <button type="submit" name="superSubbutton" class="btn btn-success mr-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                    <button class="btn btn-light" type="reset">Cancel</button>
                   </form>
                 </div>
               </div>
@@ -332,7 +311,7 @@
             <div class="col-12 stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">SuperSub Category</h4>
+                      <h4 class="card-title">Products</h4>
                       <p class="card-description">
                         
                       </p>
@@ -365,57 +344,10 @@
                     <input type="file" name="fileToUpload"> 
 
                   <button type="submit" name="supercategory" class="btn btn-success mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
+                        <button class="btn btn-light" type="reset">Cancel</button>
                         </div>
 </form></form>
-                         
-                   
-                         
                         
-
-                       
-
-            <!--<div class="col-md-5 d-flex align-items-stretch">
-              <!-- <div class="row flex-grow">
-                <div class="col-12 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">Basic input groups</h4>
-                      <p class="card-description">
-                        Basic bootstrap input groups
-                      </p>
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">@</span>
-                          </div>
-                          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">$</span>
-                          </div>
-                          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                          <div class="input-group-append">
-                            <span class="input-group-text">.00</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">$</span>
-                          </div>
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">0.00</span>
-                          </div>
-                          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
                 </div>
                 <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
@@ -575,76 +507,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6 grid-margin stretch-card">
-              <div class="card" hidden>
-                <div class="card-body">
-                  <h4 class="card-title">Checkbox Controls</h4>
-                  <p class="card-description">Checkbox and radio controls</p>
-                  <form class="forms-sample">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input">
-                              Default
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" checked>
-                              Checked
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" disabled>
-                              Disabled
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" disabled checked>
-                              Disabled checked
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <div class="form-radio">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="" checked>
-                              Option one
-                            </label>
-                          </div>
-                          <div class="form-radio">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                              Option two
-                            </label>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="form-radio disabled">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios3" value="option3" disabled>
-                              Option three is disabled
-                            </label>
-                          </div>
-                          <div class="form-radio disabled">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="optionsRadio2" id="optionsRadios4" value="option4" disabled checked>
-                              Option four is selected and disabled
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+           
             <div class="col-md-6 grid-margin stretch-card">
               <div class="card" hidden>
                 <div class="card-body">

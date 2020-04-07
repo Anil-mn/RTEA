@@ -212,6 +212,7 @@ type = "image/x-icon">
                     <i class="fa fa-users float-right icon-md text-gray"></i>
                   </div>
                   <?php
+                  //Count of users in user_info Table
                   include('../BackEnd/php/connection.php');
                   $noOfUsers=mysqli_query($con,"SELECT COUNT(`UserId`) from `user_info`");
                   while($row=mysqli_fetch_array($noOfUsers))
@@ -238,7 +239,9 @@ type = "image/x-icon">
                   <div class="clearfix">
                     <i class="fa fa-shopping-cart float-right icon-md text-gray"></i>
                   </div>
+                  
                   <?php
+                  //no of online users from user_online table
                   include('../BackEnd/php/connection.php');
                   $onlineUsers=mysqli_query($con,"SELECT count(`onlineID`) from `user_online`");
                   while($row=mysqli_fetch_array($onlineUsers))
@@ -261,7 +264,8 @@ type = "image/x-icon">
                     <i class="fa fa-bookmark float-right icon-md text-gray"></i>
                   </div>
                   <?php
-                  include('../BackEnd/php/connection.php');
+                  //total  products purchased by user from user_log table
+                
                   $query=mysqli_query($con,"SELECT SUM(`TotalProducts`) from `user_log`");
                   while($row=mysqli_fetch_array($query))
                   {
@@ -284,6 +288,7 @@ type = "image/x-icon">
                     <i class="fa fa-pie-chart float-right icon-md text-gray"></i>
                   </div>
                   <?php
+                  //total amount genereated by product purchased from user_log table
                   include('../BackEnd/php/connection.php');
                   $query=mysqli_query($con,"SELECT SUM(`TotalAmt`) from `user_log`");
                   while($row=mysqli_fetch_array($query))
@@ -308,6 +313,7 @@ type = "image/x-icon">
               <div class="card">
                 <div class="card-body">
                 <?php
+                //count of users registered today from user_info table
                   include('../BackEnd/php/connection.php');
                   $date=date('Y-m-d');
                   $UserPerDay=mysqli_query($con,"SELECT COUNT(`UserId`) from `user_info` where `Date`='$date'");
@@ -334,6 +340,7 @@ type = "image/x-icon">
               <div class="card">
                 <div class="card-body">
                 <?php
+                //highest noof users registered location from location table
                   include('../BackEnd/php/connection.php');
                  
                   $query=mysqli_query($con,"SELECT `Location`,COUNT(`Location`) as `value_occurrence` from `shop_info` Group by `Location` order by `value_occurrence` DESC limit 1");
@@ -364,6 +371,7 @@ type = "image/x-icon">
               <div class="card">
                 <div class="card-body">
                     <?php
+                    //sum of total products purchased per day
                 include('../BackEnd/php/connection.php');
                   $date=date('Y-m-d');
                   $query=mysqli_query($con,"SELECT SUM(`TotalProducts`) from `user_log` where `Date`='$date'");
@@ -390,6 +398,7 @@ type = "image/x-icon">
               <div class="card">
                 <div class="card-body">
                 <?php
+                //revenue generated per day
                   include('../BackEnd/php/connection.php');
                   $date=date('Y-m-d');
                   $query=mysqli_query($con,"SELECT SUM(`TotalAmt`) from `user_log` where `Date`='$date'");
@@ -411,74 +420,7 @@ type = "image/x-icon">
               </div>
             </div>
           </div>
-          <div class="row"  hidden>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">7896</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Visitors</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">7523</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Sales</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">6932</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Orders</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">$ 54123</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Revenue</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">23658</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">New clients</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">8965</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Comments</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
               <div class="card">
@@ -487,6 +429,7 @@ type = "image/x-icon">
                 <label for="exampleFormControlSelect1">Product Display</label>
                           <select class="form-control form-control-lg" name='detailssub' id="exampleFormControlSelect1">
                           <?php 
+                          //fetching location to find the user details of appropriate location
                          include('../BackEnd/php/connection.php');
                          $productInfo = mysqli_query($con, "SELECT * FROM `location`");
                          while($row = mysqli_fetch_array($productInfo))
@@ -524,9 +467,9 @@ type = "image/x-icon">
                         ?>
                         <div class="card-body">
                   <h5 class="card-title mb-4">User Info</h5>
-                  <div class="row">
+                  <div class="row" style="height:300px; width:790px; overflow:visible; overflow-y:scroll;">
                   <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
-                      <table class="table table-striped">
+                      <table class="table table-striped" >
                       <th>Name</th><th>PhoneNumber</th><th>Email Id</th><th>Gender</th><th>JOiN DATE</th></th>
                         <tbody>
                   <?php
@@ -548,12 +491,7 @@ type = "image/x-icon">
                                  }
                              }
 
-                    //     $query=mysqli_query($con, "SELECT * FROM `shop_products` where  `superSubID`='$superid'");
-                    //     while($row = mysqli_fetch_array($query))
-                    //    {
-                    //      $image=$row[1];
-                    //     echo '<tr><td><div class="flag"> <img src="Images/'.$image.'.jpg" style="height: 35px;width: 35px; "></div> </td><td class="text-right">'.$row[1].'</td><td>'.$row[2].'</td></tr>';
-                    //    }
+                
                 }
                     ?>
 
@@ -569,90 +507,7 @@ type = "image/x-icon">
               </div>
             </div>
           </div>
-          <div class="row" >
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card" hidden>
-                <div class="card-body">
-                  <h5 class="card-title mb-4">Testimonial</h5>
-                  <div class="row d-flex align-items-center justify-items-center flex-column">
-                    <div class="text-center">
-                      <img src="../images/faces/face8.jpg" class="rounded-circle" width="100" height="100" />
-                    </div>
-                    <div class="text-center mt-3">
-                      <i class="fa fa-quote-right icon-grey-big"></i>
-                    </div>
-                    <p class="font-italic text-muted mt-3 mb-4 text-center">
-                      Your products, all the kits that I have downloaded from your site and worked with are sooo cool!. Keep up the great work!
-                    </p>
-                    <h5 class="text-center bolder">Tom Swayer</h5>
-                    <h6 class="text-center text-muted">Co-founder</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card" hidden>
-                <div class="card-body">
-                  <h5 class="card-title mb-4">Employees</h5>
-                  <table class="table table-hover table-striped">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Salary</th>
-                        <th>Country</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Bob Williams</td>
-                        <td>$23,566</td>
-                        <td>USA</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Mike Tyson</td>
-                        <td>$10,200</td>
-                        <td>Canada</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Tim Sebastian</td>
-                        <td>$32,190</td>
-                        <td>Netherlands</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Philip Morris</td>
-                        <td>$31,123</td>
-                        <td>Korea, South</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>Minerva Hooper</td>
-                        <td>$23,789</td>
-                        <td>South Africa</td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>Cooper</td>
-                        <td>$27,789</td>
-                        <td>Canada</td>
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>Philip</td>
-                        <td>$13,789</td>
-                        <td>South Africa</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+         
         <!-- content-wrapper ends -->
         <!-- partial:../partials/_footer.html -->
         <!-- <footer class="footer">

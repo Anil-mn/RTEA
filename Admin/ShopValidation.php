@@ -213,6 +213,7 @@ type = "image/x-icon">
                   </div>
                   <?php
                   include('../BackEnd/php/connection.php');
+                  //total shops registered
                   $query=mysqli_query($con,"SELECT COUNT(`ShopID`) from `shop_info`");
                   while($row=mysqli_fetch_array($query))
                   {
@@ -239,6 +240,7 @@ type = "image/x-icon">
                     <i class="fa fa-shopping-cart float-right icon-md text-gray"></i>
                   </div>
                   <?php
+                  //count of  shop locations 
                   include('../BackEnd/php/connection.php');
                   $query=mysqli_query($con,"SELECT count(`LocationID`) from `location`");
                   while($row=mysqli_fetch_array($query))
@@ -261,6 +263,7 @@ type = "image/x-icon">
                     <i class="fa fa-bookmark float-right icon-md text-gray"></i>
                   </div>
                   <?php
+                  //total products count
                   include('../BackEnd/php/connection.php');
                   $query=mysqli_query($con,"SELECT SUM(`TotalProducts`) from `user_log`");
                   while($row=mysqli_fetch_array($query))
@@ -284,6 +287,7 @@ type = "image/x-icon">
                     <i class="fa fa-pie-chart float-right icon-md text-gray"></i>
                   </div>
                   <?php
+                  //total revenue generated in shops 
                   include('../BackEnd/php/connection.php');
                   $query=mysqli_query($con,"SELECT SUM(`TotalAmt`) from `user_log`");
                   while($row=mysqli_fetch_array($query))
@@ -308,6 +312,7 @@ type = "image/x-icon">
               <div class="card">
                 <div class="card-body">
                 <?php
+                //shop registered per day
                   include('../BackEnd/php/connection.php');
                   $date=date('Y-m-d');
                   $query=mysqli_query($con,"SELECT COUNT(`ShopID`) from `shop_info` where `Date`='$date'");
@@ -335,7 +340,7 @@ type = "image/x-icon">
                 <div class="card-body">
                 <?php
                   include('../BackEnd/php/connection.php');
-                 
+                 //highest noof shop locations
                   $query=mysqli_query($con,"SELECT `Location`,COUNT(`Location`) as `value_occurrence` from `shop_info` Group by `Location` order by `value_occurrence` DESC limit 1");
                   while($row=mysqli_fetch_array($query))
                   {
@@ -364,6 +369,7 @@ type = "image/x-icon">
               <div class="card">
                 <div class="card-body">
                     <?php
+                    //total products sold per day
                 include('../BackEnd/php/connection.php');
                   $date=date('Y-m-d');
                   $query=mysqli_query($con,"SELECT SUM(`TotalProducts`) from `user_log` where `Date`='$date'");
@@ -390,6 +396,7 @@ type = "image/x-icon">
               <div class="card">
                 <div class="card-body">
                 <?php
+                //total revenue generated per day
                   include('../BackEnd/php/connection.php');
                   $date=date('Y-m-d');
                   $query=mysqli_query($con,"SELECT SUM(`TotalAmt`) from `user_log` where `Date`='$date'");
@@ -411,74 +418,7 @@ type = "image/x-icon">
               </div>
             </div>
           </div>
-          <div class="row"  hidden>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">7896</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Visitors</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">7523</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Sales</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">6932</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Orders</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">$ 54123</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Revenue</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">23658</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">New clients</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">8965</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Comments</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
               <div class="card">
@@ -486,7 +426,8 @@ type = "image/x-icon">
                 <form class="forms-sample" action="#" method='POST'>
                 <label for="exampleFormControlSelect1">Product Display</label>
                           <select class="form-control form-control-lg" name='detailssub' id="exampleFormControlSelect1">
-                          <?php 
+                          <?php
+                          //fetching location to display shop details
                          include('../BackEnd/php/connection.php');
                          $productInfo = mysqli_query($con, "SELECT * FROM `location`");
                          while($row = mysqli_fetch_array($productInfo))

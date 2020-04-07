@@ -52,52 +52,6 @@
               <a class="dropdown-item">
                 <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
                 </p>
-                <span class="badge badge-pill badge-warning float-right">View all</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-success">
-                    <i class="icon-info mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-medium">Application Error</h6>
-                  <p class="font-weight-light small-text">
-                    Just now
-                  </p>
-                </div>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-warning">
-                    <i class="icon-speech mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-medium">Settings</h6>
-                  <p class="font-weight-light small-text">
-                    Private message
-                  </p>
-                </div>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-info">
-                    <i class="icon-envelope mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-medium">New user registration</h6>
-                  <p class="font-weight-light small-text">
-                    2 days ago
-                  </p>
-                </div>
-              </a>
-            </div>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <i class="mdi mdi-email-variant"></i>
@@ -107,50 +61,6 @@
               <div class="dropdown-item">
                 <p class="mb-0 font-weight-normal float-left">You have 7 unread mails
                 </p>
-                <span class="badge badge-info badge-pill float-right">View all</span>
-              </div>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="../Shop/Shop/images/faces/face4.jpg" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow">
-                  <h6 class="preview-subject ellipsis font-weight-medium">David Grey
-                    <span class="float-right font-weight-light small-text">1 Minutes ago</span>
-                  </h6>
-                  <p class="font-weight-light small-text">
-                    The meeting is cancelled
-                  </p>
-                </div>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="../Shop/Shop/images/faces/face2.jpg" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow">
-                  <h6 class="preview-subject ellipsis font-weight-medium">Tim Cook
-                    <span class="float-right font-weight-light small-text">15 Minutes ago</span>
-                  </h6>
-                  <p class="font-weight-light small-text">
-                    New product launch
-                  </p>
-                </div>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="../Shop/Shop/images/faces/face3.jpg" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow">
-                  <h6 class="preview-subject ellipsis font-weight-medium"> Johnson
-                    <span class="float-right font-weight-light small-text">18 Minutes ago</span>
-                  </h6>
-                  <p class="font-weight-light small-text">
-                    Upcoming board meeting
-                  </p>
-                </div>
-              </a>
             </div>
           </li>
           <li class="nav-item d-none d-lg-block">
@@ -216,7 +126,7 @@
             </div>
           </div>
           <div class="row">
-          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card" onclick="move(0)">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -244,7 +154,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card" onclick="move(1)">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -272,7 +182,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card" onclick="move(2)">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -298,7 +208,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card" onclick="move(3)">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -324,26 +234,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-account-location text-info icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="card-text text-right">Employees</p>
-                      <div class="fluid-container">
-                        <h3 class="card-title font-weight-bold text-right mb-0">246</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3">
-                    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Product-wise sales
-                  </p>
-                </div>
-              </div>
-            </div> -->
           </div>
           <div class="row">
             <div class="col-12 grid-margin">
@@ -367,13 +257,13 @@
                       <div class="col-1">
                         <img class="img-sm rounded-circle" src="../Shop/Shop/images/menu_icons/user.png" alt="profile image">
                       </div>
-                      <div class="ticket-details col-9">
+                      <div class="ticket-details col-9" onclick='move(0)'>
                         <div class="d-flex">
                           <p class="text-primary font-weight-bold mr-2 mb-0 no-wrap">User :</p>
                           <p class="font-weight-medium mr-1 mb-0">[#23047]</p>
-                          <p class="font-weight-bold mb-0 ellipsis">Lorem ipsum dolor sit amet, consectetur.</p>
+                          <p class="font-weight-bold mb-0 ellipsis"></p>
                         </div>
-                        <p class="text-small text-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum sequi a, nostrum.</p>
+                        <p class="text-small text-gray">user can select appropriate shop ,search for products and purchase them by adding to cart</p>
                         <div class="row text-muted d-flex">
                           <div class="col-4 d-flex">
                             <p class="mb-0 mr-2">Last responded :</p>
@@ -404,13 +294,13 @@
                       <div class="col-1">
                         <img class="img-sm rounded-circle" src="../Shop/Shop/images/menu_icons/shops.png" alt="profile image">
                       </div>
-                      <div class="ticket-details col-9">
+                      <div class="ticket-details col-9" onclick='move(1)'>
                         <div class="d-flex">
-                          <p class="text-primary font-weight-bold mr-2 mb-0 no-wrap">Stella :</p>
+                          <p class="text-primary font-weight-bold mr-2 mb-0 no-wrap">Shops :</p>
                           <p class="font-weight-medium mr-1 mb-0">[#23135]</p>
-                          <p class="font-weight-bold mb-0 ellipsis">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente.</p>
+                          <p class="font-weight-bold mb-0 ellipsis"></p>
                         </div>
-                        <p class="text-small text-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi voluptates fuga quae?</p>
+                        <p class="text-small text-gray">Shops provides proper statistics of user purchasing behaviour and stocks in each shop </p>
                         <div class="row text-muted d-flex">
                           <div class="col-4 d-flex">
                             <p class="mb-0 mr-2">Last responded :</p>
@@ -441,13 +331,13 @@
                       <div class="col-1">
                         <img class="img-sm rounded-circle" src="../Shop/Shop/images/menu_icons/dis.png" alt="profile image">
                       </div>
-                      <div class="ticket-details col-9">
+                      <div class="ticket-details col-9" onclick='move(2)'>
                         <div class="d-flex">
-                          <p class="text-primary font-weight-bold mr-2 mb-0 no-wrap">John Doe :</p>
+                          <p class="text-primary font-weight-bold mr-2 mb-0 no-wrap">Distributors :</p>
                           <p class="font-weight-medium mr-1 mb-0">[#23246]</p>
-                          <p class="font-weight-bold mb-0 ellipsis">Lorem ipsum dolor sit amet.</p>
+                          <p class="font-weight-bold mb-0 ellipsis"></p>
                         </div>
-                        <p class="text-small text-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p class="text-small text-gray">Distibutors finds the unavailability of products and refill the products at right time</p>
                         <div class="row text-muted d-flex">
                           <div class="col-4 d-flex">
                             <p class="mb-0 mr-2">Last responded :</p>
@@ -478,13 +368,13 @@
                       <div class="col-1">
                         <img class="img-sm rounded-circle" src="../Shop/Shop/images/menu_icons/ads.png" alt="profile image">
                       </div>
-                      <div class="ticket-details col-9">
+                      <div class="ticket-details col-9" onclick='move(3)'>
                         <div class="d-flex">
-                          <p class="text-primary font-weight-bold mr-2 mb-0 no-wrap">Marques Brownlee :</p>
+                          <p class="text-primary font-weight-bold mr-2 mb-0 no-wrap">Marketing :</p>
                           <p class="font-weight-medium mr-1 mb-0">[#23047]</p>
-                          <p class="font-weight-bold mb-0 ellipsis">Lorem ipsum dolor sit amet, consectetur.</p>
+                          <p class="font-weight-bold mb-0 ellipsis"></p>
                         </div>
-                        <p class="text-small text-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum sequi a, nostrum.</p>
+                        <p class="text-small text-gray">Marketing generates advertisements of desired products as per the clients needs and display in shops as well as in users</p>
                         <div class="row text-muted d-flex">
                           <div class="col-4 d-flex">
                             <p class="mb-0 mr-2">Last responded :</p>
@@ -584,6 +474,7 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="../Shop/Shop/js/dashboard.js"></script>
+  <script src="script.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5NXz9eVnyJOA81wimI8WYE08kW_JMe8g&callback=initMap" async defer></script>
   <script src="../Shop/Shop/js/maps.js"></script>
   <!-- End custom js for this page-->

@@ -352,25 +352,28 @@
                       <tbody>
                       <?php
                     include('../Backend/php/connection.php');
-                   
-                    $Adexpired=mysqli_query($con,"SELECT * from `market_ads` where `DueDate`='$date'");
+                   //to delete expired ads 
+
+                   //fetching expired ad details from market_ads
+                    $Adexpired=mysqli_query($con,"SELECT * from `market_ads` where `DueDate`<='$date'");
                     while($row=mysqli_fetch_array( $Adexpired))
                     {
                         $adid=$row[3];
                         $inventid=$row[1];
                         $prodid=$row[2];
 
-
+                           //fetching name from inventory table using inventory id
                           $inventinfo=mysqli_query($con,"SELECT * from `inventory` where `id`='$inventid'");
                           while($row=mysqli_fetch_array( $inventinfo))
                           {
                               $inventname=$row[2];
-                             
+                             //fetching product details using product id
                              $prodinfo=mysqli_query($con,"SELECT * from `shop_products` where `Product_ID`='$prodid'");
                              while($row=mysqli_fetch_array( $prodinfo))
                                {
                                   $prodname=$row[1];
                                   echo $prodname;
+                                  //fetching ad name using ad id from market_add
                                   $adinfo=mysqli_query($con,"SELECT * from `market_add` where `Add_ID`='$adid'");
                                   while($row=mysqli_fetch_array( $adinfo))
                                   {
@@ -387,7 +390,8 @@
                                             
                                             <td><a href="php/marketDeleteAd.php?'.$adid.'" class="btn btn-outline-danger btn-sm">Delete</a></td>
                                           </tr>'  ; 
-                                }  
+                                }  //button click points to marketdeletead page with ad id
+                                   
                               }   
                           }
                      }   
@@ -425,7 +429,7 @@
                         }?>
                         </select><br>
                         <button type="submit" name="details" class="btn btn-success mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button></div>
+                        <button type="reset" class="btn btn-light">Cancel</button></div>
                         <div class="card-body">
                   <h5 class="card-title mb-4">Inventory Details</h5>
                   <div class="row">

@@ -228,6 +228,7 @@ type = "image/x-icon">
               <div class="card">
                 <div class="card-body">
                     <?php
+                    //distributors count
                     include('../Backend/php/connection.php');
                     $distributionCount=mysqli_query($con,"SELECT COUNT(`Distribution_ID`) from `distribution_info`");
                     while($row=mysqli_fetch_array($distributionCount))
@@ -253,6 +254,7 @@ type = "image/x-icon">
               <div class="card">
                 <div class="card-body">
                 <?php
+                //count of total orders 
                     include('../Backend/php/connection.php');
                     $ordercount=mysqli_query($con,"SELECT COUNT(`Distributor_ID`) from `distributor_orders`");
                     while($row=mysqli_fetch_array($ordercount))
@@ -273,7 +275,7 @@ type = "image/x-icon">
               <div class="card">
                 <div class="card-body">
                     <?php
-                       
+                       //orders processing
                 include('../Backend/php/connection.php'); 
                     $orderstatus=mysqli_query($con,"SELECT COUNT(`ReqID`) from `dis_shopreq` where `Status`='Accepted' or `Status`='Order Purchased'");
                     while($row=mysqli_fetch_array($orderstatus))
@@ -296,6 +298,7 @@ type = "image/x-icon">
               <div class="card">
                 <div class="card-body">
                   <?php
+                  //orders delivered
                   include('../Backend/php/connection.php');
                   $orderdelivered=mysqli_query($con,"SELECT count(`Distributor_ID`) from `distributor_orders` where `Status`='Order Delivered'");
                   while($row=mysqli_fetch_array($orderdelivered))
@@ -312,13 +315,11 @@ type = "image/x-icon">
                 </div>
               </div>
             </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
+            <!-- <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
-                 <?php
-                 
-                ?>
-                  <h6 class="card-title font-weight-normal text-info">23658</h6>
+                <div class="card-body"> -->
+               
+                  <!-- <h6 class="card-title font-weight-normal text-info">23658</h6>
                   <h6 class="card-subtitle mb-4 text-muted">New clients</h6>
                   <div class="progress progress-slim">
                     <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
@@ -334,10 +335,10 @@ type = "image/x-icon">
                   <div class="progress progress-slim">
                     <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                </div>
+                </div> -->
               </div>
-            </div>
-          </div>
+            
+          
 
 
 
