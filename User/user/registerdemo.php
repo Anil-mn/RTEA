@@ -11,6 +11,7 @@ $password = $_POST['password'];
 $Gender = $_POST['Gender'];
 $dob = $_POST['dob'];
 $Location = $_POST['location'];
+$date=date('Y-m-d');
 $numvalid=mysqli_query($con, "SELECT `PhoneNumber` FROM `user_info` where `PhoneNumber`='$phoneNumber'");
 $res=mysqli_fetch_array($numvalid);
 if($res==true)
@@ -30,8 +31,8 @@ while($row = mysqli_fetch_array($check)){
     $Location= $row[0];
 
 }
-$query="INSERT INTO `user_info`( `Name`, `PhoneNumber`, `Email_ID`, `Password`, `Gender`, `Dob`, `Location`) VALUES
-('$userName','$phoneNumber','$email_ID','$password','$Gender','$dob','$Location')";
+$query="INSERT INTO `user_info`( `Name`, `PhoneNumber`, `Email_ID`, `Password`, `Gender`, `Dob`, `Location`,`Date`) VALUES
+('$userName','$phoneNumber','$email_ID','$password','$Gender','$dob','$Location','$date')";
 $result=mysqli_query($con,$query); 
 
 
