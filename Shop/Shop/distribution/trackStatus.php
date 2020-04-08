@@ -134,6 +134,7 @@ LinkInsertion();
             <li class="nav-item purchase-button"><a class="nav-link" href="track.php">BACK</a></li>
         </ul>
       </nav>
+      
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -148,7 +149,8 @@ LinkInsertion();
               <div class="card">
                 <div class="card-body">
                 <?php
-$date = date('Y-m-d');      
+$date = date('Y-m-d');     
+
 $res1=mysqli_query($con,"SELECT * FROM `dis_shopreq` where `ReqID`='$ReqID' ");
 while($row1 = mysqli_fetch_array($res1))
 {
@@ -175,7 +177,6 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
  while($row2 = mysqli_fetch_array($res2))
    {
       $distributorid=$row2[1] ;
-     // echo $distributorid;
         $res3=mysqli_query($con,"SELECT * FROM `distribution_info` where `Distribution_ID`='$distributorid'");
              while($row3 = mysqli_fetch_array($res3))
                         {
@@ -183,15 +184,22 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
                                     $phonenum=$row3[3];
                                     
                        }
-
-
-
-                    }
-                   // echo $status;
+                      }
+                      if($status=='Not Requested')
+               {
+                  // echo "<td>".$status."</td></tr>" ;
+                  $name = "Not Requested";
+                  $progress=0; 
+                  $progressbarcolor ='progress-bar progress-bar-striped bg-danger';
+                  $textColor ='card-title font-weight-normal text-danger';
+                    
+               }
+                
          if($status=='Requested')
                {
                   // echo "<td>".$status."</td></tr>" ;
                   $progress=25; 
+                  $name = "Requested";
                   $progressbarcolor ='progress-bar progress-bar-striped bg-danger';
                   $textColor ='card-title font-weight-normal text-danger';
                     
@@ -242,12 +250,12 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
 
                 
                
-               if($status=='Requested' or $status=='Accepted' or $status=='Order Purchased' or $status=='Delivery Confirmed') 
+               if($status=='Not Requested' or $status=='Requested' or $status=='Accepted' or $status=='Order Purchased' or $status=='Delivery Confirmed') 
                 {
        echo '      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
                 <div class="card-body">
-                  <h4 class="'.$textColor.'">Requested</h4>
+                  <h4 class="'.$textColor.'">'.$name.'</h4>
                   <p class="card-text">Processing</p>
                    </div> 
                    </div>  </div>';}
@@ -312,7 +320,7 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
 
 
 ?>
-                      
+                </div>  </div>      
                     
                  
                 
@@ -322,10 +330,10 @@ $res2=mysqli_query($con,"SELECT * FROM `distributor_orders` where `Request_ID`='
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
-          <!-- <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-          </div> -->
+          <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Anil_M_Namboothiripad <a href="https://www.instagram.com/anil_m_namboothiripad/" target="_blank">Anil</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">https://github.com/Anil-mn/RTEA<a href="https://github.com/Anil-mn/RTEA" >Rtea</a><i class="mdi mdi-heart text-danger"></i></span>
+          </div>
         </footer>
         <!-- partial -->
       </div>

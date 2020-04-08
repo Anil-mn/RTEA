@@ -195,8 +195,9 @@ $date = date('Y-m-1');
          $prodname=$row1[2];
          $status=$row1[6]; 
          echo '<tr> 
-         <td>'.$ReqID.'</td>
-         <td>'.$prodname.'</td><td>'.$quantity.'</td><td><a  class="btn btn-outline-primary" href="trackStatus.php?'.$ReqID.'">Track</a></td></tr>';
+         <td>'.$ReqID.'</td>';
+        
+         echo '<td>'.$prodname.'</td><td>'.$quantity.'</td><td><a  class="btn btn-outline-primary" href="trackStatus.php?'.$ReqID.'">Track</a></td></tr>';
          
 }
        
@@ -206,17 +207,17 @@ $date = date('Y-m-1');
                       
                     
                       </tbody></table></form>         
-                
+</div></div>
                       
 
                   
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
-          <!-- <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-          </div> -->
+          <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Anil_M_Namboothiripad <a href="https://www.instagram.com/anil_m_namboothiripad/" target="_blank">Anil</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">https://github.com/Anil-mn/RTEA<a href="https://github.com/Anil-mn/RTEA" >Rtea</a><i class="mdi mdi-heart text-danger"></i></span>
+          </div>
         </footer>
         <!-- partial -->
       </div>

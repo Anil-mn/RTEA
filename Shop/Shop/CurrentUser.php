@@ -73,55 +73,7 @@ $date=date('Y-m-d');
               <i class="mdi mdi-bell-ring"></i>
               <span class="count">4</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-              <a class="dropdown-item">
-                <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
-                </p>
-                <span class="badge badge-pill badge-warning float-right">View all</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-success">
-                    <i class="icon-info mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-medium">Application Error</h6>
-                  <p class="font-weight-light small-text">
-                    Just now
-                  </p>
-                </div>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-warning">
-                    <i class="icon-speech mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-medium">Settings</h6>
-                  <p class="font-weight-light small-text">
-                    Private message
-                  </p>
-                </div>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-info">
-                    <i class="icon-envelope mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-medium">New user registration</h6>
-                  <p class="font-weight-light small-text">
-                    2 days ago
-                  </p>
-                </div>
-              </a>
-            </div>
+           
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -385,7 +337,7 @@ $date=date('Y-m-d');
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
               <div class="card">
                 <div class="card-body" >
-                  <h5 class="card-title mb-4">Global Sales by Top Locations</h5>
+                  <h5 class="card-title mb-4">Current users In Online</h5>
                   <div class="row">
                       <form action=" " method="POST">
                     <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
@@ -455,153 +407,15 @@ $date=date('Y-m-d');
             </div>
           </div>
          
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card" hidden>
-                  <div class="card-body">
-                  <table class="table ">
-                     <thead>
-                      <tr>
-                      <th>Phone Number</th>
-                        <th>Name</th>
-                        <th>Location</th>
-                        <th>Visit</th>
-                         <th>Total amount</th> 
-                      </tr>
-                    </thead>
-                    <tbody>
-                     
-                     
-                   
-              </tbody></table>
-                       
-                      
-                     
-                    </tbody>
-                </form>
-                  </table>
-                </div>
-                </div>
-              </div>
+          
+       
             
-
-              <?php
-                
-            //     include('../../BackEnd/Php/connection.php'); 
-            //     $date = date('Y-m-1');
-                
-            // //  echo $date; 
-            //     if(isset($_POST[$userid]))
-            //     {
-                  
-            //       $id=$_POST['Id'];
-            //       $usercart=mysqli_query($con,"SELECT sum(price),`ProductID`,`Numberofprod`,`price` FROM `user_cart` where `onlineID`='$id'");
-            //       while($row2=mysqli_fetch_array($usercart))
-            //        {
-            //            $TotalPrice = $row2[0];
-            //            $productId  = $row2[1];
-            //            $NoOfProducts = $row2[2];
-            //            $price = $row2[3];
-            //            echo $TotalPrice;
-                   
-            //       $query=mysqli_query($con,"SELECT * FROM `shop_products` where `Product_ID`='$productId'");
-            //       while($row1=mysqli_fetch_array($query))
-            //       {
-            //            $ProductName=$row1[0];
-            //           echo '<tr><td>'.$ProductName.'</td><td>'.$NoOfProducts.'</td><td>'.$price.'</td><tr>';
-            //        }
-
-            //      }
-            //     }
-              ?>
-
-              
-           
-          </div>
-        </div>
-        
-        <div class="row" hidden>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card" >
-                <div class="card-body">
-                <?php
-                 
-
-
-
-
-?>
-                
-                  <h6 class="card-title font-weight-normal text-info">7896</h6>                 
-                  <h6 class="card-subtitle mb-4 text-muted">Visitors</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">7523</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Sales</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">6932</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Orders</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">$ 54123</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Revenue</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">23658</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">New clients</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">8965</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Comments</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         <!-- content-wrapper ends -->
         <!-- partial:../partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Anil_M_Namboothiripad <a href="https://www.instagram.com/anil_m_namboothiripad/" target="_blank">Anil</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">https://github.com/Anil-mn/RTEA<a href="https://github.com/Anil-mn/RTEA" >Rtea</a><i class="mdi mdi-heart text-danger"></i></span>
           </div>
         </footer>
         <!-- partial -->

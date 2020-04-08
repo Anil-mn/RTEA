@@ -756,48 +756,7 @@ $avg =round($avg);
                   ?>
                   
                  
-                      <!-- <tr>
-                        <td>1</td>
-                        <td>Bob Williams</td>
-                        <td>$23,566</td>
-                        <td>USA</td>
-                      </tr> -->
-                      <!-- <tr>
-                        <td>2</td>
-                        <td>Mike Tyson</td>
-                        <td>$10,200</td>
-                        <td>Canada</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Tim Sebastian</td>
-                        <td>$32,190</td>
-                        <td>Netherlands</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Philip Morris</td>
-                        <td>$31,123</td>
-                        <td>Korea, South</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>Minerva Hooper</td>
-                        <td>$23,789</td>
-                        <td>South Africa</td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>Cooper</td>
-                        <td>$27,789</td>
-                        <td>Canada</td>
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>Philip</td>
-                        <td>$13,789</td>
-                        <td>South Africa</td>
-                      </tr> -->
+                    
                     </tbody>
                 </form>
                   </table>
@@ -821,7 +780,7 @@ $avg =round($avg);
            <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 grid-margin stretch-card"> -->
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-4">Employees</h5>
+                  <h5 class="card-title mb-4">Predition</h5>
                   <table class="table table-hover table-striped">
                     <thead>
                       <tr>
@@ -914,83 +873,15 @@ $avg =round($avg);
                 
                  ?>
                 
-            <!-- <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">  
-                
-                <h6 class="card-title font-weight-normal text-info">7896</h6>  
-                <img src="../../Images/emojis/Love.gif" style="Height:80px; width:80px;">
-                  <h6 class="card-title font-weight-normal text-info">7896</h6>                 
-                  <h6 class="card-subtitle mb-4 text-muted">Visitors</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">7523</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Sales</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">6932</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Orders</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">$ 54123</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Revenue</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">23658</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">New clients</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title font-weight-normal text-info">8965</h6>
-                  <h6 class="card-subtitle mb-4 text-muted">Comments</h6>
-                  <div class="progress progress-slim">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
+            
             </div>
           
         <!-- content-wrapper ends -->
         <!-- partial:../partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Anil_M_Namboothiripad <a href="https://www.instagram.com/anil_m_namboothiripad/" target="_blank">Anil</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">https://github.com/Anil-mn/RTEA<a href="https://github.com/Anil-mn/RTEA" >Rtea</a><i class="mdi mdi-heart text-danger"></i></span>
           </div>
         </footer>
         <!-- partial -->
