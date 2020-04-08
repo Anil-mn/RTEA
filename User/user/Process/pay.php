@@ -30,28 +30,33 @@ $ShopId =$row[0];
 echo $ShopId."<br>".$userId."<br>";
 }
 $date=date('Y-m-d');
+//fetching time from useronline
 $loginfo = mysqli_query($con, "SELECT * FROM `user_online` where `userID`='$userId'");
 while($row = mysqli_fetch_array($loginfo))
 { 
 $time=$row[3];
 }
+//insert into userlog for logid ,to insert into transaction table
 $insertlog = mysqli_query($con,"INSERT INTO `user_log`(`ShopID`, `User_ID`, `Date`, `Time`) values ('$ShopId','$userId','$date','$time')");
+//select the appropriate logid
 $userloginfo = mysqli_query($con, "SELECT * FROM `user_log` order by `LogID` DESC limit 1");
 while($row2 = mysqli_fetch_array($userloginfo))
 { 
 $logID=$row2[0];
 }
+      //selecting products from user cart to insert into transaction table
     $usercartinfo = mysqli_query($con, "SELECT * FROM `user_cart` where `onlineID`='$userId'");
     while($row1 = mysqli_fetch_array($usercartinfo))
     {
     $prodid = $row1[2];
     $price = $row1[4];      
     $noofprod = $row1[3]; 
-
+    //decrementing noofproducts from shoplink
     $updateprodcount=mysqli_query($con, "UPDATE `shop_link` SET `NumberOf`=`NumberOf`-'$noofprod' Where `Product_ID`='$prodid' and `Shop_ID`='$ShopId' ");
-    
+    //insert logdetails into transaction table
    $inserttoTrans = mysqli_query($con,"INSERT INTO `user_transactions`( `LogID`, `ProductID`, `amount`, `No of products`) VALUES ('$logID','$prodid','$price','$noofprod')");
-    if($inserttoTrans == true){
+   //deleting purchased products from todolist
+   if($inserttoTrans == true){
         $deltetoByList = mysqli_query($con,"DELETE FROM `user_tobuylist` WHERE `ProductID`='$prodid' and `userID`='$userId'");
     }
     
@@ -64,9 +69,10 @@ $logID=$row2[0];
       $totalPrice = $row1[1];
       echo $totalNumberOfPro."<br>".$totalPrice."<br>".$prodid;
      }
+     //updating total amt and total products in userlog
     $updatelog = mysqli_query($con, "UPDATE `user_log` SET  `TotalAmt`='$totalPrice' ,`TotalProducts`='$totalNumberOfPro' Where `LogID`='$logID'");
     if($updatelog ==true ){
-     
+     //deleting the user from useronline and usercart
        $deleteUseronline=mysqli_query($con,"DELETE FROM `user_online` WHERE `userID`='$userId'");
         $delecart =mysqli_query($con,"DELETE FROM `user_cart` WHERE `onlineID`='$userId'");
         if($delecart == true){

@@ -1,4 +1,5 @@
 <?php
+//to increment the product quantity in tobuy list(while clicking +)
  include('../../../BackEnd/php/connection.php');
  $filename = basename($_SERVER['REQUEST_URI']);
 

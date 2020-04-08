@@ -349,10 +349,8 @@ $Shop1Name=$row[2];
           $msg=$_POST['msg'];
           echo $msg;
           $feedback=mysqli_query($con,"INSERT INTO `User_Feedback`( `UserID`, `ShopID`, `Message`) VALUES ('$UserId','$ShopName','$msg')");
-          if($feedback==true)
-          {
-              header('location:SelectShop.php');
-          }
+          echo '<script> confirm("thanks for your feedback",window.location="selectshop.php")</script>';
+         
       }
 
 ?>

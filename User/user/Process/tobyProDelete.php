@@ -1,4 +1,6 @@
 <?php
+
+//to delete the product from tobuylist(while clicking X)
  include('../../../BackEnd/php/connection.php');
 
  $filename = basename($_SERVER['REQUEST_URI']);

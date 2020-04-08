@@ -8,44 +8,47 @@
    
 $place=$_SESSION['loc'];//location
 
-$ShopName=$_SESSION['ShopName'];
+$ShopName=$_SESSION['shopeName'];
+
  }
 include('../../BackEnd/php/connection.php');
 $check=mysqli_query($con, "SELECT * FROM `user_info` where `PhoneNumber`='$PhoneNumber'");
 while($row = mysqli_fetch_array($check))
 { 
-$userId =$row[0];
-$username=$row[1];
-$emailID=$row[3];
-$gender=$row[5];
-$dob=$row[6];
-$locationID=$row[7];
-$locationInfo = mysqli_query($con, "SELECT * FROM `location` where `LocationID`='$locationID'");
-while($row1 = mysqli_fetch_array($locationInfo))
-{ 
-$locationName = $row1[1];
-
-}}
+    $userId =$row[0];
+    $username=$row[1];
+    $emailID=$row[3];
+    $gender=$row[5];
+    $dob=$row[6];
+    $locationID=$row[7];
+    $locationInfo = mysqli_query($con, "SELECT * FROM `location` where `LocationID`='$locationID'");
+    while($row1 = mysqli_fetch_array($locationInfo))
+    { 
+    $locationName = $row1[1];
+    
+    }
+}
 // $loc=$_POST['loc'];
  //$location=$_POST['location'];//shop name 
 
- $query = mysqli_query($con, "SELECT * FROM `shop_info` where `Location` = '$place' and `ShopName`='$ShopName'  ");
+ $query = mysqli_query($con, "SELECT * FROM `shop_info` where `ShopID`='$ShopName' or `ShopName`='$ShopName'  ");
 
 while($row = mysqli_fetch_array($query))
 { 
 
 $ShopId =$row[0];
-//$ShopName=$row[2];
+$Shop1Name=$row[2];
 
 }
 $timezone=date_default_timezone_set('Asia/Kolkata');
          $time =  date("h:i:s", time());
          
-         $check1 = mysqli_query($con,"SELECT * FROM `user_online` where `userID`='$userId' and `shopID`='$ShopId'");
+         $check1 = mysqli_query($con,"SELECT * FROM `user_online` where `userID`='$userId' or (`userID`='$userId' and `shopID`='$ShopId')");
          $res=mysqli_fetch_array($check1);
          if( $res==true)
          {
-                  
+           // echo '<script> confirm("you are Already in a shop Please LogOut",window.location="p")</script>';
+            //$ousers= mysqli_query($con,"UPDATE `user_online` SET `shopID`='$ShopId',`Time`='$time' where `userID`='$userId'");
          }
          else
          {
@@ -104,8 +107,8 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
                         <?php
-                        echo $ShopName;
-                        $_SESSION['ShopName']=$ShopName;
+                        echo $Shop1Name;
+                       // $_SESSION['ShopName']=$ShopName;
                         ?>
                     </div>
                 </div>
@@ -113,7 +116,7 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
 
                <!--shop changing using same procedure of change location-->     
 
-               <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
+               <a href="Process/Logout.php" class="login-panel"><i class="fa fa-user"></i>Logout</a>
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
                             <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
@@ -131,79 +134,10 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="inner-header">
-                <div class="row">
-                    <div class="col-lg-2 col-md-2">
-                        <div class="logo">
-                            <a href="./index.html">
-                                <img src="img/logo.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-7 col-md-7">
-                        <div class="advanced-search">
-                            <button type="button" class="category-btn">All Categories</button>
-                            <form action="#" class="input-group">
-                                <input type="text" placeholder="What do you need?">
-                                <button type="button"><i class="ti-search"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 text-right col-md-3">
-                        <ul class="nav-right">
-                            <li class="heart-icon"><a href="#">
-                                    <i class="icon_heart_alt"></i>
-                                    <span>1</span>
-                                </a>
-                            </li>
-                            <li class="cart-icon"><a href="#">
-                                    <i class="icon_bag_alt"></i>
-                                    <span>3</span>
-                                </a>
-                                <div class="cart-hover">
-                                    <div class="select-items">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>$60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="si-pic"><img src="img/select-product-2.jpg" alt=""></td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>$60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="select-total">
-                                        <span>total:</span>
-                                        <h5>$120.00</h5>
-                                    </div>
-                                    <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
-                                        <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="cart-price">$150.00</li>
-                        </ul>
+        
+                    
+                    
+                           
                     </div>
                 </div>
             </div>
@@ -213,23 +147,37 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                 <div class="nav-depart">
                     <div class="depart-btn">
                         <i class="ti-menu"></i>
-                        <span>All departments</span>
-                        <ul class="depart-hover">
-                            <li class="active"><a href="#">Women’s Clothing</a></li>
-                            <li><a href="#">Men’s Clothing</a></li>
-                            <li><a href="#">Underwear</a></li>
-                            <li><a href="#">Kid's Clothing</a></li>
-                            <li><a href="#">Brand Fashion</a></li>
-                            <li><a href="#">Accessories/Shoes</a></li>
-                            <li><a href="#">Luxury Brands</a></li>
-                            <li><a href="#">Brand Outdoor Apparel</a></li>
+                        <span>All Category</span>
+                        <form id='category' action="demo.php" method='POST'>
+                        <ul name="category" class="depart-hover">
+                            <?php
+                            include('../../Backend/Php/Connection.php');
+                             $catid=mysqli_query($con,"SELECT * from `Shop_supersub` where `SubCategorie_ID`='$subcategory'");
+                                  while($row1=mysqli_fetch_array($catid))
+                                  {
+                                      $subid = $row1[0];
+                                      $subcatname = $row1[2];
+                                
+                               // echo '<button><li name="category"><a href="demo.php">'.$row[1].'</a></li></button>';
+                                 echo '<li name="category"><a href="products.php?'.$subid.'">'.$subcatname.'</a></li>';
+                              
+                            
+                        }
+                          
+                            ?>
+                           
+
                         </ul>
+                        </form>
+                       
                     </div>
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li><a href="./home.html">Home</a></li>
-                        <li><a href="./shop.html">Shop</a></li>
+                    <?php 
+                        echo '<li><a href="MainCategory.php?'.$ShopName.'">Home</a></li>' ;
+                            ?>
+                              <li><a href="SelectShop.php">Shop</a></li>
                         <li><a href="#">Collection</a>
                             <ul class="dropdown">
                                 <li><a href="#">Men's</a></li>
@@ -237,16 +185,14 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
                                 <li><a href="#">Kid's</a></li>
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="tobuy.php">List</a></li>
+                        <li><a href="feedback.php">FeedBack</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                                <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                <li><a href="./check-out.html">Checkout</a></li>
-                                <li><a href="./faq.html">Faq</a></li>
-                                <li><a href="./register.html">Register</a></li>
-                                <li><a href="./login.html">Login</a></li>
+                                <li><a href="MainCategory.php">Home</a></li>
+                                <li><a href="SelectShop.php">Shop</a></li>
+                                <li><a href="tobuy.php">List</a></li>
+                                <li><a href="feedback.php">FeedBack</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -410,112 +356,7 @@ $timezone=date_default_timezone_set('Asia/Kolkata');
     <!-- Shopping Cart Section End -->
 
     <!-- Partner Logo Section Begin -->
-    <div class="partner-logo">
-        <div class="container">
-            <div class="logo-carousel owl-carousel">
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-1.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-2.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-3.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-4.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-5.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Partner Logo Section End -->
-
-    <!-- Footer Section Begin -->
-    <footer class="footer-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="footer-left">
-                        <div class="footer-logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
-                        </div>
-                        <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello.colorlib@gmail.com</li>
-                        </ul>
-                        <div class="footer-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 offset-lg-1">
-                    <div class="footer-widget">
-                        <h5>Information</h5>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Serivius</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="footer-widget">
-                        <h5>My Account</h5>
-                        <ul>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Shopping Cart</a></li>
-                            <li><a href="#">Shop</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="newslatter-item">
-                        <h5>Join Our Newsletter Now</h5>
-                        <p>Get E-mail updates about our latest shop and special offers.</p>
-                        <form action="#" class="subscribe-form">
-                            <input type="text" placeholder="Enter Your Mail">
-                            <button type="button">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="copyright-reserved">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="copyright-text">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </div>
-                        <div class="payment-pic">
-                            <img src="img/payment-method.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+   
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->

@@ -1,4 +1,7 @@
 <?php
+
+//insert into tobuylist while clicking addto list
+
  SESSION_START();
  if(!isset($_SESSION['loc'])){
     //header('location:index.html');

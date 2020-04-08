@@ -1,5 +1,7 @@
 <?php
+//insert products into user cart while clicking update cart
 SESSION_START();
+
 $PhoneNumber=$_SESSION['PhoneNumber'];
  include('../../../BackEnd/php/connection.php');
 

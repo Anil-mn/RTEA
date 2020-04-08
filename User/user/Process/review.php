@@ -7,10 +7,12 @@
 $place=$_SESSION['place'];//location
 $ShopName=$_SESSION['shopeName'];
 
-$filename = basename($_SERVER['REQUEST_URI']);
 
-$suID =substr($filename,13);
 }
+$filename = basename($_SERVER['REQUEST_URI']);
+$suID =substr($filename,11);
+
+
 
  $PhoneNumber=$_SESSION['PhoneNumber'];
  include('../../../BackEnd/php/connection.php');
@@ -32,11 +34,13 @@ $Shop1Name=$row[2];
 
 }
 
-    $rand = rand(1,5);
+
+     $rand = rand(1,5);
     $product=$_POST['product'];
-    $review=$_POST['review'];
-    echo $product.$review.$UserName;
-    $query="INSERT INTO `user_review`(`ProductID`, `UserName`, `Review`, `Rating`) VALUES('$product','$UserName','$review','$rand')";
-    $res = mysqli_query($con,$query);
-    echo $query;
-    header('location:../productDetails.php');
+    $pagename='productDetails.php?'.$product;
+     $review=$_POST['review'];
+     echo $product.$review.$UserName;
+     $query="INSERT INTO `user_review`(`ProductID`, `UserName`, `Review`, `Rating`) VALUES('$product','$UserId','$review','$rand')";
+     $res = mysqli_query($con,$query);
+     echo $query;
+    header("location:../".$pagename);

@@ -1,4 +1,5 @@
 <?php
+//to decrement the product quantity in tobuylist(while clicking -)
  include('../../../BackEnd/php/connection.php');
  $filename = basename($_SERVER['REQUEST_URI']);
 

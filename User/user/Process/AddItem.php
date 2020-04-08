@@ -1,4 +1,5 @@
 <?php
+//to increment the product quantity in cart(while clicking +)
  include('../../../BackEnd/php/connection.php');
  $filename = basename($_SERVER['REQUEST_URI']);
 

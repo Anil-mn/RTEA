@@ -1,7 +1,7 @@
 <?php
 SESSION_START();
  if(!isset($_SESSION['PhoneNumber'])){
-	header('location:index.html');
+	header('location:../index.html');
  }
  else{
    $PhoneNumber=$_SESSION['PhoneNumber'];
@@ -399,9 +399,9 @@ while ($row = mysqli_fetch_array($Userinfo)){
                  <div class="col-lg-8 offset-lg-1">
                     <div class="filter-control">
                         <ul>
-                            <li class="active">Clothings</li>
-                            <li>HandBag</li>
-                            <li>Shoes</li>
+                            <li class="active">Food</li>
+                            <li>Electronics</li>
+                            <li>Household items</li>
                             <li>Accessories</li>
                         </ul>
                     </div>
