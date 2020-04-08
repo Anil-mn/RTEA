@@ -214,13 +214,13 @@ $date=date('Y-m-d');
                             include('../../BackEnd/php/connection.php');
                             if(isset($_POST['demo'])){
                                 $productname = $_POST['name'];
-                                echo $productname;
+                               // echo $productname;
                                 $productInfo=mysqli_query($con,"SELECT * FROM `shop_products` where `Name` like '%$productname%'");
                                 while($row=mysqli_fetch_array($productInfo))
                                  {
                                      $productId = $row[0];
                                      $price = $row[2];
-                                     echo $productId;
+                                    /// echo $productId;
 
  
                                  }
@@ -229,14 +229,14 @@ $date=date('Y-m-d');
                               {
                                 $quntity=$row[3];
                                 $location =$row[4];
-                                echo $quntity;
+                                //echo $quntity;
 
                                 echo '
                                                  <tr>
                                      <td>
-                                        <div class="flag">
-                                        <img src="../../Images/ProductImages/'.$productId.'.jpg" ">
-                                        </div>
+                                        
+                                        <img  src="../../Images/ProductImages/'.$productId.'.jpg" ">
+                                       
                                       </td>
                                      
                                       <td >
@@ -252,12 +252,7 @@ $date=date('Y-m-d');
                                       <td>
                                      '.$price.'
                                       </td>
-                                
-                                     
-                                     
-                                    </tr>
-                                   
-                                                 ';
+                                  </tr>';
  
                               }
                             }

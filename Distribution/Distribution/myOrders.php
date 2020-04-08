@@ -118,7 +118,7 @@ while($row = mysqli_fetch_array($DisInfo))
             </li> -->
             <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle ml-2" src="../../Logos/title.png" alt="Profile image"> <span class="font-weight-normal"> NAme</span></a>
+                <img class="img-xs rounded-circle ml-2" src="../../Logos/title.png" alt="Profile image"> <span class="font-weight-normal"></span></a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
                   <img class="img-md rounded-circle" src="../../Logos/title.png" alt="Profile image">
@@ -175,18 +175,11 @@ while($row = mysqli_fetch_array($DisInfo))
             </li>
             <li class="nav-item nav-category"><span class="nav-link">Products</span></li>
             <li class="nav-item">
-              <!-- <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic"> -->
-                
-                <a class="nav-link" href="inventryInfo.php">
+               <a class="nav-link" href="inventryInfo.php">
                 <span class="menu-title">TakeOrder</span>
                 <i class="icon-layers menu-icon"></i>
               </a>
-              <!-- <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-                </ul>
-              </div> -->
+              
             </li>
             <li class="nav-item">
             <a class="nav-link" href="myOrders.php">
@@ -200,34 +193,7 @@ while($row = mysqli_fetch_array($DisInfo))
                 <i class="icon-book-open menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Stock </span>
-                <i class="icon-chart menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Tables</span>
-                <i class="icon-grid menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item nav-category"><span class="nav-link">Sample Pages</span></li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="menu-title">General Pages</span>
-                <i class="icon-doc menu-icon"></i>
-              </a>
-              <div class="collapse" id="auth">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/login.html"> Login </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/register.html"> Register </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/error-404.html"> 404 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/error-500.html"> 500 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/blank-page.html"> Blank Page </a></li>
-                </ul>
-              </div>
-            </li>
+          
             <li class="nav-item pro-upgrade">
               <span class="nav-link">
                 <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="logout.php"> <i class="icon-badge mx-2"></i> LogOut</a>

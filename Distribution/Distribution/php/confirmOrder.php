@@ -1,6 +1,6 @@
 <?php
 include('../../../BackEnd/Php/connection.php');
-
+// Confirm Order By distrubutor
 SESSION_START();
 $disID=$_SESSION['phn_No'];
 echo $disID;

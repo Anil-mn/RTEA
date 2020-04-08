@@ -59,66 +59,10 @@ while($row = mysqli_fetch_array($DisInfo))
               <i class="icon-magnifier"></i>
               <input type="search" class="form-control" placeholder="Search Here" title="Search here">
             </form>
-            <!-- <li class="nav-item"><a href="#" class="nav-link"><i class="icon-basket-loaded"></i></a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="icon-chart"></i></a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <i class="icon-speech"></i>
-                <span class="count">7</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
-                <a class="dropdown-item py-3">
-                  <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                  <span class="badge badge-pill badge-primary float-right">View all</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="images/faces/face10.jpg" alt="image" class="img-sm profile-pic"> </div>
-                  <div class="preview-item-content flex-grow py-2">
-                    <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
-                    <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="images/faces/face12.jpg" alt="image" class="img-sm profile-pic"> </div>
-                  <div class="preview-item-content flex-grow py-2">
-                    <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                    <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="images/faces/face1.jpg" alt="image" class="img-sm profile-pic"> </div>
-                  <div class="preview-item-content flex-grow py-2">
-                    <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
-                    <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                  </div>
-                </a>
-              </div>
-            </li>
-            <li class="nav-item dropdown language-dropdown d-none d-sm-flex align-items-center">
-              <a class="nav-link d-flex align-items-center dropdown-toggle" id="LanguageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <div class="d-inline-flex mr-3">
-                  <i class="flag-icon flag-icon-us"></i>
-                </div>
-                <span class="profile-text font-weight-normal">English</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
-                <a class="dropdown-item">
-                  <i class="flag-icon flag-icon-us"></i> English </a>
-                <a class="dropdown-item">
-                  <i class="flag-icon flag-icon-fr"></i> French </a>
-                <a class="dropdown-item">
-                  <i class="flag-icon flag-icon-ae"></i> Arabic </a>
-                <a class="dropdown-item">
-                  <i class="flag-icon flag-icon-ru"></i> Russian </a>
-              </div>
-            </li> -->
+           
             <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle ml-2" src="../../Logos/title.png" alt="Profile image"> <span class="font-weight-normal"> NAme</span></a>
+                <img class="img-xs rounded-circle ml-2" src="../../Logos/title.png" alt="Profile image"> <span class="font-weight-normal"> </span></a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
                   <img class="img-md rounded-circle" src="../../Logos/title.png" alt="Profile image">
@@ -175,18 +119,11 @@ while($row = mysqli_fetch_array($DisInfo))
             </li>
             <li class="nav-item nav-category"><span class="nav-link">Products</span></li>
             <li class="nav-item">
-              <!-- <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic"> -->
-                
-                <a class="nav-link" href="inventryInfo.php">
+               <a class="nav-link" href="inventryInfo.php">
                 <span class="menu-title">TakeOrder</span>
                 <i class="icon-layers menu-icon"></i>
               </a>
-              <!-- <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-                </ul>
-              </div> -->
+              
             </li>
             <li class="nav-item">
             <a class="nav-link" href="myOrders.php">
@@ -200,35 +137,7 @@ while($row = mysqli_fetch_array($DisInfo))
                 <i class="icon-book-open menu-icon"></i>
               </a>
             </li>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Stock </span>
-                <i class="icon-chart menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Tables</span>
-                <i class="icon-grid menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item nav-category"><span class="nav-link">Sample Pages</span></li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="menu-title">General Pages</span>
-                <i class="icon-doc menu-icon"></i>
-              </a>
-              <div class="collapse" id="auth">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/login.html"> Login </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/register.html"> Register </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/error-404.html"> 404 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/error-500.html"> 500 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/blank-page.html"> Blank Page </a></li>
-                </ul>
-              </div>
-            </li>
+          
             <li class="nav-item pro-upgrade">
               <span class="nav-link">
                 <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="logout.php"> <i class="icon-badge mx-2"></i> LogOut</a>
@@ -240,34 +149,7 @@ while($row = mysqli_fetch_array($DisInfo))
               <div class="main-panel">
                   <div class="content-wrapper">
                     <div class="row" >
-                    <!-- <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                    <h4 class="card-title">Search</h4>
-                    <form class="form-inline" action="" method="">
-                      <label class="sr-only" for="inlineFormInputName2">Name</label>
-                        <div class="form-group ">
-                           <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label>
-                             <div class="col-sm-9">
-                                 <select name="location" id="location" class="form-control">
-                                 
-                                  </select>
-                                </div>
-                              </div>
-                      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-                      <div class="form-group ">
-                            <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label> 
-                             <div class="col-sm-9">
-                                 <select name="location" id="location" class="form-control">
-                                  
-                                  </select>
-                                </div>
-                              </div>
-                      <button type="submit" class="btn btn-primary mb-2">Search</button>
-                    </form>
-                  </div>
-                </div>
-              </div> -->
+                    
                        <div class="row">
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
@@ -398,10 +280,7 @@ while($row = mysqli_fetch_array($DisInfo))
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a href="https://www.bootstrapdash.com/" target="_blank">RTEA</a>. All rights reserved.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Sreelekha<i class="icon-heart text-danger"></i></span>
-            </div>
+           
           </footer>
           <!-- partial -->
         </div>

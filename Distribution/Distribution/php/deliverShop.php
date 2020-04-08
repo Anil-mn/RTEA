@@ -1,6 +1,6 @@
 <?php
 include('../../../BackEnd/Php/connection.php');
-
+// Confirm Delivery in Shop
 SESSION_START();
 $disID=$_SESSION['phn_No'];
 //echo $disID;

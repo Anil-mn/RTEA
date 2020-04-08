@@ -63,7 +63,7 @@ while($row = mysqli_fetch_array($DisInfo))
            
             <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle ml-2" src="../../Logos/title.png" alt="Profile image"> <span class="font-weight-normal"> NAme</span></a>
+                <img class="img-xs rounded-circle ml-2" src="../../Logos/title.png" alt="Profile image"> <span class="font-weight-normal"> </span></a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
                   <img class="img-md rounded-circle" src="../../Logos/title.png" alt="Profile image">
@@ -138,34 +138,7 @@ while($row = mysqli_fetch_array($DisInfo))
                 <i class="icon-book-open menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Stock </span>
-                <i class="icon-chart menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Tables</span>
-                <i class="icon-grid menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item nav-category"><span class="nav-link">Sample Pages</span></li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="menu-title">General Pages</span>
-                <i class="icon-doc menu-icon"></i>
-              </a>
-              <div class="collapse" id="auth">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/login.html"> Login </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/register.html"> Register </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/error-404.html"> 404 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/error-500.html"> 500 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../Distribution/pages/samples/blank-page.html"> Blank Page </a></li>
-                </ul>
-              </div>
-            </li>
+          
             <li class="nav-item pro-upgrade">
               <span class="nav-link">
                 <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="logout.php"> <i class="icon-badge mx-2"></i> LogOut</a>
@@ -189,12 +162,12 @@ while($row = mysqli_fetch_array($DisInfo))
                         </div>
                       </div>
                     </div>
-                    <div class="row report-inner-cards-wrapper">
+                    <div class="row report-inner-cards-wrapper" >
                       <div class=" col-md -6 col-xl report-inner-card">
                         <div class="inner-card-text">
                           <span class="report-title">PRODUCT REQUEST</span>
                           <h5></h5>
-                          <span class="report-count"></span>
+                          <span class="report-count" href='home.php'></span>
                         </div>
                         <!-- <div class="inner-card-icon bg-success"> -->
                           <a class="inner-card-icon bg-success" href='home.php'><i class="icon-rocket"></i></a>
@@ -202,17 +175,17 @@ while($row = mysqli_fetch_array($DisInfo))
                       </div>
                       <div class="col-md-6 col-xl report-inner-card">
                         <div class="inner-card-text" >
-                          <span class="report-title">MyOrders</span>
+                          <span class="report-title" >MyOrders</span>
                           <h5></h5>
-                          <span class="report-count"></span>
+                          <span class="report-count" href='Myorders.php'></span>
                         </div>
                         <button class="inner-card-icon bg-danger">
                           <i class="icon-briefcase"></i>
                         </button>
                       </div>
-                      <div class="col-md-6 col-xl report-inner-card">
+                      <div class="col-md-6 col-xl report-inner-card" onclick="Move(2)">
                         <div class="inner-card-text">
-                          <span class="report-title">SHOP QUOTATIONS</span>
+                          <span class="report-title">Take Order </span>
                           <h4></h4>
                           <span class="report-count"></span>
                         </div>
@@ -220,9 +193,9 @@ while($row = mysqli_fetch_array($DisInfo))
                           <i class="icon-globe-alt"></i>
                         </button>
                       </div>
-                      <div class="col-md-6 col-xl report-inner-card">
+                      <div class="col-md-6 col-xl report-inner-card" onclick="Move(3)">
                         <div class="inner-card-text">
-                          <span class="report-title">PRODUCT RETURNS</span>
+                          <span class="report-title">Shop Delivery</span>
                           <h4></h4>
                           <span class="report-count"></span>
                         </div>
@@ -235,6 +208,10 @@ while($row = mysqli_fetch_array($DisInfo))
                 </div>
               </div>
             </div>   
+            <script>
+             
+
+                </script>
             <div class="row">
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
