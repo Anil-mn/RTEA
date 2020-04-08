@@ -367,7 +367,7 @@
                         <button type="submit" name="details" class="btn btn-success mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button></div>
                         <div class="card-body">
-                  <h5 class="card-title mb-4">Global Sales by Top Locations</h5>
+                  <h5 class="card-title mb-4">Products</h5>
                   <div class="row">
                   <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12" style="height:200px; width:490px; overflow:hidden; overflow-y:scroll;">
                       <table class="table table-striped" >
