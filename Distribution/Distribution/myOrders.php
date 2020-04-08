@@ -238,81 +238,7 @@ while($row = mysqli_fetch_array($DisInfo))
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            <!-- <div class="row purchace-popup">
-              <div class="col-12 stretch-card grid-margin">
-                <div class="card card-secondary">
-                  <span class="card-body d-lg-flex align-items-center">
-                    <p class="mb-lg-0">Like what you see? Check out our premium version for more.</p>
-                    <a href="https://github.com/BootstrapDash/StellarAdmin-Free-Bootstrap-Admin-Template" target="_blank" class="btn ml-lg-auto download-button btn-success btn-sm my-1 my-sm-0">Download Free Version</a>
-                    <a href="https://www.bootstrapdash.com/product/stellar-admin/" target="_blank" class="btn btn-warning purchase-button btn-sm ml-sm-2 my-1 my-sm-0">Upgrade To Pro</a>
-                    <button class="close popup-dismiss ml-2">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </span>
-                </div>
-              </div>
-            </div> -->
-            
-            <!-- Quick Action Toolbar Starts-->
-            <!-- <div class="row quick-action-toolbar">
-              <div class="col-md-12 grid-margin">
-                <div class="card">
-                  <div class="card-header d-block d-md-flex">
-                    <h5 class="mb-0">Quick Actions</h5>
-                    <p class="ml-auto mb-0">How are your active users trending overtime?<i class="icon-bulb"></i></p>
-                  </div>
-                  <div class="d-md-flex row m-0 quick-action-btns" role="group" aria-label="Quick action buttons">
-                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                      <button type="button" class="btn px-0"> <i class="icon-user mr-2"></i> Add Client</button>
-                    </div>
-                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                      <button type="button" class="btn px-0"><i class="icon-docs mr-2"></i> Create Quote</button>
-                    </div>
-                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                      <button type="button" class="btn px-0"><i class="icon-folder mr-2"></i> Enter Payment</button>
-                    </div>
-                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                      <button type="button" class="btn px-0"><i class="icon-book-open mr-2"></i>Create Invoice</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- Quick Action Toolbar Ends-->
-            <!-- <div class="row">
-              <div class="col-md-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row income-expense-summary-chart-text">
-                      <div class="col-xl-4">
-                        <h5>Income And Expenses Summary</h5>
-                        <p class="small text-muted">A comparison of people who mark themselves of their ineterest from the date range given above. Learn more.</p>
-                      </div>
-                      <div class=" col-md-3 col-xl-2">
-                        <p class="income-expense-summary-chart-legend"> <span style="border-color: #6469df"></span> Total Income </p>
-                        <h3>$ 1,766.00</h3>
-                      </div>
-                      <div class="col-md-3 col-xl-2">
-                        <p class="income-expense-summary-chart-legend"> <span style="border-color: #37ca32"></span> Total Expense </p>
-                        <h3>$ 5,698.30</h3>
-                      </div>
-                      <div class="col-md-6 col-xl-4 d-flex align-items-center">
-                        <div class="input-group" id="income-expense-summary-chart-daterange">
-                          <div class="inpu-group-prepend input-group-text"><i class="icon-calendar"></i></div>
-                          <input type="text" class="form-control">
-                          <div class="input-group-prepend input-group-text"><i class="icon-arrow-down"></i></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row income-expense-summary-chart mt-3">
-                      <div class="col-md-12">
-                        <div class="ct-chart" id="income-expense-summary-chart"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
+          
             <div class="row">
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
@@ -322,7 +248,7 @@ while($row = mysqli_fetch_array($DisInfo))
                       <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"></a>
                     </div>
                     <div class="table-responsive border rounded p-1">
-                      <table class="table">
+                      <table class="table" >
                         <thead>
                           <tr>
                             <th class="font-weight-bold">Shop Name</th>
@@ -369,20 +295,7 @@ while($row = mysqli_fetch_array($DisInfo))
                           </tbody>
                       </table>
                     </div>
-                    <!-- <div class="d-flex mt-4 flex-wrap">
-                      <p class="text-muted">Showing 1 to 10 of 57 entries</p>
-                      <nav class="ml-auto">
-                        <ul class="pagination separated pagination-info">
-                          <li class="page-item"><a href="#" class="page-link"><i class="icon-arrow-left"></i></a></li>
-                          <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                          <li class="page-item"><a href="#" class="page-link">2</a></li>
-                          <li class="page-item"><a href="#" class="page-link">3</a></li>
-                          <li class="page-item"><a href="#" class="page-link">4</a></li>
-                          <li class="page-item"><a href="#" class="page-link"><i class="icon-arrow-right"></i></a></li>
-                        </ul>
-                      </nav>
-                    </div> -->
-                  </div>
+                   </div>
                 </div>
               </div>
             </div>
@@ -390,10 +303,7 @@ while($row = mysqli_fetch_array($DisInfo))
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a href="https://www.bootstrapdash.com/" target="_blank">RTEA</a>. All rights reserved.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Sreelekha<i class="icon-heart text-danger"></i></span>
-            </div>
+
           </footer>
           <!-- partial -->
         </div>

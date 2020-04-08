@@ -236,38 +236,9 @@ while($row = mysqli_fetch_array($DisInfo))
           </ul>
         </nav>
         <!-- partial -->
-              <div class="main-panel">
-                  <div class="content-wrapper">
-                    <div class="row" >
-                    <!-- <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                    <h4 class="card-title">Search</h4>
-                    <form class="form-inline" action="" method="">
-                      <label class="sr-only" for="inlineFormInputName2">Name</label>
-                        <div class="form-group ">
-                           <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label>
-                             <div class="col-sm-9">
-                                 <select name="location" id="location" class="form-control">
-                                 
-                                  </select>
-                                </div>
-                              </div>
-                      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-                      <div class="form-group ">
-                            <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label> 
-                             <div class="col-sm-9">
-                                 <select name="location" id="location" class="form-control">
-                                  
-                                  </select>
-                                </div>
-                              </div>
-                      <button type="submit" class="btn btn-primary mb-2">Search</button>
-                    </form>
-                  </div>
-                </div>
-              </div> -->
-                       <div class="row">
+   <div class="main-panel">
+    <div class="content-wrapper">
+          <div class="row">
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -396,17 +367,11 @@ while($row = mysqli_fetch_array($DisInfo))
                      </div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
-          <footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a href="https://www.bootstrapdash.com/" target="_blank">RTEA</a>. All rights reserved.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Sreelekha<i class="icon-heart text-danger"></i></span>
-            </div>
-          </footer>
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
       </div>
-      <!-- page-body-wrapper ends -->
+     
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
