@@ -59,10 +59,11 @@ $target_dir = "..\Images/";
      //if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         if(move_uploaded_file($_FILES["fileToUploadCata"]["tmp_name"], "../../Images/categoryimages/" . $newfilename.'.jpg')){
          echo "The file ". basename( $_FILES["fileToUploadCata"]["name"]). " has been uploaded.";
-         header('Location:../Shop_CategorieInsertion.php');
+         //header('Location:../Shop_CategorieInsertion.php');
      } else {
          echo "Sorry, there was an error uploading your file.";
      }
+     
    }  
 
 

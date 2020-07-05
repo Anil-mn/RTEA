@@ -171,11 +171,11 @@ $date=date('Y-m-d');
               </div>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="currentUser.php"><img class="menu-icon" src="images/menu_icons/user.png" alt="menu icon"><span class="menu-title">online Users</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="userInfo.php"><img class="menu-icon" src="images/menu_icons/user1.png" alt="menu icon"><span class="menu-title">User Info</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="shopstock.php"><img class="menu-icon" src="images/menu_icons/shops.png" alt="menu icon"><span class="menu-title">My Shop process</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="distribution/request.php"><img class="menu-icon" src="images/menu_icons/dis.png" alt="menu icon"><span class="menu-title">Distribution Request</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="distribution/marketing.php"><img class="menu-icon" src="images/menu_icons/ads.png" alt="menu icon"><span class="menu-title">Advertisements</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://storage.googleapis.com/tfjs-models/demos/body-pix/index.html"><img class="menu-icon" src="images/menu_icons/user.png" alt="menu icon"><span class="menu-title">Body Pix</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://storage.googleapis.com/tfjs-models/demos/facemesh/index.html"><img class="menu-icon" src="images/menu_icons/user1.png" alt="menu icon"><span class="menu-title">Face Mash</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://storage.googleapis.com/tfjs-models/demos/blazeface/index.html"><img class="menu-icon" src="images/menu_icons/shops.png" alt="menu icon"><span class="menu-title">Face Detect</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://storage.googleapis.com/tfjs-models/demos/handpose/index.html"><img class="menu-icon" src="images/menu_icons/dis.png" alt="menu icon"><span class="menu-title">Parm Print</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html"><img class="menu-icon" src="images/menu_icons/ads.png" alt="menu icon"><span class="menu-title">Body Detection</span></a></li>
           <li class="nav-item"><a class="nav-link" href="Analysis.php"><img class="menu-icon" src="images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Analysis</span></a></li>
           <li class="nav-item"><a class="nav-link" href="behaviour.php"><img class="menu-icon" src="../../images/emojis/happy.gif" alt="menu icon"> <span class="menu-title">Behaviuor</span></a></li>
           <li class="nav-item">
@@ -191,7 +191,7 @@ $date=date('Y-m-d');
             </div> -->
           </li>
           <!-- <li class="nav-item"><a class="nav-link" href="../pages/ui-features/typography.html"><img class="menu-icon" src="images/menu_icons/09.png" alt="menu icon"> <span class="menu-title">Typography</span></a></li> -->
-          <li class="nav-item purchase-button"><a class="nav-link" href="logout.php" >LogOUT</a></li>
+          <li class="nav-item purchase-button"><a class="nav-link" href="CurrentUser.php" >Back</a></li>
         </ul>
       </nav>
       <!-- partial -->

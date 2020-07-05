@@ -225,7 +225,7 @@ $date=date('Y-m-d');
           <li class="nav-item"><a class="nav-link" href="distribution/request.php"><img class="menu-icon" src="images/menu_icons/dis.png" alt="menu icon"><span class="menu-title">Distribution Request</span></a></li>
           <li class="nav-item"><a class="nav-link" href="distribution/marketing.php"><img class="menu-icon" src="images/menu_icons/ads.png" alt="menu icon"><span class="menu-title">Advertisements</span></a></li>
           <li class="nav-item"><a class="nav-link" href="Analysis.php"><img class="menu-icon" src="images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Analysis</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/"><img class="menu-icon" src="../../images/emojis/angry.gif" alt="menu icon"> <span class="menu-title">Behaviuor</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="behaviour.php"><img class="menu-icon" src="../../images/emojis/happy.gif" alt="menu icon"> <span class="menu-title">Behaviuor</span></a></li>
           <li class="nav-item">
             <!-- <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
             <div class="collapse" id="general-pages">
